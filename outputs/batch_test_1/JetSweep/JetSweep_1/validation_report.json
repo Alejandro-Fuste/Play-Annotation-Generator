@@ -1,0 +1,30 @@
+{
+  "video_name": "JetSweep_1",
+  "input_xml": "outputs/batch_test_1/JetSweep/JetSweep_1/generated_base_cvat.xml",
+  "input_csv": "data/key_actions/JetSweep.csv",
+  "metrics": {
+    "num_tracks": 24,
+    "num_player_tracks": 24,
+    "num_ball_tracks": 0,
+    "num_events_parsed": 29,
+    "num_action_segments": 57,
+    "num_invalid_boxes": 0,
+    "start_frame": 0,
+    "stop_frame": 329,
+    "num_mot_rows_parsed": 7230,
+    "num_mot_tracks": 24,
+    "num_assignments": 22
+  },
+  "warnings": [
+    "Resolved action overlap for track '6' (C): higher_priority='Action_BallSnap' [132\u2013144], lower_priority='Action_ZoneBlock' annotated_start=133, effective_Action_ZoneBlock_start=145.",
+    "Action 'Action_None' range [193-309] for track '2' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [132-285] for track '10' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [132-329] for track '20' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [311-315] for track '23' has 1 frames without a visible bounding box.",
+    "Player track '22' has undefined position. Will map to Position_Unknown.",
+    "Player track '22' has undefined team_side. Will map to Team_Unknown.",
+    "Player track '23' has undefined position. Will map to Position_Unknown.",
+    "Player track '23' has undefined team_side. Will map to Team_Unknown."
+  ],
+  "errors": []
+}

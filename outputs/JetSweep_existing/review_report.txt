@@ -1,0 +1,180 @@
+================================================================================
+                 TAPEVISION PLAY REVIEW REPORT: JetSweep_existing
+================================================================================
+
+[OPTION 4] PLAY HEALTH & VALIDATION OVERVIEW
+--------------------------------------------------------------------------------
+• Video Name    : JetSweep_1
+• Frame Range   : 0 to 239 (240 total frames)
+• Play Tag      : Play_Run_JetSweep
+• Result Tag    : Result_OutOfBounds
+• Result Frame  : 239
+• Player Tracks : 30
+• Ball Tracks   : 1
+• Total Segments: 20
+• Warnings Count: 42
+• Errors Count  : 0
+
+  [!] TOP WARNINGS:
+    - ⚠️ Segment 'Action_None' for track '3' is completely outside track visible range [0, 140]. Skipping segment.
+    - ⚠️ Segment 'Action_ZoneBlock' for track '6' is completely outside track visible range [0, 56]. Skipping segment.
+    - ⚠️ Segment 'Action_None' for track '6' is completely outside track visible range [0, 56]. Skipping segment.
+    - ⚠️ Segment 'Action_BlockSecondLevel' for track '11' is completely outside track visible range [0, 114]. Skipping segment.
+    - ⚠️ Segment 'Action_BallCarry' for track '19' is completely outside track visible range [122, 239]. Skipping segment.
+      (... and 37 more warnings)
+
+================================================================================
+[OPTION 2] INPUT CSV vs. OUTPUT INFERRED SEGMENTS CHECKLIST
+--------------------------------------------------------------------------------
+
+► Action Column: 'End of Play' (Action_PlayEnd)
+   ⚠️ EVENT | Target: N/A  (Kind: global_event) | Start Frame: 0
+
+► Action Column: 'Pre Snap_group_ALL' (Action_PreSnap)
+   ✓ MATCH | Actor Track: 0    (WR-X , offense) | Start Frame: 0    -> Inferred Segment: [32–131]
+   ✓ MATCH | Actor Track: 11   (TE-Y , offense) | Start Frame: 0    -> Inferred Segment: [0–116]
+   ✓ MATCH | Actor Track: 12   (H-BACK, offense) | Start Frame: 0    -> Inferred Segment: [0–132]
+   ✓ MATCH | Actor Track: 14   (QB   , offense) | Start Frame: 0    -> Inferred Segment: [0–101]
+   ✓ MATCH | Actor Track: 29   (LT   , offense) | Start Frame: 0    -> Inferred Segment: [0–132]
+   ✓ MATCH | Actor Track: 3    (LG   , offense) | Start Frame: 0    -> Inferred Segment: [0–132]
+   ✓ MATCH | Actor Track: 4    (WLB  , offense) | Start Frame: 0    -> Inferred Segment: [0–131]
+   ✓ MATCH | Actor Track: 5    (C    , offense) | Start Frame: 0    -> Inferred Segment: [0–132]
+   ✓ MATCH | Actor Track: 8    (RT   , offense) | Start Frame: 0    -> Inferred Segment: [0–56]
+   ✓ MATCH | Actor Track: 9    (QB   , offense) | Start Frame: 0    -> Inferred Segment: [0–121]
+
+► Action Column: 'Jet Motion' (Action_JetMotion)
+   ✓ MATCH | Actor Track: 19   (Position_Unknown, Team_Unknown) | Start Frame: 96   -> Inferred Segment: [122–159]
+
+► Action Column: 'Ball Snap' (Action_BallSnap)
+   ✓ MATCH | Actor Track: 7    (SS   , defense) | Start Frame: 132  -> Inferred Segment: [132–134]
+
+► Action Column: 'Lead Block' (Action_LeadBlock)
+   ✓ MATCH | Actor Track: 12   (H-BACK, offense) | Start Frame: 133  -> Inferred Segment: [133–192]
+
+► Action Column: 'Zone Block_group_OL' (Action_ZoneBlock)
+   ✓ MATCH | Actor Track: 29   (LT   , offense) | Start Frame: 133  -> Inferred Segment: [133–191]
+   ✓ MATCH | Actor Track: 3    (LG   , offense) | Start Frame: 133  -> Inferred Segment: [133–191]
+   ✓ MATCH | Actor Track: 5    (C    , offense) | Start Frame: 133  -> Inferred Segment: [133–140]
+   ⚠️ EVENT | Target: 8    (Kind: track_id    ) | Start Frame: 133
+
+► Action Column: 'Snap Receive' (Action_SnapReceive)
+   ✓ MATCH | Actor Track: 17   (Position_Unknown, Team_Unknown) | Start Frame: 144  -> Inferred Segment: [144–144]
+
+► Action Column: 'Toss' (Action_Toss)
+   ✓ MATCH | Actor Track: 17   (Position_Unknown, Team_Unknown) | Start Frame: 145  -> Inferred Segment: [145–232]
+
+► Action Column: 'Ball Carry' (Action_BallCarry)
+   ⚠️ EVENT | Target: 19   (Kind: track_id    ) | Start Frame: 160
+
+► Action Column: 'Block Second Level' (Action_BlockSecondLevel)
+   ⚠️ EVENT | Target: 13   (Kind: track_id    ) | Start Frame: 165
+
+► Action Column: 'End of OL Block_group_OL' (Action_None)
+   ✓ MATCH | Actor Track: 29   (LT   , offense) | Start Frame: 192  -> Inferred Segment: [192–239]
+   ✓ MATCH | Actor Track: 3    (LG   , offense) | Start Frame: 192  -> Inferred Segment: [192–239]
+   ⚠️ EVENT | Target: 5    (Kind: track_id    ) | Start Frame: 192
+   ⚠️ EVENT | Target: 8    (Kind: track_id    ) | Start Frame: 192
+
+================================================================================
+[OPTION 1] PER-PLAYER ACTION TIMELINE SUMMARY
+--------------------------------------------------------------------------------
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 15)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 16)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 17)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 18)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 19)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 20)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 21)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 22)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 23)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 24)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 25)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: Position_Unknown | Team: Team_Unknown (XML ID: 26)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 31  | Position: DT-0     | Team: defense  (XML ID: 29)
+   • Action_PreSnap            : Frames   0 -> 132  [csv_start_frame_only_plus_rules]
+   • Action_ZoneBlock          : Frames 133 -> 191  [csv_start_frame_only_plus_rules]
+   • Action_None               : Frames 192 -> 239  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 32  | Position: DT-3     | Team: defense  (XML ID: 30)
+   (No action segments inferred)
+
+👤 Player Track 2   | Position: FS       | Team: defense  (XML ID: 0)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: LCB      | Team: defense  (XML ID: 14)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 13  | Position: LDE      | Team: defense  (XML ID: 11)
+   • Action_PreSnap            : Frames   0 -> 116  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 6   | Position: MLB      | Team: defense  (XML ID: 4)
+   • Action_PreSnap            : Frames   0 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 10  | Position: RDE      | Team: defense  (XML ID: 8)
+   • Action_PreSnap            : Frames   0 ->  56  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 7   | Position: SS       | Team: defense  (XML ID: 5)
+   • Action_BallSnap           : Frames 132 -> 134  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 5   | Position: C        | Team: offense  (XML ID: 3)
+   • Action_PreSnap            : Frames   0 -> 132  [csv_start_frame_only_plus_rules]
+   • Action_ZoneBlock          : Frames 133 -> 140  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 12  | Position: H-BACK   | Team: offense  (XML ID: 10)
+   • Action_PreSnap            : Frames   0 -> 132  [csv_start_frame_only_plus_rules]
+   • Action_LeadBlock          : Frames 133 -> 192  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 3   | Position: LG       | Team: offense  (XML ID: 1)
+   • Action_PreSnap            : Frames   0 -> 132  [csv_start_frame_only_plus_rules]
+   • Action_ZoneBlock          : Frames 133 -> 191  [csv_start_frame_only_plus_rules]
+   • Action_None               : Frames 192 -> 239  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 29  | Position: LT       | Team: offense  (XML ID: 27)
+   • Action_PreSnap            : Frames   0 -> 132  [csv_start_frame_only_plus_rules]
+   • Action_ZoneBlock          : Frames 133 -> 191  [csv_start_frame_only_plus_rules]
+   • Action_None               : Frames 192 -> 239  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 14  | Position: QB       | Team: offense  (XML ID: 12)
+   • Action_PreSnap            : Frames   0 -> 101  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 9   | Position: QB       | Team: offense  (XML ID: 7)
+   • Action_PreSnap            : Frames   0 -> 121  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 8   | Position: RT       | Team: offense  (XML ID: 6)
+   • Action_PreSnap            : Frames   0 ->  56  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 11  | Position: TE-Y     | Team: offense  (XML ID: 9)
+   • Action_PreSnap            : Frames   0 -> 116  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 4   | Position: WLB      | Team: offense  (XML ID: 2)
+   • Action_PreSnap            : Frames   0 -> 131  [csv_start_frame_only_plus_rules]
+
+👤 Player Track 0   | Position: WR-X     | Team: offense  (XML ID: 13)
+   • Action_PreSnap            : Frames  32 -> 131  [csv_start_frame_only_plus_rules]
+
+================================================================================

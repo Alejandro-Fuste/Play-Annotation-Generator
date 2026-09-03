@@ -1,0 +1,7 @@
+{
+    "TD": "Result_Touchdown",
+    "OOB": "Result_OutOfBounds",
+    "IP": "Result_Incomplete_Pass",
+    "1st": "Result_FirstDown",
+    "Tac": "Result_Tackle"
+}

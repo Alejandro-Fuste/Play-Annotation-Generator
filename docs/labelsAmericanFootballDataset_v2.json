@@ -1,0 +1,119 @@
+[
+  {
+    "name": "ball",
+    "id": 7730737,
+    "color": "#33ddff",
+    "type": "rectangle",
+    "attributes": [
+      {
+        "id": 2503726,
+        "name": "ball_status",
+        "input_type": "select",
+        "mutable": false,
+        "values": [
+          "undefined",
+          "pre_snap",
+          "snapped",
+          "in_hand",
+          "on_ground",
+          "in_flight",
+          "dead-ball"
+        ],
+        "default_value": "undefined"
+      },
+      {
+        "id": 2505082,
+        "name": "track_id",
+        "input_type": "number",
+        "mutable": false,
+        "values": [
+          "0",
+          "100",
+          "1"
+        ],
+        "default_value": "0"
+      }
+    ]
+  },
+  {
+    "name": "player",
+    "id": 7730738,
+    "color": "#000000",
+    "type": "rectangle",
+    "attributes": [
+      {
+        "id": 2508542,
+        "name": "track_id",
+        "input_type": "number",
+        "mutable": false,
+        "values": [
+          "0",
+          "100",
+          "1"
+        ],
+        "default_value": "0"
+      },
+      {
+        "id": 2508543,
+        "name": "position",
+        "input_type": "select",
+        "mutable": false,
+        "values": [
+          "undefined",
+          "QB",
+          "RB",
+          "FB",
+          "H-BACK",
+          "LT",
+          "LG",
+          "C",
+          "RG",
+          "RT",
+          "WR-X",
+          "WR-Y",
+          "WR-Z",
+          "WR-F",
+          "TE-Y",
+          "TE-H",
+          "TE-F",
+          "RDE",
+          "LDE",
+          "DT",
+          "MLB",
+          "WLB",
+          "OLB-Right",
+          "OLB-Left",
+          "RCB",
+          "LCB",
+          "CB-Nickel",
+          "CB-Dime",
+          "FS",
+          "SS"
+        ],
+        "default_value": "undefined"
+      },
+      {
+        "id": 2508544,
+        "name": "action",
+        "input_type": "select",
+        "mutable": false,
+        "values": [
+          "undefined"
+        ],
+        "default_value": "undefined"
+      },
+      {
+        "id": 2508545,
+        "name": "team_side",
+        "input_type": "select",
+        "mutable": false,
+        "values": [
+          "undefined",
+          "offense",
+          "defense"
+        ],
+        "default_value": "undefined"
+      }
+    ]
+  }
+]

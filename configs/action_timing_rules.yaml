@@ -1,0 +1,70 @@
+global_rules:
+  one_primary_action_per_frame: true
+  fill_uncovered_visible_frames_with: "Action_None"
+  default_unlabeled_player_action: "Action_None"
+
+pre_snap:
+  applies_to: "ALL_MAPPED_PLAYERS"
+  start: "clip_start"
+  end:
+    primary: "next_same_actor_explicit_action_minus_one"
+    fallback: "ball_snap_minus_one"
+
+action_frame_semantics:
+  Action_BallSnap:
+    annotated_frame_role: "START"
+    end_from_action: "Action_SnapReceive"
+    event_type: "PRIMARY_ACTION"
+
+  Action_SnapReceive:
+    annotated_frame_role: "END"
+    start_from_action: "Action_BallSnap"
+    event_type: "PRIMARY_ACTION"
+
+cross_actor_rules:
+  Action_Toss:
+    end_type: "next_action_of_type_minus_one"
+    target_action: "Action_BallCarry"
+    actor_scope: "any"
+
+terminal_actions:
+  Action_BallCarry:
+    end_type: "final_clip_frame"
+
+boundary_events:
+  Action_None:
+    event_type: "BOUNDARY"
+    applies_to_group: "OL"
+    source_column_alias: "end_ol_block"
+    inclusive_boundary: true
+    terminates:
+      - "Action_ZoneBlock"
+      - "Action_ReachBlock"
+      - "Action_DownBlock"
+      - "Action_PullBlock"
+      - "Action_LeadBlock"
+      - "Action_BlockSecondLevel"
+
+  Action_PlayEnd:
+    event_type: "PLAY_END"
+
+action_priority_rules:
+  - higher: "Action_BallSnap"
+    lower: "Action_ZoneBlock"
+    when:
+      actor_position: "C"
+    resolution: "shift_lower_start_to_higher_end_plus_one"
+
+validation_duration_thresholds:
+  Action_ZoneBlock:
+    warn_over_frames: 90
+  Action_BlockSecondLevel:
+    warn_over_frames: 90
+  Action_PullBlock:
+    warn_over_frames: 90
+  Action_LeadBlock:
+    warn_over_frames: 90
+  Action_DownBlock:
+    warn_over_frames: 90
+  Action_ReachBlock:
+    warn_over_frames: 90

@@ -1,0 +1,905 @@
+{
+    "version": "1.12",
+    "formattedActionLabels": [
+        "Action_ArcToEdge",
+        "Action_ArcToInterior",
+        "Action_AttemptBlock",
+        "Action_AttemptRecovery",
+        "Action_BallCarry",
+        "Action_BallSnap",
+        "Action_BlockKick",
+        "Action_BlockPunt",
+        "Action_BlockSecondLevel",
+        "Action_BootAway",
+        "Action_BreakInside",
+        "Action_CatchKick",
+        "Action_CatchPunt",
+        "Action_CleanupBlock",
+        "Action_CleanupZone",
+        "Action_ClearToEdge",
+        "Action_CloseOnQuarterback",
+        "Action_ComboBlock",
+        "Action_CrackBlock",
+        "Action_CrossGoalLine",
+        "Action_CutBack",
+        "Action_CutToGap",
+        "Action_DisplacedByZoneBlock",
+        "Action_Dive",
+        "Action_DownBlock",
+        "Action_DriftForScreen",
+        "Action_DriveBlock",
+        "Action_FakeHandoff",
+        "Action_FakePassDroptoHandoff",
+        "Action_FalseStep",
+        "Action_FollowBlock",
+        "Action_FollowLeadBlock",
+        "Action_FollowLeadBlocker",
+        "Action_FollowPuller",
+        "Action_GapBlock",
+        "Action_Handoff",
+        "Action_JetMotion",
+        "Action_Keep",
+        "Action_KickApproach",
+        "Action_KickBall",
+        "Action_LatePursuit",
+        "Action_LeadBlock",
+        "Action_LevelBlock",
+        "Action_LongSnap",
+        "Action_LoseEdge",
+        "Action_LostCutbackContain",
+        "Action_LostGapFit",
+        "Action_LostOutsideLeverage",
+        "Action_MeshWithRunningBack",
+        "Action_MissTackle",
+        "Action_None",
+        "Action_OverrunFit",
+        "Action_PassBlock",
+        "Action_PassProtect",
+        "Action_PassSet",
+        "Action_PinBlock",
+        "Action_Pitch",
+        "Action_PlaceBall",
+        "Action_PlantAndBreak",
+        "Action_PlayEndFieldGoal",
+        "Action_PlayEndFumbleRecovery",
+        "Action_PlayEndIncompletePass",
+        "Action_PlayEndInterception",
+        "Action_PlayEndKneel",
+        "Action_PlayEndOutOfBounds",
+        "Action_PlayEndPunt",
+        "Action_PlayEndSafety",
+        "Action_PlayEndTackle",
+        "Action_PlayEndTouchdown",
+        "Action_PlayEndWhistle",
+        "Action_PlaySideFakeStep",
+        "Action_PoorAngle",
+        "Action_PreSnap",
+        "Action_PressEdge",
+        "Action_PressGap",
+        "Action_Pull",
+        "Action_PullAndLead",
+        "Action_PullAndTrapBlock",
+        "Action_PullBall",
+        "Action_PullBlock",
+        "Action_PullLeadBlock",
+        "Action_PumpFake",
+        "Action_PuntBall",
+        "Action_PushSupport",
+        "Action_ReachBlock",
+        "Action_ReadDefender",
+        "Action_ReadEdgeDefender",
+        "Action_ReleaseToScreen",
+        "Action_RunAfterCatch",
+        "Action_RunBlock",
+        "Action_RunDeepCrossRoute",
+        "Action_RunDeepOutRoute",
+        "Action_RunFadeRoute",
+        "Action_RunFlatRoute",
+        "Action_RunHitchRoute",
+        "Action_RunOutRoute",
+        "Action_RunPostRoute",
+        "Action_RunSailRoute",
+        "Action_RunSlantRoute",
+        "Action_RunSupport",
+        "Action_SackQuarterback",
+        "Action_ScreenBlock",
+        "Action_SealBlock",
+        "Action_SealedBySplitBlock",
+        "Action_SecureCatch",
+        "Action_SecureRecovery",
+        "Action_SellOut",
+        "Action_SellRoute",
+        "Action_SellStop",
+        "Action_SettleForScreen",
+        "Action_SnapAndDrive",
+        "Action_SnapReceive",
+        "Action_Sneak",
+        "Action_SplitBlock",
+        "Action_StretchStep",
+        "Action_Tackle",
+        "Action_TakeHandoff",
+        "Action_ThrowPass",
+        "Action_ThrowScreenPass",
+        "Action_Toss",
+        "Action_TrailBlock",
+        "Action_TurnToQuarterback",
+        "Action_UnderCenterHandoffDrop",
+        "Action_VerticalStem",
+        "Action_WhamBlock",
+        "Action_WrapQuarterback",
+        "Action_ZoneBlock",
+        "Action_ZoneDownBlock"
+    ],
+    "actionLabels": [
+        "Arc To Edge",
+        "Arc To Interior",
+        "Attempt Block",
+        "Attempt Recovery",
+        "Ball Carry",
+        "Ball Snap",
+        "Block Kick",
+        "Block Punt",
+        "Block Second Level",
+        "Boot Away",
+        "Break Inside",
+        "Catch Kick",
+        "Catch Punt",
+        "Cleanup Block",
+        "Cleanup Zone",
+        "Clear To Edge",
+        "Close On Quarterback",
+        "Combo Block",
+        "Crack Block",
+        "Cross Goal Line",
+        "Cut Back",
+        "Cut To Gap",
+        "Displaced By Zone Block",
+        "Dive",
+        "Down Block",
+        "Drift For Screen",
+        "Drive Block",
+        "Fake Handoff",
+        "Fake Pass Drop to Handoff",
+        "False Step",
+        "Follow Block",
+        "Follow Lead Block",
+        "Follow Lead Blocker",
+        "Follow Puller",
+        "Gap Block",
+        "Handoff",
+        "Jet Motion",
+        "Keep",
+        "Kick Approach",
+        "Kick Ball",
+        "Late Pursuit",
+        "Lead Block",
+        "Level Block",
+        "Long Snap",
+        "Lose Edge",
+        "Lost Cutback Contain",
+        "Lost Gap Fit",
+        "Lost Outside Leverage",
+        "Mesh With Running Back",
+        "Miss Tackle",
+        "None",
+        "Overrun Fit",
+        "Pass Block",
+        "Pass Protect",
+        "Pass Set",
+        "Pin Block",
+        "Pitch",
+        "Place Ball",
+        "Plant And Break",
+        "Play End - Field Goal",
+        "Play End - Fumble Recovery",
+        "Play End - Incomplete Pass",
+        "Play End - Interception",
+        "Play End - Kneel",
+        "Play End - Out of Bounds",
+        "Play End - Punt",
+        "Play End - Safety",
+        "Play End - Tackle",
+        "Play End - Touchdown",
+        "Play End - Whistle",
+        "Play-Side Fake Step",
+        "Poor Angle",
+        "Pre Snap",
+        "Press Edge",
+        "Press Gap",
+        "Pull",
+        "Pull And Lead",
+        "Pull And Trap Block",
+        "Pull Ball",
+        "Pull Block",
+        "Pull Lead Block",
+        "Pump Fake",
+        "Punt Ball",
+        "Push Support",
+        "Reach Block",
+        "Read Defender",
+        "Read Edge Defender",
+        "Release To Screen",
+        "Run After Catch",
+        "Run Block",
+        "Run Deep Cross Route",
+        "Run Deep Out Route",
+        "Run Fade Route",
+        "Run Flat Route",
+        "Run Hitch Route",
+        "Run Out Route",
+        "Run Post Route",
+        "Run Sail Route",
+        "Run Slant Route",
+        "Run Support",
+        "Sack Quarterback",
+        "Screen Block",
+        "Seal Block",
+        "Sealed By Split Block",
+        "Secure Catch",
+        "Secure Recovery",
+        "Sell Out",
+        "Sell Route",
+        "Sell Stop",
+        "Settle For Screen",
+        "Snap And Drive",
+        "Snap Receive",
+        "Sneak",
+        "Split Block",
+        "Stretch Step",
+        "Tackle",
+        "Take Handoff",
+        "Throw Pass",
+        "Throw Screen Pass",
+        "Toss",
+        "Trail Block",
+        "Turn To Quarterback",
+        "Under Center Handoff Drop",
+        "Vertical Stem",
+        "Wham Block",
+        "Wrap Quarterback",
+        "Zone Block",
+        "Zone Down Block"
+    ],
+    "actionDefinitions": {
+        "Arc To Edge": {
+            "definition": "An offensive lineman's and/or player's movement from an interior position (guard, center, etc.) to block a defender on the perimeter, typically an outside linebacker or defensive back, often in a zone or power running scheme. The lineman takes a curved path to the outside.",
+            "start": "When the lineman initiates movement out of their stance and begins their curved path towards the edge.",
+            "end": "When the lineman makes contact with the defender, or reaches the designated block point on the perimeter if no defender is present."
+        },
+        "Arc To Interior": {
+            "definition": "An offensive lineman's and/or player's movement from an interior position or a tight end's movement from the line of scrimmage, taking a curved path towards an interior defender (linebacker or defensive tackle), often used in power or counter schemes.",
+            "start": "When the player initiates movement out of their stance and begins their curved path towards the interior.",
+            "end": "When the player makes contact with the defender, or reaches the designated block point in the interior if no defender is present."
+        },
+        "Attempt Block": {
+            "definition": "A special-teams defender's effort to disrupt a kick or punt by penetrating protection and extending the body, arms, or hands toward the ball's expected path.",
+            "start": "When the defender commits through or around the protection and begins extending toward the kicker, punter, or anticipated ball path.",
+            "end": "When the defender contacts the ball, misses the attempt and passes the kick point, is stopped by a blocker, or the ball travels beyond reach."
+        },
+        "Attempt Recovery": {
+            "definition": "A player's deliberate effort to gain possession of a loose or kicked football by reaching, diving, falling on, trapping, or grasping the ball before an opponent secures it.",
+            "start": "When the player first extends toward, dives toward, or lowers their body over the available ball with clear observable intent to possess it.",
+            "end": "When the player secures possession, loses contact or control, is displaced from the ball, or another player gains possession."
+        },
+        "Ball Carry": {
+            "definition": "Any action by an offensive player who has possession of the football and is attempting to advance it downfield, including running, scrambling after a reception, or after a fumble recovery.",
+            "start": "When the player secures possession of the football.",
+            "end": "When the play is whistled dead, the player is tackled, steps out of bounds, fumbles the ball, or scores a touchdown."
+        },
+        "Ball Snap": {
+            "definition": "The action of the center (or occasionally another player) legally putting the ball into play by handing or tossing it between their legs to a backfield player (typically the quarterback) to initiate a down.",
+            "start_of_action": "The precise moment the center (or snapper) initiates movement of the ball from its resting position on the ground, typically by lifting it.",
+            "end_of_action": "The precise moment the ball is firmly secured by the player receiving the snap (e.g., the quarterback's hands, or the punter/holder's hands)."
+        },
+        "Block Kick": {
+            "definition": "A special-teams defender's successful contact with a kicked football that prevents or significantly alters a field-goal attempt, extra-point attempt, kickoff, or other kick.",
+            "start": "When the defender reaches the ball's path and begins the final extension or body movement that produces contact.",
+            "end": "When the defender contacts the football and the ball's original path is visibly stopped or redirected."
+        },
+        "Block Punt": {
+            "definition": "A special-teams player's action of penetrating the punt protection and making contact with the football during or immediately after the punter's kicking motion, preventing or significantly altering the punt.",
+            "start": "When the rusher commits through the protection and extends toward the punter or the ball with a clear path to disrupt the kick.",
+            "end": "When the player contacts the football, misses the block attempt and passes the kick point, is stopped by a blocker, or the ball is successfully punted away."
+        },
+        "Block Second Level": {
+            "definition": "An offensive player engaging a defender who is past the initial line of scrimmage, typically a linebacker or safety, to create a running lane or protect the passer. This block occurs after the first wave of defensive linemen.",
+            "start": "When the blocker initiates movement towards the second-level defender.",
+            "end": "When the blocker engages and maintains contact with the defender, or the defender is effectively neutralized from the play."
+        },
+        "Boot Away": {
+            "definition": "A quarterback's post-fake movement away from the running action and toward the edge of the formation, typically on a bootleg pass or run.",
+            "start": "When the quarterback separates from the fake handoff or mesh action and begins moving laterally or diagonally away from the run direction.",
+            "end": "When the quarterback reaches the edge, sets to throw, begins a pass, turns upfield as a runner, is contacted, or the play ends."
+        },
+        "Break Inside": {
+            "definition": "A receiver's route action of changing direction from a vertical or outside stem toward the middle of the field, as used on slants, digs, posts, and other in-breaking routes.",
+            "start": "When the receiver plants or turns their hips and shoulders away from the original stem toward the inside of the field.",
+            "end": "When the receiver establishes the new inside path, begins another route adjustment, or the route ends."
+        },
+        "Catch Kick": {
+            "definition": "A returner's action of receiving and securing a kicked football in the air before it contacts the ground.",
+            "start": "When the returner first positions the hands and body to receive the descending kicked football and the ball enters the immediate catching area.",
+            "end": "When the returner establishes control of the football, fails to secure it, or the ball contacts the ground."
+        },
+        "Catch Punt": {
+            "definition": "A returner's action of receiving and securing a punt in the air before the football contacts the ground.",
+            "start": "When the returner positions the hands and body under the descending punt and the ball enters the immediate catching area.",
+            "end": "When the returner establishes possession, fails to secure the ball, or the football contacts the ground."
+        },
+        "Cleanup Block": {
+            "definition": "A block made by an offensive player on a defender who has disengaged from an initial block or is pursuing the ball carrier from behind. This is often a secondary block to 'clean up' a potential tackle.",
+            "start": "When the player identifies a pursuing defender who needs to be blocked.",
+            "end": "When the player makes contact with the defender and maintains the block, or the defender is no longer a threat to the ball carrier."
+        },
+        "Cleanup Zone": {
+            "definition": "The area behind the initial point of attack where a 'cleanup block' typically occurs, often involving a defender who has shed an initial block or is in pursuit.",
+            "start": "This is a spatial concept, not an action start. It refers to the zone behind the primary blocking scheme.",
+            "end": "This is a spatial concept, not an action end. It refers to the zone behind the primary blocking scheme."
+        },
+        "Clear To Edge": {
+            "definition": "A receiver or tight end's movement to draw a defensive player (often a cornerback or safety) towards the sideline or deep downfield, creating space in the middle of the field for another offensive player.",
+            "start": "When the player initiates their route towards the sideline or deep part of the field.",
+            "end": "When the player has effectively drawn the defender away from the desired area, or the route is completed."
+        },
+        "Close On Quarterback": {
+            "definition": "A defender's pass-rush action of reducing the space to the quarterback after defeating or clearing a blocker, moving into immediate pressure or tackling range.",
+            "start": "When the defender clears the blocking threat or gains a direct path and begins accelerating toward the quarterback.",
+            "end": "When the defender reaches tackling distance and begins a wrap or tackle attempt, the quarterback escapes, releases the ball, or the play ends."
+        },
+        "Combo Block": {
+            "definition": "An offensive line blocking technique where two offensive linemen initially double-team a defensive lineman (first-level defender) to create movement, and then one of the linemen disengages to 'climb' and block a second-level defender (linebacker or safety).",
+            "start": "When two offensive linemen simultaneously engage a single defensive lineman at the snap, with both linemen maintaining awareness of the second-level defender.",
+            "end": "When one offensive lineman successfully disengages from the initial double-team and makes contact with the second-level defender, or effectively occupies that defender's pursuit lane."
+        },
+        "Crack Block": {
+            "definition": "A block executed by a wide receiver or tight end on an inside defender (often a linebacker or defensive end) who is lined up inside of them, typically on a run play designed to go outside. The receiver 'cracks back' on the defender.",
+            "start": "When the receiver/tight end initiates movement from their wide alignment towards the inside defender.",
+            "end": "When the receiver/tight end makes contact with and sustains the block on the inside defender."
+        },
+        "Cross Goal Line": {
+            "definition": "A ball carrier's action of advancing the football across the plane of the opponent's goal line while maintaining possession.",
+            "start": "When the ball carrier approaches the goal line with possession and the football begins moving toward the plane.",
+            "end": "When any part of the football breaks the plane of the goal line, possession is lost before crossing, or the runner is stopped short."
+        },
+        "Cut Back": {
+            "definition": "A sudden change of direction by a ball carrier, typically from an initially designated running lane to an open lane in the opposite direction, often used to avoid a tackle or exploit defensive over-pursuit.",
+            "start": "When the ball carrier plants their foot and begins the sharp change of direction.",
+            "end": "When the ball carrier has completed the change of direction and is running in the new lane."
+        },
+        "Cut To Gap": {
+            "definition": "A ball carrier's quick, decisive movement into a specific open gap or hole in the offensive line, exploiting a lane created by blockers.",
+            "start": "When the ball carrier identifies the open gap and initiates movement towards it.",
+            "end": "When the ball carrier has fully committed to and entered the designated gap."
+        },
+        "Displaced By Zone Block": {
+            "definition": "A defensive lineman is moved off his line or gap by coordinated zone blocking, creating space for the ball carrier.",
+            "start": "Begins when offensive linemen create lateral or vertical movement on the defender after contact.",
+            "end": "Ends when the defender regains balance and control, is fully washed out of the gap, or the ball passes his fit."
+        },
+        "Dive": {
+            "definition": "A short-yardage running play where the ball carrier receives the handoff and immediately runs forward into the line of scrimmage, often aiming for a specific interior gap, with limited lateral movement.",
+            "start": "When the ball carrier takes the handoff and initiates forward movement towards the line of scrimmage.",
+            "end": "When the ball carrier makes contact with the line of scrimmage, is tackled, or breaks through to the second level."
+        },
+        "Down Block": {
+            "definition": "An offensive lineman's block on a defensive lineman or linebacker to their inside, driving them towards the center of the line of scrimmage, often creating a hole outside or for a pulling lineman.",
+            "start": "When the lineman initiates movement from their stance towards the inside defender.",
+            "end": "When the lineman makes contact with and sustains the block on the inside defender, driving them towards the center."
+        },
+        "Drift For Screen": {
+            "definition": "A receiver's controlled movement away from the line of scrimmage or toward open space to establish proper depth, spacing, and leverage for receiving a screen pass.",
+            "start": "When the receiver releases or redirects into a measured drifting path toward the designated screen area.",
+            "end": "When the receiver reaches the intended screen depth and spacing, turns to the quarterback, catches the ball, or transitions into another action."
+        },
+        "Drive Block": {
+            "definition": "An aggressive, man-on-man block where an offensive lineman attempts to drive a defender directly off the line of scrimmage and away from the point of attack, often in a power running scheme.",
+            "start": "When the lineman initiates movement from their stance directly at the defender.",
+            "end": "When the lineman makes contact with and sustains the block, pushing the defender backward."
+        },
+        "Fake Handoff": {
+            "definition": "A quarterback's and running back's deceptive exchange action that visually simulates a handoff while the quarterback retains possession of the football.",
+            "start": "When the quarterback extends the football toward the running back and both players enter the apparent exchange path.",
+            "end": "When the quarterback clearly withdraws and retains the football and the players separate from the fake exchange."
+        },
+        "Fake Pass Drop to Handoff": {
+            "definition": "A quarterback's action where they initially simulate a pass drop (taking steps backward and often looking downfield) to deceive the defense, only to then turn and hand the ball off to a running back.",
+            "start": "When the quarterback begins their initial drop steps simulating a pass.",
+            "end": "When the quarterback completes the handoff to the ball carrier."
+        },
+        "False Step": {
+            "definition": "A linebacker or support defender takes an initial step opposite the correct run fit or hesitates in a way that delays his response to the play.",
+            "start": "Begins immediately after the snap when the defender’s first movement is incorrect or delayed.",
+            "end": "Ends when the defender redirects into the proper fit or pursuit path."
+        },
+        "Follow Block": {
+            "definition": "A ball carrier running directly behind a blocker, using the blocker's path to create a running lane and as protection from defenders.",
+            "start": "When the ball carrier aligns themselves directly behind the lead blocker.",
+            "end": "When the ball carrier passes the lead blocker, is tackled, or changes their running lane significantly."
+        },
+        "Follow Lead Block": {
+            "definition": "A ball carrier running directly behind a designated lead blocker, using the lead blocker's path to create a running lane and as protection from defenders.",
+            "start": "When the ball carrier aligns themselves directly behind the lead blocker.",
+            "end": "When the ball carrier passes the lead blocker, is tackled, or changes their running lane significantly."
+        },
+        "Follow Lead Blocker": {
+            "definition": "A ball carrier running directly behind a designated lead blocker, using the lead blocker's path to create a running lane and as protection from defenders.",
+            "start": "When the ball carrier aligns themselves directly behind the lead blocker.",
+            "end": "When the ball carrier passes the lead blocker, is tackled, or changes their running lane significantly."
+        },
+        "Follow Puller": {
+            "definition": "A ball carrier running directly behind a pulling offensive lineman, using the pulling lineman's movement to create a running lane on the perimeter or around the edge.",
+            "start": "When the ball carrier aligns themselves directly behind the pulling lineman.",
+            "end": "When the ball carrier passes the pulling lineman, is tackled, or changes their running lane significantly."
+        },
+        "Gap Block": {
+            "definition": "An offensive lineman's block on a defender in a specific gap (e.g., A-gap, B-gap) to open or seal that gap for a running play.",
+            "start": "When the lineman initiates movement from their stance towards the defender in the targeted gap.",
+            "end": "When the lineman makes contact with and sustains the block on the defender in the gap."
+        },
+        "Handoff": {
+            "definition": "The direct transfer of the football from the quarterback to another offensive player, typically a running back, for a run play.",
+            "start": "When the quarterback extends the ball towards the receiver.",
+            "end": "When the receiver secures full possession of the football."
+        },
+        "Jet Motion": {
+            "definition": "A pre-snap motion by a wide receiver or sometimes a running back, where they run horizontally across the formation, often at full speed, to threaten the edge or create a misdirection.",
+            "start": "When the player begins their horizontal movement across the formation.",
+            "end": "When the player reaches their designated position at the end of the motion, receives the ball, or the ball is snapped."
+        },
+        "Keep": {
+            "definition": "A quarterback's decision to retain possession of the football after a read-option or run-pass option (RPO) play, choosing to run the ball themselves rather than handing it off or throwing.",
+            "start": "When the quarterback pulls the ball back from the running back after a handoff fake, or decides not to throw on an RPO.",
+            "end": "When the quarterback is tackled, scores, steps out of bounds, or pitches/fumbles the ball."
+        },
+        "Kick Approach": {
+            "definition": "The kicker's controlled run-up or step sequence toward the football before making contact on a kickoff, onside kick, free kick, or placekick.",
+            "start": "When the kicker initiates the first deliberate step or body movement toward the stationary or held football.",
+            "end": "When the kicker's kicking foot contacts the football."
+        },
+        "Kick Ball": {
+            "definition": "A kicker's action of striking the football with the foot to initiate a kickoff, field-goal attempt, extra-point attempt, free kick, or other legal kicking play.",
+            "start": "When the kicker begins the committed forward swing of the kicking leg toward the football.",
+            "end": "When the kicking foot contacts the football and the ball separates into flight or begins traveling along the ground."
+        },
+        "Late Pursuit": {
+            "definition": "A defender joins the chase after the runner has already cleared the primary point of attack or gained an advantage.",
+            "start": "Begins when the defender turns to pursue after losing the initial fit or leverage phase of the play.",
+            "end": "Ends when the defender reaches the tackle area, the whistle blows, or the play ends."
+        },
+        "Lead Block": {
+            "definition": "An offensive player (often a fullback, tight end, or pulling lineman) moving ahead of the ball carrier to block an unblocked defender and create a running lane.",
+            "start": "When the lead blocker initiates movement ahead of the ball carrier towards a potential defender.",
+            "end": "When the lead blocker makes contact with a defender and sustains the block, or clears a path for the ball carrier."
+        },
+        "Level Block": {
+            "definition": "A block executed on a defender who is on the same 'level' of the field as the blocker, meaning they are both at similar depths (e.g., offensive lineman blocking a defensive lineman, or a receiver blocking a cornerback).",
+            "start": "When the blocker initiates movement towards the defender on the same level.",
+            "end": "When the blocker makes contact with and sustains the block on the defender."
+        },
+        "Long Snap": {
+            "definition": "The action of the long snapper delivering the football backward between the legs over an extended distance to a punter or holder on a special-teams play.",
+            "start": "When the long snapper first moves the football from its stationary position to begin the backward snapping motion.",
+            "end": "When the punter or holder secures possession of the snap, or the ball passes the intended receiver without being controlled."
+        },
+        "Lose Edge": {
+            "definition": "A backside or force defender fails to keep outside leverage, allowing the ball carrier to bounce outside or escape the intended funnel point.",
+            "start": "Begins when the defender commits to the run fit but gives up outside leverage relative to the runner.",
+            "end": "Ends when the runner clears the defender’s outside shoulder, is redirected by another defender, or the play ends."
+        },
+        "Lost Cutback Contain": {
+            "definition": "A backside defender fails to close the cutback lane, allowing the running back to plant and return against the grain.",
+            "start": "Begins when the defender is no longer positioned to deny the backside cutback lane.",
+            "end": "Ends when the runner uses the cutback lane, the defender recovers position, or the play ends."
+        },
+        "Lost Gap Fit": {
+            "definition": "A defender fails to occupy or control his assigned run gap, leaving a crease for the runner.",
+            "start": "Begins when the defender’s body position or movement no longer secures his assigned gap.",
+            "end": "Ends when the defender re-establishes gap control, the runner enters the vacated gap, or the play ends."
+        },
+        "Lost Outside Leverage": {
+            "definition": "A perimeter defender gives up outside contain position and allows the runner to get to or beyond the edge.",
+            "start": "Begins when the defender’s alignment or movement no longer keeps the ball inside.",
+            "end": "Ends when the runner clears the edge, the defender recovers leverage, or the play ends."
+        },
+        "Mesh With Running Back": {
+            "definition": "A quarterback's and running back's coordinated post-snap action in which they converge at the handoff point and briefly place the football into the running back's belly or hands while the quarterback reads the defense.",
+            "start": "When the quarterback and running back begin closing toward the handoff point after the snap and the quarterback extends the football toward the running back.",
+            "end": "When the quarterback completes the handoff, pulls the football away, or the two players separate from the mesh point."
+        },
+        "Miss Tackle": {
+            "definition": "A defender reaches the ball carrier with a reasonable tackle opportunity but fails to bring the runner down.",
+            "start": "Begins when the defender enters direct tackle contact or lunges into a clear tackle attempt.",
+            "end": "Ends when the runner breaks free, another defender secures the tackle, or the play ends."
+        },
+        "None": {
+            "definition": "A temporal label used when the player is visible but is not performing any defined football action in the action taxonomy during the annotated interval.",
+            "start": "When the player's previous defined action ends and no new defined action has begun.",
+            "end": "When the player begins a defined action or the annotated interval ends."
+        },
+        "Overrun Fit": {
+            "definition": "A defender flows too fast or too far past the runner’s path, creating an opening behind or inside of his intended fit.",
+            "start": "Begins when the defender commits downhill or laterally and loses balance or leverage relative to the ball carrier.",
+            "end": "Ends when the defender recovers into the play, the runner cuts into the vacated space, or the play ends."
+        },
+        "Pass Block": {
+            "definition": "An offensive lineman or other offensive player's action to protect the quarterback from defensive rushers, establishing a pocket and preventing sacks or pressure.",
+            "start": "When the player initiates their pass set from their stance.",
+            "end": "When the quarterback releases the ball, is sacked, or the play is whistled dead."
+        },
+        "Pass Protect": {
+            "definition": "The collective effort of the offensive line and other eligible blockers to prevent defensive players from reaching or pressuring the quarterback during a pass play.",
+            "start": "When the ball is snapped and the offensive line begins their pass sets.",
+            "end": "When the quarterback releases the ball, is sacked, or the play is whistled dead."
+        },
+        "Pass Set": {
+            "definition": "The initial footwork and body positioning an offensive lineman takes out of their stance to establish a stable base for pass blocking, typically moving backward or laterally.",
+            "start": "When the lineman initiates their first step backward or laterally from their stance after the snap.",
+            "end": "When the lineman has established a stable base and is ready to engage a rusher."
+        },
+        "Pin Block": {
+            "definition": "An offensive lineman or tight end's block on a defender to their outside, driving them towards the sideline and 'pinning' them to create an inside running lane, often seen on outside zone or sweep plays.",
+            "start": "When the blocker initiates movement from their stance towards the outside defender.",
+            "end": "When the blocker makes contact with and sustains the block on the outside defender, driving them towards the sideline."
+        },
+        "Pitch": {
+            "definition": "A lateral or backward toss of the football by the quarterback to another offensive player, typically a running back, often used on option plays or sweeps.",
+            "start": "When the quarterback begins the motion to toss the ball.",
+            "end": "When the receiver secures full possession of the football."
+        },
+        "Place Ball": {
+            "definition": "A holder's action of receiving the snap and positioning the football on the ground for a field-goal or extra-point attempt.",
+            "start": "When the holder gains control of the snap and begins lowering the football toward the kicking spot.",
+            "end": "When the ball is stabilized on the ground in the intended position for the kicker, or the placement attempt fails."
+        },
+        "Plant And Break": {
+            "definition": "A receiver's route action of decelerating, planting a foot, and sharply changing direction into the next segment of the route.",
+            "start": "When the receiver begins the decisive deceleration and places the plant foot to initiate the route break.",
+            "end": "When the receiver pushes off the plant foot and establishes movement along the new route path."
+        },
+        "Play End - Field Goal": {
+            "definition": "The play ends when a successful field goal is kicked through the uprights, or a field goal attempt fails.",
+            "start": "The moment the kicker makes contact with the ball for the field goal attempt.",
+            "end": "When the ball passes through the uprights (successful) or the play otherwise concludes (miss, block)."
+        },
+        "Play End - Fumble Recovery": {
+            "definition": "The play ends when a fumbled ball is recovered by a player and the play is whistled dead.",
+            "start": "The moment a player gains clear possession of a fumbled ball on the ground or in the air, resulting in a change of possession or a recovery by the original team that terminates the play.",
+            "end": "The moment the player with the recovered ball is clearly down or the whistle blows."
+        },
+        "Play End - Incomplete Pass": {
+            "definition": "The play ends due to a forward pass not being caught by an eligible receiver or being caught out of bounds.",
+            "start": "The moment the ball makes contact with the ground, or a player fails to establish possession in bounds, or a player establishes possession out of bounds.",
+            "end": "The moment it's clear the pass cannot be completed legally, and the whistle would typically blow."
+        },
+        "Play End - Interception": {
+            "definition": "The play ends when a defensive player gains possession of a forward pass thrown by the offense.",
+            "start": "The moment the defensive player secures full possession of the ball from the air.",
+            "end": "The moment the player is clearly down, steps out of bounds, or the whistle blows (if the play doesn't continue)."
+        },
+        "Play End - Kneel": {
+            "definition": "The play ends intentionally by a player (typically the quarterback) taking a knee to run down the clock.",
+            "start": "The moment the player's knee (or elbow/body part, other than hand or foot) touches the ground after the snap.",
+            "end": "The moment the player is clearly down and the whistle blows."
+        },
+        "Play End - Out of Bounds": {
+            "definition": "The play ends because the ball carrier or the ball itself crosses the sideline or end line.",
+            "start": "The moment any part of the ball carrier's body (excluding hands, if holding the ball) or the ball touches out-of-bounds.",
+            "end": "The moment the ball carrier or ball is clearly out of bounds and the whistle would typically blow."
+        },
+        "Play End - Punt": {
+            "definition": "The play ends after a punt is kicked and the receiving team gains possession, the ball goes out of bounds, or into the end zone.",
+            "start": "The moment the punter makes contact with the ball.",
+            "end": "When the receiving team secures possession, the ball goes out of bounds, or a touchback occurs."
+        },
+        "Play End - Safety": {
+            "definition": "The play ends when the ball becomes dead in the offense's own end zone while in their possession (e.g., ball carrier tackled in end zone, offense fumbles out of their own end zone).",
+            "start": "The moment the ball or ball carrier crosses the goal line into their own end zone under specific conditions leading to a safety.",
+            "end": "The moment the play is whistled dead for a safety."
+        },
+        "Play End - Tackle": {
+            "definition": "The play ends due to a ball carrier being brought to the ground by an opposing player.",
+            "start": "The moment the ball carrier begins to be pulled down or loses forward momentum due to defensive contact.",
+            "end": "The moment the ball carrier is clearly down (knee or elbow on ground, or momentum stopped) and the whistle would typically blow."
+        },
+        "Play End - Touchdown": {
+            "definition": "The play ends with an offensive player in possession of the ball entering the opponent's end zone.",
+            "start": "The moment the ball crosses the plane of the goal line while in possession of an offensive player.",
+            "end": "The moment the ball is clearly across the goal line and the player is secured in the end zone."
+        },
+        "Play End - Whistle": {
+            "definition": "The play ends due to an official's whistle, often for an unclear reason from player action (e.g., penalty, injury, or simply the end of a scramble). This can serve as a fallback if other end states are not clearly met.",
+            "start": "The moment the whistle is audibly blown.",
+            "end": "The moment the players stop action in response to the whistle."
+        },
+        "Play-Side Fake Step": {
+            "definition": "A quick, deceptive step taken by an offensive player (often a running back or quarterback) towards the intended play-side before reversing direction or executing another action, designed to influence defensive movement.",
+            "start": "When the player initiates the short, deceptive step in the play-side direction.",
+            "end": "When the player completes the deceptive step and transitions into their true intended action."
+        },
+        "Poor Angle": {
+            "definition": "A support defender takes an inefficient pursuit path to the ball carrier, reducing his chance to stop the play at the intended point.",
+            "start": "Begins when the defender commits to a pursuit track that is too flat, too deep, or otherwise misaligned to the runner.",
+            "end": "Ends when the defender corrects the angle, attempts the tackle, or the play ends."
+        },
+        "Pre Snap": {
+            "definition": "The period before the snap when players are set in formation and no active play has begun.",
+            "start": "When players have settled into their pre-snap positions and the ball is placed on the ground.",
+            "end": "At the precise moment the center begins the snap motion, initiating the play."
+        },
+        "Press Edge": {
+            "definition": "A ball carrier's action of attacking toward the outside edge of the blocking scheme to force perimeter defenders to widen before choosing to continue outside, turn upfield, or cut back.",
+            "start": "When the ball carrier commits their path and body position toward the outside edge or widest blocking landmark.",
+            "end": "When the ball carrier turns upfield, cuts back inside, continues beyond the edge, is contacted, or the play ends."
+        },
+        "Press Gap": {
+            "definition": "A ball carrier's action of running directly and aggressively into a designated gap in the offensive line, often through a tight space, to gain yardage.",
+            "start": "When the ball carrier identifies the gap and commits to running into it.",
+            "end": "When the ball carrier has entered the gap and is making contact with defenders or breaking through."
+        },
+        "Pull": {
+            "definition": "An offensive lineman's movement from their original position on the line of scrimmage, stepping backward and then running horizontally behind the line to block at another point of attack, often on the perimeter or in a different gap.",
+            "start": "When the lineman initiates their first step backward and out of their stance to begin moving horizontally.",
+            "end": "When the lineman reaches their designated blocking point or makes contact with a defender."
+        },
+        "Pull And Lead": {
+            "definition": "An offensive lineman's action of pulling from their original position and then becoming a lead blocker for the ball carrier, leading them through a specific hole or around the edge.",
+            "start": "When the lineman initiates their pull movement.",
+            "end": "When the lineman makes contact with a defender and sustains the block, or effectively clears a path for the ball carrier."
+        },
+        "Pull And Trap Block": {
+            "definition": "An offensive lineman's action of pulling from their original position and then executing a 'trap' block on an unblocked defensive lineman who has been allowed to penetrate the line of scrimmage.",
+            "start": "When the lineman initiates their pull movement.",
+            "end": "When the lineman makes contact with and sustains the trap block on the defender."
+        },
+        "Pull Ball": {
+            "definition": "A quarterback's action of removing the football from the running back during or immediately after the mesh to retain possession on an option, read-option, or run-pass option play.",
+            "start": "When the quarterback begins retracting the football away from the running back before the running back establishes possession.",
+            "end": "When the quarterback has clearly separated the football from the running back and secured it for the next action."
+        },
+        "Pull Block": {
+            "definition": "An offensive lineman's action of pulling from their original position on the line of scrimmage to block a defender at a different point of attack, often in a different gap or on the perimeter.",
+            "start": "When the lineman initiates their pull movement.",
+            "end": "When the lineman makes contact with a defender and sustains the block."
+        },
+        "Pull Lead Block": {
+            "definition": "An offensive lineman's action of pulling from their original position and then becoming a lead blocker for the ball carrier, leading them through a specific hole or around the edge.",
+            "start": "When the lineman initiates their pull movement.",
+            "end": "When the lineman makes contact with a defender and sustains the block, or effectively clears a path for the ball carrier."
+        },
+        "Pump Fake": {
+            "definition": "A quarterback's deceptive partial throwing motion intended to make defenders react as though a pass will be released while the quarterback retains possession of the football.",
+            "start": "When the quarterback raises or drives the ball and throwing arm forward in a motion that visibly resembles the beginning of a pass.",
+            "end": "When the quarterback stops or retracts the throwing motion while retaining possession, or transitions into an actual throw."
+        },
+        "Punt Ball": {
+            "definition": "A punter's action of dropping the football and striking it with the foot to send it downfield on a punt play.",
+            "start": "When the punter begins the committed drop of the football from the hands into the kicking path.",
+            "end": "When the punter's foot contacts the football and the ball separates into flight."
+        },
+        "Push Support": {
+            "definition": "An offensive player's action of driving or pushing a teammate forward, often a ball carrier in a pile, to gain extra yardage.",
+            "start": "When the player makes physical contact with a teammate to assist in moving them forward.",
+            "end": "When the play is whistled dead, or the assisted player is tackled, or the push no longer contributes to forward progress."
+        },
+        "Reach Block": {
+            "definition": "An offensive lineman's block where they move laterally to hook or 'reach' an outside defender, preventing them from penetrating into the backfield or getting outside the ball carrier. The aim is to get their helmet to the outside of the defender.",
+            "start": "When the lineman initiates lateral movement out of their stance, aiming to get outside leverage on the defender.",
+            "end": "When the lineman makes contact with the defender, establishing outside leverage and driving them away from the play's intended direction."
+        },
+        "Read Defender": {
+            "definition": "A general action where an offensive player (often the quarterback or a ball carrier) observes the movements and alignment of a defensive player to make a decision about their next action (e.g., throwing to a specific receiver, cutting during a run, or deciding to hand off).",
+            "start": "When the player's eyes are clearly focused on a specific defender, and their body language or slight hesitations indicate an analysis of the defender's movement.",
+            "end": "When the player commits to a decision or action based on the defender's read (e.g., releasing the ball, initiating a cut, or handing off)."
+        },
+        "Read Edge Defender": {
+            "definition": "A specific type of 'Read Defender' action, typically performed by a quarterback, where they observe the defensive end or outside linebacker on the edge to decide whether to hand off, keep the ball for a run, or pull the ball back for a pass/option play.",
+            "start": "When the quarterback's eyes are focused on the unblocked or 'read' defender on the edge, usually at the snap of the ball.",
+            "end": "When the quarterback makes a definitive decision based on the edge defender's action (e.g., extends the ball for a handoff, pulls the ball back, or keeps it for a run)."
+        },
+        "Release To Screen": {
+            "definition": "An offensive lineman's action of disengaging from pass protection or an initial blocking posture and moving downfield or toward the perimeter to become a lead blocker for the screen receiver.",
+            "start": "When the offensive lineman releases from the line of scrimmage, disengages from a defender, or leaves the pass-protection structure and begins moving toward the screen blocking area.",
+            "end": "When the offensive lineman reaches the intended blocking area and engages a defender, establishes blocking position, or the play ends."
+        },
+        "Run After Catch": {
+            "definition": "A receiver's action of advancing the football after completing a catch, using acceleration, cuts, and open-field movement to gain additional yardage.",
+            "start": "When the receiver establishes possession of the pass and begins moving as a ball carrier.",
+            "end": "When the receiver is tackled, steps out of bounds, scores, loses possession, gives themselves up, or the play is ruled dead."
+        },
+        "Run Block": {
+            "definition": "A general term for an offensive lineman or skill player engaging a defensive player to clear a path for a ball carrier in a running play. This often involves driving the defender backwards or to the side.",
+            "start": "When the player initiates movement out of their stance towards a designated defender with the intention to engage.",
+            "end": "When the player makes initial contact with the defender and begins to drive them, or sustains the block through the whistle."
+        },
+        "Run Deep Cross Route": {
+            "definition": "A receiver's route action consisting of a vertical or angled stem followed by a deep crossing path across the middle of the field.",
+            "start": "When the receiver releases and commits to the stem that creates depth for the crossing route.",
+            "end": "When the receiver establishes the deep cross-field path, catches or attempts to catch the pass, changes route direction, or the play ends."
+        },
+        "Run Deep Out Route": {
+            "definition": "A receiver's route action consisting of a deeper vertical stem followed by a sharp break toward the sideline at intermediate-to-deep depth.",
+            "start": "When the receiver releases and commits to the vertical stem of the deep out route.",
+            "end": "When the receiver completes the outside break and establishes the sideline path, catches or attempts to catch the pass, or the route ends."
+        },
+        "Run Fade Route": {
+            "definition": "A receiver's route action of releasing vertically and then widening toward the sideline while continuing downfield to create separation on a deep outside route.",
+            "start": "When the receiver releases from the line of scrimmage and commits to the vertical stem of the fade route.",
+            "end": "When the receiver establishes the widened downfield path toward the sideline, catches or attempts to catch the pass, changes route direction, or the play ends."
+        },
+        "Run Flat Route": {
+            "definition": "A receiver's route action of moving quickly toward the sideline at shallow depth, typically into the flat area near or behind the line of scrimmage.",
+            "start": "When the receiver releases and begins the shallow lateral path toward the sideline.",
+            "end": "When the receiver reaches the flat area, turns to the quarterback, catches or attempts to catch the pass, or transitions into another action."
+        },
+        "Run Hitch Route": {
+            "definition": "A receiver's route action consisting of a short vertical stem followed by a quick stop and turn back toward the quarterback to present an immediate receiving target.",
+            "start": "When the receiver releases from the line of scrimmage and commits to the short vertical stem after the snap.",
+            "end": "When the receiver completes the stop and turn toward the quarterback, catches or attempts to catch the pass, or transitions into another action."
+        },
+        "Run Out Route": {
+            "definition": "A receiver's route action consisting of a vertical stem followed by a sharp break toward the sideline.",
+            "start": "When the receiver releases and commits to the vertical stem of the out route.",
+            "end": "When the receiver completes the outside break and establishes the sideline path, catches or attempts to catch the pass, or the route ends."
+        },
+        "Run Post Route": {
+            "definition": "A receiver's route action consisting of a vertical stem followed by an angled break toward the middle of the field and the goalpost area.",
+            "start": "When the receiver releases and commits to the vertical stem of the post route.",
+            "end": "When the receiver completes the inside angled break and establishes the post path, begins another route adjustment, catches the ball, or the play ends."
+        },
+        "Run Sail Route": {
+            "definition": "A receiver's route action of gaining vertical depth and then breaking on a diagonal path toward the sideline, typically occupying the intermediate-to-deep outside area.",
+            "start": "When the receiver releases and begins the vertical or slightly angled stem that creates depth for the sail route.",
+            "end": "When the receiver completes the diagonal outside break and establishes the sail path, catches or attempts to catch the pass, changes route direction, or the play ends."
+        },
+        "Run Slant Route": {
+            "definition": "A receiver's route action consisting of a short vertical release followed by a sharp angled break toward the middle of the field.",
+            "start": "When the receiver releases from the line of scrimmage and begins the initial vertical portion of the slant route.",
+            "end": "When the receiver completes the inside break and establishes the diagonal path, catches or attempts to catch the pass, or the route ends."
+        },
+        "Run Support": {
+            "definition": "The action of a secondary or perimeter defender moving aggressively downhill towards the line of scrimmage or point of attack to assist in tackling the ball carrier on a running play.",
+            "start": "Begins when the defender reads run and initiates forward movement toward the run fit.",
+            "end": "Ends when the defender engages a blocker, makes a tackle attempt, or the play ends."
+        },
+        "Sack Quarterback": {
+            "definition": "A defender's successful action of bringing the quarterback to the ground or causing the quarterback to be ruled down behind the line of scrimmage on a passing play.",
+            "start": "When the defender establishes controlling contact with the quarterback and begins the takedown while the quarterback remains behind the line of scrimmage.",
+            "end": "When the quarterback is clearly down behind the line of scrimmage, forward progress is stopped and the play is ruled dead, or the quarterback is otherwise clearly secured and the sack is complete."
+        },
+        "Screen Block": {
+            "definition": "An offensive player's block executed as part of a screen play to shield, delay, or redirect a defender and create a running lane for the screen receiver after the pass is released.",
+            "start": "When the blocker initiates movement toward the assigned defender or establishes blocking position in the screen path.",
+            "end": "When the blocker makes and sustains contact, the defender is redirected or neutralized, the receiver passes the block, or the play ends."
+        },
+        "Seal Block": {
+            "definition": "An offensive lineman's block designed to prevent a defender from pursuing a play from the backside, often by positioning their body between the defender and the ball carrier's path. This typically occurs on the back side of a zone or power run.",
+            "start": "When the lineman initiates movement to their play-side or towards an angle that positions them between the defender and the ball carrier's path.",
+            "end": "When the lineman makes contact with the defender, effectively 'sealing' them off from the play, or maintains their position to prevent pursuit."
+        },
+        "Sealed By Split Block": {
+            "definition": "A backside edge defender is successfully pinned or hooked by the crossing TE or H-back on split zone, allowing the cutback lane or backside edge to open.",
+            "start": "Begins when the split blocker makes effective contact and gains positional leverage on the defender.",
+            "end": "Ends when the defender sheds the block, the runner passes the leverage point, or the play ends."
+        },
+        "Secure Catch": {
+            "definition": "A receiver's action of establishing clear possession and control of a forward, lateral, or backward pass after the football reaches the hands or body.",
+            "start": "When the receiver first contacts and begins controlling the football with the hands, arms, or body.",
+            "end": "When possession is clearly established, the ball is dropped or dislodged, or the catch attempt is ruled incomplete."
+        },
+        "Secure Recovery": {
+            "definition": "A player's successful establishment of clear possession and control of a previously loose or kicked football during a recovery attempt.",
+            "start": "When the player first clamps, traps, or gathers the ball with sufficient control to prevent its immediate escape.",
+            "end": "When possession is clearly maintained through the end of the recovery contest, the player transitions into a ball carry, loses the ball, or the play is ruled dead."
+        },
+        "Sell Out": {
+            "definition": "A receiver's deceptive route action that presents an outside-breaking route through body lean, head position, and an apparent break toward the sideline before redirecting to the actual route.",
+            "start": "When the receiver begins the body lean, stem angle, or footwork that visibly indicates an outside break.",
+            "end": "When the receiver plants and redirects away from the apparent outside path into the actual route."
+        },
+        "Sell Route": {
+            "definition": "A wide receiver's or tight end's action where they initially run a different route (a 'fake' route) than their intended final route to deceive a defensive back, making the defender anticipate a different break or direction.",
+            "start": "When the receiver begins their initial deceptive movement or stem that indicates a different route than intended.",
+            "end": "When the receiver makes their sharp 'break' or change of direction into their true intended route."
+        },
+        "Sell Stop": {
+            "definition": "A receiver's deceptive route action that presents a stop, curl, or comeback by decelerating and changing body posture before accelerating into the actual route.",
+            "start": "When the receiver visibly decelerates, shortens stride, or lowers their hips to indicate that the route is stopping.",
+            "end": "When the receiver reaccelerates or redirects into the actual route."
+        },
+        "Settle For Screen": {
+            "definition": "A receiver's action of slowing or stopping in the designated screen area to establish a stable target for the quarterback while maintaining usable spacing from blockers and defenders.",
+            "start": "When the receiver begins decelerating after reaching the screen area.",
+            "end": "When the receiver establishes a controlled receiving position, begins the catch action, moves to adjust to the pass, or abandons the settled position."
+        },
+        "Snap And Drive": {
+            "definition": "A wide receiver's action at the line of scrimmage, typically referring to a quick, explosive release off the line into their route, often against press coverage, emphasizing a powerful initial burst.",
+            "start": "Immediately at the snap of the ball, as the receiver explodes out of their stance.",
+            "end": "When the receiver reaches full stride or has gained clear separation from the defender at the initial phase of their route."
+        },
+        "Snap Receive": {
+            "definition": "The action of the quarterback securing the ball from the center’s snap to initiate the play.",
+            "start": "When the center’s hands first move the ball backward through the legs, initiating the snap motion.",
+            "end": "When the quarterback has full possession of the ball in his hands and can begin his subsequent action."
+        },
+        "Sneak": {
+            "definition": "A play, typically a quarterback sneak, where the quarterback takes the snap and immediately drives forward into the line of scrimmage, often behind offensive linemen, to gain a short amount of yardage.",
+            "start": "Immediately at the snap of the ball, as the quarterback takes the ball and begins to drive their body forward.",
+            "end": "When the quarterback is tackled, the ball is spotted, or they cross the goal line."
+        },
+        "Split Block": {
+            "definition": "A blocking technique where a tight end or H-back moves across the formation at the snap to seal off the backside edge defender, typically used in zone running schemes to prevent backside pursuit.",
+            "start": "When the H-back or tight end initiates motion or movement across the formation after the snap.",
+            "end": "When the block is engaged and the backside defender is sealed or neutralized."
+        },
+        "Stretch Step": {
+            "definition": "A player's initial step, usually a wide, lateral step, executed by offensive linemen, tight ends, fullbacks, or running backs, designed to influence the defense to flow horizontally and create a running lane to the outside. This is a fundamental component of a stretch play.",
+            "start": "The very first step taken by the player immediately out of their stance, if it is a wide lateral movement.",
+            "end": "When the player's lead foot lands and their hips are turned to indicate their initial direction, or when they commit to their next movement (e.g., cutting upfield or continuing wide)."
+        },
+        "Tackle": {
+            "definition": "A defender's action of bringing the ball carrier to the ground or stopping forward progress through legal physical contact.",
+            "start": "When the defender initiates direct contact or wraps the ball carrier with a clear attempt to bring them down.",
+            "end": "When the ball carrier is down, forward progress is stopped, the tackle attempt is broken, or another play-ending condition occurs."
+        },
+        "Take Handoff": {
+            "definition": "The action of a running back or other offensive player receiving the football directly from the quarterback's hands.",
+            "start": "When the ball leaves the quarterback's hands and enters the receiver's vicinity, and the receiver begins to secure it.",
+            "end": "When the ball is fully secured by the receiver and they begin their post-handoff action (e.g., running, looking to block)."
+        },
+        "Throw Pass": {
+            "definition": "A quarterback's or other eligible passer's action of propelling the football forward with a legal throwing motion toward an intended receiver.",
+            "start": "When the passer initiates the committed forward throwing motion with the football in hand.",
+            "end": "When the football fully leaves the passer's hand."
+        },
+        "Throw Screen Pass": {
+            "definition": "A quarterback's or other passer's action of delivering a short forward or lateral pass to an eligible receiver positioned near or behind blockers for a designed screen play.",
+            "start": "When the passer initiates the committed throwing motion toward the screen receiver.",
+            "end": "When the football fully leaves the passer's hand."
+        },
+        "Toss": {
+            "definition": "A type of handoff where the quarterback 'tosses' or pitches the ball underhand laterally to a running back or other offensive player who is often moving parallel to the line of scrimmage, typically to the outside.",
+            "start": "When the quarterback initiates the throwing motion of the ball towards the intended receiver.",
+            "end": "When the ball is securely caught by the receiver."
+        },
+        "Trail Block": {
+            "definition": "An offensive lineman or skill player's block where they 'trail' the play, often from the backside or a deeper alignment, to pick up a pursuing defender who is chasing the ball carrier from behind.",
+            "start": "When the player identifies a backside or pursuing defender and initiates movement to intercept their path.",
+            "end": "When the player makes contact with the pursuing defender, preventing them from making a tackle."
+        },
+        "Turn To Quarterback": {
+            "definition": "A receiver's action of rotating the head, shoulders, hips, or entire body toward the quarterback to locate the ball and present a receiving target.",
+            "start": "When the receiver first begins rotating away from the prior movement path toward the quarterback.",
+            "end": "When the receiver is visibly oriented toward the quarterback, begins the catch action, or redirects again."
+        },
+        "Under Center Handoff Drop": {
+            "definition": "The quarterback's action of receiving the ball directly from the center's snap (under center) and then taking a series of steps backward and often slightly playside or backside, in preparation to hand the ball off to a running back on a run play.",
+            "start": "The instant the quarterback receives the ball from the center's snap and begins their backward footwork.",
+            "end": "When the quarterback has completed their drop and is in the final stance to deliver the handoff, or the moment the ball begins to transfer to the running back."
+        },
+        "Vertical Stem": {
+            "definition": "The initial upfield portion of a receiver's route in which the receiver runs vertically to threaten the defender's depth and establish leverage before a route break or continuation.",
+            "start": "When the receiver releases and commits to a primarily vertical path after the snap.",
+            "end": "When the receiver begins a distinct route break, decelerates into another route phase, turns to locate the ball, or the play ends."
+        },
+        "Wham Block": {
+            "definition": "The action where a Tight End (TE) or H-Back runs across the line of scrimmage, often from an alignment behind the offensive line, to deliver a sharp, unexpected block on an interior defensive lineman (who is typically left unblocked by the offensive line). This block usually comes from an angled path and aims to surprise the defender and open a run lane.",
+            "start": "When the TE or H-Back initiates movement from their alignment, crossing the line of scrimmage with an evident path towards an interior defensive lineman.",
+            "end": "When the TE or H-Back makes forceful contact with the target defensive lineman, initiating the block and impacting their movement."
+        },
+        "Wrap Quarterback": {
+            "definition": "A defender's tackling action of securing the quarterback with the arms or body to prevent escape and initiate the takedown.",
+            "start": "When the defender first makes controlling contact and begins encircling the quarterback with the arms or body.",
+            "end": "When the quarterback is brought to the ground, breaks free from the wrap, the ball is released before the tackle is completed, or the play ends."
+        },
+        "Zone Block": {
+            "definition": "An offensive lineman's block in a zone blocking scheme, where linemen are responsible for an area or 'zone' rather than a specific defender. They work in combination with adjacent linemen to create movement and open running lanes, often double-teaming and then releasing to the second level.",
+            "start": "When the lineman initiates movement out of their stance, stepping towards their designated zone and identifying their immediate threat or aiming point within that zone.",
+            "end": "When the lineman makes contact with a defender within their zone, executes a double team, or progresses to the second level to block a linebacker/defensive back."
+        },
+        "Zone Down Block": {
+            "definition": "A specific type of zone block where an offensive lineman blocks down on a defensive lineman or linebacker to their inside, often to create a seam for a pulling lineman or a cutback lane for a running back in a zone scheme.",
+            "start": "When the lineman initiates movement out of their stance, stepping down or towards their inside to engage the defender.",
+            "end": "When the lineman makes contact with the defender, driving them inside or maintaining the block to seal off the interior."
+        }
+    }
+}

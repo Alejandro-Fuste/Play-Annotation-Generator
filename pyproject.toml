@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tapevision-xml-action-enricher"
+version = "0.1.0"
+description = "Enrich CVAT XML files with action metadata from wide CSV spreadsheets"
+authors = [
+    { name = "FilmBreakdownAI Developer" }
+]
+dependencies = [
+    "PyYAML>=6.0"
+]
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

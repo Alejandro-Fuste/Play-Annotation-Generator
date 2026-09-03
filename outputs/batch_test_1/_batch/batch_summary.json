@@ -1,0 +1,65 @@
+{
+  "schema_version": "tapevision_batch_summary_v2",
+  "generated_at": "2026-09-01T18:58:35.987579+00:00",
+  "batch_root": "/Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/outputs/batch_test_1",
+  "totals": {
+    "total_discovered": 1,
+    "total_preflight_ready": 1,
+    "total_preflight_failed": 0,
+    "total_selected": 1,
+    "total_attempted": 1,
+    "pass_count": 0,
+    "warning_count": 1,
+    "failed_count": 0,
+    "skipped_count": 0,
+    "total_elapsed_seconds": 0.857
+  },
+  "plays": {
+    "JetSweep": {
+      "discovered": 1,
+      "selected": 1,
+      "attempted": 1,
+      "pass": 0,
+      "warning": 1,
+      "failed": 0,
+      "skipped": 0,
+      "unknown_tracks": 2,
+      "missing_box_warnings": 4,
+      "no_ball_tracks": 1
+    }
+  },
+  "clips": [
+    {
+      "discovery_index": 0,
+      "play_name": "JetSweep",
+      "video_id": "1",
+      "clip_name": "JetSweep_1",
+      "tracking_file": "JetSweep/JetSweep_1_cvat_mot.zip",
+      "tracking_kind": "MOT_ZIP",
+      "key_actions_source": "data/key_actions/JetSweep.csv",
+      "player_track_source": "data/player_tracks/JetSweep.csv",
+      "template_source": "docs/JetSweepTemplate.xml",
+      "output_directory": "outputs/batch_test_1/JetSweep/JetSweep_1",
+      "preflight_status": "READY",
+      "preflight_failure_type": null,
+      "execution_state": "PROCESSED",
+      "status": "WARNING",
+      "warning_count": 9,
+      "error_count": 0,
+      "unknown_track_count": 2,
+      "missing_box_warning_count": 4,
+      "ball_track_count": 0,
+      "has_unknown_tracks": true,
+      "has_missing_box_warnings": true,
+      "has_no_ball_track": true,
+      "num_tracks": 24,
+      "num_player_tracks": 24,
+      "num_ball_tracks": 0,
+      "num_action_segments": 57,
+      "elapsed_seconds": 0.846,
+      "failure_type": null,
+      "message": "Processed with 9 warning(s)",
+      "traceback_file": null
+    }
+  ]
+}

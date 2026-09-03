@@ -1,0 +1,177 @@
+input:
+  cvat_xml: ""
+  action_csv: ""
+  dataset_summary_csv: "data/DatasetSummary.csv"
+  actions_json: "data/actions.json"
+  plays_json: "data/plays.json"
+
+metadata_enrichment:
+  enabled: true
+  missing_source_file_policy: "error"
+  missing_clip_row_policy: "warning_null"
+  duplicate_clip_row_policy: "error"
+  missing_action_definition_policy: "warning_null"
+  missing_play_definition_policy: "warning_null"
+
+output:
+  output_dir: "outputs/"
+  write_enriched_xml: true
+  write_tapevision_json: true
+  write_dense_csv: true
+  write_validation_report: true
+  write_review_report: true
+
+labels:
+  player_label: "player"
+  ball_label: "ball"
+
+csv:
+  format: "wide"
+  columns:
+    video_name: "video_name"
+    video_id: "video_id"
+    play_tag: "play_tag"
+    result_tag: "result_tag"
+    result_frame: "result_frame"
+    notes: "notes"
+  action_columns:
+    pre_snap: "Action_PreSnap"
+    jet_motion: "Action_JetMotion"
+    ball_snap: "Action_BallSnap"
+    zone_block: "Action_ZoneBlock"
+    snap_receive: "Action_SnapReceive"
+    toss: "Action_Toss"
+    ball_carry: "Action_BallCarry"
+    seal_block: "Action_SealBlock"
+    lead_block: "Action_LeadBlock"
+    block_second_level: "Action_BlockSecondLevel"
+    end_ol_block: "Action_None"
+    end_play: "Action_PlayEnd"
+  cell_parsing:
+    pair_separator: ","
+    multi_entry_separators: [";", "|", "\n"]
+    allow_global_frame_only_events: true
+    allow_position_group_targets: true
+
+position_groups:
+  OL: ["LT", "LG", "C", "RG", "RT"]
+  ALL_OFFENSE: ["QB", "RB", "FB", "H-BACK", "LT", "LG", "C", "RG", "RT", "WR-X", "WR-Y", "WR-Z", "WR-F", "TE-Y", "TE-H", "TE-F"]
+  SKILL: ["QB", "RB", "FB", "H-BACK", "WR-X", "WR-Y", "WR-Z", "WR-F", "TE-Y", "TE-H", "TE-F"]
+
+action_policy:
+  default_unlabeled_player_action: "Action_None"
+  default_unlabeled_offense_action: "Action_None"
+  default_unlabeled_defense_action: "Action_None"
+  action_range_mode: "start_frame_only"
+  one_primary_action_per_frame: true
+  missing_box_policy: "skip" # skip, error
+
+play_end:
+  source: "csv_result_or_end_of_play"
+  fallback: "final_xml_frame"
+
+validation:
+  strict: false
+
+global_rules:
+  one_primary_action_per_frame: true
+  fill_uncovered_visible_frames_with: "Action_None"
+  default_unlabeled_player_action: "Action_None"
+
+pre_snap:
+  applies_to: "ALL_MAPPED_PLAYERS"
+  start: "clip_start"
+  end:
+    primary: "next_same_actor_explicit_action_minus_one"
+    fallback: "ball_snap_minus_one"
+
+action_frame_semantics:
+  Action_BallSnap:
+    annotated_frame_role: "START"
+    end_from_action: "Action_SnapReceive"
+    event_type: "PRIMARY_ACTION"
+
+  Action_SnapReceive:
+    annotated_frame_role: "END"
+    start_from_action: "Action_BallSnap"
+    event_type: "PRIMARY_ACTION"
+
+boundary_events:
+  Action_None:
+    event_type: "BOUNDARY"
+    applies_to_group: "OL"
+    source_column_alias: "end_ol_block"
+    terminates:
+      - "Action_ZoneBlock"
+      - "Action_ReachBlock"
+      - "Action_DownBlock"
+      - "Action_PullBlock"
+      - "Action_LeadBlock"
+      - "Action_BlockSecondLevel"
+
+  Action_PlayEnd:
+    event_type: "PLAY_END"
+
+validation_duration_thresholds:
+  Action_ZoneBlock:
+    warn_over_frames: 90
+  Action_BlockSecondLevel:
+    warn_over_frames: 90
+  Action_PullBlock:
+    warn_over_frames: 90
+  Action_LeadBlock:
+    warn_over_frames: 90
+  Action_DownBlock:
+    warn_over_frames: 90
+  Action_ReachBlock:
+    warn_over_frames: 90
+
+action_end_rules:
+  Action_PreSnap:
+    ends_at_global_action: "Action_BallSnap"
+    fallback_end: "snap_frame_minus_one"
+
+  Action_BallSnap:
+    ends_when_any_action_starts:
+      - "Action_SnapReceive"
+
+  Action_SnapReceive:
+    ends_when_same_actor_action_starts: true
+
+  Action_Handoff:
+    ends_when_any_action_starts:
+      - "Action_TakeHandoff"
+      - "Action_BallCarry"
+
+  Action_TakeHandoff:
+    ends_when_same_actor_action_starts: true
+
+  Action_BallCarry:
+    ends_at_result_or_play_end: true
+
+  Action_ZoneBlock:
+    ends_when_same_actor_action_starts: true
+    fallback_end: "play_end_frame"
+
+  Action_ReachBlock:
+    ends_when_same_actor_action_starts: true
+    fallback_end: "play_end_frame"
+
+  Action_DownBlock:
+    ends_when_same_actor_action_starts: true
+    fallback_end: "play_end_frame"
+
+  Action_PullBlock:
+    ends_when_same_actor_action_starts: true
+    fallback_end: "play_end_frame"
+
+  Action_LeadBlock:
+    ends_when_same_actor_action_starts: true
+    fallback_end: "play_end_frame"
+
+  Action_BlockSecondLevel:
+    ends_when_same_actor_action_starts: true
+    fallback_end: "play_end_frame"
+
+  Action_PlayEnd:
+    ends_at_final_frame: true

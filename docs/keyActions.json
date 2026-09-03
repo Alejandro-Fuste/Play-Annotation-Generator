@@ -1,0 +1,16 @@
+{
+    "JetSweep": [
+        "Action_PreSnap",
+        "Action_JetMotion",
+        "Action_BallSnap",
+        "Action_ZoneBlock",
+        "Action_SnapReceive",
+        "Action_Toss",
+        "Action_BallCarry",
+        "Action_LeadBlock",
+        "Action_SealBlock",
+        "Action_BlockSecondLevel",
+        "Action_None",
+        "Action_DefenseNotAnnotated"
+    ]
+}

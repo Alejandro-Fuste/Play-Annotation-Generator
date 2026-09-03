@@ -1,0 +1,11 @@
+{
+    "ALL": "AllOffensePlayers",
+    "OL": "OffensiveLineman",
+    "OffensiveLineman": [
+        "LT",
+        "LG",
+        "C",
+        "RG",
+        "RT"
+    ]
+}
