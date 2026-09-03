@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 from ..models import ActionSegment, Track
 
 def write_enriched_xml(
