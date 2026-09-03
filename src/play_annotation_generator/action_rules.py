@@ -22,13 +22,13 @@ def infer_action_segments(
     # Find play-end / result frame fallbacks
     result_frame = None
     for event in resolved_events:
-        if event.result_frame is not None:
+        if event.result_frame is not None and event.result_frame > 0:
             result_frame = event.result_frame
             break
             
     play_end_frame = None
     for event in resolved_events:
-        if event.action == "Action_PlayEnd":
+        if event.action == "Action_PlayEnd" and event.start_frame > 0:
             play_end_frame = event.start_frame
             break
             
@@ -175,10 +175,10 @@ def infer_action_segments(
                 seg_end = snap_receive_end if snap_receive_end is not None else event.annotated_frame
             else:
                 seg_start = event.annotated_frame
-                seg_end = None
+                seg_end = event.end_frame if event.end_frame is not None else None
                 
                 # Check cross-actor rules (e.g. Action_Toss -> ends before Action_BallCarry)
-                if act_name in cross_actor_rules:
+                if seg_end is None and act_name in cross_actor_rules:
                     ca_rule = cross_actor_rules[act_name]
                     target_act = ca_rule.get("target_action")
                     if target_act and target_act in all_events_by_action:
@@ -201,7 +201,7 @@ def infer_action_segments(
                 # Check boundary events for this track or global blocking boundaries
                 if seg_end is None:
                     future_boundaries = [b for b in track_boundaries if b[0] >= seg_start]
-                    if not future_boundaries and act_name in ("Action_LeadBlock", "Action_ZoneBlock", "Action_ReachBlock", "Action_DownBlock", "Action_PullBlock", "Action_BlockSecondLevel"):
+                    if not future_boundaries and act_name in ("Action_LeadBlock", "Action_ZoneBlock", "Action_ReachBlock", "Action_DownBlock", "Action_PullBlock", "Action_BlockSecondLevel", "Action_RunBlock"):
                         future_boundaries = [b for b in global_boundary_tuples if b[0] >= seg_start]
                     if future_boundaries:
                         b_frame, b_inc = future_boundaries[0]

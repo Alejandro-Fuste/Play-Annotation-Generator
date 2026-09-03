@@ -1,0 +1,65 @@
+{
+  "schema_version": "tapevision_batch_summary_v2",
+  "generated_at": "2026-09-03T20:47:00.843580+00:00",
+  "batch_root": "/Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/outputs",
+  "totals": {
+    "total_discovered": 1,
+    "total_preflight_ready": 1,
+    "total_preflight_failed": 0,
+    "total_selected": 1,
+    "total_attempted": 1,
+    "pass_count": 0,
+    "warning_count": 1,
+    "failed_count": 0,
+    "skipped_count": 0,
+    "total_elapsed_seconds": 0.786
+  },
+  "plays": {
+    "BootPass": {
+      "discovered": 1,
+      "selected": 1,
+      "attempted": 1,
+      "pass": 0,
+      "warning": 1,
+      "failed": 0,
+      "skipped": 0,
+      "unknown_tracks": 21,
+      "missing_box_warnings": 163,
+      "no_ball_tracks": 1
+    }
+  },
+  "clips": [
+    {
+      "discovery_index": 0,
+      "play_name": "BootPass",
+      "video_id": "1",
+      "clip_name": "BootPass_1",
+      "tracking_file": "BootPass_1_cvat_mot.zip",
+      "tracking_kind": "MOT_ZIP",
+      "key_actions_source": "data/key_actions/BootPass.csv",
+      "player_track_source": "data/player_tracks/BootPass.csv",
+      "template_source": "docs/JetSweepTemplate.xml",
+      "output_directory": "outputs/BootPass/BootPass_1",
+      "preflight_status": "READY",
+      "preflight_failure_type": null,
+      "execution_state": "PROCESSED",
+      "status": "WARNING",
+      "warning_count": 208,
+      "error_count": 0,
+      "unknown_track_count": 21,
+      "missing_box_warning_count": 163,
+      "ball_track_count": 0,
+      "has_unknown_tracks": true,
+      "has_missing_box_warnings": true,
+      "has_no_ball_track": true,
+      "num_tracks": 41,
+      "num_player_tracks": 41,
+      "num_ball_tracks": 0,
+      "num_action_segments": 184,
+      "elapsed_seconds": 0.778,
+      "failure_type": null,
+      "message": "Processed with 208 warning(s)",
+      "traceback_file": null
+    }
+  ]
+}

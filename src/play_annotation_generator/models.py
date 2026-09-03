@@ -33,6 +33,7 @@ class ActionEvent:
     result_frame: Optional[int] = None
     action: str = ""
     start_frame: int = 0
+    end_frame: Optional[int] = None
     actor_track_id: Optional[str] = None
     resolved_xml_track_id: Optional[str] = None
     target_kind: str = "global_event"  # track_id, group, global_event, ball

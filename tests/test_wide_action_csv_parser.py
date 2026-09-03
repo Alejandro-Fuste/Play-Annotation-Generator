@@ -38,6 +38,12 @@ class TestWideActionCSVParser(unittest.TestCase):
         res = parse_cell_entries("116")
         self.assertEqual(res, [(116, None, None)])
         
+        # 3-part range entry (start_frame, end_frame, actor_track_id)
+        res = parse_cell_entries("98,110,4")
+        self.assertEqual(len(res), 1)
+        self.assertEqual(res[0], (98, "4", None))
+        self.assertEqual(res[0].end_frame, 110)
+
         # Blank cell
         res = parse_cell_entries("")
         self.assertEqual(res, [])

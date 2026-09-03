@@ -4,6 +4,12 @@ import re
 from typing import Any, Dict, List, Tuple, Optional
 from .models import ActionEvent
 
+class ParsedEntry(tuple):
+    def __new__(cls, start_frame, actor_id, err, end_frame=None):
+        return super().__new__(cls, (start_frame, actor_id, err))
+    def __init__(self, start_frame, actor_id, err, end_frame=None):
+        self.end_frame = end_frame
+
 def parse_cell_entries(
     cell_value: str,
     pair_sep: str = ",",
@@ -11,7 +17,8 @@ def parse_cell_entries(
 ) -> List[Tuple[Optional[int], Optional[str], Optional[str]]]:
     """
     Parses a single wide CSV action cell.
-    Returns a list of tuples: (frame_number, actor_track_id, error_message)
+    Returns a list of tuples: (frame_number, actor_track_id, error_message).
+    Entries may also carry an .end_frame attribute if a 3-part range was provided (start, end, track_id).
     """
     if multi_seps is None:
         multi_seps = [";", "|", "\n"]
@@ -43,19 +50,42 @@ def parse_cell_entries(
             val = parts[0]
             try:
                 frame = int(val)
-                parsed.append((frame, None, None))
+                parsed.append(ParsedEntry(frame, None, None))
             except ValueError:
                 # Text label like "Tackle"
-                parsed.append((None, val, f"Single text entry '{val}' could not be parsed as a frame number."))
+                parsed.append(ParsedEntry(None, val, f"Single text entry '{val}' could not be parsed as a frame number."))
         elif len(parts) == 2:
             frame_str, actor_str = parts[0], parts[1]
             try:
                 frame = int(frame_str)
-                parsed.append((frame, actor_str, None))
+                parsed.append(ParsedEntry(frame, actor_str, None))
             except ValueError:
-                parsed.append((None, None, f"Could not parse frame number from '{frame_str}' in entry '{entry}'."))
+                try:
+                    frame = int(actor_str)
+                    parsed.append(ParsedEntry(frame, frame_str, None))
+                except ValueError:
+                    parsed.append(ParsedEntry(None, None, f"Could not parse frame number from '{frame_str}' in entry '{entry}'."))
+        elif len(parts) == 3:
+            # start_frame, end_frame, actor_id
+            start_str, end_str, actor_str = parts[0], parts[1], parts[2]
+            start_frame = None
+            end_frame = None
+            try:
+                start_frame = int(start_str)
+            except ValueError:
+                pass
+            try:
+                end_frame = int(end_str)
+            except ValueError:
+                pass
+            if start_frame is not None and end_frame is not None:
+                parsed.append(ParsedEntry(start_frame, actor_str, None, end_frame=end_frame))
+            elif start_frame is not None:
+                parsed.append(ParsedEntry(start_frame, actor_str, None))
+            else:
+                parsed.append(ParsedEntry(None, None, f"Could not parse frame numbers from '{entry}'."))
         else:
-            parsed.append((None, None, f"Too many components in entry '{entry}'. Expected 'frame,track_id'."))
+            parsed.append(ParsedEntry(None, None, f"Too many components in entry '{entry}'. Expected 'frame,track_id' or 'start,end,track_id'."))
             
     return parsed
 
@@ -198,7 +228,17 @@ def parse_wide_action_csv(
             
         # Standardize default tags if empty
         if not p_tag or p_tag == "✓": # Check if checkmark used
-            p_tag = "Play_Run_JetSweep" # default fallback
+            inferred_play = None
+            candidate = re.sub(r'[^a-zA-Z]', '', metadata_video_name or v_name or "").lower()
+            if "bootpass" in candidate:
+                inferred_play = "Play_Pass_BootPass"
+            elif "jetsweep" in candidate:
+                inferred_play = "Play_Run_JetSweep"
+            elif "counter" in candidate:
+                inferred_play = "Play_Run_Counter"
+            elif "power" in candidate:
+                inferred_play = "Play_Run_Power"
+            p_tag = inferred_play if inferred_play else "Play_Run_JetSweep"
             
         r_frame = None
         if r_frame_str:
@@ -228,7 +268,9 @@ def parse_wide_action_csv(
                 continue
                 
             entries = parse_cell_entries(cell_val, pair_sep, multi_seps)
-            for frame, actor_id, err in entries:
+            for entry_item in entries:
+                frame, actor_id, err = entry_item
+                end_frame = getattr(entry_item, "end_frame", None)
                 if err:
                     # Ignore parsing error if it is a single text entry in an end/result column
                     is_result_text = False
@@ -282,6 +324,7 @@ def parse_wide_action_csv(
                     result_frame=r_frame,
                     action=action_label,
                     start_frame=evt_frame,
+                    end_frame=end_frame,
                     annotated_frame=evt_frame,
                     annotated_frame_role=frame_role,
                     event_type=evt_type,

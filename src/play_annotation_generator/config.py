@@ -75,6 +75,12 @@ DEFAULT_CONFIG: Dict[str, Any] = {
             "seal_block": "Action_SealBlock",
             "lead_block": "Action_LeadBlock",
             "block_second_level": "Action_BlockSecondLevel",
+            "run_block": "Action_RunBlock",
+            "fake_handoff": "Action_FakeHandoff",
+            "boot_away": "Action_BootAway",
+            "run_flat_route": "Action_RunFlatRoute",
+            "throw_pass": "Action_ThrowPass",
+            "secure_catch": "Action_SecureCatch",
             "end_ol_block": "Action_None",
             "end_play": "Action_PlayEnd"
         },
@@ -154,7 +160,8 @@ DEFAULT_CONFIG: Dict[str, Any] = {
                 "Action_DownBlock",
                 "Action_PullBlock",
                 "Action_LeadBlock",
-                "Action_BlockSecondLevel"
+                "Action_BlockSecondLevel",
+                "Action_RunBlock"
             ]
         },
         "Action_PlayEnd": {
@@ -219,6 +226,30 @@ DEFAULT_CONFIG: Dict[str, Any] = {
         },
         "Action_BlockSecondLevel": {
             "ends_when_same_actor_action_starts": True,
+            "fallback_end": "play_end_frame"
+        },
+        "Action_RunBlock": {
+            "ends_when_same_actor_action_starts": True,
+            "fallback_end": "play_end_frame"
+        },
+        "Action_FakeHandoff": {
+            "ends_when_same_actor_action_starts": True,
+            "fallback_end": "play_end_frame"
+        },
+        "Action_BootAway": {
+            "ends_when_same_actor_action_starts": True,
+            "fallback_end": "play_end_frame"
+        },
+        "Action_RunFlatRoute": {
+            "ends_when_same_actor_action_starts": True,
+            "fallback_end": "play_end_frame"
+        },
+        "Action_ThrowPass": {
+            "ends_when_same_actor_action_starts": True,
+            "fallback_end": "play_end_frame"
+        },
+        "Action_SecureCatch": {
+            "ends_at_result_or_play_end": True,
             "fallback_end": "play_end_frame"
         },
         "Action_PlayEnd": {
