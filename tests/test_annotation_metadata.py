@@ -3,7 +3,7 @@ import os
 import tempfile
 import unittest
 
-from tapevision_enricher.annotation_metadata import (
+from play_annotation_generator.annotation_metadata import (
     parse_dataset_timestamp,
     parse_from_youtube,
     load_dataset_summary,

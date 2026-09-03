@@ -27,6 +27,7 @@ DEFAULT_CONFIG: Dict[str, Any] = {
         "output_dir": "outputs/",
         "write_generated_base_xml": True,
         "write_enriched_xml": True,
+        "write_play_annotation_json": True,
         "write_tapevision_json": True,
         "write_dense_csv": True,
         "write_validation_report": True,

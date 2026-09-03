@@ -31,7 +31,7 @@ def write_validation_report(
     status = "SUCCESS" if not errors else "FAILED"
     
     lines = [
-        f"# TapeVision Annotation Enrichment Validation Report",
+        f"# Play-Annotation-Generator Annotation Enrichment Validation Report",
         f"",
         f"## **Summary**",
         f"- **Status**: {status}",

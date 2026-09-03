@@ -1,7 +1,7 @@
 import unittest
-from tapevision_enricher.models import ActionEvent, ActionSegment, Track, TrackBox
-from tapevision_enricher.validators import run_validation_checks
-from tapevision_enricher.config import DEFAULT_CONFIG
+from play_annotation_generator.models import ActionEvent, ActionSegment, Track, TrackBox
+from play_annotation_generator.validators import run_validation_checks
+from play_annotation_generator.config import DEFAULT_CONFIG
 
 class TestValidators(unittest.TestCase):
     def setUp(self):

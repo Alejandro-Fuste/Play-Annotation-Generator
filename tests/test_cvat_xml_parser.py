@@ -1,7 +1,7 @@
 import os
 import tempfile
 import unittest
-from tapevision_enricher.cvat_xml_parser import parse_cvat_xml
+from play_annotation_generator.cvat_xml_parser import parse_cvat_xml
 
 MOCK_XML = """<?xml version="1.0" encoding="utf-8"?>
 <annotations>

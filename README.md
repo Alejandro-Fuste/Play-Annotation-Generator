@@ -1,8 +1,8 @@
-# TapeVision XML Wide CSV Annotation Enricher (`tapevision-enricher`)
+# Play-Annotation-Generator
 
 A high-performance Python utility designed to merge spatial video tracking annotations (**CVAT for Video XML** or **MOT GT 1.0 format**) with temporal play-by-play action logs parsed from sparse **wide-format CSV spreadsheets**. 
 
-This system acts as a key component in the TapeVision football film breakdown AI pipeline, bridging human key action logs and object tracking algorithms to produce machine-learning-ready datasets (hierarchical JSON annotations, frame-dense flat CSVs, enriched CVAT XML files, and validation reports).
+This system acts as a key component in the FilmBreakdownAI football film breakdown pipeline, bridging human key action logs and object tracking algorithms to produce machine-learning-ready datasets (hierarchical JSON annotations, frame-dense flat CSVs, enriched CVAT XML files, and validation reports).
 
 ---
 
@@ -27,7 +27,7 @@ This system acts as a key component in the TapeVision football film breakdown AI
 
 Football film annotation requires tracking 22 players and the ball across frames while simultaneously annotating fine-grained temporal actions (e.g. `Action_PreSnap`, `Action_BallSnap`, `Action_SnapReceive`, `Action_ZoneBlock`, `Action_LeadBlock`, `Action_BallCarry`, `Action_PlayEnd`). Manual frame-by-frame labeling of all player actions is extremely time-consuming.
 
-The **TapeVision Annotation Enricher** automates this by taking:
+The **Play-Annotation-Generator** automates this by taking:
 1. **Spatial Tracking Data**: CVAT for Video XML export OR raw MOT (Multiple Object Tracking) `gt.txt` files containing bounding boxes (`xtl, ytl, xbr, ybr`) and track IDs.
 2. **Player Track Assignments**: A CSV sheet mapping MOT track IDs to positions (`QB`, `LT`, `LG`, `C`, `RG`, `RT`, `WR-X`, etc.) and team sides (`offense` vs `defense`).
 3. **Key Action Logs**: A sparse wide-format CSV spreadsheet where human annotators mark key action start frames for individual players or position groups (`OL`, `SKILL`, `ALL_OFFENSE`).
@@ -98,7 +98,7 @@ The utility operates under three primary subcommands/workflows:
 ## Project Directory & File Map
 
 ```text
-Combine_Tracks_and_Actions/
+Play-Annotation-Generator/
 ├── pyproject.toml                        # Build system configuration & dependencies (PyYAML, pytest)
 ├── requirements.txt                      # PIP dependency list
 ├── README.md                             # Comprehensive technical documentation (this file)
@@ -122,34 +122,43 @@ Combine_Tracks_and_Actions/
 │   └── sampleJetSweepCVAT_video_2.xml    # Sample CVAT Video XML for testing Mode A
 ├── outputs/                              # Default destination directory for generated pipeline outputs
 ├── src/
-│   └── tapevision_enricher/              # Core package root
-│       ├── __init__.py                   # Package initializer and version export (0.1.0)
-│       ├── models.py                     # Dataclasses defining core domain data models
-│       ├── config.py                     # YAML configuration loader & deep merger
-│       ├── cvat_xml_parser.py            # ElementTree parser for CVAT Video XML files
-│       ├── cvat_xml_generator.py         # Base CVAT XML generator from MOT tracks and assignments
-│       ├── mot_parser.py                 # MOT gt.txt and zip archive extractor/parser
-│       ├── player_track_sheet_parser.py  # Flexible parser for player track assignment CSV formats
-│       ├── sheet_group_resolver.py       # Group target (OL, SKILL, ALL_OFFENSE) expansion logic
-│       ├── action_event_normalizer.py    # Matches parsed CSV events to XML track IDs & expands groups
-│       ├── action_rules.py               # Rule-based temporal segment start/end inference engine
-│       ├── validators.py                 # Pipeline quality assurance and coordinate sanity validator
-│       ├── enricher.py                   # Mode A pipeline orchestrator (`run_enrichment_pipeline`)
-│       ├── pipeline_generate_and_enrich.py # Mode B pipeline orchestrator (`run_generate_and_enrich_pipeline`)
-│       ├── reviewer.py                   # Interactive play report & verification tool
-│       ├── cli.py                        # Argparse CLI entry point supporting subcommands and legacy flags
-│       └── writers/                      # Output formatting subpackage
-│           ├── __init__.py               # Writer exports
-│           ├── enriched_xml_writer.py    # Injects action attributes into CVAT XML track boxes
-│           ├── tapevision_json_writer.py # Exports structured TapeVision training JSON
-│           ├── dense_csv_writer.py       # Exports flat frame-by-frame dense actions and normalized events CSVs
-│           └── report_writer.py          # Exports markdown and JSON validation reports
+│   ├── play_annotation_generator/        # Core package root
+│   │   ├── __init__.py                   # Package initializer
+│   │   ├── __main__.py                   # Entry point for python -m play_annotation_generator
+│   │   ├── models.py                     # Dataclasses defining core domain data models
+│   │   ├── config.py                     # YAML configuration loader & deep merger
+│   │   ├── cvat_xml_parser.py            # ElementTree parser for CVAT Video XML files
+│   │   ├── cvat_xml_generator.py         # Base CVAT XML generator from MOT tracks and assignments
+│   │   ├── mot_parser.py                 # MOT gt.txt and zip archive extractor/parser
+│   │   ├── player_track_sheet_parser.py  # Flexible parser for player track assignment CSV formats
+│   │   ├── sheet_group_resolver.py       # Group target (OL, SKILL, ALL_OFFENSE) expansion logic
+│   │   ├── action_event_normalizer.py    # Matches parsed CSV events to XML track IDs & expands groups
+│   │   ├── action_rules.py               # Rule-based temporal segment start/end inference engine
+│   │   ├── validators.py                 # Pipeline quality assurance and coordinate sanity validator
+│   │   ├── enricher.py                   # Mode A pipeline orchestrator (`run_enrichment_pipeline`)
+│   │   ├── pipeline_generate_and_enrich.py # Mode B pipeline orchestrator (`run_generate_and_enrich_pipeline`)
+│   │   ├── reviewer.py                   # Interactive play report & verification tool
+│   │   ├── cli.py                        # Argparse CLI entry point supporting subcommands and legacy flags
+│   │   └── writers/                      # Output formatting subpackage
+│       ├── __init__.py               # Writer exports
+│       ├── enriched_xml_writer.py    # Injects action attributes into CVAT XML track boxes
+│       ├── play_annotation_json_writer.py # Exports structured play annotation JSON
+│       ├── dense_csv_writer.py       # Exports flat frame-by-frame dense actions and normalized events CSVs
+│       ├── report_writer.py          # Exports markdown and JSON validation reports
+│       └── batch_report_writer.py    # Exports batch manifests and summaries
+│   └── tapevision_enricher/              # Backward-compatibility shim
+│       └── __init__.py
 └── tests/                                # Unit & integration test suite
     ├── __init__.py                       # Test package initializer
     ├── test_action_rules.py              # Tests action segment end inference & fallback rules
+    ├── test_annotation_metadata.py       # Tests metadata enrichment from CSV/JSON taxonomies
+    ├── test_batch_cli.py                 # Tests batch CLI arguments
+    ├── test_batch_pipeline.py            # Tests batch execution engine
+    ├── test_compat_shim.py               # Tests backward-compatibility import shim
     ├── test_cvat_xml_parser.py           # Tests CVAT XML metadata & track extraction
     ├── test_enricher.py                  # Tests full Mode A enrichment pipeline
     ├── test_mot_xml_pipeline.py          # Tests Mode B XML generation & MOT parsing
+    ├── test_reviewer.py                  # Tests interactive reviewer report generation
     ├── test_validators.py                # Tests validation checks and coordinate sanity flags
     └── test_wide_action_csv_parser.py    # Tests wide CSV cell parsing & multi-entry splitting
 ```
@@ -158,36 +167,37 @@ Combine_Tracks_and_Actions/
 
 ## Core Architectural Modules
 
-### Package Modules (`src/tapevision_enricher/`)
+### Package Modules (`src/play_annotation_generator/`)
 
-- **[`models.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/models.py)**: Defines strongly typed Python `@dataclass` objects: `TrackBox`, `Track`, `ActionEvent`, `ActionSegment`, `DenseActionAnnotation`.
-- **[`config.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/config.py)**: Houses `DEFAULT_CONFIG` dictionary and provides `load_config(path)` to recursively merge YAML overrides with default settings.
-- **[`cvat_xml_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/cvat_xml_parser.py)**: Parses `<meta>` video dimensions/frame counts and `<track>` elements with `<box>` nodes and custom `<attribute>` elements (`position`, `team_side`, `track_id`, `action`).
-- **[`mot_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/mot_parser.py)**: Extracts MOT `.zip` archives or parses `gt.txt` files. Converts `[left, top, width, height]` to `[xtl, ytl, xbr, ybr]`, applies frame indexing offset (`cvat_base - mot_base`), and clamps coordinates.
-- **[`player_track_sheet_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/player_track_sheet_parser.py)**: Flexible parser supporting three player assignment CSV layouts: Wide cells (`QB,8;TE-Y,10`), Normalized rows (`position,track_id`), and Positional grid layouts.
-- **[`cvat_xml_generator.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/cvat_xml_generator.py)**: Combines parsed MOT tracks and player assignments into a new CVAT Video XML file using a template for root structure. Handles track visibility and `outside="1"` termination boxes.
-- **[`sheet_group_resolver.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/sheet_group_resolver.py)**: Resolves group shorthand target strings (`ALL`, `ALL_OFFENSE`, `ALL_DEFENSE`, `OL`, `SKILL`) or individual position names (`QB`, `WR-F`) into lists of matching `Track` objects.
-- **[`wide_action_csv_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/wide_action_csv_parser.py)**: Parses wide CSV action cells. Splits multi-entries (`semicolon`, `pipe`, `newline`), extracts `frame,track_id` pairs, maps result tags via shorthand JSON, and filters by target video name/ID.
-- **[`action_event_normalizer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/action_event_normalizer.py)**: Maps parsed CSV `ActionEvent` records to actual XML track IDs, performs group expansions, and checks for ambiguous custom track IDs.
-- **[`action_rules.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/action_rules.py)**: Inferences action start and end frames (`ActionSegment`) track-by-track. Applies event deduplication, collision resolution (later CSV columns take precedence), global triggers, max duration limits, and fallback rules.
-- **[`validators.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/validators.py)**: Evaluates data integrity: coordinate sanity (`xbr > xtl`), actions starting on invisible/missing boxes, overlapping player segments, unknown action labels, and missing player metadata.
-- **[`enricher.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/enricher.py)**: Primary orchestrator for Mode A (`run_enrichment_pipeline`).
-- **[`pipeline_generate_and_enrich.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/pipeline_generate_and_enrich.py)**: Primary orchestrator for Mode B (`run_generate_and_enrich_pipeline`).
-- **[`reviewer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/reviewer.py)**: Generates human-readable terminal review reports (`review_play_outputs`).
-- **[`cli.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/cli.py)**: CLI entry point supporting subcommands `enrich-existing`, `generate-and-enrich`, `review`, and legacy `--xml`/`--csv` flags.
+- **[`models.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/models.py)**: Defines strongly typed Python `@dataclass` objects: `TrackBox`, `Track`, `ActionEvent`, `ActionSegment`, `DenseActionAnnotation`.
+- **[`config.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/config.py)**: Houses `DEFAULT_CONFIG` dictionary and provides `load_config(path)` to recursively merge YAML overrides with default settings.
+- **[`cvat_xml_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/cvat_xml_parser.py)**: Parses `<meta>` video dimensions/frame counts and `<track>` elements with `<box>` nodes and custom `<attribute>` elements (`position`, `team_side`, `track_id`, `action`).
+- **[`mot_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/mot_parser.py)**: Extracts MOT `.zip` archives or parses `gt.txt` files. Converts `[left, top, width, height]` to `[xtl, ytl, xbr, ybr]`, applies frame indexing offset (`cvat_base - mot_base`), and clamps coordinates.
+- **[`player_track_sheet_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/player_track_sheet_parser.py)**: Flexible parser supporting three player assignment CSV layouts: Wide cells (`QB,8;TE-Y,10`), Normalized rows (`position,track_id`), and Positional grid layouts.
+- **[`cvat_xml_generator.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/cvat_xml_generator.py)**: Combines parsed MOT tracks and player assignments into a new CVAT Video XML file using a template for root structure. Handles track visibility and `outside="1"` termination boxes.
+- **[`sheet_group_resolver.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/sheet_group_resolver.py)**: Resolves group shorthand target strings (`ALL`, `ALL_OFFENSE`, `ALL_DEFENSE`, `OL`, `SKILL`) or individual position names (`QB`, `WR-F`) into lists of matching `Track` objects.
+- **[`wide_action_csv_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/wide_action_csv_parser.py)**: Parses wide CSV action cells. Splits multi-entries (`semicolon`, `pipe`, `newline`), extracts `frame,track_id` pairs, maps result tags via shorthand JSON, and filters by target video name/ID.
+- **[`action_event_normalizer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/action_event_normalizer.py)**: Maps parsed CSV `ActionEvent` records to actual XML track IDs, performs group expansions, and checks for ambiguous custom track IDs.
+- **[`action_rules.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/action_rules.py)**: Inferences action start and end frames (`ActionSegment`) track-by-track. Applies event deduplication, collision resolution (later CSV columns take precedence), global triggers, max duration limits, and fallback rules.
+- **[`validators.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/validators.py)**: Evaluates data integrity: coordinate sanity (`xbr > xtl`), actions starting on invisible/missing boxes, overlapping player segments, unknown action labels, and missing player metadata.
+- **[`enricher.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/enricher.py)**: Primary orchestrator for Mode A (`run_enrichment_pipeline`).
+- **[`pipeline_generate_and_enrich.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/pipeline_generate_and_enrich.py)**: Primary orchestrator for Mode B (`run_generate_and_enrich_pipeline`).
+- **[`reviewer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/reviewer.py)**: Generates human-readable terminal review reports (`review_play_outputs`).
+- **[`cli.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/cli.py)**: CLI entry point supporting subcommands `enrich-existing`, `generate-and-enrich`, `review`, and legacy `--xml`/`--csv` flags.
 
-### Output Writer Modules (`src/tapevision_enricher/writers/`)
+### Output Writer Modules (`src/play_annotation_generator/writers/`)
 
-- **[`enriched_xml_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/writers/enriched_xml_writer.py)**: Injects `tapevision_action`, `tapevision_action_source`, `tapevision_action_segment_start`, and `tapevision_action_segment_end` into XML box elements.
-- **[`tapevision_json_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/writers/tapevision_json_writer.py)**: Formats hierarchical JSON output (`annotations.json`) containing clip metadata, clip source timing, play definitions, track samples, inferred action segments, used action definitions, and dense frame annotations.
-- **[`dense_csv_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/writers/dense_csv_writer.py)**: Writes frame-by-frame flat CSV (`dense_actions.csv`) and debugging CSV (`normalized_action_events.csv`).
-- **[`report_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/writers/report_writer.py)**: Writes structured pipeline execution reports (`validation_report.md` and `validation_report.json`).
+- **[`enriched_xml_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/writers/enriched_xml_writer.py)**: Injects action attributes and `<play_annotation_generator>` metadata into CVAT XML.
+- **[`play_annotation_json_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/writers/play_annotation_json_writer.py)**: Formats hierarchical JSON output (`annotations.json`) containing clip metadata, clip source timing, play definitions, track samples, inferred action segments, used action definitions, and dense frame annotations.
+- **[`dense_csv_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/writers/dense_csv_writer.py)**: Writes frame-by-frame flat CSV (`dense_actions.csv`) and debugging CSV (`normalized_action_events.csv`).
+- **[`report_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/writers/report_writer.py)**: Writes structured pipeline execution reports (`validation_report.md` and `validation_report.json`).
+- **[`batch_report_writer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/writers/batch_report_writer.py)**: Writes batch manifests (`batch_manifest.csv`, `batch_manifest.json`) and summary markdown (`batch_summary.md`).
 
 ---
 
 ## Data Models & Type Definitions
 
-Defined in **[`src/tapevision_enricher/models.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/models.py)**:
+Defined in **[`src/play_annotation_generator/models.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/models.py)**:
 
 ```python
 @dataclass
@@ -289,7 +299,7 @@ Maps MOT track IDs to positions and team sides. Supported formats:
 
 ## Action Rules & Temporal Inference Engine
 
-Implemented in **[`src/tapevision_enricher/action_rules.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/action_rules.py)**:
+Implemented in **[`src/play_annotation_generator/action_rules.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/action_rules.py)**:
 
 When inferring action segments `[start_frame, end_frame]` for each player track:
 1. **Deduplication**: Identical actions at the same start frame for a player are deduplicated.
@@ -306,7 +316,7 @@ When inferring action segments `[start_frame, end_frame]` for each player track:
 
 ## Pipeline Validation & Quality Control Engine
 
-Implemented in **[`src/tapevision_enricher/validators.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/validators.py)**:
+Implemented in **[`src/play_annotation_generator/validators.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/validators.py)**:
 
 1. **Bounding Box Coordinate Sanity**: Verifies $x_{br} > x_{tl}$ and $y_{br} > y_{tl}$ for all visible track boxes. Flags inverted bounds or zero-area boxes.
 2. **Action Start Visibility Check**: Flags any CSV action starting on a frame where the player track has no visible bounding box (`outside="1"` or missing).
@@ -322,7 +332,7 @@ Implemented in **[`src/tapevision_enricher/validators.py`](file:///Users/alejand
 Running the pipeline populates the target output directory with the following artifacts:
 
 1. **`generated_base_cvat.xml`** (Mode B Only): Base CVAT Video XML file compiled directly from raw MOT tracks and player assignments before action enrichment.
-2. **`annotations.xml`** (Primary XML Output): Enriched CVAT XML with injected box-level attributes (`tapevision_action`, `tapevision_action_source`, `tapevision_action_segment_start`, `tapevision_action_segment_end`) and top-level `<tapevision>` clip/taxonomy metadata block while preserving original box geometry.
+2. **`annotations.xml`** (Primary XML Output): Enriched CVAT XML with injected box-level attributes (`tapevision_action`, `tapevision_action_source`, `tapevision_action_segment_start`, `tapevision_action_segment_end`) and top-level `<play_annotation_generator>` clip/taxonomy metadata block while preserving original box geometry.
 3. **`annotations.json`**: Hierarchical JSON dataset formatted for model training:
    - `clip`: Video name, frame start, frame stop, total frame count, and `source` timing (`start_time`, `end_time`, `clip_length`, `view`, `from_youtube`).
    - `play`: Play tag, play `definition`, result tag, result frame.
@@ -354,6 +364,7 @@ output:
   output_dir: "outputs/"
   write_generated_base_xml: true
   write_enriched_xml: true
+  write_play_annotation_json: true
   write_tapevision_json: true
   write_dense_csv: true
   write_validation_report: true
@@ -411,12 +422,12 @@ action_end_rules:
 
 ## CLI Command Reference & Examples
 
-The CLI entry point is **[`src/tapevision_enricher/cli.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/src/tapevision_enricher/cli.py)**.
+The CLI entry point is **[`src/play_annotation_generator/cli.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/cli.py)** (or via the installed entry point `play-annotation-generator` / `python -m play_annotation_generator`).
 
 ### Mode A: Enrich Existing CVAT XML (`enrich-existing`)
 Enrich an existing CVAT XML using a wide CSV action sheet:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli enrich-existing \
+PYTHONPATH=src python3 -m play_annotation_generator.cli enrich-existing \
   --xml docs/sampleJetSweepCVAT_video_2.xml \
   --csv data/actions/sample_sequence_logger.csv \
   --config configs/default_config.yaml \
@@ -428,7 +439,7 @@ PYTHONPATH=src python3 -m tapevision_enricher.cli enrich-existing \
 ### Mode B: Generate XML from MOT & Enrich (`generate-and-enrich`)
 Compile a base CVAT XML directly from MOT tracking outputs and enrich it:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli generate-and-enrich \
+PYTHONPATH=src python3 -m play_annotation_generator.cli generate-and-enrich \
   --gt data/tracking/JetSweep/JetSweep_1_cvat_mot.zip \
   --template docs/JetSweepTemplate.xml \
   --key-actions data/key_actions/JetSweep.csv \
@@ -442,7 +453,7 @@ PYTHONPATH=src python3 -m tapevision_enricher.cli generate-and-enrich \
 ### Mode C: Batch Generate and Enrich (`batch-generate-and-enrich`)
 Process multiple MOT tracking inputs sequentially:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli batch-generate-and-enrich \
+PYTHONPATH=src python3 -m play_annotation_generator.cli batch-generate-and-enrich \
   --gt-dir data/tracking \
   --template docs/UniversalTemplate.xml \
   --key-actions data/key_actions/JetSweep.csv \
@@ -455,13 +466,13 @@ PYTHONPATH=src python3 -m tapevision_enricher.cli batch-generate-and-enrich \
 ### Mode D: Review Output Tool (`review`)
 Generate interactive review breakdown for an output directory:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli review --dir outputs/JetSweep_1
+PYTHONPATH=src python3 -m play_annotation_generator.cli review --dir outputs/JetSweep_1
 ```
 
 ### Backward Compatibility (Legacy Flag Interface)
 Running without a subcommand defaults to Mode A (`enrich-existing`):
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli \
+PYTHONPATH=src python3 -m play_annotation_generator.cli \
   --xml docs/sampleJetSweepCVAT_video_2.xml \
   --csv data/actions/sample_sequence_logger.csv
 ```
@@ -488,7 +499,7 @@ Unmatched and ambiguous clips are safely skipped from pipeline execution and rec
 ### Batch CLI (`batch-generate-and-enrich`)
 Execute batch processing for a specific play type:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli batch-generate-and-enrich \
+PYTHONPATH=src python3 -m play_annotation_generator.cli batch-generate-and-enrich \
   --gt-dir data/tracking/JetSweep \
   --template docs/UniversalTemplate.xml \
   --key-actions data/key_actions/JetSweep.csv \
@@ -500,7 +511,7 @@ PYTHONPATH=src python3 -m tapevision_enricher.cli batch-generate-and-enrich \
 ### Smoke Test
 Run a fast smoke test limiting execution to 5 matched clips:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli batch-generate-and-enrich \
+PYTHONPATH=src python3 -m play_annotation_generator.cli batch-generate-and-enrich \
   --gt-dir data/tracking \
   --template docs/UniversalTemplate.xml \
   --key-actions data/key_actions/JetSweep.csv \
@@ -520,7 +531,7 @@ Batch processing V1 runs **one play type per invocation** to match the play-type
 ### Resume with `--skip-existing`
 To resume an interrupted batch run without re-processing completed clips:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli batch-generate-and-enrich \
+PYTHONPATH=src python3 -m play_annotation_generator.cli batch-generate-and-enrich \
   --gt-dir data/tracking \
   --template docs/UniversalTemplate.xml \
   --key-actions data/key_actions/JetSweep.csv \
@@ -533,7 +544,7 @@ Completed clip output directories (containing parseable `annotations.json` and `
 ### Reprocessing with `--overwrite`
 To force reprocessing of existing output directories:
 ```bash
-PYTHONPATH=src python3 -m tapevision_enricher.cli batch-generate-and-enrich \
+PYTHONPATH=src python3 -m play_annotation_generator.cli batch-generate-and-enrich \
   --gt-dir data/tracking \
   --template docs/UniversalTemplate.xml \
   --key-actions data/key_actions/JetSweep.csv \
@@ -598,12 +609,16 @@ pytest
 ```
 
 ### Test Suite Map
-- **[`test_action_rules.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_action_rules.py)**: Verifies `infer_action_segments` end-frame rules, deduplication, collision override, and track range clamping.
-- **[`test_cvat_xml_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_cvat_xml_parser.py)**: Verifies ElementTree CVAT XML header metadata parsing and track attribute extraction.
-- **[`test_enricher.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_enricher.py)**: Tests end-to-end Mode A enrichment pipeline execution and JSON/CSV/XML output generation.
-- **[`test_mot_xml_pipeline.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_mot_xml_pipeline.py)**: Tests MOT `gt.txt` parsing, coordinate conversion/clamping, base XML generation, and Mode B pipeline execution.
-- **[`test_validators.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_validators.py)**: Tests bounding box sanity checks (`xbr > xtl`), missing box flags, and overlapping segment detection.
-- **[`test_wide_action_csv_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_wide_action_csv_parser.py)**: Tests cell splitting (`semicolon`, `pipe`, `newline`), shorthand mapping, and group target extraction.
-- **[`test_batch_pipeline.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_batch_pipeline.py)**: Tests tracking discovery, identity resolution, sequential batch orchestration, limit, skip-existing, overwrite, failure isolation, and manifest/summary reporting.
-- **[`test_batch_cli.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Combine_Tracks_and_Actions/tests/test_batch_cli.py)**: Tests CLI subcommand argument parsing and flag validations for batch commands.
+- **[`test_action_rules.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_action_rules.py)**: Verifies `infer_action_segments` end-frame rules, deduplication, collision override, and track range clamping.
+- **[`test_annotation_metadata.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_annotation_metadata.py)**: Tests metadata enrichment from CSV/JSON taxonomies.
+- **[`test_batch_cli.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_batch_cli.py)**: Tests CLI subcommand argument parsing and flag validations for batch commands.
+- **[`test_batch_pipeline.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_batch_pipeline.py)**: Tests tracking discovery, identity resolution, sequential batch orchestration, limit, skip-existing, overwrite, failure isolation, and manifest/summary reporting.
+- **[`test_compat_shim.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_compat_shim.py)**: Tests backward-compatibility import shim for `tapevision_enricher`.
+- **[`test_cvat_xml_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_cvat_xml_parser.py)**: Verifies ElementTree CVAT XML header metadata parsing and track attribute extraction.
+- **[`test_enricher.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_enricher.py)**: Tests end-to-end Mode A enrichment pipeline execution and JSON/CSV/XML output generation.
+- **[`test_mot_xml_pipeline.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_mot_xml_pipeline.py)**: Tests MOT `gt.txt` parsing, coordinate conversion/clamping, base XML generation, and Mode B pipeline execution.
+- **[`test_reviewer.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_reviewer.py)**: Tests interactive reviewer report generation.
+- **[`test_validators.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_validators.py)**: Tests bounding box sanity checks (`xbr > xtl`), missing box flags, and overlapping segment detection.
+- **[`test_wide_action_csv_parser.py`](file:///Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/tests/test_wide_action_csv_parser.py)**: Tests cell splitting (`semicolon`, `pipe`, `newline`), shorthand mapping, and group target extraction.
+
 

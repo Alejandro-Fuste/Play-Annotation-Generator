@@ -2,7 +2,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
-from tapevision_enricher.cli import parse_args, main
+from play_annotation_generator.cli import parse_args, main
 
 
 class TestBatchCLI(unittest.TestCase):

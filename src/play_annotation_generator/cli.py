@@ -6,7 +6,8 @@ from .output_pipeline import write_single_clip_outputs
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Enrich CVAT XML files with action labels from wide-format CSVs using configurable rules."
+        prog="play-annotation-generator",
+        description="Play-Annotation-Generator: Enrich CVAT XML files and MOT tracks with action labels from wide-format CSVs."
     )
     
     # Backward compatible top-level arguments

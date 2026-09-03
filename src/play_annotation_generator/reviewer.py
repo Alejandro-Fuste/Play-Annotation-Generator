@@ -192,7 +192,7 @@ def review_play_outputs(output_dir: str, csv_path: Optional[str] = None) -> str:
     lines: List[str] = []
 
     # Title and Overall Status
-    lines.append(f"# TapeVision Annotation Review — {video_name}")
+    lines.append(f"# Play-Annotation-Generator Annotation Review — {video_name}")
     lines.append("")
     lines.append(f"**Overall Status:** {overall_status}")
     lines.append("")
@@ -857,7 +857,7 @@ def review_play_outputs(output_dir: str, csv_path: Optional[str] = None) -> str:
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python -m tapevision_enricher.reviewer <output_directory>", file=sys.stderr)
+        print("Usage: python -m play_annotation_generator.reviewer <output_directory>", file=sys.stderr)
         sys.exit(1)
 
     out_dir = sys.argv[1]

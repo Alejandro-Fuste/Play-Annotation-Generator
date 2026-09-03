@@ -236,7 +236,7 @@ def write_batch_summary_markdown(
             play_stats[pt]["no_ball_tracks"] += 1
 
     lines = [
-        "# TapeVision Batch Processing Summary",
+        "# Play-Annotation-Generator Batch Processing Summary",
         "",
         "## Run Overview",
         "",

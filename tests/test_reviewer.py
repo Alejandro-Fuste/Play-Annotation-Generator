@@ -2,7 +2,7 @@ import json
 import os
 import tempfile
 import unittest
-from tapevision_enricher.reviewer import review_play_outputs, get_offense_position_rank, get_defense_position_rank
+from play_annotation_generator.reviewer import review_play_outputs, get_offense_position_rank, get_defense_position_rank
 
 
 class TestReviewer(unittest.TestCase):
@@ -112,7 +112,7 @@ class TestReviewer(unittest.TestCase):
         report = review_play_outputs(self.output_dir)
 
         # Check section headings and collapsible blocks
-        self.assertIn("# TapeVision Annotation Review — TestClip_1", report)
+        self.assertIn("# Play-Annotation-Generator Annotation Review — TestClip_1", report)
         self.assertIn("## 1. Clip & Validation Summary", report)
         self.assertIn("## 2. Action Annotation Audit", report)
         self.assertIn("<details>\n<summary><strong>Open Action Audit</strong></summary>", report)

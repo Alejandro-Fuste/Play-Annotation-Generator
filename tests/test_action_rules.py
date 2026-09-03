@@ -1,7 +1,7 @@
 import unittest
-from tapevision_enricher.models import ActionEvent, Track, TrackBox
-from tapevision_enricher.action_rules import infer_action_segments
-from tapevision_enricher.config import DEFAULT_CONFIG
+from play_annotation_generator.models import ActionEvent, Track, TrackBox
+from play_annotation_generator.action_rules import infer_action_segments
+from play_annotation_generator.config import DEFAULT_CONFIG
 
 class TestActionRules(unittest.TestCase):
     def setUp(self):

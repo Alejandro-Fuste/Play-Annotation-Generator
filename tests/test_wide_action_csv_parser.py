@@ -1,8 +1,8 @@
 import os
 import tempfile
 import unittest
-from tapevision_enricher.wide_action_csv_parser import parse_wide_action_csv, parse_cell_entries
-from tapevision_enricher.config import DEFAULT_CONFIG
+from play_annotation_generator.wide_action_csv_parser import parse_wide_action_csv, parse_cell_entries
+from play_annotation_generator.config import DEFAULT_CONFIG
 
 MOCK_CSV = """video_name,video_id,play_tag,result_tag,result_frame,pre_snap,jet_motion,ball_snap,zone_block,snap_receive,toss,ball_carry,seal_block,lead_block,block_second_level,end_ol_block,end_play,notes
 JetSweep_69,69,Play_Run_JetSweep,Result_Tackle,116,"0,ALL_OFFENSE","33,16","34,33","43,OL","49,8","55,8","65,16",,"35,11","67,2","100,OL",116,"some notes"

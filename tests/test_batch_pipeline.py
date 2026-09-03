@@ -5,7 +5,7 @@ import unittest
 import zipfile
 from pathlib import Path
 
-from tapevision_enricher.batch_pipeline import (
+from play_annotation_generator.batch_pipeline import (
     TrackingInput,
     check_clip_completion,
     discover_tracking_inputs,
@@ -14,7 +14,7 @@ from tapevision_enricher.batch_pipeline import (
     run_batch_pipeline,
     sanitize_filename_component,
 )
-from tapevision_enricher.pipeline_generate_and_enrich import run_generate_and_enrich_pipeline
+from play_annotation_generator.pipeline_generate_and_enrich import run_generate_and_enrich_pipeline
 
 MOCK_GT = """1,1,100.0,200.0,50.0,80.0,1,1,0.9
 1,2,150.0,250.0,40.0,60.0,1,2,0.8
@@ -279,7 +279,7 @@ class TestBatchPipeline(unittest.TestCase):
         batch_out = self.root_path / "batch_jetsweep_1"
 
         # 1. Single clip run
-        from tapevision_enricher.config import load_config
+        from play_annotation_generator.config import load_config
         cfg = load_config(None)
         cfg["mode"] = "generate_and_enrich_xml"
         single_out.mkdir(parents=True, exist_ok=True)

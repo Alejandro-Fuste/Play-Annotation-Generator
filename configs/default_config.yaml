@@ -16,6 +16,7 @@ metadata_enrichment:
 output:
   output_dir: "outputs/"
   write_enriched_xml: true
+  write_play_annotation_json: true
   write_tapevision_json: true
   write_dense_csv: true
   write_validation_report: true

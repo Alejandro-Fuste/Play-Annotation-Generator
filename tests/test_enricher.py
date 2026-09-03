@@ -1,8 +1,8 @@
 import os
 import tempfile
 import unittest
-from tapevision_enricher.enricher import run_enrichment_pipeline
-from tapevision_enricher.config import DEFAULT_CONFIG
+from play_annotation_generator.enricher import run_enrichment_pipeline
+from play_annotation_generator.config import DEFAULT_CONFIG
 
 MOCK_XML = """<?xml version="1.0" encoding="utf-8"?>
 <annotations>

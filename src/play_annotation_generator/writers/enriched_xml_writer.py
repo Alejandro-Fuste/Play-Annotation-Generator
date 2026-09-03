@@ -13,7 +13,7 @@ def write_enriched_xml(
     """
     Reads the original XML and writes a new enriched XML.
     Adds box-level action attributes for player tracks inside active action segments.
-    Injects or updates the <tapevision> metadata block under <meta>.
+    Injects or updates the <play_annotation_generator> metadata block under <meta>.
     """
     tree = ET.parse(input_xml_path)
     root = tree.getroot()
@@ -23,18 +23,19 @@ def write_enriched_xml(
     default_offense_act = policy_cfg.get("default_unlabeled_offense_action", "Action_Unknown")
     default_defense_act = policy_cfg.get("default_unlabeled_defense_action", "Action_Defense_NotAnnotated")
     
-    # 1. Inject or update <tapevision> block under <meta>
+    # 1. Inject or update <play_annotation_generator> block under <meta>
     meta_elem = root.find("meta")
     if meta_elem is None:
         meta_elem = ET.SubElement(root, "meta")
 
-    # Remove existing <tapevision> for idempotency
-    existing_tv = meta_elem.find("tapevision")
-    if existing_tv is not None:
-        meta_elem.remove(existing_tv)
+    # Remove existing blocks for idempotency
+    for tag_name in ["play_annotation_generator", "tapevision"]:
+        existing_elem = meta_elem.find(tag_name)
+        if existing_elem is not None:
+            meta_elem.remove(existing_elem)
 
     if metadata:
-        tv_elem = ET.SubElement(meta_elem, "tapevision")
+        tv_elem = ET.SubElement(meta_elem, "play_annotation_generator")
 
         def _add_xml_field(parent: ET.Element, tag_name: str, val: Any, attribs: Optional[Dict[str, str]] = None) -> ET.Element:
             attr_dict = attribs.copy() if attribs else {}

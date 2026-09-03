@@ -1,3 +1,6 @@
+"""
+Play-Annotation-Generator: CVAT XML & MOT Track Action Enricher.
+"""
 from .enricher import run_enrichment_pipeline
 from .cvat_xml_parser import parse_cvat_xml
 from .wide_action_csv_parser import parse_wide_action_csv, parse_cell_entries

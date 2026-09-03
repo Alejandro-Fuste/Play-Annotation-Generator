@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tapevision-xml-action-enricher"
+name = "play-annotation-generator"
 version = "0.1.0"
-description = "Enrich CVAT XML files with action metadata from wide CSV spreadsheets"
+description = "Play-Annotation-Generator: CVAT XML & MOT Track Action Enricher"
 authors = [
     { name = "FilmBreakdownAI Developer" }
 ]
@@ -13,6 +13,9 @@ dependencies = [
     "PyYAML>=6.0"
 ]
 requires-python = ">=3.10"
+
+[project.scripts]
+play-annotation-generator = "play_annotation_generator.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

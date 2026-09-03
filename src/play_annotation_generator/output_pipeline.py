@@ -4,6 +4,7 @@ from typing import Any, Dict, List, Optional
 from .models import Track, ActionEvent, ActionSegment, DenseActionAnnotation
 from .writers import (
     write_enriched_xml,
+    write_play_annotation_json,
     write_tapevision_json,
     write_dense_action_csv,
     write_normalized_events_csv,
@@ -123,9 +124,12 @@ def write_single_clip_outputs(
         if not quiet:
             print(f"  Saved Annotations CVAT XML -> {annotations_xml_path}")
 
-    # TapeVision JSON (annotations.json)
-    if config.get("output", {}).get("write_tapevision_json", True):
-        write_tapevision_json(
+    # Play-Annotation-Generator JSON (annotations.json)
+    write_json_cfg = config.get("output", {}).get("write_play_annotation_json", None)
+    if write_json_cfg is None:
+        write_json_cfg = config.get("output", {}).get("write_tapevision_json", True)
+    if write_json_cfg:
+        write_play_annotation_json(
             annotations_json_path,
             tracks,
             metadata,
@@ -136,9 +140,10 @@ def write_single_clip_outputs(
             csv_path
         )
         written_paths["annotations_json"] = annotations_json_path
+        written_paths["play_annotation_json"] = annotations_json_path
         written_paths["tapevision_json"] = annotations_json_path
         if not quiet:
-            print(f"  Saved TapeVision Annotations JSON -> {annotations_json_path}")
+            print(f"  Saved Play Annotations JSON -> {annotations_json_path}")
 
     # Dense Actions CSV
     write_dense = (

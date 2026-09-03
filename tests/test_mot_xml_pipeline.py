@@ -3,13 +3,13 @@ import tempfile
 import unittest
 import xml.etree.ElementTree as ET
 
-from tapevision_enricher.config import DEFAULT_CONFIG
-from tapevision_enricher.mot_parser import parse_mot_gt, parse_mot_labels
-from tapevision_enricher.player_track_sheet_parser import parse_player_track_csv
-from tapevision_enricher.sheet_group_resolver import resolve_group_targets
-from tapevision_enricher.cvat_xml_generator import generate_base_cvat_xml
-from tapevision_enricher.pipeline_generate_and_enrich import run_generate_and_enrich_pipeline
-from tapevision_enricher.models import Track
+from play_annotation_generator.config import DEFAULT_CONFIG
+from play_annotation_generator.mot_parser import parse_mot_gt, parse_mot_labels
+from play_annotation_generator.player_track_sheet_parser import parse_player_track_csv
+from play_annotation_generator.sheet_group_resolver import resolve_group_targets
+from play_annotation_generator.cvat_xml_generator import generate_base_cvat_xml
+from play_annotation_generator.pipeline_generate_and_enrich import run_generate_and_enrich_pipeline
+from play_annotation_generator.models import Track
 
 MOCK_GT = """1,1,100.0,200.0,50.0,80.0,1,1,0.9
 1,2,150.0,250.0,40.0,60.0,1,2,0.8
