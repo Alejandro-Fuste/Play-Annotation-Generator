@@ -5,6 +5,7 @@ from typing import Any, Dict, List, Tuple, Optional
 from .models import Track, ActionEvent, ActionSegment, DenseActionAnnotation
 from .mot_parser import parse_mot_labels, parse_mot_gt, extract_mot_zip
 from .player_track_sheet_parser import parse_player_track_csv
+from .config import DEFAULT_CONFIG
 from .cvat_xml_generator import generate_base_cvat_xml
 from .enricher import run_enrichment_pipeline
 
@@ -13,9 +14,9 @@ def run_generate_and_enrich_pipeline(
     labels_path: Optional[str],
     template_path: str,
     key_actions_csv: str,
-    player_tracks_csv: str,
-    config: Dict[str, Any],
-    output_dir: str,
+    player_tracks_csv: Optional[str] = None,
+    config: Optional[Dict[str, Any]] = None,
+    output_dir: str = "",
     target_video_name: Optional[str] = None,
     target_video_id: Optional[str] = None
 ) -> Tuple[Dict[str, Track], Dict[str, Any], List[ActionEvent], List[ActionSegment], List[DenseActionAnnotation], Dict[str, Any], List[str], List[str]]:
@@ -30,6 +31,8 @@ def run_generate_and_enrich_pipeline(
     """
     warnings: List[str] = []
     errors: List[str] = []
+    if config is None:
+        config = DEFAULT_CONFIG
     
     # 1. Parse MOT Labels and Tracking (supporting MOT zip archive)
     if gt_path and os.path.exists(gt_path) and zipfile.is_zipfile(gt_path):
@@ -42,8 +45,17 @@ def run_generate_and_enrich_pipeline(
     mot_tracks = parse_mot_gt(gt_path, labels_list, config)
     
     # 2. Parse Player Track ID Assignments
-    assignments, parse_warnings = parse_player_track_csv(player_tracks_csv, target_video_name, target_video_id)
-    warnings.extend(parse_warnings)
+    if player_tracks_csv:
+        assignments, parse_warnings = parse_player_track_csv(player_tracks_csv, target_video_name, target_video_id)
+        warnings.extend(parse_warnings)
+    else:
+        assignments = {}
+        if target_video_name:
+            play_name = target_video_name.rsplit("_", 1)[0] if "_" in target_video_name else target_video_name
+            warn_msg = f"No Player Track assignment CSV available for play '{play_name}'; player position and team-side assignments will remain unknown."
+        else:
+            warn_msg = "No Player Track assignment CSV available; position and team-side assignments will remain unknown."
+        warnings.append(warn_msg)
     
     # 3. Input Validation
     # Check: Every track ID in the Player Track ID sheet exists in gt.txt

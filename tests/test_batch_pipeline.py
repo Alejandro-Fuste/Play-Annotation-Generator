@@ -363,6 +363,177 @@ class TestBatchPipeline(unittest.TestCase):
             self.assertIn(("Action_ZoneBlock", 145, 192), c_actions)
             self.assertIn(("Action_None", 193, 329), c_actions)
 
+    def test_missing_player_tracks_preflight_ready(self):
+        empty_pt_dir = self.root_path / "empty_player_tracks"
+        empty_pt_dir.mkdir(parents=True, exist_ok=True)
+
+        inputs = discover_tracking_inputs(self.gt_dir)
+        item = next(i for i in inputs if i.video_id == "1")
+
+        resolved = resolve_clip_preflight(
+            tr_input=item,
+            key_actions_arg=self.key_actions_dir,
+            player_tracks_arg=empty_pt_dir,
+            recognized_plays={"Play_Run_JetSweep", "JetSweep"}
+        )
+        self.assertEqual(resolved.status, "READY")
+        self.assertIsNone(resolved.player_tracks_csv)
+        self.assertFalse(resolved.player_tracks_resolved)
+        self.assertIn("Player Track CSV not available", resolved.message)
+
+    def test_missing_key_actions_preflight_failed(self):
+        empty_ka_dir = self.root_path / "empty_key_actions"
+        empty_ka_dir.mkdir(parents=True, exist_ok=True)
+
+        inputs = discover_tracking_inputs(self.gt_dir)
+        item = next(i for i in inputs if i.video_id == "1")
+
+        resolved = resolve_clip_preflight(
+            tr_input=item,
+            key_actions_arg=empty_ka_dir,
+            player_tracks_arg=self.player_tracks_dir,
+            recognized_plays={"Play_Run_JetSweep", "JetSweep"}
+        )
+        self.assertEqual(resolved.status, "FAILED")
+        self.assertEqual(resolved.failure_type, "missing_key_actions_source")
+
+    def test_batch_processing_without_player_tracks_csv(self):
+        empty_pt_dir = self.root_path / "empty_player_tracks_batch"
+        empty_pt_dir.mkdir(parents=True, exist_ok=True)
+
+        out_root = self.root_path / "batch_out_no_pt"
+        res = run_batch_pipeline(
+            gt_dir=str(self.gt_dir),
+            template_path=str(self.template_file),
+            key_actions_csv=str(self.key_actions_dir),
+            player_tracks_csv=str(empty_pt_dir),
+            output_dir=str(out_root),
+            limit=1
+        )
+
+        self.assertEqual(res["total_preflight_ready"], 3)
+        self.assertEqual(sum(1 for r in res["results"] if r.get("execution_state") == "PROCESSED"), 1)
+
+        clip_dir = out_root / "JetSweep" / "JetSweep_1"
+        self.assertTrue((clip_dir / "annotations.xml").exists())
+        self.assertTrue((clip_dir / "annotations.json").exists())
+        self.assertTrue((clip_dir / "validation_report.json").exists())
+        self.assertTrue((clip_dir / "dense_actions.csv").exists())
+        self.assertTrue((clip_dir / "normalized_action_events.csv").exists())
+
+        with open(clip_dir / "validation_report.json", "r", encoding="utf-8") as f:
+            rep = json.load(f)
+
+        self.assertEqual(len(rep.get("errors", [])), 0)
+        self.assertGreater(len(rep.get("warnings", [])), 0)
+        self.assertTrue(any("No Player Track assignment CSV available" in w for w in rep.get("warnings", [])))
+        self.assertEqual(rep.get("metrics", {}).get("num_assignments", 0), 0)
+
+        with open(out_root / "_batch" / "batch_manifest.json", "r", encoding="utf-8") as f:
+            manifest = json.load(f)
+
+        clip_res = next(r for r in manifest["results"] if r.get("clip_name") == "JetSweep_1")
+        self.assertEqual(clip_res["status"], "WARNING")
+        self.assertEqual(clip_res["preflight_status"], "READY")
+        self.assertEqual(clip_res["player_track_source"], "")
+        self.assertFalse(clip_res["player_tracks_resolved"])
+        self.assertGreater(clip_res["unknown_track_count"], 0)
+
+    def test_unknown_mapping_and_track_identity_preserved(self):
+        empty_pt_dir = self.root_path / "empty_player_tracks_identity"
+        empty_pt_dir.mkdir(parents=True, exist_ok=True)
+
+        out_root = self.root_path / "batch_out_identity"
+        run_batch_pipeline(
+            gt_dir=str(self.gt_dir),
+            template_path=str(self.template_file),
+            key_actions_csv=str(self.key_actions_dir),
+            player_tracks_csv=str(empty_pt_dir),
+            output_dir=str(out_root),
+            limit=1
+        )
+
+        clip_dir = out_root / "JetSweep" / "JetSweep_1"
+        with open(clip_dir / "annotations.json", "r", encoding="utf-8") as f:
+            ann_data = json.load(f)
+
+        players = ann_data.get("tracks", {}).get("players", [])
+        self.assertGreater(len(players), 0)
+        for player in players:
+            self.assertEqual(player.get("position"), "Position_Unknown")
+            self.assertEqual(player.get("team_side"), "Team_Unknown")
+            self.assertIn(str(player.get("actor_track_id")), ["1", "2"])
+
+    def test_mixed_batch_with_and_without_player_tracks_csv(self):
+        counter_dir = self.gt_dir / "Counter"
+        counter_dir.mkdir(parents=True, exist_ok=True)
+        counter_zip = counter_dir / "Counter_1_cvat_mot.zip"
+        create_mock_zip(str(counter_zip), MOCK_GT, MOCK_LABELS)
+
+        counter_ka_content = """video_name,video_id,play_tag,result_tag,result_frame,pre_snap,ball_snap,end_play
+Video Name:,Counter_
+Counter_1,1,Play_Run_Counter,Result_Tackle,10,"0,ALL_OFFENSE",5,10
+"""
+        counter_ka_file = self.key_actions_dir / "Counter.csv"
+        with open(counter_ka_file, "w") as f:
+            f.write(counter_ka_content)
+
+        out_root = self.root_path / "batch_out_mixed"
+        res = run_batch_pipeline(
+            gt_dir=str(self.gt_dir),
+            template_path=str(self.template_file),
+            key_actions_csv=str(self.key_actions_dir),
+            player_tracks_csv=str(self.player_tracks_dir),
+            output_dir=str(out_root)
+        )
+
+        self.assertEqual(res["total_preflight_ready"], 4)
+
+        results = res["results"]
+        counter_res = next(r for r in results if r.get("play_name") == "Counter")
+        jetsweep_res = next(r for r in results if r.get("play_name") == "JetSweep" and r.get("video_id") == "1")
+
+        self.assertEqual(counter_res["preflight_status"], "READY")
+        self.assertEqual(counter_res["status"], "WARNING")
+        self.assertFalse(counter_res["player_tracks_resolved"])
+        self.assertEqual(counter_res["player_track_source"], "")
+
+        self.assertEqual(jetsweep_res["preflight_status"], "READY")
+        self.assertTrue(jetsweep_res["player_tracks_resolved"])
+        self.assertIn("JetSweep.csv", jetsweep_res["player_track_source"])
+
+        failed_due_to_pt = sum(1 for r in results if r.get("failure_type") == "missing_player_tracks_source")
+        self.assertEqual(failed_due_to_pt, 0)
+
+    def test_single_clip_worker_without_player_tracks(self):
+        from play_annotation_generator.config import load_config
+        cfg = load_config(None)
+        cfg["mode"] = "generate_and_enrich_xml"
+        single_out = self.root_path / "single_no_pt"
+        single_out.mkdir(parents=True, exist_ok=True)
+
+        (
+            tracks, meta, events, segs, dense, metrics, warnings, errors
+        ) = run_generate_and_enrich_pipeline(
+            gt_path=str(self.zip1),
+            labels_path=None,
+            template_path=str(self.template_file),
+            key_actions_csv=str(self.key_actions_file),
+            player_tracks_csv=None,
+            config=cfg,
+            output_dir=str(single_out),
+            target_video_name="JetSweep_1",
+            target_video_id="1"
+        )
+        self.assertEqual(len(errors), 0)
+        self.assertEqual(metrics["num_assignments"], 0)
+        self.assertTrue(any("No Player Track assignment CSV available for play 'JetSweep'" in w for w in warnings))
+        self.assertGreater(len(tracks), 0)
+        for t in tracks.values():
+            if t.label == "player":
+                self.assertIn(t.position, (None, "undefined", "Position_Unknown"))
+                self.assertIn(t.team_side, (None, "undefined", "Team_Unknown"))
+
 
 if __name__ == "__main__":
     unittest.main()

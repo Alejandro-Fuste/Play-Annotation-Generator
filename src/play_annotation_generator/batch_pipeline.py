@@ -48,6 +48,7 @@ class ResolvedClipIdentity:
     message: Optional[str] = None
     key_actions_csv: Optional[Path] = None
     player_tracks_csv: Optional[Path] = None
+    player_tracks_resolved: bool = True
 
 
 @dataclass
@@ -60,8 +61,9 @@ class BatchClipJob:
     output_dir: Path
     template_path: Path
     key_actions_csv: Path
-    player_tracks_csv: Path
+    player_tracks_csv: Optional[Path] = None
     labels_path: Optional[Path] = None
+    player_tracks_resolved: bool = True
 
 
 def sanitize_filename_component(name: str) -> str:
@@ -236,13 +238,13 @@ def resolve_per_play_sources(
         else:
             errors.append(f"missing_key_actions_source: Key Actions source path does not exist: {key_actions_arg}")
 
-    # 3. Player Tracks CSV resolution
+    # 3. Player Tracks CSV resolution (optional per play)
     pt_path: Optional[Path] = None
     if cfg_pt and Path(cfg_pt).exists():
         pt_path = Path(cfg_pt)
-    elif player_tracks_arg.is_file():
+    elif player_tracks_arg and player_tracks_arg.is_file():
         pt_path = player_tracks_arg
-    elif player_tracks_arg.is_dir():
+    elif player_tracks_arg and player_tracks_arg.is_dir():
         cand1 = player_tracks_arg / f"{play_name}.csv"
         cand2 = player_tracks_arg / play_name / "PlayerTrack_ID_Sheet.csv"
         cand3 = player_tracks_arg / play_name / f"{play_name}.csv"
@@ -253,12 +255,12 @@ def resolve_per_play_sources(
         elif cand3.exists():
             pt_path = cand3
         else:
-            errors.append(f"missing_player_tracks_source: Player Tracks CSV not found for play '{play_name}' in directory '{player_tracks_arg}'")
+            pt_path = None
     else:
-        if player_tracks_arg.exists():
+        if player_tracks_arg and player_tracks_arg.exists():
             pt_path = player_tracks_arg
         else:
-            errors.append(f"missing_player_tracks_source: Player Tracks source path does not exist: {player_tracks_arg}")
+            pt_path = None
 
     return ka_path, pt_path, errors
 
@@ -325,8 +327,17 @@ def resolve_clip_preflight(
             play_type=play_type,
             video_id=vid_id,
             clip_key=clip_name,
-            message="; ".join(src_errors)
+            message="; ".join(src_errors),
+            key_actions_csv=ka_csv,
+            player_tracks_csv=pt_csv,
+            player_tracks_resolved=False
         )
+
+    pt_resolved = pt_csv is not None
+    if pt_resolved:
+        msg = "Preflight checks passed"
+    else:
+        msg = f"Player Track CSV not available for play '{play_type}'; position/team assignments will remain unknown."
 
     return ResolvedClipIdentity(
         status="READY",
@@ -334,9 +345,10 @@ def resolve_clip_preflight(
         video_id=vid_id,
         play_type=play_type,
         clip_key=clip_name,
-        message="Preflight checks passed",
+        message=msg,
         key_actions_csv=ka_csv,
-        player_tracks_csv=pt_csv
+        player_tracks_csv=pt_csv,
+        player_tracks_resolved=pt_resolved
     )
 
 
@@ -635,7 +647,8 @@ def run_batch_pipeline(
                     template_path=template_p,
                     key_actions_csv=identity.key_actions_csv,
                     player_tracks_csv=identity.player_tracks_csv,
-                    labels_path=Path(labels_path) if labels_path else None
+                    labels_path=Path(labels_path) if labels_path else None,
+                    player_tracks_resolved=identity.player_tracks_resolved
                 )
             )
         else:
@@ -691,7 +704,8 @@ def run_batch_pipeline(
                 "tracking_file": tr_input.relative_path.as_posix(),
                 "tracking_kind": tr_input.input_kind,
                 "key_actions_source": str(key_actions_p),
-                "player_track_source": str(player_tracks_p),
+                "player_track_source": str(identity.player_tracks_csv) if identity.player_tracks_csv else "",
+                "player_tracks_resolved": getattr(identity, "player_tracks_resolved", False),
                 "template_source": str(template_p),
                 "output_directory": "",
                 "preflight_status": "FAILED",
@@ -738,7 +752,8 @@ def run_batch_pipeline(
                 "tracking_file": job.tracking_input.relative_path.as_posix(),
                 "tracking_kind": job.tracking_input.input_kind,
                 "key_actions_source": str(job.key_actions_csv),
-                "player_track_source": str(job.player_tracks_csv),
+                "player_track_source": str(job.player_tracks_csv) if job.player_tracks_csv else "",
+                "player_tracks_resolved": job.player_tracks_resolved,
                 "template_source": str(job.template_path),
                 "output_directory": str(job_out_dir),
                 "preflight_status": "FAILED",
@@ -798,7 +813,8 @@ def run_batch_pipeline(
                 "tracking_file": job.tracking_input.relative_path.as_posix(),
                 "tracking_kind": job.tracking_input.input_kind,
                 "key_actions_source": str(job.key_actions_csv),
-                "player_track_source": str(job.player_tracks_csv),
+                "player_track_source": str(job.player_tracks_csv) if job.player_tracks_csv else "",
+                "player_tracks_resolved": job.player_tracks_resolved,
                 "template_source": str(job.template_path),
                 "output_directory": str(job_out_dir),
                 "preflight_status": "READY",
@@ -837,7 +853,8 @@ def run_batch_pipeline(
                 "tracking_file": job.tracking_input.relative_path.as_posix(),
                 "tracking_kind": job.tracking_input.input_kind,
                 "key_actions_source": str(job.key_actions_csv),
-                "player_track_source": str(job.player_tracks_csv),
+                "player_track_source": str(job.player_tracks_csv) if job.player_tracks_csv else "",
+                "player_tracks_resolved": job.player_tracks_resolved,
                 "template_source": str(job.template_path),
                 "output_directory": str(job_out_dir),
                 "preflight_status": "READY",
@@ -890,7 +907,7 @@ def run_batch_pipeline(
                 labels_path=str(job.labels_path) if job.labels_path else None,
                 template_path=str(job.template_path),
                 key_actions_csv=str(job.key_actions_csv),
-                player_tracks_csv=str(job.player_tracks_csv),
+                player_tracks_csv=str(job.player_tracks_csv) if job.player_tracks_csv else None,
                 config=config,
                 output_dir=str(job_out_dir),
                 target_video_name=job.video_name,
@@ -949,7 +966,8 @@ def run_batch_pipeline(
                 "tracking_file": job.tracking_input.relative_path.as_posix(),
                 "tracking_kind": job.tracking_input.input_kind,
                 "key_actions_source": str(job.key_actions_csv),
-                "player_track_source": str(job.player_tracks_csv),
+                "player_track_source": str(job.player_tracks_csv) if job.player_tracks_csv else "",
+                "player_tracks_resolved": job.player_tracks_resolved,
                 "template_source": str(job.template_path),
                 "output_directory": str(job_out_dir),
                 "preflight_status": "READY",
@@ -998,7 +1016,8 @@ def run_batch_pipeline(
                 "tracking_file": job.tracking_input.relative_path.as_posix(),
                 "tracking_kind": job.tracking_input.input_kind,
                 "key_actions_source": str(job.key_actions_csv),
-                "player_track_source": str(job.player_tracks_csv),
+                "player_track_source": str(job.player_tracks_csv) if job.player_tracks_csv else "",
+                "player_tracks_resolved": job.player_tracks_resolved,
                 "template_source": str(job.template_path),
                 "output_directory": str(job_out_dir),
                 "preflight_status": "READY",

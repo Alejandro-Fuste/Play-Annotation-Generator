@@ -13,6 +13,7 @@ MANIFEST_CSV_FIELDS = [
     "tracking_kind",
     "key_actions_source",
     "player_track_source",
+    "player_tracks_resolved",
     "template_source",
     "output_directory",
     "preflight_status",

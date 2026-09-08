@@ -53,8 +53,12 @@ def run_enrichment_pipeline(
     metadata["video_name"] = target_video if target_video else "Unknown_Video"
     
     # 3. Normalize and match track IDs
-    resolved_events, match_errors = normalize_and_match_events(events, tracks, config)
-    errors.extend(match_errors)
+    resolved_events, match_issues = normalize_and_match_events(events, tracks, config)
+    for issue in match_issues:
+        if "position/team_side missing" in issue:
+            warnings.append(issue)
+        else:
+            errors.append(issue)
     
     # Extract play-level fields from events
     play_tag = "Play_Unknown"

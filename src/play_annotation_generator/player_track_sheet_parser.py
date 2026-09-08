@@ -40,7 +40,7 @@ def parse_assignments_cell(cell_value: str) -> List[Tuple[str, str]]:
     return parsed
 
 def parse_player_track_csv(
-    csv_path: str,
+    csv_path: Optional[str],
     target_video_name: Optional[str] = None,
     target_video_id: Optional[str] = None
 ) -> Tuple[Dict[str, PlayerTrackAssignment], List[str]]:
@@ -53,7 +53,11 @@ def parse_player_track_csv(
     """
     warnings = []
     assignments: Dict[str, PlayerTrackAssignment] = {}
-    
+
+    if not csv_path:
+        warnings.append("No Player Track assignment CSV available; position and team-side assignments will remain unknown.")
+        return assignments, warnings
+
     if not os.path.exists(csv_path):
         warnings.append(f"Player track CSV file not found: {csv_path}")
         return assignments, warnings
