@@ -9,6 +9,7 @@ from .config import DEFAULT_CONFIG
 from .cvat_xml_generator import generate_base_cvat_xml
 from .enricher import run_enrichment_pipeline
 
+
 def run_generate_and_enrich_pipeline(
     gt_path: str,
     labels_path: Optional[str],
@@ -22,9 +23,9 @@ def run_generate_and_enrich_pipeline(
 ) -> Tuple[Dict[str, Track], Dict[str, Any], List[ActionEvent], List[ActionSegment], List[DenseActionAnnotation], Dict[str, Any], List[str], List[str]]:
     """
     Orchestrates the generate_and_enrich_xml workflow (Mode B).
-    
+
     1. Parses MOT tracking data (gt.txt and labels.txt or MOT zip).
-    2. Parses Player Track ID CSV.
+    2. Parses Player Track ID CSV when available.
     3. Runs basic input validation checks.
     4. Generates a base CVAT XML in-memory and saves it.
     5. Calls the existing enrich_existing_xml pipeline on the generated base XML.
@@ -33,7 +34,7 @@ def run_generate_and_enrich_pipeline(
     errors: List[str] = []
     if config is None:
         config = DEFAULT_CONFIG
-    
+
     # 1. Parse MOT Labels and Tracking (supporting MOT zip archive)
     if gt_path and os.path.exists(gt_path) and zipfile.is_zipfile(gt_path):
         extracted_gt, extracted_labels = extract_mot_zip(gt_path, os.path.join(output_dir, "unpacked_mot"))
@@ -43,8 +44,9 @@ def run_generate_and_enrich_pipeline(
 
     labels_list = parse_mot_labels(labels_path)
     mot_tracks = parse_mot_gt(gt_path, labels_list, config)
-    
+
     # 2. Parse Player Track ID Assignments
+    player_tracks_resolved = bool(player_tracks_csv)
     if player_tracks_csv:
         assignments, parse_warnings = parse_player_track_csv(player_tracks_csv, target_video_name, target_video_id)
         warnings.extend(parse_warnings)
@@ -56,7 +58,7 @@ def run_generate_and_enrich_pipeline(
         else:
             warn_msg = "No Player Track assignment CSV available; position and team-side assignments will remain unknown."
         warnings.append(warn_msg)
-    
+
     # 3. Input Validation
     # Check: Every track ID in the Player Track ID sheet exists in gt.txt
     for tid_str in assignments.keys():
@@ -74,21 +76,21 @@ def run_generate_and_enrich_pipeline(
                 errors.append(msg)
             else:
                 warnings.append(msg)
-                
+
     # Check if there are no player tracks found at all
     player_lbl = config.get("labels", {}).get("player_label", "player")
     num_players = sum(1 for t in mot_tracks.values() if t.label == player_lbl)
     if num_players == 0:
         errors.append("No player tracks found in MOT gt.txt.")
-        
+
     # Check if we should fail or proceed
     if errors and config.get("validation", {}).get("strict", False):
         return {}, {}, [], [], [], {}, warnings, errors
-        
+
     # 4. Generate Base XML
     os.makedirs(output_dir, exist_ok=True)
     generated_base_xml_path = os.path.join(output_dir, "generated_base_cvat.xml")
-    
+
     try:
         generate_base_cvat_xml(
             template_path=template_path,
@@ -100,10 +102,10 @@ def run_generate_and_enrich_pipeline(
     except Exception as e:
         errors.append(f"Failed to generate base CVAT XML: {e}")
         return {}, {}, [], [], [], {}, warnings, errors
-        
+
     # 5. Invoke core enrichment pipeline on the newly created base XML
     target_video_filter = target_video_name or target_video_id
-    
+
     try:
         (
             tracks,
@@ -118,19 +120,20 @@ def run_generate_and_enrich_pipeline(
             xml_path=generated_base_xml_path,
             csv_path=key_actions_csv,
             config=config,
-            target_video=target_video_filter
+            target_video=target_video_filter,
+            allow_unresolved_position_targets=not player_tracks_resolved,
         )
     except Exception as e:
         errors.append(f"Core enrichment pipeline failed with exception: {e}")
         return {}, {}, [], [], [], {}, warnings, errors
-        
+
     warnings.extend(pipeline_warnings)
     errors.extend(pipeline_errors)
-    
+
     # 6. Additional Mode B Specific Validations
     start_frame = metadata.get("start_frame", 0)
     stop_frame = metadata.get("stop_frame", 0)
-    
+
     # Check: Every action frame is within [start_frame, stop_frame]
     for ev in resolved_events:
         if ev.start_frame is not None and not (start_frame <= ev.start_frame <= stop_frame):
@@ -139,12 +142,12 @@ def run_generate_and_enrich_pipeline(
                 errors.append(msg)
             else:
                 warnings.append(msg)
-                
+
     # Update metrics with MOT specific counts
     metrics["num_mot_rows_parsed"] = sum(len(t.boxes) for t in mot_tracks.values())
     metrics["num_mot_tracks"] = len(mot_tracks)
     metrics["num_assignments"] = len(assignments)
-    
+
     return (
         tracks,
         metadata,
