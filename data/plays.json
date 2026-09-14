@@ -2299,13 +2299,13 @@
                     "Handoff"
                 ],
                 "RB": [
-                    "Press Gap"
+                    "Press Interior Gap"
                 ],
                 "OL": [
                     "Stretch Step",
                     "Zone Block"
                 ]
-            }
+            },
             "notes": "Effective to exploit aggressive inside fits; requires linemen to sustain blocks at the second level; vulnerable to defensive line penetration or backside pursuit. The inside zone stretch aims for vertical displacement, with the running back pressing for an internal cutback lane. The outside zone stretch, however, works to stretch the defense horizontally, with the back looking to attack the perimeter."
         },
         "Iso": {

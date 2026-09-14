@@ -626,6 +626,11 @@
             "start": "When players have settled into their pre-snap positions and the ball is placed on the ground.",
             "end": "At the precise moment the center begins the snap motion, initiating the play."
         },
+        "Press Interior Gap": {
+            "definition": "A ball carrier's action of attacking an interior run landmark or gap while maintaining a controlled path that allows the blocking structure and defensive leverage to develop before committing to the final running lane.",
+            "start": "When the ball carrier begins advancing toward the intended interior run landmark after receiving or preparing to receive the ball.",
+            "end": "When the ball carrier commits to a specific running lane, cuts away from the initial path, or begins accelerating through the selected crease."
+        },
         "Press Edge": {
             "definition": "A ball carrier's action of attacking toward the outside edge of the blocking scheme to force perimeter defenders to widen before choosing to continue outside, turn upfield, or cut back.",
             "start": "When the ball carrier commits their path and body position toward the outside edge or widest blocking landmark.",
