@@ -9,6 +9,7 @@ from play_annotation_generator.outside_zone_qb_zone_read_migration import (
     STATUS_BLOCKED,
     STATUS_HOLDOUT,
     STATUS_MIGRATE,
+    _parse_qb_new_id,
     apply_migration,
     build_manifest,
     load_manifest,
@@ -48,22 +49,21 @@ def _create_minimal_summary(path: Path, output_files: list[str], had_bom: bool =
 
 
 def _setup_synthetic_dataset(tmp_path: Path):
+    tmp_path.mkdir(parents=True, exist_ok=True)
     track_root = tmp_path / "tracking"
     ka_root = tmp_path / "key_actions"
-    track_root.mkdir()
-    ka_root.mkdir()
+    track_root.mkdir(parents=True, exist_ok=True)
+    ka_root.mkdir(parents=True, exist_ok=True)
 
     # Tracking folders: OutsideZoneStretch, QB_ZoneRead, SplitZone, InsideZoneRead
     ozs_track = track_root / "OutsideZoneStretch"
-    ozs_track.mkdir()
+    ozs_track.mkdir(parents=True, exist_ok=True)
     qb_track = track_root / "QB_ZoneRead"
-    qb_track.mkdir()
+    qb_track.mkdir(parents=True, exist_ok=True)
     split_track = track_root / "SplitZone"
-    split_track.mkdir()
+    split_track.mkdir(parents=True, exist_ok=True)
     izr_track = track_root / "InsideZoneRead"
-    izr_track.mkdir()
-
-    # Note: OutsideZoneRead and InsideZoneStretch folders do NOT exist initially (created on apply)
+    izr_track.mkdir(parents=True, exist_ok=True)
 
     # OZS source zips: 1, 2, 3, 4, 5
     for i in (1, 2, 3, 4, 5):
@@ -122,15 +122,15 @@ def _setup_synthetic_dataset(tmp_path: Path):
         encoding="utf-8",
     )
 
-    # QB_ZoneRead.csv: 3 rows (QB 1 -> OZR 2, QB 3 -> IZR 236, QB 17 -> HOLDOUT)
+    # QB_ZoneRead.csv: 3 rows using single New ID column format
     qb_ka = ka_root / "QB_ZoneRead.csv"
     qb_ka.write_text(
         "Video Name:,QB Zone Read\r\n"
         ",Key Actions\r\n"
-        "Video #,Pre Snap,Ball Snap,Zone Block,Snap Receive,Read Defender,Keep,Handoff,Ball Carry,Block Second Level,End of OL Block,End of Play,Classification,New ID\r\n"
-        '1,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,OutsideZoneRead,348\r\n'
-        '3,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,InsideZoneRead,236\r\n'
-        '17,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,Counter,-\r\n',
+        "Video #,Pre Snap,Ball Snap,Zone Block,Snap Receive,Read Defender,Keep,Handoff,Ball Carry,Block Second Level,End of OL Block,End of Play,New ID\r\n"
+        '1,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,OutsideZoneRead_2\r\n'
+        '3,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,InsideZoneRead_236\r\n'
+        '17,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,Counter_-\r\n',
         encoding="utf-8",
     )
 
@@ -174,6 +174,30 @@ def _setup_synthetic_dataset(tmp_path: Path):
         "plays": plays_file,
         "manifest": manifest_file,
     }
+
+
+def test_parse_qb_new_id_valid_and_invalid():
+    # Valid
+    assert _parse_qb_new_id("OutsideZoneRead_97") == ("OutsideZoneRead", 97)
+    assert _parse_qb_new_id("InsideZoneRead_236") == ("InsideZoneRead", 236)
+    assert _parse_qb_new_id("Counter_-") == ("Counter", None)
+
+    # Invalid
+    invalid_cases = [
+        "OutsideZoneRead",
+        "OutsideZoneRead_",
+        "OutsideZoneRead_abc",
+        "InsideZoneRead_-",
+        "Counter_12",
+        "QB_ZoneRead_97",
+        "-",
+        "",
+        "   ",
+        "SplitZone_10",
+    ]
+    for case in invalid_cases:
+        with pytest.raises(ValueError, match="Malformed QB New ID"):
+            _parse_qb_new_id(case)
 
 
 def test_manifest_generation_four_way_mapping(tmp_path):
@@ -284,17 +308,50 @@ def test_manifest_generation_rejects_duplicate_source_identity_in_same_file(tmp_
         build_manifest(env["track_root"], env["ka_root"], env["summary"])
 
 
-def test_stale_qb_new_id_reported_as_warning(tmp_path):
-    env = _setup_synthetic_dataset(tmp_path)
-    rows = build_manifest(env["track_root"], env["ka_root"], env["summary"])
-    res = validate_manifest(
-        rows,
-        tracking_root=env["track_root"],
-        dataset_summary=env["summary"],
-        plays_path=env["plays"],
-        key_actions_root=env["ka_root"],
+def test_qb_destination_mismatch_against_canonical_csv_causes_error(tmp_path):
+    # Case 1: OutsideZoneRead destination mismatch
+    env = _setup_synthetic_dataset(tmp_path / "case1")
+    qb_ka = env["ka_root"] / "QB_ZoneRead.csv"
+    qb_ka.write_text(
+        "Video Name:,QB Zone Read\r\n,Key Actions\r\n"
+        "Video #,Pre Snap,Ball Snap,Zone Block,Snap Receive,Read Defender,Keep,Handoff,Ball Carry,Block Second Level,End of OL Block,End of Play,New ID\r\n"
+        '1,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,OutsideZoneRead_99\r\n'
+        '3,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,InsideZoneRead_236\r\n'
+        '17,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,Counter_-\r\n',
+        encoding="utf-8",
     )
-    assert any("Stale New ID detected in QB_ZoneRead.csv row 1" in w for w in res.warnings)
+    with pytest.raises(ValueError, match="does not match canonical OutsideZoneRead.csv destination"):
+        build_manifest(env["track_root"], env["ka_root"], env["summary"])
+
+    # Case 2: InsideZoneRead destination not found in InsideZoneRead.csv
+    env2 = _setup_synthetic_dataset(tmp_path / "case2")
+    qb_ka2 = env2["ka_root"] / "QB_ZoneRead.csv"
+    qb_ka2.write_text(
+        "Video Name:,QB Zone Read\r\n,Key Actions\r\n"
+        "Video #,Pre Snap,Ball Snap,Zone Block,Snap Receive,Read Defender,Keep,Handoff,Ball Carry,Block Second Level,End of OL Block,End of Play,New ID\r\n"
+        '1,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,OutsideZoneRead_2\r\n'
+        '3,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,InsideZoneRead_999\r\n'
+        '17,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,Counter_-\r\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="destination InsideZoneRead_999 not found in InsideZoneRead.csv"):
+        build_manifest(env2["track_root"], env2["ka_root"], env2["summary"])
+
+
+def test_holdout_safety_and_exact_identities(tmp_path):
+    env = _setup_synthetic_dataset(tmp_path)
+    # Attempt unauthorized holdout: row 1 (not in EXPECTED_QB_HOLDOUTS) with Counter_-
+    qb_ka = env["ka_root"] / "QB_ZoneRead.csv"
+    qb_ka.write_text(
+        "Video Name:,QB Zone Read\r\n,Key Actions\r\n"
+        "Video #,Pre Snap,Ball Snap,Zone Block,Snap Receive,Read Defender,Keep,Handoff,Ball Carry,Block Second Level,End of OL Block,End of Play,New ID\r\n"
+        '1,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,Counter_-\r\n'
+        '3,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,InsideZoneRead_236\r\n'
+        '17,"0,ALL",1,2,3,4,5,-,6,7,70,OOB,Counter_-\r\n',
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="Unexpected QB holdout ID 1"):
+        build_manifest(env["track_root"], env["ka_root"], env["summary"])
 
 
 def test_unmapped_source_causes_blocked_and_fails_validation(tmp_path):
@@ -588,6 +645,47 @@ def test_outside_zone_read_mixed_provenance():
     assert ozs_prov + qb_prov == 142
 
 
+def test_strict_production_counts_rejects_alternate_197_48_counts():
+    manifest_path = Path("data/migrations/outside_zone_qb_zone_read_migration_manifest.csv")
+    assert manifest_path.is_file()
+    rows = load_manifest(manifest_path)
+
+    # Modify one row to simulate the 197 / 48 distribution (e.g. change one SplitZone clip to OutsideZoneStretch)
+    modified_rows = []
+    changed = False
+    for r in rows:
+        if not changed and r.source_play == "OutsideZoneStretch" and r.destination_play == "SplitZone":
+            modified_rows.append(
+                ManifestRow(
+                    source_play=r.source_play,
+                    source_video_id=r.source_video_id,
+                    source_clip_name=r.source_clip_name,
+                    destination_play="OutsideZoneStretch",
+                    destination_video_id=999,
+                    destination_clip_name="OutsideZoneStretch_999",
+                    status=r.status,
+                    source_key_actions_file=r.source_key_actions_file,
+                    destination_key_actions_file="data/key_actions/OutsideZoneStretch.csv",
+                    notes=r.notes,
+                )
+            )
+            changed = True
+        else:
+            modified_rows.append(r)
+
+    res = validate_manifest(
+        modified_rows,
+        tracking_root="data/tracking",
+        dataset_summary="data/DatasetSummary.csv",
+        plays_path="data/plays.json",
+        key_actions_root="data/key_actions",
+        require_production_counts=True,
+    )
+    assert not res.ready
+    assert any("Expected exactly 196 OutsideZoneStretch -> OutsideZoneStretch clips, found 197" in e for e in res.errors)
+    assert any("Expected exactly 49 OutsideZoneStretch -> SplitZone clips, found 48" in e for e in res.errors)
+
+
 def test_canonical_manifest_generation_and_production_counts():
     rows = build_manifest(
         tracking_root="data/tracking",
@@ -603,7 +701,7 @@ def test_canonical_manifest_generation_and_production_counts():
         require_production_counts=True,
     )
 
-    # 1. Four-way Outside Zone counts
+    # 1. Four-way Outside Zone strict counts
     assert res.ozs_to_ozs == 196
     assert res.ozs_to_ozr == 96
     assert res.ozs_to_split_zone == 49
@@ -629,9 +727,10 @@ def test_canonical_manifest_generation_and_production_counts():
     assert res.blocked_count == 0
     assert len(res.rows) == 545
 
-    # 5. Zero collisions, zero summary mismatches, ready status
+    # 5. Zero collisions, zero summary mismatches, zero warnings, ready status
     assert res.dest_collisions == 0
     assert res.summary_mismatches == 0
+    assert len(res.warnings) == 0
     assert res.ready
 
 
@@ -651,7 +750,7 @@ def test_committed_manifest_against_live_repository():
         require_production_counts=True,
     )
 
-    # Exact counts from canonical CSVs
+    # Exact strict counts from canonical CSVs
     assert res.ozs_to_ozs == 196
     assert res.ozs_to_ozr == 96
     assert res.ozs_to_split_zone == 49
@@ -672,6 +771,7 @@ def test_committed_manifest_against_live_repository():
     assert res.blocked_count == 0
     assert res.dest_collisions == 0
     assert res.summary_mismatches == 0
+    assert len(res.warnings) == 0
 
     # Check holdouts
     holdout_rows = [r for r in rows if r.status == STATUS_HOLDOUT]

@@ -134,6 +134,16 @@ def _parse_original_id(val: str) -> tuple[str, int]:
     return match.group(1), int(match.group(2))
 
 
+def _parse_qb_new_id(value: str) -> tuple[str, int | None]:
+    value = value.strip()
+    if value == "Counter_-":
+        return "Counter", None
+    match = re.fullmatch(r"^(InsideZoneRead|OutsideZoneRead)_(\d+)$", value)
+    if not match:
+        raise ValueError(f"Malformed QB New ID: '{value}'")
+    return match.group(1), int(match.group(2))
+
+
 def _read_csv_rows(path: Path) -> list[list[str]]:
     raw = path.read_bytes()
     text = raw.decode("utf-8-sig")
@@ -216,9 +226,30 @@ def build_manifest(
 
     qb_csv = _read_csv_rows(qb_file)
     qb_headers = qb_csv[2]
+    if "Video #" not in qb_headers or "New ID" not in qb_headers:
+        raise ValueError("QB_ZoneRead.csv missing 'Video #' or 'New ID' header")
     qb_vid_idx = qb_headers.index("Video #")
-    qb_cls_idx = qb_headers.index("Classification")
-    qb_new_id_idx = qb_headers.index("New ID") if "New ID" in qb_headers else -1
+    qb_new_id_idx = qb_headers.index("New ID")
+
+    izr_csv = _read_csv_rows(izr_file)
+    izr_headers = izr_csv[2]
+    if "Video #" not in izr_headers:
+        raise ValueError("InsideZoneRead.csv missing 'Video #' header")
+    izr_vid_idx = izr_headers.index("Video #")
+    izr_orig_idx = izr_headers.index("Original ID") if "Original ID" in izr_headers else -1
+
+    izr_vids: set[int] = set()
+    izr_qb_provenance: dict[int, int] = {}
+    for row in izr_csv[3:]:
+        if not row or not row[0].strip():
+            continue
+        dest_vid = int(row[izr_vid_idx].strip())
+        izr_vids.add(dest_vid)
+        if izr_orig_idx >= 0 and len(row) > izr_orig_idx:
+            orig_val = row[izr_orig_idx].strip()
+            if orig_val.startswith("QB_ZoneRead_"):
+                _, qb_src_id = _parse_original_id(orig_val)
+                izr_qb_provenance[qb_src_id] = dest_vid
 
     holdout_set = set(EXPECTED_QB_HOLDOUTS)
     qb_rows: dict[int, ManifestRow] = {}
@@ -227,14 +258,15 @@ def build_manifest(
         if not row or not row[0].strip():
             continue
         src_id = int(row[qb_vid_idx].strip())
-        cls = row[qb_cls_idx].strip()
-        new_id_str = (
-            row[qb_new_id_idx].strip() if qb_new_id_idx >= 0 and len(row) > qb_new_id_idx else ""
-        )
+        new_id_str = row[qb_new_id_idx].strip() if len(row) > qb_new_id_idx else ""
+        try:
+            cls, dest_id = _parse_qb_new_id(new_id_str)
+        except ValueError as exc:
+            raise ValueError(f"QB_ZoneRead row {src_id} has invalid New ID: {exc}") from exc
 
-        if src_id in holdout_set or cls in ("Counter", "HOLDOUT", "Holdout"):
+        if cls == "Counter":
             if src_id not in holdout_set:
-                raise ValueError(f"Unexpected QB holdout ID {src_id}")
+                raise ValueError(f"Unexpected QB holdout ID {src_id} for New ID '{new_id_str}'")
             qb_rows[src_id] = ManifestRow(
                 source_play="QB_ZoneRead",
                 source_video_id=src_id,
@@ -248,9 +280,24 @@ def build_manifest(
                 notes="Unresolved Counter/gap taxonomy",
             )
         elif cls == "InsideZoneRead":
-            if not new_id_str.isdigit():
-                raise ValueError(f"QB_ZoneRead row {src_id} classified as InsideZoneRead missing valid New ID")
-            dest_id = int(new_id_str)
+            if src_id in holdout_set:
+                raise ValueError(f"Expected QB holdout ID {src_id} to have New ID 'Counter_-', got '{new_id_str}'")
+            assert dest_id is not None
+            if dest_id not in izr_vids:
+                raise ValueError(
+                    f"QB_ZoneRead row {src_id} destination InsideZoneRead_{dest_id} not found in InsideZoneRead.csv"
+                )
+            if src_id in izr_qb_provenance and izr_qb_provenance[src_id] != dest_id:
+                raise ValueError(
+                    f"QB_ZoneRead row {src_id} mapped to InsideZoneRead_{dest_id}, "
+                    f"but InsideZoneRead.csv provenance maps QB_ZoneRead_{src_id} to Video #{izr_qb_provenance[src_id]}"
+                )
+            for other_src, other_dest in izr_qb_provenance.items():
+                if other_dest == dest_id and other_src != src_id:
+                    raise ValueError(
+                        f"QB_ZoneRead row {src_id} mapped to InsideZoneRead_{dest_id}, "
+                        f"but InsideZoneRead.csv provenance assigns Video #{dest_id} to QB_ZoneRead_{other_src}"
+                    )
             qb_rows[src_id] = ManifestRow(
                 source_play="QB_ZoneRead",
                 source_video_id=src_id,
@@ -264,11 +311,18 @@ def build_manifest(
                 notes="QB keep preserved as action",
             )
         elif cls == "OutsideZoneRead":
+            if src_id in holdout_set:
+                raise ValueError(f"Expected QB holdout ID {src_id} to have New ID 'Counter_-', got '{new_id_str}'")
+            assert dest_id is not None
             if src_id not in qb_sources_mapped_ozr:
                 raise ValueError(
                     f"QB_ZoneRead row {src_id} classified as OutsideZoneRead not found in OutsideZoneRead.csv"
                 )
-            dest_id = qb_sources_mapped_ozr[src_id]
+            if qb_sources_mapped_ozr[src_id] != dest_id:
+                raise ValueError(
+                    f"QB_ZoneRead row {src_id} New ID '{new_id_str}' does not match "
+                    f"canonical OutsideZoneRead.csv destination Video #{qb_sources_mapped_ozr[src_id]}"
+                )
             qb_rows[src_id] = ManifestRow(
                 source_play="QB_ZoneRead",
                 source_video_id=src_id,
@@ -422,33 +476,52 @@ def validate_manifest(
         try:
             qb_csv = _read_csv_rows(qb_file)
             qb_headers = qb_csv[2]
-            qb_vid_idx = qb_headers.index("Video #")
-            qb_cls_idx = qb_headers.index("Classification")
-            qb_new_id_idx = qb_headers.index("New ID") if "New ID" in qb_headers else -1
-            if qb_new_id_idx >= 0:
+            if "Video #" in qb_headers and "New ID" in qb_headers:
+                qb_vid_idx = qb_headers.index("Video #")
+                qb_new_id_idx = qb_headers.index("New ID")
                 for row in qb_csv[3:]:
                     if not row or not row[0].strip():
                         continue
                     v_id = int(row[qb_vid_idx].strip())
-                    cls = row[qb_cls_idx].strip()
                     new_id_raw = row[qb_new_id_idx].strip() if len(row) > qb_new_id_idx else ""
-                    if cls == "OutsideZoneRead" and new_id_raw.isdigit():
-                        matching_row = next(
-                            (
-                                r
-                                for r in manifest_rows
-                                if r.source_play == "QB_ZoneRead" and r.source_video_id == v_id
-                            ),
-                            None,
-                        )
-                        if matching_row and matching_row.destination_video_id is not None:
-                            if int(new_id_raw) != matching_row.destination_video_id:
-                                warnings.append(
-                                    f"Stale New ID detected in QB_ZoneRead.csv row {v_id}: "
-                                    f"file has {new_id_raw}, canonical manifest has {matching_row.destination_video_id}"
-                                )
+                    try:
+                        cls, dest_id = _parse_qb_new_id(new_id_raw)
+                    except ValueError as exc:
+                        errors.append(f"QB_ZoneRead row {v_id} invalid New ID: {exc}")
+                        continue
+
+                    matching_row = next(
+                        (
+                            r
+                            for r in manifest_rows
+                            if r.source_play == "QB_ZoneRead" and r.source_video_id == v_id
+                        ),
+                        None,
+                    )
+                    if not matching_row:
+                        errors.append(f"QB_ZoneRead row {v_id} not found in manifest")
+                        continue
+
+                    if cls == "Counter":
+                        if matching_row.status != STATUS_HOLDOUT:
+                            errors.append(
+                                f"QB_ZoneRead row {v_id} has Counter New ID but manifest status is {matching_row.status}"
+                            )
+                    else:
+                        if matching_row.status != STATUS_MIGRATE:
+                            errors.append(
+                                f"QB_ZoneRead row {v_id} has destination {cls}_{dest_id} but manifest status is {matching_row.status}"
+                            )
+                        elif matching_row.destination_play != cls:
+                            errors.append(
+                                f"QB_ZoneRead row {v_id} destination play mismatch: CSV has {cls}, manifest has {matching_row.destination_play}"
+                            )
+                        elif matching_row.destination_video_id != dest_id:
+                            errors.append(
+                                f"QB_ZoneRead row {v_id} destination ID mismatch: CSV has {dest_id}, manifest has {matching_row.destination_video_id}"
+                            )
         except Exception as exc:
-            warnings.append(f"Could not check QB_ZoneRead.csv for stale New ID: {exc}")
+            errors.append(f"Could not validate QB_ZoneRead.csv: {exc}")
 
     seen_sources: set[tuple[str, int]] = set()
     seen_destinations: set[tuple[str, int]] = set()
@@ -593,12 +666,12 @@ def validate_manifest(
             errors.append(f"Expected exactly 46 QB -> OutsideZoneRead MIGRATE clips, found {qb_to_ozr}")
         if qb_holdouts != 6:
             errors.append(f"Expected exactly 6 QB HOLDOUT clips, found {qb_holdouts}")
-        if ozs_to_ozs not in (196, 197):
-            errors.append(f"Expected 196 (or 197) OutsideZoneStretch -> OutsideZoneStretch clips, found {ozs_to_ozs}")
+        if ozs_to_ozs != 196:
+            errors.append(f"Expected exactly 196 OutsideZoneStretch -> OutsideZoneStretch clips, found {ozs_to_ozs}")
         if ozs_to_ozr != 96:
             errors.append(f"Expected exactly 96 OutsideZoneStretch -> OutsideZoneRead clips, found {ozs_to_ozr}")
-        if ozs_to_split_zone not in (48, 49):
-            errors.append(f"Expected 49 (or 48) OutsideZoneStretch -> SplitZone clips, found {ozs_to_split_zone}")
+        if ozs_to_split_zone != 49:
+            errors.append(f"Expected exactly 49 OutsideZoneStretch -> SplitZone clips, found {ozs_to_split_zone}")
         if ozs_to_inside_zone_stretch != 6:
             errors.append(f"Expected exactly 6 OutsideZoneStretch -> InsideZoneStretch clips, found {ozs_to_inside_zone_stretch}")
         if ozs_to_ozs + ozs_to_split_zone != 245:
@@ -615,11 +688,6 @@ def validate_manifest(
             errors.append(f"Expected 0 missing OutsideZoneStretch assignments, found {ozs_missing}")
         if ozs_blocked != 0:
             errors.append(f"Expected 0 BLOCKED OutsideZoneStretch clips, found {ozs_blocked}")
-        if ozs_to_ozs == 196 and ozs_to_split_zone == 49:
-            warnings.append(
-                "Note: Checked-in CSVs contain 196 OutsideZoneStretch and 49 SplitZone clips "
-                "(spec notes 197/48 due to fencepost difference in SplitZone rows 271-319)."
-            )
 
     return ValidationResult(
         rows=tuple(manifest_rows),
