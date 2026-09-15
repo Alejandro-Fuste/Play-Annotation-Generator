@@ -1,0 +1,9 @@
+Video Name:,Inside Zone Stretch,,,,,,,,,,
+,"Key Actions (Frame Number, player track id)",,,,,,,,,,
+Video #,Pre Snap,OL,Ball Snap,Zone Block,Snap Receive,Press Interior Gap,Handoff,Ball Carry,Block Second Level,End of Play,Original ID
+1,"0,ALL","18,16,13,20,22","182,190,13","191,261,OL","190,197,15","204,222,3","222,231,15","232,420,3",-,Tac,OutsideZoneStretch_314
+2,"0,ALL","7,13,16,5,6","147,153,14","160,204,OL","154,165,10","176,190,8","189,202,10","203,370,8",-,Tac,OutsideZoneStretch_315
+3,"0,ALL","19,16,18,20,21","54,60,15","66,114,OL","61,67,15","80,103,7","89,103,15","104,360,7","95,118,19",OOB,OutsideZoneStretch_324
+4,"0,ALL","10,6,16,8,4","45,52,?","54,101,OL","53,57,2","72,94,3","81,96,2","95,330,3","84,104,10",OOB,OutsideZoneStretch_325
+5,"3,ALL","9,12,17,19,20","146,151,17","159,195,OL","151,158,16","174,191,7","180,191,16","192,420,7","188,204,22",OOB,OutsideZoneStretch_344
+6,"0,ALL","18,16,12,0,8","123,129,12","136,174,OL","129,134,?","152,171,13","159,171,19","172,390,13","142,181,15",OOB,OutsideZoneStretch_345
