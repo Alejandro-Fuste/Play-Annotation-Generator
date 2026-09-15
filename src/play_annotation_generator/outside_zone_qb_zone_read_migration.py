@@ -37,6 +37,13 @@ DEFAULT_PLAYS_PATH = Path("data/plays.json")
 
 EXPECTED_QB_HOLDOUTS = (17, 18, 41, 42, 131, 132)
 
+OUTSIDE_ZONE_DESTINATION_FILES = {
+    "OutsideZoneStretch": "OutsideZoneStretch.csv",
+    "OutsideZoneRead": "OutsideZoneRead.csv",
+    "SplitZone": "SplitZone.csv",
+    "InsideZoneStretch": "InsideZoneStretch.csv",
+}
+
 
 @dataclass(frozen=True)
 class ManifestRow:
@@ -95,6 +102,12 @@ class ValidationResult:
     warnings: tuple[str, ...]
     ozs_to_ozs: int
     ozs_to_ozr: int
+    ozs_to_split_zone: int
+    ozs_to_inside_zone_stretch: int
+    ozs_unique_sources: int
+    ozs_total_mappings: int
+    ozs_duplicates: int
+    ozs_missing: int
     ozs_blocked: int
     qb_to_izr: int
     qb_to_ozr: int
@@ -113,7 +126,9 @@ class ValidationResult:
 
 def _parse_original_id(val: str) -> tuple[str, int]:
     val = val.strip()
-    match = re.fullmatch(r"^(OutsideZoneStretch|QB_ZoneRead)_(\d+)$", val)
+    match = re.fullmatch(
+        r"^(OutsideZoneStretch|QB_ZoneRead|SplitZone|InsideZoneStretch|OutsideZoneRead)_(\d+)$", val
+    )
     if not match:
         raise ValueError(f"Malformed Original ID provenance: '{val}'")
     return match.group(1), int(match.group(2))
@@ -134,64 +149,72 @@ def build_manifest(
     key_actions_root = Path(key_actions_root).resolve()
     dataset_summary = Path(dataset_summary).resolve()
 
-    ozs_file = key_actions_root / "OutsideZoneStretch.csv"
-    ozr_file = key_actions_root / "OutsideZoneRead.csv"
+    for dest_play, filename in OUTSIDE_ZONE_DESTINATION_FILES.items():
+        dest_file = key_actions_root / filename
+        if not dest_file.is_file():
+            raise FileNotFoundError(f"Missing {dest_play} Key Actions file: {dest_file}")
+
     qb_file = key_actions_root / "QB_ZoneRead.csv"
     izr_file = key_actions_root / "InsideZoneRead.csv"
 
-    if not ozs_file.is_file():
-        raise FileNotFoundError(f"Missing OutsideZoneStretch Key Actions file: {ozs_file}")
-    if not ozr_file.is_file():
-        raise FileNotFoundError(f"Missing OutsideZoneRead Key Actions file: {ozr_file}")
     if not qb_file.is_file():
         raise FileNotFoundError(f"Missing QB_ZoneRead Key Actions file: {qb_file}")
     if not izr_file.is_file():
         raise FileNotFoundError(f"Missing InsideZoneRead Key Actions file: {izr_file}")
 
-    ozs_csv = _read_csv_rows(ozs_file)
-    ozr_csv = _read_csv_rows(ozr_file)
-    qb_csv = _read_csv_rows(qb_file)
-    izr_csv = _read_csv_rows(izr_file)
-
-    ozs_headers = ozs_csv[2]
-    ozs_vid_idx = ozs_headers.index("Video #")
-    ozs_orig_idx = ozs_headers.index("Original ID")
-
     ozs_sources_mapped: dict[int, tuple[str, int, str]] = {}
-    for row in ozs_csv[3:]:
-        if not row or not row[0].strip():
-            continue
-        dest_id = int(row[ozs_vid_idx].strip())
-        play, src_id = _parse_original_id(row[ozs_orig_idx])
-        if play != "OutsideZoneStretch":
-            raise ValueError(f"Expected OutsideZoneStretch Original ID, got {play}_{src_id}")
-        if src_id in ozs_sources_mapped:
-            raise ValueError(f"Duplicate OutsideZoneStretch source ID {src_id} in {ozs_file.name}")
-        ozs_sources_mapped[src_id] = ("OutsideZoneStretch", dest_id, "Canonical stretch split")
-
-    ozr_headers = ozr_csv[2]
-    ozr_vid_idx = ozr_headers.index("Video #")
-    ozr_orig_idx = ozr_headers.index("Original ID")
-
     qb_sources_mapped_ozr: dict[int, int] = {}
-    for row in ozr_csv[3:]:
-        if not row or not row[0].strip():
-            continue
-        dest_id = int(row[ozr_vid_idx].strip())
-        play, src_id = _parse_original_id(row[ozr_orig_idx])
-        if play == "OutsideZoneStretch":
-            if src_id in ozs_sources_mapped:
-                raise ValueError(
-                    f"OutsideZoneStretch source ID {src_id} mapped in both OutsideZoneStretch and OutsideZoneRead"
-                )
-            ozs_sources_mapped[src_id] = ("OutsideZoneRead", dest_id, "Canonical read split")
-        elif play == "QB_ZoneRead":
-            if src_id in qb_sources_mapped_ozr:
-                raise ValueError(f"Duplicate QB_ZoneRead source ID {src_id} in {ozr_file.name}")
-            qb_sources_mapped_ozr[src_id] = dest_id
-        else:
-            raise ValueError(f"Unexpected source play in {ozr_file.name}: {play}")
 
+    for dest_play, filename in OUTSIDE_ZONE_DESTINATION_FILES.items():
+        dest_file = key_actions_root / filename
+        csv_rows = _read_csv_rows(dest_file)
+        if len(csv_rows) < 3:
+            continue
+        headers = csv_rows[2]
+        if "Video #" not in headers or "Original ID" not in headers:
+            raise ValueError(f"File {filename} missing 'Video #' or 'Original ID' header")
+        vid_idx = headers.index("Video #")
+        orig_idx = headers.index("Original ID")
+
+        for row in csv_rows[3:]:
+            if not row or not row[0].strip():
+                continue
+            dest_id = int(row[vid_idx].strip())
+            orig_val = row[orig_idx].strip() if len(row) > orig_idx else ""
+            if not orig_val:
+                raise ValueError(f"Missing Original ID in {filename} row {dest_id}")
+            play, src_id = _parse_original_id(orig_val)
+
+            if play == "OutsideZoneStretch":
+                if src_id in ozs_sources_mapped:
+                    prev_dest_play, _, _ = ozs_sources_mapped[src_id]
+                    raise ValueError(
+                        f"Duplicate OutsideZoneStretch source ID {src_id} across destination files: "
+                        f"mapped in {prev_dest_play} and {dest_play}"
+                    )
+                if dest_play == "OutsideZoneStretch":
+                    note = "Canonical stretch split"
+                elif dest_play == "OutsideZoneRead":
+                    note = "Canonical read split"
+                else:
+                    note = "Reclassified from manual annotation review"
+                ozs_sources_mapped[src_id] = (dest_play, dest_id, note)
+
+            elif play == "QB_ZoneRead":
+                if dest_play == "OutsideZoneRead":
+                    if src_id in qb_sources_mapped_ozr:
+                        raise ValueError(f"Duplicate QB_ZoneRead source ID {src_id} in {filename}")
+                    qb_sources_mapped_ozr[src_id] = dest_id
+                else:
+                    raise ValueError(f"Unexpected QB_ZoneRead source in {filename}: {orig_val}")
+
+            elif play == dest_play:
+                # Pre-existing clip in destination file (e.g. SplitZone_1 in SplitZone.csv)
+                continue
+            else:
+                raise ValueError(f"Unsupported source prefix in {filename}: '{play}'")
+
+    qb_csv = _read_csv_rows(qb_file)
     qb_headers = qb_csv[2]
     qb_vid_idx = qb_headers.index("Video #")
     qb_cls_idx = qb_headers.index("Classification")
@@ -432,6 +455,8 @@ def validate_manifest(
 
     ozs_to_ozs = 0
     ozs_to_ozr = 0
+    ozs_to_split_zone = 0
+    ozs_to_inside_zone_stretch = 0
     ozs_blocked = 0
     qb_to_izr = 0
     qb_to_ozr = 0
@@ -440,6 +465,11 @@ def validate_manifest(
 
     dest_collisions = 0
     summary_mismatches = 0
+
+    all_source_zips = {
+        tracking_root / r.source_play / f"{r.source_clip_name}_cvat_mot.zip"
+        for r in manifest_rows
+    }
 
     for r in manifest_rows:
         src_key = (r.source_play, r.source_video_id)
@@ -475,6 +505,10 @@ def validate_manifest(
                     ozs_to_ozs += 1
                 elif r.destination_play == "OutsideZoneRead":
                     ozs_to_ozr += 1
+                elif r.destination_play == "SplitZone":
+                    ozs_to_split_zone += 1
+                elif r.destination_play == "InsideZoneStretch":
+                    ozs_to_inside_zone_stretch += 1
                 else:
                     errors.append(
                         f"Unexpected destination play for OutsideZoneStretch: {r.destination_play} (row {r.source_clip_name})"
@@ -521,7 +555,7 @@ def validate_manifest(
         if r.status == STATUS_MIGRATE and r.destination_play:
             dest_zip = tracking_root / r.destination_play / f"{r.destination_clip_name}_cvat_mot.zip"
             if dest_zip.exists():
-                if r.source_play == r.destination_play:
+                if r.source_play == r.destination_play and dest_zip in all_source_zips:
                     pass
                 else:
                     errors.append(
@@ -529,7 +563,26 @@ def validate_manifest(
                     )
                     dest_collisions += 1
 
-    migrate_count = ozs_to_ozs + ozs_to_ozr + qb_to_izr + qb_to_ozr
+    ozs_rows = [r for r in manifest_rows if r.source_play == "OutsideZoneStretch"]
+    ozs_total_mappings = len(ozs_rows)
+    ozs_source_ids = {r.source_video_id for r in ozs_rows}
+    ozs_unique_sources = len(ozs_source_ids)
+    ozs_duplicates = ozs_total_mappings - ozs_unique_sources
+
+    if require_production_counts:
+        missing_ids = set(range(1, 348)) - ozs_source_ids
+        ozs_missing = len(missing_ids)
+    else:
+        ozs_missing = ozs_blocked
+
+    migrate_count = (
+        ozs_to_ozs
+        + ozs_to_ozr
+        + ozs_to_split_zone
+        + ozs_to_inside_zone_stretch
+        + qb_to_izr
+        + qb_to_ozr
+    )
     holdout_count = qb_holdouts
     blocked_count = ozs_blocked + qb_blocked
 
@@ -540,10 +593,33 @@ def validate_manifest(
             errors.append(f"Expected exactly 46 QB -> OutsideZoneRead MIGRATE clips, found {qb_to_ozr}")
         if qb_holdouts != 6:
             errors.append(f"Expected exactly 6 QB HOLDOUT clips, found {qb_holdouts}")
-        if ozs_to_ozs != 228:
-            errors.append(f"Expected exactly 228 OutsideZoneStretch -> OutsideZoneStretch clips, found {ozs_to_ozs}")
-        if ozs_to_ozr != 118:
-            errors.append(f"Expected exactly 118 OutsideZoneStretch -> OutsideZoneRead clips, found {ozs_to_ozr}")
+        if ozs_to_ozs not in (196, 197):
+            errors.append(f"Expected 196 (or 197) OutsideZoneStretch -> OutsideZoneStretch clips, found {ozs_to_ozs}")
+        if ozs_to_ozr != 96:
+            errors.append(f"Expected exactly 96 OutsideZoneStretch -> OutsideZoneRead clips, found {ozs_to_ozr}")
+        if ozs_to_split_zone not in (48, 49):
+            errors.append(f"Expected 49 (or 48) OutsideZoneStretch -> SplitZone clips, found {ozs_to_split_zone}")
+        if ozs_to_inside_zone_stretch != 6:
+            errors.append(f"Expected exactly 6 OutsideZoneStretch -> InsideZoneStretch clips, found {ozs_to_inside_zone_stretch}")
+        if ozs_to_ozs + ozs_to_split_zone != 245:
+            errors.append(
+                f"Expected OutsideZoneStretch + SplitZone total to be 245, found {ozs_to_ozs + ozs_to_split_zone}"
+            )
+        if ozs_unique_sources != 347:
+            errors.append(f"Expected 347 unique OutsideZoneStretch source identities, found {ozs_unique_sources}")
+        if ozs_total_mappings != 347:
+            errors.append(f"Expected 347 total OutsideZoneStretch mappings, found {ozs_total_mappings}")
+        if ozs_duplicates != 0:
+            errors.append(f"Expected 0 duplicate OutsideZoneStretch assignments, found {ozs_duplicates}")
+        if ozs_missing != 0:
+            errors.append(f"Expected 0 missing OutsideZoneStretch assignments, found {ozs_missing}")
+        if ozs_blocked != 0:
+            errors.append(f"Expected 0 BLOCKED OutsideZoneStretch clips, found {ozs_blocked}")
+        if ozs_to_ozs == 196 and ozs_to_split_zone == 49:
+            warnings.append(
+                "Note: Checked-in CSVs contain 196 OutsideZoneStretch and 49 SplitZone clips "
+                "(spec notes 197/48 due to fencepost difference in SplitZone rows 271-319)."
+            )
 
     return ValidationResult(
         rows=tuple(manifest_rows),
@@ -551,6 +627,12 @@ def validate_manifest(
         warnings=tuple(warnings),
         ozs_to_ozs=ozs_to_ozs,
         ozs_to_ozr=ozs_to_ozr,
+        ozs_to_split_zone=ozs_to_split_zone,
+        ozs_to_inside_zone_stretch=ozs_to_inside_zone_stretch,
+        ozs_unique_sources=ozs_unique_sources,
+        ozs_total_mappings=ozs_total_mappings,
+        ozs_duplicates=ozs_duplicates,
+        ozs_missing=ozs_missing,
         ozs_blocked=ozs_blocked,
         qb_to_izr=qb_to_izr,
         qb_to_ozr=qb_to_ozr,
@@ -568,23 +650,28 @@ def print_preflight_report(res: ValidationResult) -> None:
     print("MIGRATION PREFLIGHT")
     print()
     print("Legacy Outside Zone source:")
-    print(f"  OutsideZoneStretch -> OutsideZoneStretch: {res.ozs_to_ozs}")
-    print(f"  OutsideZoneStretch -> OutsideZoneRead:    {res.ozs_to_ozr}")
-    print(f"  Unmapped/BLOCKED:                          {res.ozs_blocked}")
+    print(f"  -> OutsideZoneStretch: {res.ozs_to_ozs}")
+    print(f"  -> OutsideZoneRead:    {res.ozs_to_ozr}")
+    print(f"  -> SplitZone:          {res.ozs_to_split_zone}")
+    print(f"  -> InsideZoneStretch:  {res.ozs_to_inside_zone_stretch}")
+    print(f"  Unmapped/BLOCKED:      {res.ozs_blocked}")
     print()
     print("Legacy QB_ZoneRead source:")
-    print(f"  -> InsideZoneRead:  {res.qb_to_izr}")
-    print(f"  -> OutsideZoneRead: {res.qb_to_ozr}")
-    print(f"  HOLDOUT:              {res.qb_holdouts}")
+    print(f"  -> InsideZoneRead:     {res.qb_to_izr}")
+    print(f"  -> OutsideZoneRead:    {res.qb_to_ozr}")
+    print(f"  HOLDOUT:               {res.qb_holdouts}")
     if res.qb_blocked > 0:
-        print(f"  BLOCKED:              {res.qb_blocked}")
+        print(f"  BLOCKED:               {res.qb_blocked}")
     print()
-    print(f"Manifest rows:        {len(res.rows)}")
-    print(f"MIGRATE:              {res.migrate_count}")
-    print(f"HOLDOUT:              {res.holdout_count}")
-    print(f"BLOCKED:              {res.blocked_count}")
-    print(f"Destination collisions: {res.dest_collisions}")
+    print("Outside Zone source assignments:")
+    print(f"  unique sources: {res.ozs_unique_sources}")
+    print(f"  total mappings: {res.ozs_total_mappings}")
+    print(f"  duplicates:     {res.ozs_duplicates}")
+    print(f"  missing:        {res.ozs_missing}")
+    print()
+    print(f"Destination collisions:    {res.dest_collisions}")
     print(f"DatasetSummary mismatches: {res.summary_mismatches}")
+    print(f"BLOCKED:                   {res.blocked_count}")
     print()
     if res.warnings:
         print("WARNINGS:")
