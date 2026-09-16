@@ -1,0 +1,7 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+BootPass_44,44,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Pass_BootPass,Result_OutOfBounds,,
+BootPass_44,44,Snap Receive,Action_SnapReceive,62,END,6,track_id,Play_Pass_BootPass,Result_OutOfBounds,,
+BootPass_44,44,Fake Handoff,Action_FakeHandoff,65,START,6,track_id,Play_Pass_BootPass,Result_OutOfBounds,,
+BootPass_44,44,Boot Away,Action_BootAway,84,START,6,track_id,Play_Pass_BootPass,Result_OutOfBounds,,
+BootPass_44,44,Throw Pass,Action_ThrowPass,143,START,6,track_id,Play_Pass_BootPass,Result_OutOfBounds,,
+BootPass_44,44,Secure Catch,Action_SecureCatch,184,START,26,track_id,Play_Pass_BootPass,Result_OutOfBounds,,

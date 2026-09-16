@@ -1,0 +1,7 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+BootPass_112,112,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Pass_BootPass,Result_Tackle,,
+BootPass_112,112,Snap Receive,Action_SnapReceive,49,END,20,track_id,Play_Pass_BootPass,Result_Tackle,,
+BootPass_112,112,Boot Away,Action_BootAway,74,START,20,track_id,Play_Pass_BootPass,Result_Tackle,,
+BootPass_112,112,Run Flat Route,Action_RunFlatRoute,82,START,0,track_id,Play_Pass_BootPass,Result_Tackle,,
+BootPass_112,112,Throw Pass,Action_ThrowPass,92,START,20,track_id,Play_Pass_BootPass,Result_Tackle,,
+BootPass_112,112,Secure Catch,Action_SecureCatch,108,START,0,track_id,Play_Pass_BootPass,Result_Tackle,,

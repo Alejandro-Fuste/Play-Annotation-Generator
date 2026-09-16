@@ -1,0 +1,6 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+Counter_1,1,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Run_Counter,Result_Tackle,,
+Counter_1,1,Ball Snap,Action_BallSnap,348,START,15,track_id,Play_Run_Counter,Result_Tackle,,
+Counter_1,1,Snap Receive,Action_SnapReceive,361,END,16,track_id,Play_Run_Counter,Result_Tackle,,
+Counter_1,1,Ball Carry,Action_BallCarry,388,START,12,track_id,Play_Run_Counter,Result_Tackle,,
+Counter_1,1,End of OL Block,Action_None,438,BOUNDARY,,global_event,Play_Run_Counter,Result_Tackle,,

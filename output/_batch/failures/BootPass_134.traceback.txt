@@ -1,0 +1,21 @@
+Clip Key: BootPass_134
+Play Name: BootPass
+Tracking File: /Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/data/tracking/BootPass/BootPass_134_cvat_mot.zip
+Exception Type: TimeoutError
+Exception Message: [Errno 60] Operation timed out
+
+Traceback (most recent call last):
+  File "/Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/batch_pipeline.py", line 905, in run_batch_pipeline
+    ) = run_generate_and_enrich_pipeline(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        gt_path=str(job.tracking_input.source_path),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<7 lines>...
+        target_video_id=job.video_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/pipeline_generate_and_enrich.py", line 46, in run_generate_and_enrich_pipeline
+    mot_tracks = parse_mot_gt(gt_path, labels_list, config)
+  File "/Users/alejandro/Desktop/Projects/FilmBreakdownAI/Utilities/Play-Annotation-Generator/src/play_annotation_generator/mot_parser.py", line 102, in parse_mot_gt
+TimeoutError: [Errno 60] Operation timed out
