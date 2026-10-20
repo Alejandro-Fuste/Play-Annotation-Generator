@@ -1,0 +1,173 @@
+[
+  {
+    "clip_name": "BootPass_1",
+    "play_name": "BootPass",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 208,
+    "tracks_count": 41,
+    "segments_count": 200,
+    "dense_count": 6743,
+    "errors": [],
+    "warnings": [
+      "Row 4: Duplicate assignment for track ID '14' in grid. Overwriting previous assignment.",
+      "Row 4: Duplicate assignment for track ID '7' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 359 as fallback play end.",
+      "Resolved action overlap for track '17' (C): higher_priority='Action_BallSnap' [71\u201386], lower_priority='Action_RunBlock' annotated_start=77, effective_Action_RunBlock_start=87.",
+      "Action 'Action_None' range [71-359] for track '0' has 3 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "Counter_1",
+    "play_name": "Counter",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 19,
+    "tracks_count": 29,
+    "segments_count": 57,
+    "dense_count": 11110,
+    "errors": [],
+    "warnings": [
+      "Row 4: Duplicate assignment for track ID '11' in grid. Overwriting previous assignment.",
+      "Track ID '0' in Player Track ID sheet does not exist in MOT gt.txt.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 509 as fallback play end.",
+      "Action 'Action_None' range [348-411] for track '7' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [415-419] for track '7' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "Draw_1",
+    "play_name": "Draw",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 74,
+    "tracks_count": 31,
+    "segments_count": 96,
+    "dense_count": 5674,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 269 as fallback play end.",
+      "Resolved action overlap for track '16' (C): higher_priority='Action_BallSnap' [68\u201380], lower_priority='Action_PassBlock' annotated_start=70, effective_Action_PassBlock_start=81.",
+      "Action 'Action_None' range [68-172] for track '3' has 2 frames without a visible bounding box.",
+      "Action 'Action_None' range [177-187] for track '3' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [192-269] for track '3' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "Duo_1",
+    "play_name": "Duo",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 112,
+    "tracks_count": 37,
+    "segments_count": 95,
+    "dense_count": 5128,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 268 as fallback play end.",
+      "Action 'Action_PreSnap' range [0-190] for track '0' has 3 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [192-199] for track '0' has 2 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [201-213] for track '0' has 2 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [224-225] for track '0' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "FieldGoalBlock_3",
+    "play_name": "FieldGoalBlock",
+    "video_id": "3",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 87,
+    "tracks_count": 28,
+    "segments_count": 78,
+    "dense_count": 2213,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Action 'Action_PreSnap' range [0-94] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [99-120] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [0-120] for track '1' has 1 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [0-45] for track '2' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "JetSweep_1",
+    "play_name": "JetSweep",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 10,
+    "tracks_count": 24,
+    "segments_count": 57,
+    "dense_count": 7230,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 329 as fallback play end.",
+      "Resolved action overlap for track '6' (C): higher_priority='Action_BallSnap' [132\u2013144], lower_priority='Action_ZoneBlock' annotated_start=133, effective_Action_ZoneBlock_start=145.",
+      "Action 'Action_None' range [193-309] for track '2' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [132-285] for track '10' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [132-329] for track '20' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "PuntBlock_1",
+    "play_name": "PuntBlock",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 403,
+    "tracks_count": 89,
+    "segments_count": 277,
+    "dense_count": 4967,
+    "errors": [],
+    "warnings": [
+      "Row 4: Duplicate assignment for track ID '1' in grid. Overwriting previous assignment.",
+      "Row 4: Duplicate assignment for track ID '2' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 299 as fallback play end.",
+      "Action_SnapReceive present in CSV, but paired Action_BallSnap is missing.",
+      "Segment 'Action_SecureRecovery' for track '7' has invalid range: start=233, end=45. Clamping end to start."
+    ]
+  },
+  {
+    "clip_name": "QuickScreens_1",
+    "play_name": "QuickScreens",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 36,
+    "tracks_count": 24,
+    "segments_count": 62,
+    "dense_count": 4478,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Action 'Action_None' range [22-164] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [22-52] for track '1' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [61-196] for track '1' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [199-210] for track '1' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "SplitZone_1",
+    "play_name": "SplitZone",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 47,
+    "tracks_count": 30,
+    "segments_count": 71,
+    "dense_count": 5058,
+    "errors": [],
+    "warnings": [
+      "Row 4: Duplicate assignment for track ID '11' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Resolved action overlap for track '7' (C): higher_priority='Action_BallSnap' [59\u201379], lower_priority='Action_ZoneBlock' annotated_start=62, effective_Action_ZoneBlock_start=80.",
+      "Segment 'Action_BallCarry' for track '21' has invalid range: start=105, end=92. Clamping end to start.",
+      "Action 'Action_None' range [59-239] for track '4' has 1 frames without a visible bounding box."
+    ]
+  }
+]

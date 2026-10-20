@@ -95,6 +95,7 @@ def normalize_and_match_events(
                     result_frame=event.result_frame,
                     action=event.action,
                     start_frame=event.start_frame,
+                    end_frame=event.end_frame,
                     annotated_frame=event.annotated_frame,
                     annotated_frame_role=event.annotated_frame_role,
                     event_type=event.event_type,

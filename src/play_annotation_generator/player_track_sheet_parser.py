@@ -34,7 +34,7 @@ def parse_assignments_cell(cell_value: str) -> List[Tuple[str, str]]:
         if len(parts) == 2:
             pos = parts[0].strip()
             tid = parts[1].strip()
-            if pos and tid:
+            if pos and tid and tid not in ["[?]", "?", "??", "undefined", "none", "None"]:
                 parsed.append((pos, tid))
                 
     return parsed

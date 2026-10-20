@@ -242,8 +242,11 @@ def main():
                 for sfx in ["_cvat_mot.zip", "_mot.zip", ".zip", ".txt"]:
                     if base.endswith(sfx):
                         base = base[:-len(sfx)]
-                        break
-                v_name = base
+                m_duo = re.match(r"^Duo_clip(\d+)$", base, re.IGNORECASE)
+                if m_duo:
+                    v_name = f"Duo_{m_duo.group(1)}"
+                else:
+                    v_name = base
             else:
                 v_name = "generated_play"
 

@@ -157,7 +157,12 @@ def discover_tracking_inputs(
                 if stem.casefold() == "gt":
                     stem = file_path.parent.parent.name
 
-            if "_" in stem:
+            m_duo = re.match(r"^Duo_clip(\d+)$", stem, re.IGNORECASE)
+            if m_duo:
+                filename_play_name = "Duo"
+                vid_id = m_duo.group(1)
+                clip_name = f"Duo_{vid_id}"
+            elif "_" in stem:
                 filename_play_name, vid_id = stem.rsplit("_", 1)
                 filename_play_name = filename_play_name.strip()
                 vid_id = vid_id.strip()

@@ -42,8 +42,15 @@ boundary_events:
       - "Action_ReachBlock"
       - "Action_DownBlock"
       - "Action_PullBlock"
+      - "Action_PullLeadBlock"
       - "Action_LeadBlock"
       - "Action_BlockSecondLevel"
+      - "Action_RunBlock"
+      - "Action_PassBlock"
+      - "Action_CrackBlock"
+      - "Action_ComboBlock"
+      - "Action_SplitBlock"
+      - "Action_ScreenBlock"
 
   Action_PlayEnd:
     event_type: "PLAY_END"

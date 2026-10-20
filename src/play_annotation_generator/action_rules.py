@@ -201,7 +201,14 @@ def infer_action_segments(
                 # Check boundary events for this track or global blocking boundaries
                 if seg_end is None:
                     future_boundaries = [b for b in track_boundaries if b[0] >= seg_start]
-                    if not future_boundaries and act_name in ("Action_LeadBlock", "Action_ZoneBlock", "Action_ReachBlock", "Action_DownBlock", "Action_PullBlock", "Action_BlockSecondLevel", "Action_RunBlock"):
+                    terminates_list = boundary_rules.get("Action_None", {}).get("terminates", (
+                        "Action_LeadBlock", "Action_ZoneBlock", "Action_ReachBlock",
+                        "Action_DownBlock", "Action_PullBlock", "Action_PullLeadBlock",
+                        "Action_BlockSecondLevel", "Action_RunBlock", "Action_PassBlock",
+                        "Action_CrackBlock", "Action_ComboBlock", "Action_SplitBlock",
+                        "Action_ScreenBlock"
+                    ))
+                    if not future_boundaries and act_name in terminates_list:
                         future_boundaries = [b for b in global_boundary_tuples if b[0] >= seg_start]
                     if future_boundaries:
                         b_frame, b_inc = future_boundaries[0]

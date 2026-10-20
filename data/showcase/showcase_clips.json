@@ -1,0 +1,410 @@
+[
+  {
+    "logical_clip_name": "BootPass_1",
+    "play_name": "BootPass",
+    "video_id": "1",
+    "tracking_source": "data/tracking/BootPass/BootPass_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/BootPass.csv",
+    "player_tracks_source": "data/player_tracks/BootPass.csv"
+  },
+  {
+    "logical_clip_name": "Counter_1",
+    "play_name": "Counter",
+    "video_id": "1",
+    "tracking_source": "data/tracking/Counter/Counter_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Counter.csv",
+    "player_tracks_source": "data/player_tracks/Counter.csv"
+  },
+  {
+    "logical_clip_name": "Counter_2",
+    "play_name": "Counter",
+    "video_id": "2",
+    "tracking_source": "data/tracking/Counter/Counter_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Counter.csv",
+    "player_tracks_source": "data/player_tracks/Counter.csv"
+  },
+  {
+    "logical_clip_name": "CrackToss_3",
+    "play_name": "CrackToss",
+    "video_id": "3",
+    "tracking_source": "data/tracking/CrackToss/CrackToss_3_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/CrackToss.csv",
+    "player_tracks_source": "data/player_tracks/CrackToss.csv"
+  },
+  {
+    "logical_clip_name": "CrackToss_4",
+    "play_name": "CrackToss",
+    "video_id": "4",
+    "tracking_source": "data/tracking/CrackToss/CrackToss_4_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/CrackToss.csv",
+    "player_tracks_source": "data/player_tracks/CrackToss.csv"
+  },
+  {
+    "logical_clip_name": "Dagger_1",
+    "play_name": "Dagger",
+    "video_id": "1",
+    "tracking_source": "data/tracking/Dagger/Dagger_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Dagger.csv",
+    "player_tracks_source": "data/player_tracks/Dagger.csv"
+  },
+  {
+    "logical_clip_name": "DeepCross_1",
+    "play_name": "DeepCross",
+    "video_id": "1",
+    "tracking_source": "data/tracking/DeepCross/DeepCross_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/DeepCross.csv",
+    "player_tracks_source": "data/player_tracks/DeepCross.csv"
+  },
+  {
+    "logical_clip_name": "Draw_1",
+    "play_name": "Draw",
+    "video_id": "1",
+    "tracking_source": "data/tracking/Draw/Draw_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Draw.csv",
+    "player_tracks_source": "data/player_tracks/Draw.csv"
+  },
+  {
+    "logical_clip_name": "Duo_1",
+    "play_name": "Duo",
+    "video_id": "1",
+    "tracking_source": "data/tracking/Duo/Duo_clip1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Duo.csv",
+    "player_tracks_source": "data/player_tracks/Duo.csv"
+  },
+  {
+    "logical_clip_name": "FieldGoalBlock_3",
+    "play_name": "FieldGoalBlock",
+    "video_id": "3",
+    "tracking_source": "data/tracking/FieldGoalBlock/FieldGoalBlock_3_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/FieldGoalBlock.csv",
+    "player_tracks_source": "data/player_tracks/FieldGoalBlock.csv"
+  },
+  {
+    "logical_clip_name": "FieldGoalBlock_4",
+    "play_name": "FieldGoalBlock",
+    "video_id": "4",
+    "tracking_source": "data/tracking/FieldGoalBlock/FieldGoalBlock_4_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/FieldGoalBlock.csv",
+    "player_tracks_source": "data/player_tracks/FieldGoalBlock.csv"
+  },
+  {
+    "logical_clip_name": "Hitch_2",
+    "play_name": "Hitch",
+    "video_id": "2",
+    "tracking_source": "data/tracking/Hitch/Hitch_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Hitch.csv",
+    "player_tracks_source": "data/player_tracks/Hitch.csv"
+  },
+  {
+    "logical_clip_name": "InsideZoneRead_1",
+    "play_name": "InsideZoneRead",
+    "video_id": "1",
+    "tracking_source": "data/tracking/InsideZoneRead/InsideZoneRead_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/InsideZoneRead.csv",
+    "player_tracks_source": "data/player_tracks/InsideZoneRead.csv"
+  },
+  {
+    "logical_clip_name": "InsideZoneRead_2",
+    "play_name": "InsideZoneRead",
+    "video_id": "2",
+    "tracking_source": "data/tracking/InsideZoneRead/InsideZoneRead_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/InsideZoneRead.csv",
+    "player_tracks_source": "data/player_tracks/InsideZoneRead.csv"
+  },
+  {
+    "logical_clip_name": "InsideZoneStretch_1",
+    "play_name": "InsideZoneStretch",
+    "video_id": "1",
+    "tracking_source": "data/tracking/InsideZoneStretch/InsideZoneStretch_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/InsideZoneStretch.csv",
+    "player_tracks_source": "data/player_tracks/InsideZoneStretch.csv"
+  },
+  {
+    "logical_clip_name": "InsideZoneStretch_2",
+    "play_name": "InsideZoneStretch",
+    "video_id": "2",
+    "tracking_source": "data/tracking/InsideZoneStretch/InsideZoneStretch_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/InsideZoneStretch.csv",
+    "player_tracks_source": "data/player_tracks/InsideZoneStretch.csv"
+  },
+  {
+    "logical_clip_name": "JetSweep_1",
+    "play_name": "JetSweep",
+    "video_id": "1",
+    "tracking_source": "data/tracking/JetSweep/JetSweep_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/JetSweep.csv",
+    "player_tracks_source": "data/player_tracks/JetSweep.csv"
+  },
+  {
+    "logical_clip_name": "JetSweep_2",
+    "play_name": "JetSweep",
+    "video_id": "2",
+    "tracking_source": "data/tracking/JetSweep/JetSweep_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/JetSweep.csv",
+    "player_tracks_source": "data/player_tracks/JetSweep.csv"
+  },
+  {
+    "logical_clip_name": "KickoffReturnTouchdown_5",
+    "play_name": "KickoffReturnTouchdown",
+    "video_id": "5",
+    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_5_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/KickoffReturnTouchdown.csv",
+    "player_tracks_source": "data/player_tracks/KickoffReturnTouchdown.csv"
+  },
+  {
+    "logical_clip_name": "KickoffReturnTouchdown_6",
+    "play_name": "KickoffReturnTouchdown",
+    "video_id": "6",
+    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_6_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/KickoffReturnTouchdown.csv",
+    "player_tracks_source": "data/player_tracks/KickoffReturnTouchdown.csv"
+  },
+  {
+    "logical_clip_name": "OnsideKickRecovery_1",
+    "play_name": "OnsideKickRecovery",
+    "video_id": "1",
+    "tracking_source": "data/tracking/OnsideKickRecovery/OnsideKickRecovery_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OnsideKickRecovery.csv",
+    "player_tracks_source": "data/player_tracks/OnsideKickRecovery.csv"
+  },
+  {
+    "logical_clip_name": "OnsideKickRecovery_2",
+    "play_name": "OnsideKickRecovery",
+    "video_id": "2",
+    "tracking_source": "data/tracking/OnsideKickRecovery/OnsideKickRecovery_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OnsideKickRecovery.csv",
+    "player_tracks_source": "data/player_tracks/OnsideKickRecovery.csv"
+  },
+  {
+    "logical_clip_name": "OutAndUp_1",
+    "play_name": "OutAndUp",
+    "video_id": "1",
+    "tracking_source": "data/tracking/OutAndUp/OutAndUp_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OutAndUp.csv",
+    "player_tracks_source": "data/player_tracks/OutAndUp.csv"
+  },
+  {
+    "logical_clip_name": "OutRoutes_1",
+    "play_name": "OutRoutes",
+    "video_id": "1",
+    "tracking_source": "data/tracking/OutRoutes/OutRoutes_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OutRoutes.csv",
+    "player_tracks_source": "data/player_tracks/OutRoutes.csv"
+  },
+  {
+    "logical_clip_name": "OutRoutes_2",
+    "play_name": "OutRoutes",
+    "video_id": "2",
+    "tracking_source": "data/tracking/OutRoutes/OutRoutes_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OutRoutes.csv",
+    "player_tracks_source": "data/player_tracks/OutRoutes.csv"
+  },
+  {
+    "logical_clip_name": "OutsideZoneRead_1",
+    "play_name": "OutsideZoneRead",
+    "video_id": "1",
+    "tracking_source": "data/tracking/OutsideZoneRead/OutsideZoneRead_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OutsideZoneRead.csv",
+    "player_tracks_source": "data/player_tracks/OutsideZoneRead.csv"
+  },
+  {
+    "logical_clip_name": "OutsideZoneRead_2",
+    "play_name": "OutsideZoneRead",
+    "video_id": "2",
+    "tracking_source": "data/tracking/OutsideZoneRead/OutsideZoneRead_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OutsideZoneRead.csv",
+    "player_tracks_source": "data/player_tracks/OutsideZoneRead.csv"
+  },
+  {
+    "logical_clip_name": "OutsideZoneStretch_1",
+    "play_name": "OutsideZoneStretch",
+    "video_id": "1",
+    "tracking_source": "data/tracking/OutsideZoneStretch/OutsideZoneStretch_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OutsideZoneStretch.csv",
+    "player_tracks_source": "data/player_tracks/OutsideZoneStretch.csv"
+  },
+  {
+    "logical_clip_name": "OutsideZoneStretch_2",
+    "play_name": "OutsideZoneStretch",
+    "video_id": "2",
+    "tracking_source": "data/tracking/OutsideZoneStretch/OutsideZoneStretch_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/OutsideZoneStretch.csv",
+    "player_tracks_source": "data/player_tracks/OutsideZoneStretch.csv"
+  },
+  {
+    "logical_clip_name": "PinAndPull_1",
+    "play_name": "PinAndPull",
+    "video_id": "1",
+    "tracking_source": "data/tracking/PinAndPull/PinAndPull_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PinAndPull.csv",
+    "player_tracks_source": "data/player_tracks/PinAndPull.csv"
+  },
+  {
+    "logical_clip_name": "PinAndPull_2",
+    "play_name": "PinAndPull",
+    "video_id": "2",
+    "tracking_source": "data/tracking/PinAndPull/PinAndPull_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PinAndPull.csv",
+    "player_tracks_source": "data/player_tracks/PinAndPull.csv"
+  },
+  {
+    "logical_clip_name": "Post10to15_1",
+    "play_name": "Post10to15",
+    "video_id": "1",
+    "tracking_source": "data/tracking/Post10to15/Post10to15_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Post10to15.csv",
+    "player_tracks_source": "data/player_tracks/Post10to15.csv"
+  },
+  {
+    "logical_clip_name": "Post10to15_2",
+    "play_name": "Post10to15",
+    "video_id": "2",
+    "tracking_source": "data/tracking/Post10to15/Post10to15_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Post10to15.csv",
+    "player_tracks_source": "data/player_tracks/Post10to15.csv"
+  },
+  {
+    "logical_clip_name": "Power_3",
+    "play_name": "Power",
+    "video_id": "3",
+    "tracking_source": "data/tracking/Power/Power_3_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Power.csv",
+    "player_tracks_source": "data/player_tracks/Power.csv"
+  },
+  {
+    "logical_clip_name": "Power_4",
+    "play_name": "Power",
+    "video_id": "4",
+    "tracking_source": "data/tracking/Power/Power_4_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Power.csv",
+    "player_tracks_source": "data/player_tracks/Power.csv"
+  },
+  {
+    "logical_clip_name": "PuntBlock_1",
+    "play_name": "PuntBlock",
+    "video_id": "1",
+    "tracking_source": "data/tracking/PuntBlock/PuntBlock_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PuntBlock.csv",
+    "player_tracks_source": "data/player_tracks/PuntBlock.csv"
+  },
+  {
+    "logical_clip_name": "PuntBlock_2",
+    "play_name": "PuntBlock",
+    "video_id": "2",
+    "tracking_source": "data/tracking/PuntBlock/PuntBlock_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PuntBlock.csv",
+    "player_tracks_source": "data/player_tracks/PuntBlock.csv"
+  },
+  {
+    "logical_clip_name": "PuntCoverage_1",
+    "play_name": "PuntCoverage",
+    "video_id": "1",
+    "tracking_source": "data/tracking/PuntCoverage/PuntCoverage_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PuntCoverage.csv",
+    "player_tracks_source": "data/player_tracks/PuntCoverage.csv"
+  },
+  {
+    "logical_clip_name": "PuntCoverage_2",
+    "play_name": "PuntCoverage",
+    "video_id": "2",
+    "tracking_source": "data/tracking/PuntCoverage/PuntCoverage_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PuntCoverage.csv",
+    "player_tracks_source": "data/player_tracks/PuntCoverage.csv"
+  },
+  {
+    "logical_clip_name": "PuntReturnTouchdown_1",
+    "play_name": "PuntReturnTouchdown",
+    "video_id": "1",
+    "tracking_source": "data/tracking/PuntReturnTouchdown/PuntReturnTouchdown_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PuntReturnTouchdown.csv",
+    "player_tracks_source": "data/player_tracks/PuntReturnTouchdown.csv"
+  },
+  {
+    "logical_clip_name": "PuntReturnTouchdown_2",
+    "play_name": "PuntReturnTouchdown",
+    "video_id": "2",
+    "tracking_source": "data/tracking/PuntReturnTouchdown/PuntReturnTouchdown_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/PuntReturnTouchdown.csv",
+    "player_tracks_source": "data/player_tracks/PuntReturnTouchdown.csv"
+  },
+  {
+    "logical_clip_name": "QuickScreens_1",
+    "play_name": "QuickScreens",
+    "video_id": "1",
+    "tracking_source": "data/tracking/QuickScreens/QuickScreens_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/QuickScreens.csv",
+    "player_tracks_source": "data/player_tracks/QuickScreens.csv"
+  },
+  {
+    "logical_clip_name": "QuickScreens_2",
+    "play_name": "QuickScreens",
+    "video_id": "2",
+    "tracking_source": "data/tracking/QuickScreens/QuickScreens_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/QuickScreens.csv",
+    "player_tracks_source": "data/player_tracks/QuickScreens.csv"
+  },
+  {
+    "logical_clip_name": "RPO_1",
+    "play_name": "RPO",
+    "video_id": "1",
+    "tracking_source": "data/tracking/RPO/RPO_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/RPO.csv",
+    "player_tracks_source": "data/player_tracks/RPO.csv"
+  },
+  {
+    "logical_clip_name": "Sack_1",
+    "play_name": "Sack",
+    "video_id": "1",
+    "tracking_source": "data/tracking/Sack/Sack_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Sack.csv",
+    "player_tracks_source": "data/player_tracks/Sack.csv"
+  },
+  {
+    "logical_clip_name": "Sack_2",
+    "play_name": "Sack",
+    "video_id": "2",
+    "tracking_source": "data/tracking/Sack/Sack_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Sack.csv",
+    "player_tracks_source": "data/player_tracks/Sack.csv"
+  },
+  {
+    "logical_clip_name": "SlantAndGo_1",
+    "play_name": "SlantAndGo",
+    "video_id": "1",
+    "tracking_source": "data/tracking/SlantAndGo/SlantAndGo_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/SlantAndGo.csv",
+    "player_tracks_source": "data/player_tracks/SlantAndGo.csv"
+  },
+  {
+    "logical_clip_name": "Slants0to10_5",
+    "play_name": "Slants0to10",
+    "video_id": "5",
+    "tracking_source": "data/tracking/Slants0to10/Slants0to10_5_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/Slants0to10.csv",
+    "player_tracks_source": "data/player_tracks/Slants0to10.csv"
+  },
+  {
+    "logical_clip_name": "SplitZone_1",
+    "play_name": "SplitZone",
+    "video_id": "1",
+    "tracking_source": "data/tracking/SplitZone/SplitZone_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/SplitZone.csv",
+    "player_tracks_source": "data/player_tracks/SplitZone.csv"
+  },
+  {
+    "logical_clip_name": "SplitZone_2",
+    "play_name": "SplitZone",
+    "video_id": "2",
+    "tracking_source": "data/tracking/SplitZone/SplitZone_2_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/SplitZone.csv",
+    "player_tracks_source": "data/player_tracks/SplitZone.csv"
+  },
+  {
+    "logical_clip_name": "WRSlowScreens_1",
+    "play_name": "WRSlowScreens",
+    "video_id": "1",
+    "tracking_source": "data/tracking/WRSlowScreens/WRSlowScreens_1_cvat_mot.zip",
+    "key_actions_source": "data/key_actions/WRSlowScreens.csv",
+    "player_tracks_source": "data/player_tracks/WRSlowScreens.csv"
+  }
+]

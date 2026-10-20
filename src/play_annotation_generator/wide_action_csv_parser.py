@@ -10,6 +10,12 @@ class ParsedEntry(tuple):
     def __init__(self, start_frame, actor_id, err, end_frame=None):
         self.end_frame = end_frame
 
+def normalize_column_name(name: str) -> str:
+    name = str(name).lower().strip()
+    name = re.sub(r'\b(of|the|a)\b', '', name)
+    name = re.sub(r'[^a-z0-9]', '', name)
+    return name
+
 def parse_cell_entries(
     cell_value: str,
     pair_sep: str = ",",
@@ -41,33 +47,32 @@ def parse_cell_entries(
         if not entry:
             continue
             
-        # Split into frame and track_id by pair separator
-        parts = [p.strip() for p in entry.split(pair_sep) if p.strip()]
-        if len(parts) == 0:
+        # Split into components by pair separator
+        raw_parts = [p.strip() for p in entry.split(pair_sep)]
+        if len(raw_parts) == 0 or all(not p for p in raw_parts):
             continue
-        elif len(parts) == 1:
+        elif len(raw_parts) == 1:
             # Could be just a frame number (for global event) or a text label
-            val = parts[0]
+            val = raw_parts[0]
             try:
                 frame = int(val)
                 parsed.append(ParsedEntry(frame, None, None))
             except ValueError:
                 # Text label like "Tackle"
                 parsed.append(ParsedEntry(None, val, f"Single text entry '{val}' could not be parsed as a frame number."))
-        elif len(parts) == 2:
-            frame_str, actor_str = parts[0], parts[1]
-            try:
-                frame = int(frame_str)
-                parsed.append(ParsedEntry(frame, actor_str, None))
-            except ValueError:
+        elif len(raw_parts) == 2:
+            frame_str, actor_str = raw_parts[0], raw_parts[1]
+            if not frame_str or frame_str in ["?", "??"]:
+                parsed.append(ParsedEntry(None, actor_str, f"Unknown/missing frame number '{frame_str}' in entry '{entry}'."))
+            else:
                 try:
-                    frame = int(actor_str)
-                    parsed.append(ParsedEntry(frame, frame_str, None))
+                    frame = int(frame_str)
+                    parsed.append(ParsedEntry(frame, actor_str, None))
                 except ValueError:
-                    parsed.append(ParsedEntry(None, None, f"Could not parse frame number from '{frame_str}' in entry '{entry}'."))
-        elif len(parts) == 3:
-            # start_frame, end_frame, actor_id
-            start_str, end_str, actor_str = parts[0], parts[1], parts[2]
+                    parsed.append(ParsedEntry(None, actor_str, f"Could not parse frame number from '{frame_str}' in entry '{entry}'."))
+        elif len(raw_parts) == 3:
+            # start_frame, end_frame, actor_id OR frame, track_id1, track_id2
+            start_str, end_str, actor_str = raw_parts[0], raw_parts[1], raw_parts[2]
             start_frame = None
             end_frame = None
             try:
@@ -79,13 +84,26 @@ def parse_cell_entries(
             except ValueError:
                 pass
             if start_frame is not None and end_frame is not None:
-                parsed.append(ParsedEntry(start_frame, actor_str, None, end_frame=end_frame))
+                if end_frame >= start_frame:
+                    parsed.append(ParsedEntry(start_frame, actor_str, None, end_frame=end_frame))
+                else:
+                    # end_frame < start_frame indicates frame followed by multiple track IDs, e.g. 91,19,2
+                    parsed.append(ParsedEntry(start_frame, end_str, None))
+                    parsed.append(ParsedEntry(start_frame, actor_str, None))
             elif start_frame is not None:
                 parsed.append(ParsedEntry(start_frame, actor_str, None))
             else:
-                parsed.append(ParsedEntry(None, None, f"Could not parse frame numbers from '{entry}'."))
+                parsed.append(ParsedEntry(None, actor_str, f"Could not parse frame numbers from '{entry}'."))
         else:
-            parsed.append(ParsedEntry(None, None, f"Too many components in entry '{entry}'. Expected 'frame,track_id' or 'start,end,track_id'."))
+            # len(raw_parts) > 3: frame followed by multiple track IDs like "361,11,18,21"
+            frame_str = raw_parts[0]
+            try:
+                frame = int(frame_str)
+                for actor_id in raw_parts[1:]:
+                    if actor_id:
+                        parsed.append(ParsedEntry(frame, actor_id, None))
+            except ValueError:
+                parsed.append(ParsedEntry(None, None, f"Too many components in entry '{entry}'. Expected 'frame,track_id' or 'start,end,track_id'."))
             
     return parsed
 
@@ -141,12 +159,6 @@ def parse_wide_action_csv(
         except Exception as e:
             errors.append(f"Failed to load result shorthand JSON: {e}")
             
-    def normalize_column_name(name: str) -> str:
-        name = str(name).lower().strip()
-        name = re.sub(r'\b(of|the|a)\b', '', name)
-        name = re.sub(r'[^a-z0-9]', '', name)
-        return name
-
     with open(csv_path, mode="r", encoding="utf-8") as f:
         lines = f.readlines()
         
@@ -253,20 +265,46 @@ def parse_wide_action_csv(
                 # The caller will handle play end frames and tags later
                 pass
                 
-        # Create a lookup for normalized keys to original cleaned keys
-        normalized_keys = {normalize_column_name(k): k for k in cleaned_row.keys()}
-        
-        # Parse action columns
-        for config_col, action_label in action_cols_map.items():
-            norm_config_col = normalize_column_name(config_col)
-            if norm_config_col not in normalized_keys:
+        col_video_name_norm = normalize_column_name(col_video_name)
+        col_video_id_norm = normalize_column_name(col_video_id)
+        col_play_tag_norm = normalize_column_name(col_play_tag)
+        col_result_tag_norm = normalize_column_name(col_result_tag)
+        col_result_frame_norm = normalize_column_name(col_result_frame)
+        col_notes_norm = normalize_column_name(col_notes)
+
+        non_action_norm = {
+            col_video_name_norm, col_video_id_norm, col_play_tag_norm,
+            col_result_tag_norm, col_result_frame_norm, col_notes_norm,
+            "videoname", "videoid", "video", "originalid", "coverage", "ol", "result", "notes"
+        }
+        norm_action_cols = {normalize_column_name(k): v for k, v in action_cols_map.items()}
+
+        # Parse action columns directly from the row to prevent double-parsing and detect unmapped columns
+        for orig_col_name, cell_val in cleaned_row.items():
+            if not orig_col_name:
                 continue
-                
-            orig_col_name = normalized_keys[norm_config_col]
-            cell_val = cleaned_row[orig_col_name]
-            if not cell_val:
+            norm_col = normalize_column_name(orig_col_name)
+            if norm_col in non_action_norm:
                 continue
-                
+            if not cell_val or cell_val in ["-", "--", "N/A", "n/a", "none", "None"]:
+                continue
+
+            if norm_col not in norm_action_cols:
+                errors.append(f"UNMAPPED_ACTION_COLUMN: play={p_tag} video_id={v_id} column={orig_col_name} value={cell_val}")
+                continue
+
+            action_label = norm_action_cols[norm_col]
+            if norm_col == "route":
+                val_lower = str(cell_val).lower().strip()
+                if val_lower.startswith("post"):
+                    action_label = "Action_RunPostRoute"
+                elif val_lower.startswith("slant"):
+                    action_label = "Action_RunSlantRoute"
+                elif val_lower.startswith("fade"):
+                    action_label = "Action_RunFadeRoute"
+                elif val_lower.startswith("hitch"):
+                    action_label = "Action_RunHitchRoute"
+
             entries = parse_cell_entries(cell_val, pair_sep, multi_seps)
             for entry_item in entries:
                 frame, actor_id, err = entry_item
