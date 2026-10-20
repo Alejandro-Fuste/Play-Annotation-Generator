@@ -1,7 +1,9 @@
 import argparse
 import os
+import re
 import sys
 from .config import load_config
+from .enricher import run_enrichment_pipeline
 from .output_pipeline import write_single_clip_outputs
 
 def parse_args():
