@@ -54,6 +54,29 @@ def infer_action_segments(
     if ball_snap_start is not None and snap_receive_end is None:
         snap_receive_end = ball_snap_start
 
+    # Special teams play-start detection
+    long_snap_events = [e for e in resolved_events if e.action == "Action_LongSnap"]
+    long_snap_start = long_snap_events[0].annotated_frame if long_snap_events else None
+
+    kick_approach_events = [e for e in resolved_events if e.action == "Action_KickApproach"]
+    kick_approach_start = kick_approach_events[0].annotated_frame if kick_approach_events else None
+
+    kick_ball_events = [e for e in resolved_events if e.action == "Action_KickBall"]
+    kick_ball_start = kick_ball_events[0].annotated_frame if kick_ball_events else None
+
+    # Global play-start boundary fallback for players without explicit post-snap actions:
+    # 1. Normal scrimmage plays: Action_BallSnap
+    # 2. Punt / FieldGoal family: Action_LongSnap
+    # 3. Kickoff / Onside family: Action_KickApproach (fallback: Action_KickBall)
+    play_start_fallback = ball_snap_start
+    if play_start_fallback is None:
+        if long_snap_start is not None:
+            play_start_fallback = long_snap_start
+        elif kick_approach_start is not None:
+            play_start_fallback = kick_approach_start
+        elif kick_ball_start is not None:
+            play_start_fallback = kick_ball_start
+
     # Index all events by action name for cross-actor rules
     all_events_by_action: Dict[str, List[int]] = {}
     for e in resolved_events:
@@ -143,8 +166,8 @@ def infer_action_segments(
             pre_snap_end = first_post_snap_start - 1
         else:
             # Player has no explicit post-snap action
-            if ball_snap_start is not None:
-                pre_snap_end = ball_snap_start - 1
+            if play_start_fallback is not None:
+                pre_snap_end = play_start_fallback - 1
             else:
                 pre_snap_end = final_play_frame
                 
@@ -213,6 +236,25 @@ def infer_action_segments(
                     if future_boundaries:
                         b_frame, b_inc = future_boundaries[0]
                         seg_end = b_frame if b_inc else b_frame - 1
+                    elif act_name == "Action_LongSnap":
+                        # Prevent Long Snap from stretching through play
+                        # Stop at next cross-actor place/kick/punt, or visible break, or seg_start
+                        place_or_punt = []
+                        for ca in ["Action_PlaceBall", "Action_PuntBall", "Action_BlockKick", "Action_BlockPunt"]:
+                            if ca in all_events_by_action:
+                                place_or_punt.extend([f for f in all_events_by_action[ca] if f > seg_start])
+                        if place_or_punt:
+                            seg_end = min(place_or_punt) - 1
+                        else:
+                            # Stop at first continuous visible break after start
+                            consec_end = seg_start
+                            while (consec_end + 1) in visible_frames:
+                                consec_end += 1
+                            if consec_end < max_track_frame:
+                                seg_end = consec_end
+                            else:
+                                warnings.append(f"Could not infer safe end frame for 'Action_LongSnap' on track '{xml_track_id}'.")
+                                seg_end = seg_start
                     else:
                         rule = rules_cfg.get(act_name, {})
                         if rule.get("ends_at_result_or_play_end"):

@@ -1,0 +1,116 @@
+[
+  {
+    "clip_name": "Counter_1",
+    "play_name": "Counter",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 19,
+    "tracks_count": 29,
+    "segments_count": 57,
+    "dense_count": 11110,
+    "errors": [],
+    "warnings": [
+      "Row 4: Duplicate assignment for track ID '11' in grid. Overwriting previous assignment.",
+      "Track ID '0' in Player Track ID sheet does not exist in MOT gt.txt.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 509 as fallback play end.",
+      "Action 'Action_None' range [348-411] for track '7' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [415-419] for track '7' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "Duo_1",
+    "play_name": "Duo",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 112,
+    "tracks_count": 37,
+    "segments_count": 100,
+    "dense_count": 5128,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 268 as fallback play end.",
+      "Action 'Action_PreSnap' range [0-190] for track '0' has 3 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [192-199] for track '0' has 2 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [201-213] for track '0' has 2 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [224-225] for track '0' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "FieldGoalBlock_3",
+    "play_name": "FieldGoalBlock",
+    "video_id": "3",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 87,
+    "tracks_count": 28,
+    "segments_count": 96,
+    "dense_count": 2213,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Action 'Action_None' range [4-94] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [99-120] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [4-120] for track '1' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [4-45] for track '2' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "KickoffReturnTouchdown_6",
+    "play_name": "KickoffReturnTouchdown",
+    "video_id": "6",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 320,
+    "tracks_count": 57,
+    "segments_count": 259,
+    "dense_count": 9144,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 689 as fallback play end.",
+      "Segment 'Action_CatchKick' for track '33' has invalid range: start=278, end=253. Clamping end to start.",
+      "Segment 'Action_CrossGoalLine' for track '33' has invalid range: start=687, end=589. Clamping end to start.",
+      "Action 'Action_None' range [72-133] for track '0' has 2 frames without a visible bounding box.",
+      "Action 'Action_None' range [135-247] for track '0' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "PuntBlock_1",
+    "play_name": "PuntBlock",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 403,
+    "tracks_count": 89,
+    "segments_count": 294,
+    "dense_count": 4967,
+    "errors": [],
+    "warnings": [
+      "Row 4: Duplicate assignment for track ID '1' in grid. Overwriting previous assignment.",
+      "Row 4: Duplicate assignment for track ID '2' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 299 as fallback play end.",
+      "Action_SnapReceive present in CSV, but paired Action_BallSnap is missing.",
+      "Segment 'Action_SecureRecovery' for track '7' has invalid range: start=233, end=45. Clamping end to start."
+    ]
+  },
+  {
+    "clip_name": "QuickScreens_1",
+    "play_name": "QuickScreens",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 36,
+    "tracks_count": 24,
+    "segments_count": 62,
+    "dense_count": 4478,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Action 'Action_None' range [22-164] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [22-52] for track '1' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [61-196] for track '1' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [199-210] for track '1' has 1 frames without a visible bounding box."
+    ]
+  }
+]

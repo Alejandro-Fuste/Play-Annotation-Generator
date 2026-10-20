@@ -218,12 +218,25 @@ def audit_showcase_readiness(
                                 f"Mapped action '{action_label}' for column '{col_name}' does not exist in actions.json"
                             )
 
+                    # Check semantic alias audit classification
+                    from .semantic_audit import get_alias_audit_map
+                    alias_audit = get_alias_audit_map()
+                    if norm_c in alias_audit:
+                        audit_entry = alias_audit[norm_c]
+                        if audit_entry["classification"] == "NEEDS_SOURCE_REVIEW":
+                            res.errors.append(
+                                f"Action column '{col_name}' is classified as NEEDS_SOURCE_REVIEW: {audit_entry['reason']}"
+                            )
+
                     # Check cell entries parsing
                     entries = parse_cell_entries(cell_val)
+                    valid_entries = [e for e in entries if e[0] is not None]
                     for e in entries:
                         frame, actor, err = e
                         if err:
-                            res.warnings.append(f"Column '{col_name}' cell '{cell_val}': {err}")
+                            res.errors.append(f"Malformed action cell in column '{col_name}' value '{cell_val}': {err}")
+                    if not valid_entries:
+                        res.errors.append(f"Action cell in column '{col_name}' value '{cell_val}' produced 0 valid events")
 
         # Classify status
         if res.errors:

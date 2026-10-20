@@ -23,89 +23,136 @@ def parse_cell_entries(
 ) -> List[Tuple[Optional[int], Optional[str], Optional[str]]]:
     """
     Parses a single wide CSV action cell.
+    Supports semicolon continuation parsing where a full tuple establishes frame context
+    and subsequent bare numeric tokens inherit the frame context (e.g. 52,19;14;20;18).
     Returns a list of tuples: (frame_number, actor_track_id, error_message).
     Entries may also carry an .end_frame attribute if a 3-part range was provided (start, end, track_id).
     """
-    if multi_seps is None:
-        multi_seps = [";", "|", "\n"]
-        
     cell_value = cell_value.strip()
     if not cell_value or cell_value in ["-", "--", "N/A", "n/a", "none", "None"]:
         return []
-        
-    # Split by any of the multi-entry separators
-    raw_entries = [cell_value]
-    for sep in multi_seps:
-        next_entries = []
-        for entry in raw_entries:
-            next_entries.extend(entry.split(sep))
-        raw_entries = next_entries
-        
+
+    # First split by line / pipe breaks to isolate records
+    line_splits = [cell_value]
+    for sep in ["\n", "|"]:
+        next_lines = []
+        for l in line_splits:
+            next_lines.extend(l.split(sep))
+        line_splits = next_lines
+
     parsed = []
-    for entry in raw_entries:
-        entry = entry.strip()
-        if not entry:
+    for line in line_splits:
+        line = line.strip()
+        if not line:
             continue
-            
-        # Split into components by pair separator
-        raw_parts = [p.strip() for p in entry.split(pair_sep)]
-        if len(raw_parts) == 0 or all(not p for p in raw_parts):
+
+        # Split by semicolon continuation within this line
+        semi_parts = [p.strip() for p in line.split(";") if p.strip()]
+        if not semi_parts:
             continue
-        elif len(raw_parts) == 1:
-            # Could be just a frame number (for global event) or a text label
-            val = raw_parts[0]
-            try:
-                frame = int(val)
-                parsed.append(ParsedEntry(frame, None, None))
-            except ValueError:
-                # Text label like "Tackle"
-                parsed.append(ParsedEntry(None, val, f"Single text entry '{val}' could not be parsed as a frame number."))
-        elif len(raw_parts) == 2:
-            frame_str, actor_str = raw_parts[0], raw_parts[1]
-            if not frame_str or frame_str in ["?", "??"]:
-                parsed.append(ParsedEntry(None, actor_str, f"Unknown/missing frame number '{frame_str}' in entry '{entry}'."))
+
+        current_frame: Optional[int] = None
+        current_end_frame: Optional[int] = None
+
+        for sub_entry in semi_parts:
+            raw_parts = [p.strip() for p in sub_entry.split(pair_sep)]
+            if len(raw_parts) == 0 or all(not p for p in raw_parts):
+                continue
+            elif len(raw_parts) == 1:
+                val = raw_parts[0]
+                if current_frame is not None:
+                    # Bare token inherits current_frame (and current_end_frame if range)
+                    if val in ["?", "??"] or not val:
+                        parsed.append(ParsedEntry(None, val, f"Invalid continuation actor ID '{val}'."))
+                    else:
+                        parsed.append(ParsedEntry(current_frame, val, None, end_frame=current_end_frame))
+                else:
+                    # No active frame context: could be a global frame number or a text label
+                    try:
+                        frame = int(val)
+                        parsed.append(ParsedEntry(frame, None, None))
+                    except ValueError:
+                        parsed.append(ParsedEntry(None, val, f"Single text entry '{val}' could not be parsed as a frame number."))
+            elif len(raw_parts) == 2:
+                frame_str, actor_str = raw_parts[0], raw_parts[1]
+                if not frame_str or frame_str in ["?", "??"]:
+                    current_frame = None
+                    current_end_frame = None
+                    parsed.append(ParsedEntry(None, actor_str, f"Unknown/missing frame number '{frame_str}' in entry '{sub_entry}'."))
+                else:
+                    try:
+                        frame = int(frame_str)
+                        current_frame = frame
+                        current_end_frame = None
+                        parsed.append(ParsedEntry(frame, actor_str, None))
+                    except ValueError:
+                        current_frame = None
+                        current_end_frame = None
+                        parsed.append(ParsedEntry(None, actor_str, f"Could not parse frame number from '{frame_str}' in entry '{sub_entry}'."))
+            elif len(raw_parts) == 3:
+                start_str, end_str, actor_str = raw_parts[0], raw_parts[1], raw_parts[2]
+                start_frame = None
+                end_frame = None
+                try:
+                    start_frame = int(start_str)
+                except ValueError:
+                    pass
+                try:
+                    end_frame = int(end_str)
+                except ValueError:
+                    pass
+                if start_frame is not None and end_frame is not None:
+                    if end_frame >= start_frame:
+                        current_frame = start_frame
+                        current_end_frame = end_frame
+                        parsed.append(ParsedEntry(start_frame, actor_str, None, end_frame=end_frame))
+                    else:
+                        current_frame = start_frame
+                        current_end_frame = None
+                        parsed.append(ParsedEntry(start_frame, end_str, None))
+                        parsed.append(ParsedEntry(start_frame, actor_str, None))
+                elif start_frame is not None:
+                    current_frame = start_frame
+                    current_end_frame = None
+                    parsed.append(ParsedEntry(start_frame, actor_str, None))
+                else:
+                    current_frame = None
+                    current_end_frame = None
+                    parsed.append(ParsedEntry(None, actor_str, f"Could not parse frame numbers from '{sub_entry}'."))
             else:
+                frame_str = raw_parts[0]
                 try:
                     frame = int(frame_str)
-                    parsed.append(ParsedEntry(frame, actor_str, None))
+                    current_frame = frame
+                    current_end_frame = None
+                    for actor_id in raw_parts[1:]:
+                        if actor_id:
+                            parsed.append(ParsedEntry(frame, actor_id, None))
                 except ValueError:
-                    parsed.append(ParsedEntry(None, actor_str, f"Could not parse frame number from '{frame_str}' in entry '{entry}'."))
-        elif len(raw_parts) == 3:
-            # start_frame, end_frame, actor_id OR frame, track_id1, track_id2
-            start_str, end_str, actor_str = raw_parts[0], raw_parts[1], raw_parts[2]
-            start_frame = None
-            end_frame = None
-            try:
-                start_frame = int(start_str)
-            except ValueError:
-                pass
-            try:
-                end_frame = int(end_str)
-            except ValueError:
-                pass
-            if start_frame is not None and end_frame is not None:
-                if end_frame >= start_frame:
-                    parsed.append(ParsedEntry(start_frame, actor_str, None, end_frame=end_frame))
-                else:
-                    # end_frame < start_frame indicates frame followed by multiple track IDs, e.g. 91,19,2
-                    parsed.append(ParsedEntry(start_frame, end_str, None))
-                    parsed.append(ParsedEntry(start_frame, actor_str, None))
-            elif start_frame is not None:
-                parsed.append(ParsedEntry(start_frame, actor_str, None))
-            else:
-                parsed.append(ParsedEntry(None, actor_str, f"Could not parse frame numbers from '{entry}'."))
-        else:
-            # len(raw_parts) > 3: frame followed by multiple track IDs like "361,11,18,21"
-            frame_str = raw_parts[0]
-            try:
-                frame = int(frame_str)
-                for actor_id in raw_parts[1:]:
-                    if actor_id:
-                        parsed.append(ParsedEntry(frame, actor_id, None))
-            except ValueError:
-                parsed.append(ParsedEntry(None, None, f"Too many components in entry '{entry}'. Expected 'frame,track_id' or 'start,end,track_id'."))
-            
+                    current_frame = None
+                    current_end_frame = None
+                    parsed.append(ParsedEntry(None, None, f"Too many components in entry '{sub_entry}'. Expected 'frame,track_id' or 'start,end,track_id'."))
+
     return parsed
+
+def load_canonical_plays_map(plays_json_path: Optional[str] = None) -> Dict[str, str]:
+    if not plays_json_path:
+        for p in ["data/plays.json", "plays.json", "configs/plays.json"]:
+            if os.path.exists(p):
+                plays_json_path = p
+                break
+    mapping = {}
+    if plays_json_path and os.path.exists(plays_json_path):
+        import json
+        with open(plays_json_path, "r", encoding="utf-8") as f:
+            d = json.load(f)
+        for fl in d.get("formattedPlayLabels", []):
+            mapping[fl] = fl
+            base = fl.split("_")[-1]
+            mapping[base] = fl
+            mapping[base.lower()] = fl
+            mapping[re.sub(r'[^a-zA-Z0-9]', '', base).lower()] = fl
+    return mapping
 
 def parse_wide_action_csv(
     csv_path: str,
@@ -143,6 +190,9 @@ def parse_wide_action_csv(
     col_result_frame = csv_cols.get("result_frame", "result_frame")
     col_notes = csv_cols.get("notes", "notes")
     
+    plays_json_path = config.get("input", {}).get("plays_json", config.get("plays_json"))
+    canonical_plays_map = load_canonical_plays_map(plays_json_path)
+
     # Load shorthand mappings
     shorthand_path = config.get("input", {}).get("result_shorthand_json")
     if not shorthand_path:
@@ -238,19 +288,47 @@ def parse_wide_action_csv(
         if r_tag in shorthand_map:
             r_tag = shorthand_map[r_tag]
             
-        # Standardize default tags if empty
-        if not p_tag or p_tag == "✓": # Check if checkmark used
-            inferred_play = None
-            candidate = re.sub(r'[^a-zA-Z]', '', metadata_video_name or v_name or "").lower()
-            if "bootpass" in candidate:
-                inferred_play = "Play_Pass_BootPass"
-            elif "jetsweep" in candidate:
-                inferred_play = "Play_Run_JetSweep"
-            elif "counter" in candidate:
-                inferred_play = "Play_Run_Counter"
-            elif "power" in candidate:
-                inferred_play = "Play_Run_Power"
-            p_tag = inferred_play if inferred_play else "Play_Run_JetSweep"
+        # Resolve canonical play label from plays.json (NO JetSweep fallback)
+        resolved_play = None
+        if p_tag and p_tag != "✓":
+            if p_tag in canonical_plays_map.values():
+                resolved_play = p_tag
+            elif p_tag in canonical_plays_map:
+                resolved_play = canonical_plays_map[p_tag]
+            elif p_tag.startswith("Play_"):
+                resolved_play = p_tag
+
+        if not resolved_play:
+            candidates = []
+            if metadata_video_name:
+                candidates.append(metadata_video_name)
+            if target_video:
+                t_str = str(target_video).strip()
+                candidates.append(re.sub(r'_\d+$', '', t_str))
+                candidates.append(re.sub(r'\d+$', '', t_str))
+            if v_name:
+                v_str = str(v_name).strip()
+                candidates.append(re.sub(r'_\d+$', '', v_str))
+                candidates.append(re.sub(r'\d+$', '', v_str))
+            csv_base = os.path.splitext(os.path.basename(csv_path))[0]
+            if csv_base:
+                candidates.append(csv_base)
+
+            for cand in candidates:
+                cand_clean = cand.strip()
+                cand_norm = re.sub(r'[^a-zA-Z0-9]', '', cand_clean).lower()
+                if cand_clean in canonical_plays_map:
+                    resolved_play = canonical_plays_map[cand_clean]
+                    break
+                if cand_norm in canonical_plays_map:
+                    resolved_play = canonical_plays_map[cand_norm]
+                    break
+
+        if resolved_play:
+            p_tag = resolved_play
+        else:
+            errors.append(f"ERROR / BLOCKED: Could not resolve canonical play label for row {row_idx} (video '{v_name}').")
+            p_tag = ""
             
         r_frame = None
         if r_frame_str:

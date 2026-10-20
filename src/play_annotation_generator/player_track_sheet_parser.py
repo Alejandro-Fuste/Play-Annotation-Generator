@@ -150,6 +150,7 @@ def parse_player_track_csv(
                     )
     else:
         # Positional Grid format (columns 1 to N contain POSITION,TRACK_ID)
+        vid_row_counts: Dict[str, int] = {}
         for row_idx in range(header_idx + 1, len(lines)):
             line = lines[row_idx]
             # Use csv.reader to handle quoted commas correctly
@@ -162,11 +163,24 @@ def parse_player_track_csv(
                 continue
                 
             v_id = row_parts[0]
+            row_idx_for_vid = vid_row_counts.get(v_id, 0)
+            vid_row_counts[v_id] = row_idx_for_vid + 1
+
             v_name = f"{metadata_video_name}{v_id}" if metadata_video_name else v_id
             
             # Check match
             if not is_video_match(v_name, v_id, target_video_name, target_video_id):
                 continue
+
+            # Assign team_side from row order:
+            # 1st row for a Video # = offense / kicking or possession team
+            # 2nd row for a Video # = defense / return or block team
+            if row_idx_for_vid == 0:
+                grid_team_side = "offense"
+            elif row_idx_for_vid == 1:
+                grid_team_side = "defense"
+            else:
+                grid_team_side = None
                 
             # Parse all cells in the row after column 0
             for cell_idx in range(1, len(row_parts)):
@@ -176,20 +190,23 @@ def parse_player_track_csv(
                     
                 parsed_entries = parse_assignments_cell(cell_val)
                 for pos, tid in parsed_entries:
-                    pos_upper = pos.upper()
-                    OFFENSE_POSITIONS = {
-                        "QB", "RB", "FB", "H-BACK", "HB", "LT", "LG", "C", "RG", "RT",
-                        "WR-X", "WR-Y", "WR-Z", "WR-F", "TE-Y", "TE-H", "TE-F", "WR", "TE", "OL", "SKILL"
-                    }
-                    
-                    is_offense = False
-                    if pos_upper in OFFENSE_POSITIONS:
-                        is_offense = True
-                    elif any(p in pos_upper for p in ["WR", "TE", "LT", "LG", "RG", "RT", "QB", "RB", "FB", "HB", "C"]):
-                        if not any(d in pos_upper for d in ["DT", "MLB", "WLB", "LDE", "RDE", "FS", "SS", "DE", "CB"]):
+                    if grid_team_side is not None:
+                        team_side = grid_team_side
+                    else:
+                        pos_upper = pos.upper()
+                        OFFENSE_POSITIONS = {
+                            "QB", "RB", "FB", "H-BACK", "HB", "LT", "LG", "C", "RG", "RT",
+                            "WR-X", "WR-Y", "WR-Z", "WR-F", "TE-Y", "TE-H", "TE-F", "WR", "TE", "OL", "SKILL"
+                        }
+                        
+                        is_offense = False
+                        if pos_upper in OFFENSE_POSITIONS:
                             is_offense = True
-                            
-                    team_side = "offense" if is_offense else "defense"
+                        elif any(p in pos_upper for p in ["WR", "TE", "LT", "LG", "RG", "RT", "QB", "RB", "FB", "HB", "C"]):
+                            if not any(d in pos_upper for d in ["DT", "MLB", "WLB", "LDE", "RDE", "FS", "SS", "DE", "CB"]):
+                                is_offense = True
+                                
+                        team_side = "offense" if is_offense else "defense"
                     
                     if tid in assignments:
                         warnings.append(f"Row {row_idx + 1}: Duplicate assignment for track ID '{tid}' in grid. Overwriting previous assignment.")

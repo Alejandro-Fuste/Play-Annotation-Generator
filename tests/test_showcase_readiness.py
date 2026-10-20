@@ -267,3 +267,221 @@ def test_existing_bootpass_and_jetsweep_green():
     assert len(js_rows) > 0
     assert any(e.action == "Action_JetMotion" for e in js_events)
     assert any(e.action == "Action_LeadBlock" for e in js_events)
+
+
+def test_semicolon_continuation_parsing_and_formats():
+    """12. Semicolon continuation parsing and various cell formats."""
+    # 52,19 -> one event: frame 52, actor 19
+    e1 = parse_cell_entries("52,19")
+    assert len(e1) == 1
+    assert e1[0][0] == 52 and e1[0][1] == "19" and e1[0][2] is None
+
+    # 52,19;55,14 -> frame 52 actor 19; frame 55 actor 14
+    e2 = parse_cell_entries("52,19;55,14")
+    assert len(e2) == 2
+    assert e2[0][0] == 52 and e2[0][1] == "19"
+    assert e2[1][0] == 55 and e2[1][1] == "14"
+
+    # 52,19;14;20;18 -> frame 52 for actors 19, 14, 20, 18
+    e3 = parse_cell_entries("52,19;14;20;18")
+    assert len(e3) == 4
+    for item in e3:
+        assert item[0] == 52
+        assert item[2] is None
+    assert [item[1] for item in e3] == ["19", "14", "20", "18"]
+
+    # 361,11,18,21 -> frame 361 for actors 11, 18, 21
+    e4 = parse_cell_entries("361,11,18,21")
+    assert len(e4) == 3
+    for item in e4:
+        assert item[0] == 361
+        assert item[2] is None
+    assert [item[1] for item in e4] == ["11", "18", "21"]
+
+    # 191,261,OL -> explicit range 191-261 for group OL
+    e5 = parse_cell_entries("191,261,OL")
+    assert len(e5) == 1
+    assert e5[0][0] == 191 and e5[0][1] == "OL" and e5[0].end_frame == 261
+
+    # 20,30,4;40,50,7 -> actor 4 range 20-30; actor 7 range 40-50
+    e6 = parse_cell_entries("20,30,4;40,50,7")
+    assert len(e6) == 2
+    assert e6[0][0] == 20 and e6[0][1] == "4" and e6[0].end_frame == 30
+    assert e6[1][0] == 40 and e6[1][1] == "7" and e6[1].end_frame == 50
+
+
+def test_duo_1_combo_blocks_regression():
+    """13. Duo_1 Combo Blocks parses exactly 4 events at frame 52 for 19,14,20,18 with 0 global events."""
+    config = load_config()
+    events, rows, errors = parse_wide_action_csv(
+        "data/key_actions/Duo.csv", config, target_video="Duo_1"
+    )
+    combo_events = [e for e in events if e.action == "Action_ComboBlock"]
+    assert len(combo_events) == 4, f"Expected 4 ComboBlock events, got {len(combo_events)}"
+    for e in combo_events:
+        assert e.start_frame == 52
+        assert e.target_kind == "track_id"
+        assert e.actor_track_id in ["19", "14", "20", "18"]
+
+    # Zero global ComboBlock events
+    global_combos = [e for e in combo_events if e.target_kind == "global_event"]
+    assert len(global_combos) == 0
+
+    # Duo canonical play label
+    assert all(e.play_tag == "Play_Run_Duo" for e in events)
+
+
+def test_canonical_play_label_resolution():
+    """14. Canonical play label resolution without JetSweep fallback."""
+    config = load_config()
+    expected_labels = {
+        "BootPass_1": ("data/key_actions/BootPass.csv", "Play_Pass_BootPass"),
+        "Counter_1": ("data/key_actions/Counter.csv", "Play_Run_Counter"),
+        "Duo_1": ("data/key_actions/Duo.csv", "Play_Run_Duo"),
+        "QuickScreens_1": ("data/key_actions/QuickScreens.csv", "Play_Pass_QuickScreens"),
+        "FieldGoalBlock_3": ("data/key_actions/FieldGoalBlock.csv", "Play_SpecialTeams_FieldGoalBlock"),
+        "JetSweep_1": ("data/key_actions/JetSweep.csv", "Play_Run_JetSweep"),
+    }
+
+    for clip_id, (csv_path, expected_tag) in expected_labels.items():
+        events, rows, errors = parse_wide_action_csv(csv_path, config, target_video=clip_id)
+        assert len(events) > 0, f"No events parsed for {clip_id}"
+        assert all(e.play_tag == expected_tag for e in events), (
+            f"Clip {clip_id} expected {expected_tag}, got {[e.play_tag for e in events[:3]]}"
+        )
+
+
+def test_special_teams_row_side_assignment():
+    """15. Special teams positional grid team-side assignment from row order."""
+    from play_annotation_generator.player_track_sheet_parser import parse_player_track_csv
+
+    # FieldGoalBlock_3
+    fg_assigns, fg_warn = parse_player_track_csv("data/player_tracks/FieldGoalBlock.csv", target_video_id="3")
+    assert len(fg_assigns) > 0
+    # First row: Long_Snapper (20), Holder (8), Kicker (11) must be offense
+    assert fg_assigns["20"].position == "Long_Snapper" and fg_assigns["20"].team_side == "offense"
+    assert fg_assigns["8"].position == "Holder" and fg_assigns["8"].team_side == "offense"
+    assert fg_assigns["11"].position == "Kicker" and fg_assigns["11"].team_side == "offense"
+    # Second row: Left_Edge_Rusher (2), Interior_Rusher1 (7) must be defense
+    assert fg_assigns["2"].position == "Left_Edge_Rusher" and fg_assigns["2"].team_side == "defense"
+    assert fg_assigns["7"].position == "Interior_Rusher1" and fg_assigns["7"].team_side == "defense"
+
+    # PuntBlock_1
+    pb_assigns, pb_warn = parse_player_track_csv("data/player_tracks/PuntBlock.csv", target_video_id="1")
+    assert len(pb_assigns) > 0
+    # First row: Long_Snapper (17), Punter (16) must be offense
+    assert pb_assigns["17"].position == "Long_Snapper" and pb_assigns["17"].team_side == "offense"
+    assert pb_assigns["16"].position == "Punter" and pb_assigns["16"].team_side == "offense"
+    # Second row: Interior_Rusher1 (4) must be defense
+    assert pb_assigns["4"].team_side == "defense"
+
+    # KickoffReturnTouchdown_6
+    ko_assigns, ko_warn = parse_player_track_csv("data/player_tracks/KickoffReturnTouchdown.csv", target_video_id="6")
+    assert len(ko_assigns) > 0
+    # First row: Kicker (8) must be offense
+    assert ko_assigns["8"].position == "Kicker" and ko_assigns["8"].team_side == "offense"
+    # Second row: Front_Blocker2 (4) must be defense
+    assert ko_assigns["4"].position == "Front_Blocker2" and ko_assigns["4"].team_side == "defense"
+
+
+def test_special_teams_presnap_and_long_snap_timing():
+    """16. Special-teams PreSnap fallback boundaries and Action_LongSnap non-stretching."""
+    config = load_config()
+
+    # FieldGoalBlock_3 PreSnap ends at Long Snap - 1, and LongSnap doesn't stretch to play end
+    track_ls = Track(
+        xml_track_id="20",
+        label="player",
+        source="mot",
+        position="Long_Snapper",
+        team_side="offense",
+        boxes_by_frame={f: TrackBox(f, 0, 0, 10, 10, False, False, True) for f in range(0, 100)}
+    )
+    track_rusher = Track(
+        xml_track_id="7",
+        label="player",
+        source="mot",
+        position="Interior_Rusher1",
+        team_side="defense",
+        boxes_by_frame={f: TrackBox(f, 0, 0, 10, 10, False, False, True) for f in range(0, 100)}
+    )
+    tracks = {"20": track_ls, "7": track_rusher}
+
+    ls_event = ActionEvent(
+        video_name="FieldGoalBlock_3",
+        video_id="3",
+        action="Action_LongSnap",
+        start_frame=4,
+        annotated_frame=4,
+        actor_track_id="20",
+        resolved_xml_track_id="20",
+        target_kind="track_id"
+    )
+    place_event = ActionEvent(
+        video_name="FieldGoalBlock_3",
+        video_id="3",
+        action="Action_PlaceBall",
+        start_frame=21,
+        annotated_frame=21,
+        actor_track_id="8",
+        resolved_xml_track_id="8",
+        target_kind="track_id"
+    )
+    kick_event = ActionEvent(
+        video_name="FieldGoalBlock_3",
+        video_id="3",
+        action="Action_KickBall",
+        start_frame=46,
+        annotated_frame=46,
+        actor_track_id="11",
+        resolved_xml_track_id="11",
+        target_kind="track_id"
+    )
+
+    metadata = {"start_frame": 0, "stop_frame": 99, "play_name": "FieldGoalBlock"}
+    segments, warnings = infer_action_segments(
+        [ls_event, place_event, kick_event], tracks, metadata, config
+    )
+
+    # Rusher has no explicit action: PreSnap should end at Long Snap - 1 = 3
+    rusher_presnap = [s for s in segments if s.xml_track_id == "7" and s.action == "Action_PreSnap"]
+    assert len(rusher_presnap) == 1
+    assert rusher_presnap[0].start_frame == 0
+    assert rusher_presnap[0].end_frame == 3
+
+    # Long Snap segment should not stretch to play end (frame 99)
+    ls_segs = [s for s in segments if s.xml_track_id == "20" and s.action == "Action_LongSnap"]
+    assert len(ls_segs) == 1
+    assert ls_segs[0].start_frame == 4
+    assert ls_segs[0].end_frame < 46  # stops before kick/place
+
+
+def test_malformed_cells_cause_blocked_readiness():
+    """17. Malformed cells (?,51, ,17, ,OL, ,15, post,7) cause BLOCKED readiness status."""
+    summary = audit_showcase_readiness()
+    blocked_clips = {r.logical_clip_name: r for r in summary.results if r.status == "BLOCKED"}
+
+    assert "KickoffReturnTouchdown_5" in blocked_clips  # ?,51
+    assert "OutAndUp_1" in blocked_clips               # ,17, ,OL, ,15
+    assert "PuntReturnTouchdown_2" in blocked_clips    # ?,20
+    assert "RPO_1" in blocked_clips                    # post,7
+    assert "Post10to15_2" in blocked_clips             # missing rows
+
+
+def test_semantic_action_alias_audit_classification():
+    """18. Every approximate alias in SEMANTIC_ACTION_ALIAS_AUDIT is classified."""
+    from play_annotation_generator.semantic_audit import SEMANTIC_ACTION_ALIAS_AUDIT
+
+    expected_headers = {
+        "press interior gap", "pass drop", "clear out route",
+        "dig route", "sell slant", "run go route", "onside kick"
+    }
+
+    found_headers = {e["source_header"].lower().strip() for e in SEMANTIC_ACTION_ALIAS_AUDIT}
+    assert expected_headers.issubset(found_headers)
+
+    for entry in SEMANTIC_ACTION_ALIAS_AUDIT:
+        assert entry["classification"] in ["EXACT", "INTENTIONAL_ALIAS", "NEEDS_SOURCE_REVIEW"]
+        assert len(entry["reason"]) > 10
+        assert entry["classification"] != "NEEDS_SOURCE_REVIEW"
+
