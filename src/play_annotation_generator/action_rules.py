@@ -64,6 +64,19 @@ def infer_action_segments(
     kick_ball_events = [e for e in resolved_events if e.action == "Action_KickBall"]
     kick_ball_start = kick_ball_events[0].annotated_frame if kick_ball_events else None
 
+    # RPO-specific play detection & Run Block play-start boundary
+    is_rpo = False
+    play_tag_str = str(metadata.get("play_tag", "")).lower()
+    play_name_str = str(metadata.get("play_name", "")).lower()
+    video_name_str = str(metadata.get("video_name", "")).lower()
+    if "rpo" in play_tag_str or "rpo" in play_name_str or "rpo" in video_name_str:
+        is_rpo = True
+    elif any(e.play_tag and "rpo" in e.play_tag.lower() for e in resolved_events):
+        is_rpo = True
+
+    run_block_events = [e for e in resolved_events if e.action == "Action_RunBlock"]
+    run_block_start = run_block_events[0].annotated_frame if run_block_events else None
+
     # Global play-start boundary fallback for players without explicit post-snap actions:
     # 1. Normal scrimmage plays: Action_BallSnap
     # 2. Punt / FieldGoal family: Action_LongSnap
@@ -159,17 +172,29 @@ def infer_action_segments(
         # A. PreSnap segment (applies to ALL mapped players)
         pre_snap_start = min_track_frame
         
-        if sorted_events:
-            first_post_snap_start = sorted_events[0].annotated_frame
-            if sorted_events[0].action == "Action_SnapReceive" and ball_snap_start is not None:
-                first_post_snap_start = ball_snap_start
-            pre_snap_end = first_post_snap_start - 1
-        else:
-            # Player has no explicit post-snap action
-            if play_start_fallback is not None:
-                pre_snap_end = play_start_fallback - 1
+        if is_rpo and run_block_start is not None:
+            rpo_boundary = run_block_start - 2
+            if sorted_events:
+                first_post_snap_start = sorted_events[0].annotated_frame
+                candidate_end = first_post_snap_start - 1
+                if candidate_end < rpo_boundary:
+                    pre_snap_end = candidate_end
+                else:
+                    pre_snap_end = rpo_boundary
             else:
-                pre_snap_end = final_play_frame
+                pre_snap_end = rpo_boundary
+        else:
+            if sorted_events:
+                first_post_snap_start = sorted_events[0].annotated_frame
+                if sorted_events[0].action == "Action_SnapReceive" and ball_snap_start is not None:
+                    first_post_snap_start = ball_snap_start
+                pre_snap_end = first_post_snap_start - 1
+            else:
+                # Player has no explicit post-snap action
+                if play_start_fallback is not None:
+                    pre_snap_end = play_start_fallback - 1
+                else:
+                    pre_snap_end = final_play_frame
                 
         if pre_snap_end >= pre_snap_start:
             explicit_segs.append(ActionSegment(

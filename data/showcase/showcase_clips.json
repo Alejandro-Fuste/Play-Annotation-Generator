@@ -144,18 +144,18 @@
     "player_tracks_source": "data/player_tracks/JetSweep.csv"
   },
   {
-    "logical_clip_name": "KickoffReturnTouchdown_5",
+    "logical_clip_name": "KickoffReturnTouchdown_13",
     "play_name": "KickoffReturnTouchdown",
-    "video_id": "5",
-    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_5_cvat_mot.zip",
+    "video_id": "13",
+    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_13_cvat_mot.zip",
     "key_actions_source": "data/key_actions/KickoffReturnTouchdown.csv",
     "player_tracks_source": "data/player_tracks/KickoffReturnTouchdown.csv"
   },
   {
-    "logical_clip_name": "KickoffReturnTouchdown_6",
+    "logical_clip_name": "KickoffReturnTouchdown_14",
     "play_name": "KickoffReturnTouchdown",
-    "video_id": "6",
-    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_6_cvat_mot.zip",
+    "video_id": "14",
+    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_14_cvat_mot.zip",
     "key_actions_source": "data/key_actions/KickoffReturnTouchdown.csv",
     "player_tracks_source": "data/player_tracks/KickoffReturnTouchdown.csv"
   },
@@ -312,10 +312,10 @@
     "player_tracks_source": "data/player_tracks/PuntReturnTouchdown.csv"
   },
   {
-    "logical_clip_name": "PuntReturnTouchdown_2",
+    "logical_clip_name": "PuntReturnTouchdown_9",
     "play_name": "PuntReturnTouchdown",
-    "video_id": "2",
-    "tracking_source": "data/tracking/PuntReturnTouchdown/PuntReturnTouchdown_2_cvat_mot.zip",
+    "video_id": "9",
+    "tracking_source": "data/tracking/PuntReturnTouchdown/PuntReturnTouchdown_9_cvat_mot.zip",
     "key_actions_source": "data/key_actions/PuntReturnTouchdown.csv",
     "player_tracks_source": "data/player_tracks/PuntReturnTouchdown.csv"
   },

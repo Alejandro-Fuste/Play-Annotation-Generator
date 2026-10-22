@@ -461,14 +461,29 @@ def test_malformed_cells_cause_blocked_readiness():
     summary = audit_showcase_readiness()
     blocked_clips = {r.logical_clip_name: r for r in summary.results if r.status == "BLOCKED"}
 
-    assert "KickoffReturnTouchdown_5" in blocked_clips  # ?,51
-    # OutAndUp_1 and Post10to15_2 were removed from manifest
-    # PuntReturnTouchdown_2 source was repaired with numeric 605,20
-    # RPO_1 post,7 is supported as non-temporal descriptor
-    assert "OutAndUp_1" not in blocked_clips
-    assert "Post10to15_2" not in blocked_clips
-    assert "PuntReturnTouchdown_2" not in blocked_clips
-    assert "RPO_1" not in blocked_clips
+    assert len(blocked_clips) == 0  # 50-clip showcase manifest has 0 blocked clips
+    assert "KickoffReturnTouchdown_5" not in {r.logical_clip_name for r in summary.results}
+
+    # When auditing a manifest with a malformed cell like KickoffReturnTouchdown_5 (?,51), it causes BLOCKED
+    with tempfile.NamedTemporaryFile("w+", suffix=".json", delete=False) as tf:
+        json.dump([{
+            "logical_clip_name": "KickoffReturnTouchdown_5",
+            "play_name": "KickoffReturnTouchdown",
+            "video_id": "5",
+            "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_5_cvat_mot.zip",
+            "key_actions_source": "data/key_actions/KickoffReturnTouchdown.csv",
+            "player_tracks_source": "data/player_tracks/KickoffReturnTouchdown.csv"
+        }], tf)
+        tmp_manifest = tf.name
+
+    try:
+        tmp_summary = audit_showcase_readiness(manifest_path=tmp_manifest)
+        tmp_blocked = {r.logical_clip_name: r for r in tmp_summary.results if r.status == "BLOCKED"}
+        assert "KickoffReturnTouchdown_5" in tmp_blocked
+        assert any("Malformed action cell" in b for b in tmp_blocked["KickoffReturnTouchdown_5"].errors)
+    finally:
+        os.unlink(tmp_manifest)
+
 
 
 def test_semantic_action_alias_audit_classification():
@@ -622,7 +637,7 @@ def test_non_temporal_rpo_route_descriptors():
 
 
 def test_showcase_manifest_50_clips():
-    """22. Showcase manifest has exactly 50 clips with OutAndUp_3 and without Post10to15_2."""
+    """22. Showcase manifest has exactly 50 clips with correct replacements."""
     with open("data/showcase/showcase_clips.json", "r", encoding="utf-8") as f:
         manifest = json.load(f)
 
@@ -632,6 +647,20 @@ def test_showcase_manifest_50_clips():
     assert "OutAndUp_1" not in clip_names
     assert "Post10to15_1" in clip_names
     assert "Post10to15_2" not in clip_names
+
+    # Replacements:
+    assert "PuntReturnTouchdown_9" in clip_names
+    assert "KickoffReturnTouchdown_13" in clip_names
+    assert "KickoffReturnTouchdown_14" in clip_names
+
+    assert "PuntReturnTouchdown_2" not in clip_names
+    assert "KickoffReturnTouchdown_5" not in clip_names
+    assert "KickoffReturnTouchdown_6" not in clip_names
+
+    # Assert replacement tracking ZIPs exist
+    for item in manifest:
+        if item["logical_clip_name"] in {"PuntReturnTouchdown_9", "KickoffReturnTouchdown_13", "KickoffReturnTouchdown_14"}:
+            assert os.path.exists(item["tracking_source"]), f"Missing tracking zip: {item['tracking_source']}"
 
 
 def test_krt_id_switch_independent_actors():
@@ -664,4 +693,130 @@ def test_krt_id_switch_independent_actors():
         cgl_segs = [s for s in segments if s.action == "Action_CrossGoalLine"]
         assert len(cgl_segs) == 1
         assert cgl_segs[0].actor_track_id == "61"
+
+
+def test_rpo_presnap_boundary_and_coverage():
+    """24. RPO PreSnap end frame is Run Block start - 2, and Action_None begins at start - 1."""
+    config = load_config()
+
+    track_ol = Track(
+        xml_track_id="1",
+        label="player",
+        source="mot",
+        position="LG",
+        team_side="offense",
+        boxes_by_frame={f: TrackBox(f, 0, 0, 10, 10, False, False, True) for f in range(0, 150)}
+    )
+    track_wr = Track(
+        xml_track_id="2",
+        label="player",
+        source="mot",
+        position="WR",
+        team_side="offense",
+        boxes_by_frame={f: TrackBox(f, 0, 0, 10, 10, False, False, True) for f in range(0, 150)}
+    )
+    tracks = {"1": track_ol, "2": track_wr}
+
+    presnap_evt = ActionEvent(
+        video_name="RPO_1",
+        video_id="1",
+        action="Action_PreSnap",
+        start_frame=0,
+        annotated_frame=0,
+        actor_track_id="ALL",
+        target_kind="all"
+    )
+    run_block_evt = ActionEvent(
+        video_name="RPO_1",
+        video_id="1",
+        action="Action_RunBlock",
+        start_frame=88,
+        annotated_frame=88,
+        actor_track_id="1",
+        resolved_xml_track_id="1",
+        target_kind="track_id"
+    )
+
+    metadata = {"play_tag": "Play_RPO", "play_name": "RPO", "start_frame": 0, "stop_frame": 149}
+    segments, warnings = infer_action_segments([presnap_evt, run_block_evt], tracks, metadata, config)
+
+    # Track 2 (no post-snap action): PreSnap 0..86, Action_None 87..149
+    wr_presnap = [s for s in segments if s.xml_track_id == "2" and s.action == "Action_PreSnap"]
+    assert len(wr_presnap) == 1
+    assert wr_presnap[0].start_frame == 0
+    assert wr_presnap[0].end_frame == 86
+
+    wr_none = [s for s in segments if s.xml_track_id == "2" and s.action == "Action_None"]
+    assert len(wr_none) == 1
+    assert wr_none[0].start_frame == 87
+    assert wr_none[0].end_frame == 149
+
+
+def test_regression_source_identities():
+    """25. Current source rows contain required authoritative identities."""
+    config = load_config()
+
+    # PuntReturnTouchdown_9: Snap Receive actor 1, Catch Punt/Ball Carry/Cross Goal Line actor 27
+    prt_events, _, prt_errs = parse_wide_action_csv(
+        "data/key_actions/PuntReturnTouchdown.csv", config, target_video="9"
+    )
+    assert not prt_errs
+    assert any(e.action == "Action_SnapReceive" and e.actor_track_id == "1" for e in prt_events)
+    assert any(e.action == "Action_CatchPunt" and e.actor_track_id == "27" for e in prt_events)
+    assert any(e.action == "Action_BallCarry" and e.actor_track_id == "27" for e in prt_events)
+    assert any(e.action == "Action_CrossGoalLine" and e.actor_track_id == "27" for e in prt_events)
+
+    # KickoffReturnTouchdown_13: Catch Kick/Ball Carry/Cross Goal Line actor 45
+    krt13_events, _, krt13_errs = parse_wide_action_csv(
+        "data/key_actions/KickoffReturnTouchdown.csv", config, target_video="13"
+    )
+    assert not krt13_errs
+    assert any(e.action == "Action_CatchKick" and e.actor_track_id == "45" for e in krt13_events)
+    assert any(e.action == "Action_BallCarry" and e.actor_track_id == "45" for e in krt13_events)
+    assert any(e.action == "Action_CrossGoalLine" and e.actor_track_id == "45" for e in krt13_events)
+
+    # KickoffReturnTouchdown_14: Catch Kick/Ball Carry/Cross Goal Line actor 13
+    krt14_events, _, krt14_errs = parse_wide_action_csv(
+        "data/key_actions/KickoffReturnTouchdown.csv", config, target_video="14"
+    )
+    assert not krt14_errs
+    assert any(e.action == "Action_CatchKick" and e.actor_track_id == "13" for e in krt14_events)
+    assert any(e.action == "Action_BallCarry" and e.actor_track_id == "13" for e in krt14_events)
+    assert any(e.action == "Action_CrossGoalLine" and e.actor_track_id == "13" for e in krt14_events)
+
+
+def test_rpo_1_pipeline_regression():
+    """26. RPO_1 generates with canonical play label, non-temporal route, PreSnap ending at 86, and Action_None starting at 87."""
+    from play_annotation_generator.batch_pipeline import run_generate_and_enrich_pipeline
+    config = load_config()
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tracks, metadata, events, segments, dense, metrics, warns, errs = run_generate_and_enrich_pipeline(
+            gt_path="data/tracking/RPO/RPO_1_cvat_mot.zip",
+            labels_path=None,
+            template_path="docs/JetSweepTemplate.xml",
+            key_actions_csv="data/key_actions/RPO.csv",
+            player_tracks_csv="data/player_tracks/RPO.csv",
+            config=config,
+            output_dir=tmpdir,
+            target_video_name="RPO_1",
+            target_video_id="1"
+        )
+        assert len(errs) == 0, f"Unexpected errors: {errs}"
+        assert metadata.get("play_tag") == "Play_Pass_RPO" or metadata.get("play_tag") == "Play_RPO"
+
+        non_temp = metadata.get("non_temporal_action_descriptors", [])
+        assert any(d.get("canonical_action") == "Action_RunPostRoute" and d.get("actor_track_id") == "7" for d in non_temp)
+
+        route_segs = [s for s in segments if s.action == "Action_RunPostRoute"]
+        assert len(route_segs) == 0
+
+        rb_segs = [s for s in segments if s.action == "Action_RunBlock"]
+        assert len(rb_segs) >= 1
+        assert any(s.start_frame == 88 for s in rb_segs)
+
+        for seg in segments:
+            if seg.action == "Action_PreSnap":
+                assert seg.end_frame <= 86, f"PreSnap segment extended past 86: {seg}"
+
 
