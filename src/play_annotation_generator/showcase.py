@@ -229,14 +229,20 @@ def audit_showcase_readiness(
                             )
 
                     # Check cell entries parsing
-                    entries = parse_cell_entries(cell_val)
-                    valid_entries = [e for e in entries if e[0] is not None]
-                    for e in entries:
-                        frame, actor, err = e
-                        if err:
-                            res.errors.append(f"Malformed action cell in column '{col_name}' value '{cell_val}': {err}")
-                    if not valid_entries:
-                        res.errors.append(f"Action cell in column '{col_name}' value '{cell_val}' produced 0 valid events")
+                    if norm_c == "route":
+                        from .wide_action_csv_parser import parse_rpo_route_descriptor
+                        desc, r_err = parse_rpo_route_descriptor(cell_val, col_name)
+                        if r_err:
+                            res.errors.append(f"Malformed non-temporal Route cell in column '{col_name}' value '{cell_val}': {r_err}")
+                    else:
+                        entries = parse_cell_entries(cell_val)
+                        valid_entries = [e for e in entries if e[0] is not None]
+                        for e in entries:
+                            frame, actor, err = e
+                            if err:
+                                res.errors.append(f"Malformed action cell in column '{col_name}' value '{cell_val}': {err}")
+                        if not valid_entries:
+                            res.errors.append(f"Action cell in column '{col_name}' value '{cell_val}' produced 0 valid events")
 
         # Classify status
         if res.errors:

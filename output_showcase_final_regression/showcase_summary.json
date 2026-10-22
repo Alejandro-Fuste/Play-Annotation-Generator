@@ -1,0 +1,97 @@
+[
+  {
+    "clip_name": "Counter_1",
+    "play_name": "Counter",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 17,
+    "tracks_count": 29,
+    "segments_count": 58,
+    "dense_count": 11110,
+    "errors": [],
+    "warnings": [
+      "Track ID '0' in Player Track ID sheet does not exist in MOT gt.txt.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 509 as fallback play end.",
+      "Resolved action overlap for track '10' (C): higher_priority='Action_BallSnap' [348\u2013361], lower_priority='Action_DownBlock' annotated_start=361, effective_Action_DownBlock_start=362.",
+      "Action 'Action_None' range [348-411] for track '7' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [415-419] for track '7' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "KickoffReturnTouchdown_6",
+    "play_name": "KickoffReturnTouchdown",
+    "video_id": "6",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 319,
+    "tracks_count": 57,
+    "segments_count": 260,
+    "dense_count": 9144,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 689 as fallback play end.",
+      "Segment 'Action_CatchKick' for track '33' has invalid range: start=278, end=253. Clamping end to start.",
+      "Action 'Action_None' range [72-133] for track '0' has 2 frames without a visible bounding box.",
+      "Action 'Action_None' range [135-247] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [250-264] for track '0' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "OutAndUp_3",
+    "play_name": "OutAndUp",
+    "video_id": "3",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 72,
+    "tracks_count": 31,
+    "segments_count": 75,
+    "dense_count": 3955,
+    "errors": [],
+    "warnings": [
+      "Row 6: Duplicate assignment for track ID '2' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Resolved action overlap for track '20' (C): higher_priority='Action_BallSnap' [5\u201321], lower_priority='Action_PassBlock' annotated_start=8, effective_Action_PassBlock_start=22.",
+      "Action 'Action_None' range [5-69] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [71-210] for track '0' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "PuntReturnTouchdown_2",
+    "play_name": "PuntReturnTouchdown",
+    "video_id": "2",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 87,
+    "tracks_count": 33,
+    "segments_count": 84,
+    "dense_count": 11720,
+    "errors": [],
+    "warnings": [
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 599 as fallback play end.",
+      "Action_SnapReceive present in CSV, but paired Action_BallSnap is missing.",
+      "Segment 'Action_CrossGoalLine' for track '18' has invalid range: start=605, end=599. Clamping end to start.",
+      "Action 'Action_None' range [55-387] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [55-344] for track '1' has 2 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "RPO_1",
+    "play_name": "RPO",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 58,
+    "tracks_count": 29,
+    "segments_count": 64,
+    "dense_count": 5027,
+    "errors": [],
+    "warnings": [
+      "Row 4: Duplicate assignment for track ID '5' in grid. Overwriting previous assignment.",
+      "Row 4: Duplicate assignment for track ID '15' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Action 'Action_PreSnap' range [0-103] for track '1' has 1 frames without a visible bounding box.",
+      "Action 'Action_PreSnap' range [105-185] for track '1' has 2 frames without a visible bounding box."
+    ]
+  }
+]

@@ -176,10 +176,10 @@
     "player_tracks_source": "data/player_tracks/OnsideKickRecovery.csv"
   },
   {
-    "logical_clip_name": "OutAndUp_1",
+    "logical_clip_name": "OutAndUp_3",
     "play_name": "OutAndUp",
-    "video_id": "1",
-    "tracking_source": "data/tracking/OutAndUp/OutAndUp_1_cvat_mot.zip",
+    "video_id": "3",
+    "tracking_source": "data/tracking/OutAndUp/OutAndUp_3_cvat_mot.zip",
     "key_actions_source": "data/key_actions/OutAndUp.csv",
     "player_tracks_source": "data/player_tracks/OutAndUp.csv"
   },
@@ -252,14 +252,6 @@
     "play_name": "Post10to15",
     "video_id": "1",
     "tracking_source": "data/tracking/Post10to15/Post10to15_1_cvat_mot.zip",
-    "key_actions_source": "data/key_actions/Post10to15.csv",
-    "player_tracks_source": "data/player_tracks/Post10to15.csv"
-  },
-  {
-    "logical_clip_name": "Post10to15_2",
-    "play_name": "Post10to15",
-    "video_id": "2",
-    "tracking_source": "data/tracking/Post10to15/Post10to15_2_cvat_mot.zip",
     "key_actions_source": "data/key_actions/Post10to15.csv",
     "player_tracks_source": "data/player_tracks/Post10to15.csv"
   },

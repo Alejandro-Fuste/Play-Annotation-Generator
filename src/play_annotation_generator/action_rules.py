@@ -209,6 +209,24 @@ def infer_action_segments(
                         if subsequent:
                             seg_end = subsequent[0] - 1
 
+                # Check configured ends_when_any_action_starts (e.g. Action_Handoff -> ends before Action_TakeHandoff / Action_BallCarry)
+                if seg_end is None:
+                    act_end_rule = rules_cfg.get(act_name, {})
+                    target_actions = act_end_rule.get("ends_when_any_action_starts")
+                    if target_actions:
+                        if isinstance(target_actions, str):
+                            target_actions = [target_actions]
+                        earliest_target = None
+                        for target_act in target_actions:
+                            if target_act in all_events_by_action:
+                                subsequent = [f for f in all_events_by_action[target_act] if f > seg_start]
+                                if subsequent:
+                                    first_f = subsequent[0]
+                                    if earliest_target is None or first_f < earliest_target:
+                                        earliest_target = first_f
+                        if earliest_target is not None:
+                            seg_end = earliest_target - 1
+
                 # Check terminal actions (e.g. Action_BallCarry -> ends at final clip frame)
                 if seg_end is None and (act_name in terminal_actions or act_name == "Action_BallCarry"):
                     seg_end = stop_clip

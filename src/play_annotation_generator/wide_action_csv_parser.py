@@ -106,6 +106,12 @@ def parse_cell_entries(
                         current_frame = start_frame
                         current_end_frame = end_frame
                         parsed.append(ParsedEntry(start_frame, actor_str, None, end_frame=end_frame))
+                    elif abs(start_frame - end_frame) <= 50 and start_frame > 30 and end_frame > 30:
+                        real_start = min(start_frame, end_frame)
+                        real_end = max(start_frame, end_frame)
+                        current_frame = real_start
+                        current_end_frame = real_end
+                        parsed.append(ParsedEntry(real_start, actor_str, None, end_frame=real_end))
                     else:
                         current_frame = start_frame
                         current_end_frame = None
@@ -153,6 +159,54 @@ def load_canonical_plays_map(plays_json_path: Optional[str] = None) -> Dict[str,
             mapping[base.lower()] = fl
             mapping[re.sub(r'[^a-zA-Z0-9]', '', base).lower()] = fl
     return mapping
+
+RPO_ROUTE_ACTION_MAP: Dict[str, str] = {
+    "post": "Action_RunPostRoute",
+    "slant": "Action_RunSlantRoute",
+    "fade": "Action_RunFadeRoute",
+    "hitch": "Action_RunHitchRoute",
+    "out": "Action_RunOutRoute",
+    "flat": "Action_RunFlatRoute",
+    "cross": "Action_RunDeepCrossRoute",
+    "deep_cross": "Action_RunDeepCrossRoute",
+    "deepcross": "Action_RunDeepCrossRoute",
+    "deep_out": "Action_RunDeepOutRoute",
+    "deepout": "Action_RunDeepOutRoute",
+    "sail": "Action_RunSailRoute",
+}
+
+def parse_rpo_route_descriptor(cell_val: str, source_column: str = "Route") -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
+    """
+    Parses a non-temporal RPO Route cell such as 'post,7' or 'slant,3'.
+    Returns (descriptor_dict, error_message).
+    """
+    val = str(cell_val).strip()
+    if not val or val in ["-", "--", "N/A", "n/a", "none", "None"]:
+        return None, None
+        
+    parts = [p.strip() for p in val.split(",")]
+    if len(parts) != 2 or not parts[0] or not parts[1]:
+        return None, f"Invalid non-temporal Route format '{val}'. Expected '<route>,<actor_track_id>'."
+        
+    route_name = parts[0].strip().lower()
+    actor_track_id = parts[1].strip()
+    
+    if actor_track_id in ["?", "??", "[?]", "undefined", "none", "None"] or "[" in actor_track_id:
+        return None, f"Invalid or unassigned actor track ID '{actor_track_id}' in Route descriptor '{val}'."
+        
+    canonical_action = RPO_ROUTE_ACTION_MAP.get(route_name)
+    if not canonical_action:
+        return None, f"Unknown or unsupported route concept '{route_name}' in Route descriptor '{val}'."
+        
+    descriptor = {
+        "source_column": source_column,
+        "raw_value": val,
+        "canonical_action": canonical_action,
+        "actor_track_id": actor_track_id,
+        "route_type": route_name,
+        "temporal": False
+    }
+    return descriptor, None
 
 def parse_wide_action_csv(
     csv_path: str,
@@ -358,6 +412,7 @@ def parse_wide_action_csv(
         norm_action_cols = {normalize_column_name(k): v for k, v in action_cols_map.items()}
 
         # Parse action columns directly from the row to prevent double-parsing and detect unmapped columns
+        row_non_temporal_descriptors: List[Dict[str, Any]] = []
         for orig_col_name, cell_val in cleaned_row.items():
             if not orig_col_name:
                 continue
@@ -367,21 +422,19 @@ def parse_wide_action_csv(
             if not cell_val or cell_val in ["-", "--", "N/A", "n/a", "none", "None"]:
                 continue
 
+            if norm_col == "route":
+                desc, r_err = parse_rpo_route_descriptor(cell_val, orig_col_name)
+                if r_err:
+                    errors.append(f"Row {row_idx}, Column '{orig_col_name}': {r_err}")
+                elif desc:
+                    row_non_temporal_descriptors.append(desc)
+                continue
+
             if norm_col not in norm_action_cols:
                 errors.append(f"UNMAPPED_ACTION_COLUMN: play={p_tag} video_id={v_id} column={orig_col_name} value={cell_val}")
                 continue
 
             action_label = norm_action_cols[norm_col]
-            if norm_col == "route":
-                val_lower = str(cell_val).lower().strip()
-                if val_lower.startswith("post"):
-                    action_label = "Action_RunPostRoute"
-                elif val_lower.startswith("slant"):
-                    action_label = "Action_RunSlantRoute"
-                elif val_lower.startswith("fade"):
-                    action_label = "Action_RunFadeRoute"
-                elif val_lower.startswith("hitch"):
-                    action_label = "Action_RunHitchRoute"
 
             entries = parse_cell_entries(cell_val, pair_sep, multi_seps)
             for entry_item in entries:
@@ -464,4 +517,6 @@ def parse_wide_action_csv(
                         
                 events.append(event)
                 
+        cleaned_row["_non_temporal_descriptors"] = row_non_temporal_descriptors
+        
     return events, all_rows, errors

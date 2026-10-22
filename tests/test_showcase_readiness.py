@@ -457,15 +457,18 @@ def test_special_teams_presnap_and_long_snap_timing():
 
 
 def test_malformed_cells_cause_blocked_readiness():
-    """17. Malformed cells (?,51, ,17, ,OL, ,15, post,7) cause BLOCKED readiness status."""
+    """17. Malformed cells (?,51) cause BLOCKED readiness status."""
     summary = audit_showcase_readiness()
     blocked_clips = {r.logical_clip_name: r for r in summary.results if r.status == "BLOCKED"}
 
     assert "KickoffReturnTouchdown_5" in blocked_clips  # ?,51
-    assert "OutAndUp_1" in blocked_clips               # ,17, ,OL, ,15
-    assert "PuntReturnTouchdown_2" in blocked_clips    # ?,20
-    assert "RPO_1" in blocked_clips                    # post,7
-    assert "Post10to15_2" in blocked_clips             # missing rows
+    # OutAndUp_1 and Post10to15_2 were removed from manifest
+    # PuntReturnTouchdown_2 source was repaired with numeric 605,20
+    # RPO_1 post,7 is supported as non-temporal descriptor
+    assert "OutAndUp_1" not in blocked_clips
+    assert "Post10to15_2" not in blocked_clips
+    assert "PuntReturnTouchdown_2" not in blocked_clips
+    assert "RPO_1" not in blocked_clips
 
 
 def test_semantic_action_alias_audit_classification():
@@ -484,4 +487,181 @@ def test_semantic_action_alias_audit_classification():
         assert entry["classification"] in ["EXACT", "INTENTIONAL_ALIAS", "NEEDS_SOURCE_REVIEW"]
         assert len(entry["reason"]) > 10
         assert entry["classification"] != "NEEDS_SOURCE_REVIEW"
+
+
+def test_handoff_generic_configured_termination():
+    """19. Generic ends_when_any_action_starts rule terminates Handoff before BallCarry/TakeHandoff."""
+    config = load_config()
+
+    track_qb = Track(
+        xml_track_id="1",
+        label="player",
+        source="mot",
+        position="QB",
+        team_side="offense",
+        boxes_by_frame={f: TrackBox(f, 0, 0, 10, 10, False, False, True) for f in range(50, 200)}
+    )
+    track_rb = Track(
+        xml_track_id="2",
+        label="player",
+        source="mot",
+        position="RB",
+        team_side="offense",
+        boxes_by_frame={f: TrackBox(f, 0, 0, 10, 10, False, False, True) for f in range(50, 200)}
+    )
+    tracks = {"1": track_qb, "2": track_rb}
+
+    handoff_evt = ActionEvent(
+        video_name="TestPlay",
+        video_id="1",
+        action="Action_Handoff",
+        start_frame=100,
+        annotated_frame=100,
+        actor_track_id="1",
+        resolved_xml_track_id="1",
+        target_kind="track_id"
+    )
+    ball_carry_evt = ActionEvent(
+        video_name="TestPlay",
+        video_id="1",
+        action="Action_BallCarry",
+        start_frame=120,
+        annotated_frame=120,
+        actor_track_id="2",
+        resolved_xml_track_id="2",
+        target_kind="track_id"
+    )
+
+    metadata = {"start_frame": 50, "stop_frame": 199}
+    segments, warnings = infer_action_segments([handoff_evt, ball_carry_evt], tracks, metadata, config)
+
+    handoff_segs = [s for s in segments if s.xml_track_id == "1" and s.action == "Action_Handoff"]
+    assert len(handoff_segs) == 1
+    assert handoff_segs[0].start_frame == 100
+    assert handoff_segs[0].end_frame == 119  # 120 - 1
+
+    # Explicit Handoff end frame takes precedence
+    handoff_explicit = ActionEvent(
+        video_name="TestPlay",
+        video_id="1",
+        action="Action_Handoff",
+        start_frame=100,
+        end_frame=115,
+        annotated_frame=100,
+        actor_track_id="1",
+        resolved_xml_track_id="1",
+        target_kind="track_id"
+    )
+    segments_exp, _ = infer_action_segments([handoff_explicit, ball_carry_evt], tracks, metadata, config)
+    handoff_exp_segs = [s for s in segments_exp if s.xml_track_id == "1" and s.action == "Action_Handoff"]
+    assert len(handoff_exp_segs) == 1
+    assert handoff_exp_segs[0].start_frame == 100
+    assert handoff_exp_segs[0].end_frame == 115
+
+
+def test_counter_1_handoff_regression():
+    """20. Counter_1 authoritative data generates Handoff 381-387 and BallCarry starts 388."""
+    from play_annotation_generator.batch_pipeline import run_generate_and_enrich_pipeline
+    config = load_config()
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tracks, metadata, events, segments, dense, metrics, warns, errs = run_generate_and_enrich_pipeline(
+            gt_path="data/tracking/Counter/Counter_1_cvat_mot.zip",
+            labels_path=None,
+            template_path="docs/JetSweepTemplate.xml",
+            key_actions_csv="data/key_actions/Counter.csv",
+            player_tracks_csv="data/player_tracks/Counter.csv",
+            config=config,
+            output_dir=tmpdir,
+            target_video_name="Counter_1",
+            target_video_id="1"
+        )
+        assert len(errs) == 0, f"Unexpected errors: {errs}"
+        assert metadata.get("play_tag") == "Play_Run_Counter"
+
+        handoff_segs = [s for s in segments if s.action == "Action_Handoff"]
+        assert len(handoff_segs) == 1
+        assert handoff_segs[0].actor_track_id == "16"
+        assert handoff_segs[0].start_frame == 381
+        assert handoff_segs[0].end_frame == 387
+
+        carry_segs = [s for s in segments if s.action == "Action_BallCarry"]
+        assert len(carry_segs) >= 1
+        assert carry_segs[0].actor_track_id == "12"
+        assert carry_segs[0].start_frame == 388
+
+
+def test_non_temporal_rpo_route_descriptors():
+    """21. RPO Route column parses as non-temporal descriptor without creating timed segments."""
+    from play_annotation_generator.wide_action_csv_parser import parse_rpo_route_descriptor
+
+    desc_post, err_post = parse_rpo_route_descriptor("post,7", "Route")
+    assert err_post is None
+    assert desc_post["canonical_action"] == "Action_RunPostRoute"
+    assert desc_post["actor_track_id"] == "7"
+    assert desc_post["temporal"] is False
+
+    desc_slant, err_slant = parse_rpo_route_descriptor("slant,3", "Route")
+    assert err_slant is None
+    assert desc_slant["canonical_action"] == "Action_RunSlantRoute"
+    assert desc_slant["actor_track_id"] == "3"
+    assert desc_slant["temporal"] is False
+
+    # Malformed route descriptors block
+    _, err_bare = parse_rpo_route_descriptor("post", "Route")
+    assert err_bare is not None
+
+    _, err_lead_comma = parse_rpo_route_descriptor(",7", "Route")
+    assert err_lead_comma is not None
+
+    _, err_unknown = parse_rpo_route_descriptor("unknownroute,7", "Route")
+    assert err_unknown is not None
+
+    _, err_unassigned = parse_rpo_route_descriptor("post,[?]", "Route")
+    assert err_unassigned is not None
+
+
+def test_showcase_manifest_50_clips():
+    """22. Showcase manifest has exactly 50 clips with OutAndUp_3 and without Post10to15_2."""
+    with open("data/showcase/showcase_clips.json", "r", encoding="utf-8") as f:
+        manifest = json.load(f)
+
+    assert len(manifest) == 50
+    clip_names = {c["logical_clip_name"] for c in manifest}
+    assert "OutAndUp_3" in clip_names
+    assert "OutAndUp_1" not in clip_names
+    assert "Post10to15_1" in clip_names
+    assert "Post10to15_2" not in clip_names
+
+
+def test_krt_id_switch_independent_actors():
+    """23. KickoffReturnTouchdown_6 retains independent actor IDs for return actions."""
+    from play_annotation_generator.batch_pipeline import run_generate_and_enrich_pipeline
+    config = load_config()
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        tracks, metadata, events, segments, dense, metrics, warns, errs = run_generate_and_enrich_pipeline(
+            gt_path="data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_6_cvat_mot.zip",
+            labels_path=None,
+            template_path="docs/JetSweepTemplate.xml",
+            key_actions_csv="data/key_actions/KickoffReturnTouchdown.csv",
+            player_tracks_csv="data/player_tracks/KickoffReturnTouchdown.csv",
+            config=config,
+            output_dir=tmpdir,
+            target_video_name="KickoffReturnTouchdown_6",
+            target_video_id="6"
+        )
+        assert len(errs) == 0, f"Unexpected errors: {errs}"
+
+        catch_segs = [s for s in segments if s.action == "Action_CatchKick"]
+        assert len(catch_segs) == 1
+        assert catch_segs[0].actor_track_id == "50"
+
+        carry_segs = [s for s in segments if s.action == "Action_BallCarry"]
+        assert len(carry_segs) >= 1
+        assert carry_segs[0].actor_track_id == "61"
+
+        cgl_segs = [s for s in segments if s.action == "Action_CrossGoalLine"]
+        assert len(cgl_segs) == 1
+        assert cgl_segs[0].actor_track_id == "61"
 

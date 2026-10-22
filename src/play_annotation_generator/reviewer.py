@@ -213,6 +213,14 @@ def review_play_outputs(output_dir: str, csv_path: Optional[str] = None) -> str:
     lines.append(f"- **Validation Warnings:** {len(warnings)}")
     lines.append(f"- **Validation Errors:** {len(errors)}")
     lines.append(f"- **Overall Status:** {overall_status}")
+    non_temporal_descriptors = data.get("actions", {}).get("non_temporal_action_descriptors", [])
+    if non_temporal_descriptors:
+        lines.append(f"- **Non-Temporal Descriptors:** {len(non_temporal_descriptors)}")
+        for ntd in non_temporal_descriptors:
+            c_act = ntd.get("canonical_action", "")
+            actor = ntd.get("actor_track_id", "")
+            col = ntd.get("source_column", "Route")
+            lines.append(f"  - **Non-Temporal Action Descriptor:** `{c_act}` | actor_track_id `{actor}` | source `{col}` | no temporal frame")
     lines.append("")
 
     # -------------------------------------------------------------------------

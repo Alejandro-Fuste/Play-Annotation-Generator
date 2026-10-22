@@ -73,3 +73,12 @@ class DenseActionAnnotation:
     bbox_xyxy: List[float]
     bbox_xywh: List[float]
     source: str = "xml_geometry_csv_action"
+
+@dataclass
+class NonTemporalActionDescriptor:
+    source_column: str
+    raw_value: str
+    canonical_action: str
+    actor_track_id: str
+    route_type: Optional[str] = None
+    temporal: bool = False

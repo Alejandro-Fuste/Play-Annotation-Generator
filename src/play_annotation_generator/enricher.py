@@ -89,6 +89,23 @@ def run_enrichment_pipeline(
     # Set video metadata in output
     metadata["video_name"] = target_video if target_video else "Unknown_Video"
 
+    # Collect non-temporal descriptors from matching row(s)
+    non_temporal_descriptors: List[Dict[str, Any]] = []
+    if all_csv_rows:
+        for r in all_csv_rows:
+            if "_non_temporal_descriptors" in r and r["_non_temporal_descriptors"]:
+                row_vid = r.get("Video #", r.get("Video ID", r.get("video_id", r.get("video_name", ""))))
+                row_vname = r.get("video_name", r.get("Video Name", ""))
+                if (
+                    not target_video
+                    or str(row_vid) == str(target_video)
+                    or str(row_vname) == str(target_video)
+                    or str(target_video).endswith(f"_{row_vid}")
+                    or str(target_video) == f"{row_vname}_{row_vid}"
+                ):
+                    non_temporal_descriptors.extend(r["_non_temporal_descriptors"])
+    metadata["non_temporal_action_descriptors"] = non_temporal_descriptors
+
     # 3. Normalize and match track IDs
     resolved_events, match_issues = normalize_and_match_events(events, tracks, config)
     match_warnings, match_errors = _partition_match_issues(

@@ -21,6 +21,12 @@ action_frame_semantics:
     start_from_action: "Action_BallSnap"
     event_type: "PRIMARY_ACTION"
 
+action_end_rules:
+  Action_Handoff:
+    ends_when_any_action_starts:
+      - "Action_TakeHandoff"
+      - "Action_BallCarry"
+
 cross_actor_rules:
   Action_Toss:
     end_type: "next_action_of_type_minus_one"

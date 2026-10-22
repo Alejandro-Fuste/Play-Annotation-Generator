@@ -126,7 +126,8 @@ def write_play_annotation_json(
         },
         "actions": {
             "segments": segments_json,
-            "dense_frame_annotations": dense_json
+            "dense_frame_annotations": dense_json,
+            "non_temporal_action_descriptors": metadata.get("non_temporal_action_descriptors", [])
         },
         "definitions": {
             "actions": metadata.get("action_definitions", {})
