@@ -1,0 +1,652 @@
+# Play-Annotation-Generator Annotation Review — Duo_1
+
+**Overall Status:** WARNING
+
+## 1. Clip & Validation Summary
+
+- **Video:** `Duo_1`
+- **Frame Range:** 0 to 268 (269 total frames)
+- **Play:** `Play_Run_Duo`
+- **Result:** `Result_Tackle`
+- **Result Frame:** 268
+- **Player Tracks:** 37
+- **Ball Tracks:** 0
+- **Action Segments:** 100
+- **Validation Warnings:** 112
+- **Validation Errors:** 0
+- **Overall Status:** WARNING
+
+## 2. Action Annotation Audit
+
+<details>
+<summary><strong>Open Action Audit</strong></summary>
+
+### Audit Summary
+- **Input Action Events:** 19
+- **Exact Matches:** 1
+- **Group Expanded Events:** 11
+- **Boundary-Terminated Events:** 0
+- **Priority-Adjusted Events:** 0
+- **Start-Frame Differences:** 0
+- **Missing Segments:** 0
+- **Ambiguous Matches:** 5
+- **Global Events (no player segment expected):** 2
+- **Inferred Coverage Segments (Action_None):** 70
+- **Unmatched Unexpected Segments:** 0
+
+### Player / Track Mapping
+
+| Status | Action | Position | Team | actor_track_id | xml_track_id |
+| --- | --- | --- | --- | --- | --- |
+| ℹ️ GLOBAL EVENT | `Action_PlayEnd` | N/A | N/A | N/A | N/A |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | WR3 | offense | `0` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | C | offense | `14` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | LT | offense | `15` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | QB | offense | `16` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | RT | offense | `18` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | LG | offense | `19` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | RG | offense | `20` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | TE | offense | `21` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | WR1 | offense | `4` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | RB | offense | `6` | `Group` |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | WR2 | offense | `7` | `Group` |
+| ⚠️ AMBIGUOUS MATCH | `Action_ComboBlock` | C | offense | `14` | `14` |
+| ⚠️ AMBIGUOUS MATCH | `Action_ComboBlock` | RT | offense | `18` | `18` |
+| ✅ EXACT | `Action_ComboBlock` | LG | offense | `19` | `19` |
+| ⚠️ AMBIGUOUS MATCH | `Action_ComboBlock` | RG | offense | `20` | `20` |
+| ⚠️ AMBIGUOUS MATCH | `Action_BallCarry` | CB3 | defense | `5` | `5` |
+| ⚠️ AMBIGUOUS MATCH | `Action_BlockSecondLevel` | Position_Unknown | Team_Unknown | `23` | `23` |
+| ℹ️ GLOBAL EVENT | `Action_None` | N/A | N/A | N/A | N/A |
+
+### Timing Mapping
+
+| Status | Action | Position | actor_track_id | xml_track_id | Annotated Frame | Annotated Role | Generated Start | Generated End |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| ℹ️ GLOBAL EVENT | `Action_PlayEnd` | N/A | N/A | N/A | 0 | BOUNDARY | N/A | N/A |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | WR3 | `0` | `Group` | 0 | START | 0 | 190 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | C | `14` | `Group` | 0 | START | 0 | 51 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | LT | `15` | `Group` | 0 | START | 0 | 268 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | QB | `16` | `Group` | 0 | START | 0 | 268 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | RT | `18` | `Group` | 0 | START | 0 | 51 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | LG | `19` | `Group` | 0 | START | 0 | 51 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | RG | `20` | `Group` | 0 | START | 0 | 51 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | TE | `21` | `Group` | 0 | START | 0 | 176 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | WR1 | `4` | `Group` | 0 | START | 0 | 150 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | RB | `6` | `Group` | 0 | START | 0 | 135 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | WR2 | `7` | `Group` | 0 | START | 0 | 47 |
+| ⚠️ AMBIGUOUS MATCH | `Action_ComboBlock` | C | `14` | `14` | 52 | START | 52 | 56 |
+| ⚠️ AMBIGUOUS MATCH | `Action_ComboBlock` | RT | `18` | `18` | 52 | START | 52 | 62 |
+| ✅ EXACT | `Action_ComboBlock` | LG | `19` | `19` | 52 | START | 52 | 92 |
+| ⚠️ AMBIGUOUS MATCH | `Action_ComboBlock` | RG | `20` | `20` | 52 | START | 52 | 56 |
+| ⚠️ AMBIGUOUS MATCH | `Action_BallCarry` | CB3 | `5` | `5` | 86 | START | 86 | 166 |
+| ⚠️ AMBIGUOUS MATCH | `Action_BlockSecondLevel` | Position_Unknown | `23` | `23` | 115 | START | 115 | 120 |
+| ℹ️ GLOBAL EVENT | `Action_None` | N/A | N/A | N/A | 147 | BOUNDARY | N/A | N/A |
+
+### Output Segments Without Matching Input
+
+None.
+
+</details>
+
+## 3. Player Action Timelines
+
+<details>
+<summary><strong>Offense</strong></summary>
+
+<details>
+<summary>QB — actor_track_id `16`</summary>
+
+- **xml_track_id:** `16`
+- **actor_track_id:** `16`
+- **team_side:** `offense`
+- **Visible Frames:** 0–268
+- **Visible Samples:** 269
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 268 | 269 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>RB — actor_track_id `6`</summary>
+
+- **xml_track_id:** `6`
+- **actor_track_id:** `6`
+- **team_side:** `offense`
+- **Visible Frames:** 0–268
+- **Visible Samples:** 256
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 135 | 136 | inferred_complete_timeline |
+| `Action_PreSnap` | 143 | 175 | 33 | inferred_complete_timeline |
+| `Action_PreSnap` | 182 | 268 | 87 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>WR1 — actor_track_id `4`</summary>
+
+- **xml_track_id:** `4`
+- **actor_track_id:** `4`
+- **team_side:** `offense`
+- **Visible Frames:** 0–233
+- **Visible Samples:** 233
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 150 | 151 | inferred_complete_timeline |
+| `Action_PreSnap` | 152 | 233 | 82 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>WR2 — actor_track_id `7`</summary>
+
+- **xml_track_id:** `7`
+- **actor_track_id:** `7`
+- **team_side:** `offense`
+- **Visible Frames:** 0–267
+- **Visible Samples:** 248
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 47 | 48 | inferred_complete_timeline |
+| `Action_PreSnap` | 50 | 157 | 108 | inferred_complete_timeline |
+| `Action_PreSnap` | 164 | 189 | 26 | inferred_complete_timeline |
+| `Action_PreSnap` | 197 | 200 | 4 | inferred_complete_timeline |
+| `Action_PreSnap` | 202 | 203 | 2 | inferred_complete_timeline |
+| `Action_PreSnap` | 207 | 208 | 2 | inferred_complete_timeline |
+| `Action_PreSnap` | 210 | 267 | 58 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>WR3 — actor_track_id `0`</summary>
+
+- **xml_track_id:** `0`
+- **actor_track_id:** `0`
+- **team_side:** `offense`
+- **Visible Frames:** 0–225
+- **Visible Samples:** 214
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 190 | 191 | inferred_complete_timeline |
+| `Action_PreSnap` | 192 | 199 | 8 | inferred_complete_timeline |
+| `Action_PreSnap` | 201 | 213 | 13 | inferred_complete_timeline |
+| `Action_PreSnap` | 224 | 225 | 2 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>TE — actor_track_id `21`</summary>
+
+- **xml_track_id:** `21`
+- **actor_track_id:** `21`
+- **team_side:** `offense`
+- **Visible Frames:** 0–181
+- **Visible Samples:** 180
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 176 | 177 | inferred_complete_timeline |
+| `Action_PreSnap` | 179 | 181 | 3 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>LT — actor_track_id `15`</summary>
+
+- **xml_track_id:** `15`
+- **actor_track_id:** `15`
+- **team_side:** `offense`
+- **Visible Frames:** 0–268
+- **Visible Samples:** 269
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 268 | 269 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>LG — actor_track_id `19`</summary>
+
+- **xml_track_id:** `19`
+- **actor_track_id:** `19`
+- **team_side:** `offense`
+- **Visible Frames:** 0–92
+- **Visible Samples:** 93
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 51 | 52 | inferred_complete_timeline |
+| `Action_ComboBlock` | 52 | 92 | 41 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>C — actor_track_id `14`</summary>
+
+- **xml_track_id:** `14`
+- **actor_track_id:** `14`
+- **team_side:** `offense`
+- **Visible Frames:** 0–268
+- **Visible Samples:** 194
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 51 | 52 | inferred_complete_timeline |
+| `Action_ComboBlock` | 52 | 56 | 5 | inferred_complete_timeline |
+| `Action_ComboBlock` | 123 | 127 | 5 | inferred_complete_timeline |
+| `Action_ComboBlock` | 130 | 147 | 18 | inferred_complete_timeline |
+| `Action_None` | 148 | 173 | 26 | inferred_complete_timeline |
+| `Action_None` | 181 | 268 | 88 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>RG — actor_track_id `20`</summary>
+
+- **xml_track_id:** `20`
+- **actor_track_id:** `20`
+- **team_side:** `offense`
+- **Visible Frames:** 0–99
+- **Visible Samples:** 86
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 51 | 52 | inferred_complete_timeline |
+| `Action_ComboBlock` | 52 | 56 | 5 | inferred_complete_timeline |
+| `Action_ComboBlock` | 62 | 63 | 2 | inferred_complete_timeline |
+| `Action_ComboBlock` | 66 | 67 | 2 | inferred_complete_timeline |
+| `Action_ComboBlock` | 70 | 89 | 20 | inferred_complete_timeline |
+| `Action_ComboBlock` | 94 | 96 | 3 | inferred_complete_timeline |
+| `Action_ComboBlock` | 98 | 99 | 2 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>RT — actor_track_id `18`</summary>
+
+- **xml_track_id:** `18`
+- **actor_track_id:** `18`
+- **team_side:** `offense`
+- **Visible Frames:** 0–268
+- **Visible Samples:** 255
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 51 | 52 | inferred_complete_timeline |
+| `Action_ComboBlock` | 52 | 62 | 11 | inferred_complete_timeline |
+| `Action_ComboBlock` | 76 | 145 | 70 | inferred_complete_timeline |
+| `Action_ComboBlock` | 147 | 147 | 1 | inferred_complete_timeline |
+| `Action_None` | 148 | 268 | 121 | inferred_complete_timeline |
+
+</details>
+
+</details>
+
+<details>
+<summary><strong>Defense</strong></summary>
+
+<details>
+<summary>DE1 — actor_track_id `12`</summary>
+
+- **xml_track_id:** `12`
+- **actor_track_id:** `12`
+- **team_side:** `defense`
+- **Visible Frames:** 0–83
+- **Visible Samples:** 84
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 83 | 84 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>DE2 — actor_track_id `8`</summary>
+
+- **xml_track_id:** `8`
+- **actor_track_id:** `8`
+- **team_side:** `defense`
+- **Visible Frames:** 0–244
+- **Visible Samples:** 236
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 173 | 174 | inferred_complete_timeline |
+| `Action_PreSnap` | 176 | 179 | 4 | inferred_complete_timeline |
+| `Action_PreSnap` | 185 | 232 | 48 | inferred_complete_timeline |
+| `Action_PreSnap` | 235 | 244 | 10 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>DT1 — actor_track_id `13`</summary>
+
+- **xml_track_id:** `13`
+- **actor_track_id:** `13`
+- **team_side:** `defense`
+- **Visible Frames:** 0–82
+- **Visible Samples:** 81
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 78 | 79 | inferred_complete_timeline |
+| `Action_PreSnap` | 81 | 82 | 2 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>DT2 — actor_track_id `17`</summary>
+
+- **xml_track_id:** `17`
+- **actor_track_id:** `17`
+- **team_side:** `defense`
+- **Visible Frames:** 0–268
+- **Visible Samples:** 249
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 75 | 76 | inferred_complete_timeline |
+| `Action_PreSnap` | 78 | 79 | 2 | inferred_complete_timeline |
+| `Action_PreSnap` | 83 | 147 | 65 | inferred_complete_timeline |
+| `Action_PreSnap` | 163 | 268 | 106 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>LB1 — actor_track_id `3`</summary>
+
+- **xml_track_id:** `3`
+- **actor_track_id:** `3`
+- **team_side:** `defense`
+- **Visible Frames:** 0–255
+- **Visible Samples:** 256
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 255 | 256 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>LB2 — actor_track_id `2`</summary>
+
+- **xml_track_id:** `2`
+- **actor_track_id:** `2`
+- **team_side:** `defense`
+- **Visible Frames:** 0–242
+- **Visible Samples:** 243
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 242 | 243 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>LB3 — actor_track_id `1`</summary>
+
+- **xml_track_id:** `1`
+- **actor_track_id:** `1`
+- **team_side:** `defense`
+- **Visible Frames:** 0–268
+- **Visible Samples:** 253
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 83 | 84 | inferred_complete_timeline |
+| `Action_PreSnap` | 86 | 107 | 22 | inferred_complete_timeline |
+| `Action_PreSnap` | 113 | 115 | 3 | inferred_complete_timeline |
+| `Action_PreSnap` | 118 | 136 | 19 | inferred_complete_timeline |
+| `Action_PreSnap` | 139 | 229 | 91 | inferred_complete_timeline |
+| `Action_PreSnap` | 235 | 268 | 34 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>CB1 — actor_track_id `10`</summary>
+
+- **xml_track_id:** `10`
+- **actor_track_id:** `10`
+- **team_side:** `defense`
+- **Visible Frames:** 0–143
+- **Visible Samples:** 137
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 131 | 132 | inferred_complete_timeline |
+| `Action_PreSnap` | 138 | 140 | 3 | inferred_complete_timeline |
+| `Action_PreSnap` | 142 | 143 | 2 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>CB2 — actor_track_id `9`</summary>
+
+- **xml_track_id:** `9`
+- **actor_track_id:** `9`
+- **team_side:** `defense`
+- **Visible Frames:** 0–221
+- **Visible Samples:** 215
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 184 | 185 | inferred_complete_timeline |
+| `Action_PreSnap` | 189 | 215 | 27 | inferred_complete_timeline |
+| `Action_PreSnap` | 219 | 221 | 3 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>CB3 — actor_track_id `5`</summary>
+
+- **xml_track_id:** `5`
+- **actor_track_id:** `5`
+- **team_side:** `defense`
+- **Visible Frames:** 0–203
+- **Visible Samples:** 189
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 85 | 86 | inferred_complete_timeline |
+| `Action_BallCarry` | 86 | 166 | 81 | inferred_complete_timeline |
+| `Action_BallCarry` | 172 | 191 | 20 | inferred_complete_timeline |
+| `Action_BallCarry` | 202 | 203 | 2 | inferred_complete_timeline |
+
+</details>
+
+<details>
+<summary>SAF — actor_track_id `11`</summary>
+
+- **xml_track_id:** `11`
+- **actor_track_id:** `11`
+- **team_side:** `defense`
+- **Visible Frames:** 0–256
+- **Visible Samples:** 257
+
+| Action | Start | End | Duration | Source |
+| --- | --- | --- | --- | --- |
+| `Action_PreSnap` | 0 | 256 | 257 | inferred_complete_timeline |
+
+</details>
+
+</details>
+
+<details>
+<summary><strong>Unassigned / Unknown Player Tracks</strong></summary>
+
+| xml_track_id | actor_track_id | Position | Team | Visible Frames | Visible Samples | Action Segments | Notes |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `22` | `22` | Position_Unknown | Team_Unknown | 100–162 | 62 | 2 | Undefined position; Undefined team |
+| `23` | `23` | Position_Unknown | Team_Unknown | 104–268 | 158 | 6 | Undefined position; Undefined team |
+| `24` | `24` | Position_Unknown | Team_Unknown | 113–268 | 103 | 2 | Undefined position; Undefined team |
+| `25` | `25` | Position_Unknown | Team_Unknown | 115–240 | 126 | 1 | Undefined position; Undefined team |
+| `26` | `29` | Position_Unknown | Team_Unknown | 156–268 | 111 | 2 | Undefined position; Undefined team |
+| `27` | `33` | Position_Unknown | Team_Unknown | 171–210 | 32 | 4 | Undefined position; Undefined team |
+| `28` | `34` | Position_Unknown | Team_Unknown | 178–184 | 7 | 1 | Undefined position; Undefined team |
+| `29` | `35` | Position_Unknown | Team_Unknown | 184–268 | 80 | 3 | Undefined position; Undefined team |
+| `30` | `37` | Position_Unknown | Team_Unknown | 203–237 | 26 | 3 | Undefined position; Undefined team |
+| `31` | `38` | Position_Unknown | Team_Unknown | 212–215 | 4 | 1 | Undefined position; Undefined team |
+| `32` | `40` | Position_Unknown | Team_Unknown | 237–268 | 32 | 1 | Undefined position; Undefined team |
+| `33` | `41` | Position_Unknown | Team_Unknown | 258–265 | 8 | 1 | Undefined position; Undefined team |
+| `34` | `42` | Position_Unknown | Team_Unknown | 258–268 | 11 | 1 | Undefined position; Undefined team |
+| `35` | `43` | Position_Unknown | Team_Unknown | 264–268 | 5 | 1 | Undefined position; Undefined team |
+| `36` | `44` | Position_Unknown | Team_Unknown | 268–268 | 1 | 1 | Undefined position; Undefined team |
+
+</details>
+
+## 4. Ball Tracking Summary
+
+*No ball tracks found.*
+
+## 5. Issues Requiring Review
+
+### Action Mapping Issues
+
+- ⚠️ Ambiguous match for action `Action_ComboBlock` and target `14` (3 segments found)
+- ⚠️ Ambiguous match for action `Action_ComboBlock` and target `18` (3 segments found)
+- ⚠️ Ambiguous match for action `Action_ComboBlock` and target `20` (6 segments found)
+- ⚠️ Ambiguous match for action `Action_BallCarry` and target `5` (3 segments found)
+- ⚠️ Ambiguous match for action `Action_BlockSecondLevel` and target `23` (3 segments found)
+
+### Track Identity Issues
+
+- ⚠️ Player track XML ID `11` (actor_track_id `11`): `SAF` position mapped to `defense` team
+- ⚠️ 15 player tracks have undefined position (`Position_Unknown`)
+- ⚠️ 15 player tracks have undefined team (`Team_Unknown`)
+
+### Validation Errors
+
+None.
+
+### Validation Warnings by Category
+
+| Category | Count |
+| --- | --- |
+| Unknown position/team | 30 |
+| Missing visible bounding boxes during action | 81 |
+| Other | 1 |
+
+<details>
+<summary><strong>Detailed Validation Warnings</strong></summary>
+
+- ⚠️ No result_frame or PlayEnd action found in CSV. Using final clip frame 268 as fallback play end.
+- ⚠️ Action 'Action_PreSnap' range [0-190] for track '0' has 3 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [192-199] for track '0' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [201-213] for track '0' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [224-225] for track '0' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-83] for track '1' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [86-107] for track '1' has 3 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [113-115] for track '1' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [118-136] for track '1' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [139-229] for track '1' has 3 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [235-268] for track '1' has 5 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-242] for track '2' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-255] for track '3' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-150] for track '4' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [152-233] for track '4' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_BallCarry' range [86-166] for track '5' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_BallCarry' range [172-191] for track '5' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_BallCarry' range [202-203] for track '5' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-135] for track '6' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [143-175] for track '6' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [182-268] for track '6' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-47] for track '7' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [50-157] for track '7' has 5 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [164-189] for track '7' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [197-200] for track '7' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [202-203] for track '7' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [207-208] for track '7' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [210-267] for track '7' has 4 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-173] for track '8' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [176-179] for track '8' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [185-232] for track '8' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [235-244] for track '8' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-184] for track '9' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [189-215] for track '9' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [219-221] for track '9' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-131] for track '10' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [138-140] for track '10' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [142-143] for track '10' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-256] for track '11' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-83] for track '12' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-78] for track '13' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [81-82] for track '13' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [52-56] for track '14' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [123-127] for track '14' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_None' range [148-173] for track '14' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_None' range [181-268] for track '14' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-268] for track '16' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-75] for track '17' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [78-79] for track '17' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [83-147] for track '17' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [52-62] for track '18' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [76-145] for track '18' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [52-92] for track '19' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [52-56] for track '20' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [62-63] for track '20' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [66-67] for track '20' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [70-89] for track '20' has 5 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [94-96] for track '20' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_ComboBlock' range [98-99] for track '20' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [0-176] for track '21' has 6 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [179-181] for track '21' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [100-142] for track '22' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [144-162] for track '22' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [104-108] for track '23' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_BlockSecondLevel' range [115-120] for track '23' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_BlockSecondLevel' range [124-130] for track '23' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [113-114] for track '24' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [115-240] for track '25' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [156-159] for track '26' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [162-268] for track '26' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [171-192] for track '27' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [194-198] for track '27' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [204-205] for track '27' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [208-210] for track '27' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [178-184] for track '28' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [184-185] for track '29' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [190-207] for track '29' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [203-204] for track '30' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [210-215] for track '30' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [220-237] for track '30' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [212-215] for track '31' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_PreSnap' range [258-265] for track '33' has 2 frames without a visible bounding box.
+- ⚠️ Player track '22' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '22' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '23' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '23' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '24' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '24' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '25' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '25' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '26' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '26' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '27' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '27' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '28' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '28' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '29' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '29' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '30' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '30' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '31' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '31' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '32' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '32' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '33' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '33' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '34' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '34' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '35' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '35' has undefined team_side. Will map to Team_Unknown.
+- ⚠️ Player track '36' has undefined position. Will map to Position_Unknown.
+- ⚠️ Player track '36' has undefined team_side. Will map to Team_Unknown.
+
+</details>
