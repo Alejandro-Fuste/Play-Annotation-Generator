@@ -144,18 +144,18 @@
     "player_tracks_source": "data/player_tracks/JetSweep.csv"
   },
   {
-    "logical_clip_name": "KickoffReturnTouchdown_13",
+    "logical_clip_name": "KickoffReturnTouchdown_17",
     "play_name": "KickoffReturnTouchdown",
-    "video_id": "13",
-    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_13_cvat_mot.zip",
+    "video_id": "17",
+    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_17_cvat_mot.zip",
     "key_actions_source": "data/key_actions/KickoffReturnTouchdown.csv",
     "player_tracks_source": "data/player_tracks/KickoffReturnTouchdown.csv"
   },
   {
-    "logical_clip_name": "KickoffReturnTouchdown_14",
+    "logical_clip_name": "KickoffReturnTouchdown_18",
     "play_name": "KickoffReturnTouchdown",
-    "video_id": "14",
-    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_14_cvat_mot.zip",
+    "video_id": "18",
+    "tracking_source": "data/tracking/KickoffReturnTouchdown/KickoffReturnTouchdown_18_cvat_mot.zip",
     "key_actions_source": "data/key_actions/KickoffReturnTouchdown.csv",
     "player_tracks_source": "data/player_tracks/KickoffReturnTouchdown.csv"
   },
