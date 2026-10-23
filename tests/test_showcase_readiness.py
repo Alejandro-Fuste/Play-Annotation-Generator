@@ -310,6 +310,43 @@ def test_semicolon_continuation_parsing_and_formats():
     assert e6[1][0] == 40 and e6[1][1] == "7" and e6[1].end_frame == 50
 
 
+def test_power_pull_block_ranged_parsing():
+    """Ranged Pull Block pattern start,end;actor parses as one ranged action event."""
+    # 125,181;18 -> exactly 1 entry, actor 18, start 125, end 181
+    e1 = parse_cell_entries("125,181;18")
+    assert len(e1) == 1
+    assert e1[0][0] == 125
+    assert e1[0][1] == "18"
+    assert e1[0][2] is None
+    assert e1[0].end_frame == 181
+
+    # 129,183;5 -> exactly 1 entry, actor 5, start 129, end 183
+    e2 = parse_cell_entries("129,183;5")
+    assert len(e2) == 1
+    assert e2[0][0] == 129
+    assert e2[0][1] == "5"
+    assert e2[0][2] is None
+    assert e2[0].end_frame == 183
+
+    # Preserved: 52,19;14;20;18
+    e3 = parse_cell_entries("52,19;14;20;18")
+    assert len(e3) == 4
+    assert [x[0] for x in e3] == [52, 52, 52, 52]
+    assert [x[1] for x in e3] == ["19", "14", "20", "18"]
+    assert all(x[2] is None for x in e3)
+
+    # Preserved: 52,19;55,14
+    e4 = parse_cell_entries("52,19;55,14")
+    assert len(e4) == 2
+    assert e4[0][0] == 52 and e4[0][1] == "19"
+    assert e4[1][0] == 55 and e4[1][1] == "14"
+
+    # Preserved: 191,261,OL
+    e5 = parse_cell_entries("191,261,OL")
+    assert len(e5) == 1
+    assert e5[0][0] == 191 and e5[0][1] == "OL" and e5[0].end_frame == 261
+
+
 def test_duo_1_combo_blocks_regression():
     """13. Duo_1 Combo Blocks parses exactly 4 events at frame 52 for 19,14,20,18 with 0 global events."""
     config = load_config()
@@ -650,8 +687,8 @@ def test_showcase_manifest_50_clips():
 
     # Replacements:
     assert "PuntReturnTouchdown_9" in clip_names
-    assert "KickoffReturnTouchdown_13" in clip_names
-    assert "KickoffReturnTouchdown_14" in clip_names
+    assert "KickoffReturnTouchdown_17" in clip_names
+    assert "KickoffReturnTouchdown_18" in clip_names
 
     assert "PuntReturnTouchdown_2" not in clip_names
     assert "KickoffReturnTouchdown_5" not in clip_names
@@ -659,7 +696,7 @@ def test_showcase_manifest_50_clips():
 
     # Assert replacement tracking ZIPs exist
     for item in manifest:
-        if item["logical_clip_name"] in {"PuntReturnTouchdown_9", "KickoffReturnTouchdown_13", "KickoffReturnTouchdown_14"}:
+        if item["logical_clip_name"] in {"PuntReturnTouchdown_9", "KickoffReturnTouchdown_17", "KickoffReturnTouchdown_18"}:
             assert os.path.exists(item["tracking_source"]), f"Missing tracking zip: {item['tracking_source']}"
 
 

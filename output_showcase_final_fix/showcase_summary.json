@@ -1,0 +1,59 @@
+[
+  {
+    "clip_name": "Post10to15_1",
+    "play_name": "Post10to15",
+    "video_id": "1",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 59,
+    "tracks_count": 25,
+    "segments_count": 72,
+    "dense_count": 3095,
+    "errors": [],
+    "warnings": [
+      "Row 3: Duplicate assignment for track ID '18' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+      "Resolved action overlap for track '18' (C): higher_priority='Action_BallSnap' [4\u201321], lower_priority='Action_PassBlock' annotated_start=7, effective_Action_PassBlock_start=22.",
+      "Action 'Action_None' range [4-41] for track '0' has 1 frames without a visible bounding box.",
+      "Action 'Action_None' range [43-150] for track '0' has 1 frames without a visible bounding box."
+    ]
+  },
+  {
+    "clip_name": "Power_3",
+    "play_name": "Power",
+    "video_id": "3",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 63,
+    "tracks_count": 32,
+    "segments_count": 48,
+    "dense_count": 6104,
+    "errors": [],
+    "warnings": [
+      "Row 7: Duplicate assignment for track ID '5' in grid. Overwriting previous assignment.",
+      "Row 7: Duplicate assignment for track ID '5' in grid. Overwriting previous assignment.",
+      "Row 8: Duplicate assignment for track ID '7' in grid. Overwriting previous assignment.",
+      "No result_frame or PlayEnd action found in CSV. Using final clip frame 299 as fallback play end.",
+      "Validation warning: Action 'Action_DownBlock' for track '21' (RG) duration 124 frames exceeds threshold 90 frames [start=17, end=140]."
+    ]
+  },
+  {
+    "clip_name": "Power_4",
+    "play_name": "Power",
+    "video_id": "4",
+    "status": "WARNING",
+    "errors_count": 0,
+    "warnings_count": 78,
+    "tracks_count": 30,
+    "segments_count": 55,
+    "dense_count": 4292,
+    "errors": [],
+    "warnings": [
+      "Row 9: Duplicate assignment for track ID 'NV' in grid. Overwriting previous assignment.",
+      "Row 9: Duplicate assignment for track ID 'NV' in grid. Overwriting previous assignment.",
+      "Row 10: Duplicate assignment for track ID 'NV' in grid. Overwriting previous assignment.",
+      "Row 10: Duplicate assignment for track ID 'NV' in grid. Overwriting previous assignment.",
+      "Row 10: Duplicate assignment for track ID 'NV' in grid. Overwriting previous assignment."
+    ]
+  }
+]

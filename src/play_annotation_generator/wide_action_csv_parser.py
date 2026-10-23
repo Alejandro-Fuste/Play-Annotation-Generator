@@ -46,6 +46,16 @@ def parse_cell_entries(
         if not line:
             continue
 
+        # Recognize exact structural pattern <int>,<int>;<actor> before semicolon continuation
+        m = re.fullmatch(r"(\d+)\s*,\s*(\d+)\s*;\s*([^;,]+)", line)
+        if m:
+            s_frame = int(m.group(1))
+            e_frame = int(m.group(2))
+            act_id = m.group(3).strip()
+            if s_frame <= e_frame:
+                parsed.append(ParsedEntry(s_frame, act_id, None, end_frame=e_frame))
+                continue
+
         # Split by semicolon continuation within this line
         semi_parts = [p.strip() for p in line.split(";") if p.strip()]
         if not semi_parts:
