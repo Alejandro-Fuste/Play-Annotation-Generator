@@ -1,6 +1,6 @@
 # Play-Annotation-Generator Annotation Review — Power_3
 
-**Overall Status:** FAILED
+**Overall Status:** WARNING
 
 ## 1. Clip & Validation Summary
 
@@ -13,8 +13,8 @@
 - **Ball Tracks:** 0
 - **Action Segments:** 48
 - **Validation Warnings:** 63
-- **Validation Errors:** 1
-- **Overall Status:** FAILED
+- **Validation Errors:** 0
+- **Overall Status:** WARNING
 
 ## 2. Action Annotation Audit
 
@@ -47,7 +47,7 @@
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | TE | offense | `4` | `Group` |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | LT | offense | `5` | `Group` |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | HB | offense | `6` | `Group` |
-| ✅ EXACT | `Action_DownBlock` | LG | offense | `18` | `18` |
+| ✅ EXACT | `Action_DownBlock` | RG | offense | `21` | `21` |
 | ℹ️ GLOBAL EVENT | `Action_DownBlock` | N/A | N/A | N/A | N/A |
 | ✅ EXACT | `Action_PullBlock` | LG | offense | `18` | `18` |
 
@@ -57,16 +57,16 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | WR1 | `1` | `Group` | 5 | START | 5 | 241 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | C | `17` | `Group` | 5 | START | 5 | 141 |
-| ✅ GROUP_EXPANDED | `Action_PreSnap` | LG | `18` | `Group` | 5 | START | 5 | 16 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | LG | `18` | `Group` | 5 | START | 5 | 124 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | RT | `19` | `Group` | 5 | START | 5 | 158 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | QB | `20` | `Group` | 5 | START | 5 | 226 |
-| ✅ GROUP_EXPANDED | `Action_PreSnap` | RG | `21` | `Group` | 5 | START | 5 | 140 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | RG | `21` | `Group` | 5 | START | 5 | 16 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | TE | `4` | `Group` | 5 | START | 5 | 212 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | LT | `5` | `Group` | 5 | START | 5 | 299 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | HB | `6` | `Group` | 5 | START | 5 | 299 |
-| ✅ EXACT | `Action_DownBlock` | LG | `18` | `18` | 17 | START | 17 | 21 |
+| ✅ EXACT | `Action_DownBlock` | RG | `21` | `21` | 17 | START | 17 | 140 |
 | ℹ️ GLOBAL EVENT | `Action_DownBlock` | N/A | N/A | N/A | 125 | START | N/A | N/A |
-| ✅ EXACT | `Action_PullBlock` | LG | `18` | `18` | 125 | START | 125 | 299 |
+| ✅ EXACT | `Action_PullBlock` | LG | `18` | `18` | 125 | START | 125 | 181 |
 
 ### Output Segments Without Matching Input
 
@@ -166,10 +166,9 @@ None.
 
 | Action | Start | End | Duration | Source |
 | --- | --- | --- | --- | --- |
-| `Action_PreSnap` | 5 | 16 | 12 | inferred_complete_timeline |
-| `Action_DownBlock` | 17 | 21 | 5 | inferred_complete_timeline |
-| `Action_None` | 22 | 124 | 103 | inferred_complete_timeline |
-| `Action_PullBlock` | 125 | 299 | 175 | inferred_complete_timeline |
+| `Action_PreSnap` | 5 | 124 | 120 | inferred_complete_timeline |
+| `Action_PullBlock` | 125 | 181 | 57 | inferred_complete_timeline |
+| `Action_None` | 182 | 299 | 118 | inferred_complete_timeline |
 
 </details>
 
@@ -202,7 +201,8 @@ None.
 
 | Action | Start | End | Duration | Source |
 | --- | --- | --- | --- | --- |
-| `Action_PreSnap` | 5 | 140 | 136 | inferred_complete_timeline |
+| `Action_PreSnap` | 5 | 16 | 12 | inferred_complete_timeline |
+| `Action_DownBlock` | 17 | 140 | 124 | inferred_complete_timeline |
 
 </details>
 
@@ -422,7 +422,7 @@ None.
 
 ### Validation Errors
 
-- ❌ Event 'Action_PullBlock' at frame 125 targets track ID '181', but it is not found in XML.
+None.
 
 ### Validation Warnings by Category
 
@@ -440,7 +440,7 @@ None.
 - ⚠️ Row 7: Duplicate assignment for track ID '5' in grid. Overwriting previous assignment.
 - ⚠️ Row 8: Duplicate assignment for track ID '7' in grid. Overwriting previous assignment.
 - ⚠️ No result_frame or PlayEnd action found in CSV. Using final clip frame 299 as fallback play end.
-- ⚠️ Validation warning: Action 'Action_PullBlock' for track '18' (LG) duration 175 frames exceeds threshold 90 frames [start=125, end=299].
+- ⚠️ Validation warning: Action 'Action_DownBlock' for track '21' (RG) duration 124 frames exceeds threshold 90 frames [start=17, end=140].
 - ⚠️ Action 'Action_PreSnap' range [5-199] for track '0' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [210-217] for track '0' has 2 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [5-241] for track '1' has 1 frames without a visible bounding box.
@@ -460,7 +460,7 @@ None.
 - ⚠️ Action 'Action_PreSnap' range [5-158] for track '19' has 2 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [160-272] for track '19' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [5-226] for track '20' has 2 frames without a visible bounding box.
-- ⚠️ Action 'Action_PreSnap' range [5-140] for track '21' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_DownBlock' range [17-140] for track '21' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [158-298] for track '22' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [159-160] for track '23' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [165-229] for track '23' has 1 frames without a visible bounding box.

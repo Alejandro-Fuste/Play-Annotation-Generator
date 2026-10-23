@@ -97,7 +97,7 @@ Post10to15_1,4,14,14,DE1,defense,Action_None,1023.0,639.91,1113.16,718.11,90.160
 Post10to15_1,4,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1207.8,674.56,1283.64,771.95,75.84000000000015,97.3900000000001,xml_geometry_csv_action
 Post10to15_1,4,16,16,LG,offense,Action_PreSnap,1132.97,576.33,1192.26,650.99,59.289999999999964,74.65999999999997,xml_geometry_csv_action
 Post10to15_1,4,17,17,CB2,defense,Action_None,758.22,287.55,800.65,379.13,42.42999999999995,91.57999999999998,xml_geometry_csv_action
-Post10to15_1,4,18,18,C,offense,Action_PreSnap,1083.85,543.52,1149.44,622.72,65.59000000000015,79.20000000000005,xml_geometry_csv_action
+Post10to15_1,4,18,18,C,offense,Action_BallSnap,1083.85,543.52,1149.44,622.72,65.59000000000015,79.20000000000005,xml_geometry_csv_action
 Post10to15_1,4,19,19,LT,offense,Action_PreSnap,1155.52,589.51,1216.63,679.33,61.11000000000013,89.82000000000005,xml_geometry_csv_action
 Post10to15_1,4,2,2,OLB,defense,Action_None,921.75,448.66,1010.17,520.33,88.41999999999996,71.67000000000002,xml_geometry_csv_action
 Post10to15_1,4,20,20,RT,offense,Action_PreSnap,1073.34,464.17,1136.84,525.86,63.5,61.69,xml_geometry_csv_action
@@ -119,7 +119,7 @@ Post10to15_1,5,14,14,DE1,defense,Action_None,1022.97,639.56,1113.25,717.95,90.27
 Post10to15_1,5,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1208.13,674.57,1281.43,771.84,73.29999999999995,97.26999999999998,xml_geometry_csv_action
 Post10to15_1,5,16,16,LG,offense,Action_PreSnap,1133.2,575.62,1191.96,650.6,58.75999999999999,74.98000000000002,xml_geometry_csv_action
 Post10to15_1,5,17,17,CB2,defense,Action_None,758.12,286.93,801.22,378.99,43.10000000000002,92.06,xml_geometry_csv_action
-Post10to15_1,5,18,18,C,offense,Action_PreSnap,1085.65,543.62,1149.81,622.42,64.15999999999985,78.79999999999995,xml_geometry_csv_action
+Post10to15_1,5,18,18,C,offense,Action_BallSnap,1085.65,543.62,1149.81,622.42,64.15999999999985,78.79999999999995,xml_geometry_csv_action
 Post10to15_1,5,19,19,LT,offense,Action_PreSnap,1153.82,587.64,1215.87,679.02,62.049999999999955,91.38,xml_geometry_csv_action
 Post10to15_1,5,2,2,OLB,defense,Action_None,921.87,448.44,1010.3,520.15,88.42999999999995,71.70999999999998,xml_geometry_csv_action
 Post10to15_1,5,20,20,RT,offense,Action_PreSnap,1072.95,461.93,1136.58,525.25,63.62999999999988,63.31999999999999,xml_geometry_csv_action
@@ -141,7 +141,7 @@ Post10to15_1,6,14,14,DE1,defense,Action_None,1022.94,639.3,1113.39,717.87,90.450
 Post10to15_1,6,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1208.15,675.21,1278.97,770.44,70.81999999999994,95.23000000000002,xml_geometry_csv_action
 Post10to15_1,6,16,16,LG,offense,Action_PreSnap,1132.99,573.94,1191.73,649.54,58.74000000000001,75.59999999999991,xml_geometry_csv_action
 Post10to15_1,6,17,17,CB2,defense,Action_None,758.07,286.72,801.3,379.06,43.229999999999905,92.33999999999997,xml_geometry_csv_action
-Post10to15_1,6,18,18,C,offense,Action_PreSnap,1086.21,543.98,1150.65,621.7,64.44000000000005,77.72000000000003,xml_geometry_csv_action
+Post10to15_1,6,18,18,C,offense,Action_BallSnap,1086.21,543.98,1150.65,621.7,64.44000000000005,77.72000000000003,xml_geometry_csv_action
 Post10to15_1,6,19,19,LT,offense,Action_PreSnap,1152.49,586.01,1215.71,678.21,63.22000000000003,92.20000000000005,xml_geometry_csv_action
 Post10to15_1,6,2,2,OLB,defense,Action_None,921.98,448.26,1010.36,520.04,88.38,71.77999999999997,xml_geometry_csv_action
 Post10to15_1,6,20,20,RT,offense,Action_PreSnap,1072.52,460.18,1136.49,523.17,63.97000000000003,62.98999999999995,xml_geometry_csv_action
@@ -163,7 +163,7 @@ Post10to15_1,7,14,14,DE1,defense,Action_None,1022.93,639.12,1113.48,717.82,90.55
 Post10to15_1,7,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1207.77,677.19,1273.9,769.91,66.13000000000011,92.71999999999991,xml_geometry_csv_action
 Post10to15_1,7,16,16,LG,offense,Action_PassBlock,1132.05,572.42,1190.61,646.54,58.559999999999945,74.12,xml_geometry_csv_action
 Post10to15_1,7,17,17,CB2,defense,Action_None,758.1,286.52,801.43,379.07,43.32999999999993,92.55000000000001,xml_geometry_csv_action
-Post10to15_1,7,18,18,C,offense,Action_PassBlock,1085.72,543.66,1150.58,621.08,64.8599999999999,77.42000000000007,xml_geometry_csv_action
+Post10to15_1,7,18,18,C,offense,Action_BallSnap,1085.72,543.66,1150.58,621.08,64.8599999999999,77.42000000000007,xml_geometry_csv_action
 Post10to15_1,7,19,19,LT,offense,Action_PassBlock,1151.65,584.62,1215.54,677.63,63.88999999999987,93.00999999999999,xml_geometry_csv_action
 Post10to15_1,7,2,2,OLB,defense,Action_None,921.96,448.14,1010.25,519.93,88.28999999999996,71.78999999999996,xml_geometry_csv_action
 Post10to15_1,7,20,20,RT,offense,Action_PassBlock,1071.38,459.22,1135.75,521.4,64.36999999999989,62.17999999999995,xml_geometry_csv_action
@@ -185,7 +185,7 @@ Post10to15_1,8,14,14,DE1,defense,Action_None,1022.58,639.79,1113.42,717.87,90.84
 Post10to15_1,8,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1207.2,680.58,1271.9,771.11,64.70000000000005,90.52999999999997,xml_geometry_csv_action
 Post10to15_1,8,16,16,LG,offense,Action_PassBlock,1130.89,570.84,1189.74,644.2,58.84999999999991,73.36000000000001,xml_geometry_csv_action
 Post10to15_1,8,17,17,CB2,defense,Action_None,758.1,286.49,801.39,379.1,43.289999999999964,92.61000000000001,xml_geometry_csv_action
-Post10to15_1,8,18,18,C,offense,Action_PassBlock,1083.98,541.87,1149.71,621.27,65.73000000000002,79.39999999999998,xml_geometry_csv_action
+Post10to15_1,8,18,18,C,offense,Action_BallSnap,1083.98,541.87,1149.71,621.27,65.73000000000002,79.39999999999998,xml_geometry_csv_action
 Post10to15_1,8,19,19,LT,offense,Action_PassBlock,1149.52,582.8,1215.24,677.73,65.72000000000003,94.93000000000006,xml_geometry_csv_action
 Post10to15_1,8,2,2,OLB,defense,Action_None,921.66,447.5,1010.26,519.88,88.60000000000002,72.38,xml_geometry_csv_action
 Post10to15_1,8,20,20,RT,offense,Action_PassBlock,1070.64,458.81,1135.16,518.82,64.51999999999998,60.01000000000005,xml_geometry_csv_action
@@ -207,7 +207,7 @@ Post10to15_1,9,14,14,DE1,defense,Action_None,1022.59,640.06,1113.81,717.97,91.21
 Post10to15_1,9,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1206.88,683.51,1271.6,770.72,64.7199999999998,87.21000000000004,xml_geometry_csv_action
 Post10to15_1,9,16,16,LG,offense,Action_PassBlock,1128.79,568.56,1188.25,640.34,59.460000000000036,71.78000000000009,xml_geometry_csv_action
 Post10to15_1,9,17,17,CB2,defense,Action_None,758.14,286.5,801.35,379.04,43.210000000000036,92.54000000000002,xml_geometry_csv_action
-Post10to15_1,9,18,18,C,offense,Action_PassBlock,1083.9,539.93,1149.17,621.98,65.26999999999998,82.05000000000007,xml_geometry_csv_action
+Post10to15_1,9,18,18,C,offense,Action_BallSnap,1083.9,539.93,1149.17,621.98,65.26999999999998,82.05000000000007,xml_geometry_csv_action
 Post10to15_1,9,19,19,LT,offense,Action_PassBlock,1146.64,580.68,1214.76,678.13,68.11999999999989,97.45000000000005,xml_geometry_csv_action
 Post10to15_1,9,2,2,OLB,defense,Action_None,921.33,446.73,1010.46,519.8,89.13,73.06999999999994,xml_geometry_csv_action
 Post10to15_1,9,20,20,RT,offense,Action_PassBlock,1069.54,458.55,1134.68,516.68,65.1400000000001,58.12999999999994,xml_geometry_csv_action
@@ -229,7 +229,7 @@ Post10to15_1,10,14,14,DE1,defense,Action_None,1022.54,640.17,1114.24,717.95,91.7
 Post10to15_1,10,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1205.91,686.21,1270.28,771.03,64.36999999999989,84.81999999999994,xml_geometry_csv_action
 Post10to15_1,10,16,16,LG,offense,Action_PassBlock,1126.74,567.2,1186.64,635.84,59.90000000000009,68.63999999999999,xml_geometry_csv_action
 Post10to15_1,10,17,17,CB2,defense,Action_None,758.29,286.29,801.7,378.89,43.41000000000008,92.59999999999997,xml_geometry_csv_action
-Post10to15_1,10,18,18,C,offense,Action_PassBlock,1084.6,539.09,1149.85,622.01,65.25,82.91999999999996,xml_geometry_csv_action
+Post10to15_1,10,18,18,C,offense,Action_BallSnap,1084.6,539.09,1149.85,622.01,65.25,82.91999999999996,xml_geometry_csv_action
 Post10to15_1,10,19,19,LT,offense,Action_PassBlock,1142.93,579.96,1213.92,677.89,70.99000000000001,97.92999999999995,xml_geometry_csv_action
 Post10to15_1,10,2,2,OLB,defense,Action_None,921.01,445.4,1011.13,519.18,90.12,73.77999999999997,xml_geometry_csv_action
 Post10to15_1,10,20,20,RT,offense,Action_PassBlock,1068.72,458.33,1134.23,515.32,65.50999999999999,56.990000000000066,xml_geometry_csv_action
@@ -251,7 +251,7 @@ Post10to15_1,11,14,14,DE1,defense,Action_None,1022.49,638.53,1115.12,717.85,92.6
 Post10to15_1,11,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1204.36,688.71,1267.73,771.25,63.37000000000012,82.53999999999996,xml_geometry_csv_action
 Post10to15_1,11,16,16,LG,offense,Action_PassBlock,1123.96,565.02,1185.07,631.8,61.1099999999999,66.77999999999997,xml_geometry_csv_action
 Post10to15_1,11,17,17,CB2,defense,Action_None,758.42,286.22,801.76,378.79,43.34000000000003,92.57,xml_geometry_csv_action
-Post10to15_1,11,18,18,C,offense,Action_PassBlock,1085.41,537.09,1149.3,621.17,63.88999999999987,84.07999999999993,xml_geometry_csv_action
+Post10to15_1,11,18,18,C,offense,Action_BallSnap,1085.41,537.09,1149.3,621.17,63.88999999999987,84.07999999999993,xml_geometry_csv_action
 Post10to15_1,11,19,19,LT,offense,Action_PassBlock,1139.17,577.31,1209.69,672.92,70.51999999999998,95.61000000000001,xml_geometry_csv_action
 Post10to15_1,11,2,2,OLB,defense,Action_None,921.39,443.72,1012.42,518.04,91.02999999999997,74.31999999999994,xml_geometry_csv_action
 Post10to15_1,11,20,20,RT,offense,Action_PassBlock,1068.26,457.65,1133.44,514.31,65.18000000000006,56.65999999999997,xml_geometry_csv_action
@@ -273,7 +273,7 @@ Post10to15_1,12,14,14,DE1,defense,Action_None,1022.52,636.67,1115.73,717.74,93.2
 Post10to15_1,12,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1201.73,690.6,1263.7,771.41,61.97000000000003,80.80999999999995,xml_geometry_csv_action
 Post10to15_1,12,16,16,LG,offense,Action_PassBlock,1122.91,562.37,1183.82,628.35,60.909999999999854,65.98000000000002,xml_geometry_csv_action
 Post10to15_1,12,17,17,CB2,defense,Action_None,758.4,286.38,801.57,378.71,43.17000000000007,92.32999999999998,xml_geometry_csv_action
-Post10to15_1,12,18,18,C,offense,Action_PassBlock,1084.57,534.69,1148.6,620.13,64.02999999999997,85.43999999999994,xml_geometry_csv_action
+Post10to15_1,12,18,18,C,offense,Action_BallSnap,1084.57,534.69,1148.6,620.13,64.02999999999997,85.43999999999994,xml_geometry_csv_action
 Post10to15_1,12,19,19,LT,offense,Action_PassBlock,1135.44,576.1,1206.5,670.89,71.05999999999995,94.78999999999996,xml_geometry_csv_action
 Post10to15_1,12,2,2,OLB,defense,Action_None,921.74,440.79,1014.1,516.01,92.36000000000001,75.21999999999997,xml_geometry_csv_action
 Post10to15_1,12,20,20,RT,offense,Action_PassBlock,1067.52,456.96,1132.68,513.18,65.16000000000008,56.21999999999997,xml_geometry_csv_action
@@ -295,7 +295,7 @@ Post10to15_1,13,14,14,DE1,defense,Action_None,1023.18,633.67,1116.34,717.37,93.1
 Post10to15_1,13,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1198.97,692.36,1263.15,772.03,64.18000000000006,79.66999999999996,xml_geometry_csv_action
 Post10to15_1,13,16,16,LG,offense,Action_PassBlock,1121.13,561.51,1182.72,626.28,61.58999999999992,64.76999999999998,xml_geometry_csv_action
 Post10to15_1,13,17,17,CB2,defense,Action_None,758.43,286.18,801.58,378.51,43.15000000000009,92.32999999999998,xml_geometry_csv_action
-Post10to15_1,13,18,18,C,offense,Action_PassBlock,1084.2,533.07,1148.35,620.42,64.14999999999986,87.34999999999991,xml_geometry_csv_action
+Post10to15_1,13,18,18,C,offense,Action_BallSnap,1084.2,533.07,1148.35,620.42,64.14999999999986,87.34999999999991,xml_geometry_csv_action
 Post10to15_1,13,19,19,LT,offense,Action_PassBlock,1133.92,576.23,1203.69,670.28,69.76999999999998,94.04999999999995,xml_geometry_csv_action
 Post10to15_1,13,2,2,OLB,defense,Action_None,922.57,437.69,1016.42,514.19,93.84999999999991,76.50000000000006,xml_geometry_csv_action
 Post10to15_1,13,20,20,RT,offense,Action_PassBlock,1068.78,455.12,1131.31,512.57,62.52999999999997,57.450000000000045,xml_geometry_csv_action
@@ -316,7 +316,7 @@ Post10to15_1,14,13,13,SAF,defense,Action_None,921.54,640.26,984.18,757.37,62.639
 Post10to15_1,14,14,14,DE1,defense,Action_None,1025.17,629.99,1117.09,717.55,91.91999999999985,87.55999999999995,xml_geometry_csv_action
 Post10to15_1,14,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1194.88,692.46,1262.69,772.22,67.80999999999995,79.75999999999999,xml_geometry_csv_action
 Post10to15_1,14,17,17,CB2,defense,Action_None,758.3,286.22,801.67,377.99,43.370000000000005,91.76999999999998,xml_geometry_csv_action
-Post10to15_1,14,18,18,C,offense,Action_PassBlock,1078.81,532.1,1146.65,619.26,67.84000000000015,87.15999999999997,xml_geometry_csv_action
+Post10to15_1,14,18,18,C,offense,Action_BallSnap,1078.81,532.1,1146.65,619.26,67.84000000000015,87.15999999999997,xml_geometry_csv_action
 Post10to15_1,14,19,19,LT,offense,Action_PassBlock,1129.26,571.21,1197.91,667.97,68.65000000000009,96.75999999999999,xml_geometry_csv_action
 Post10to15_1,14,2,2,OLB,defense,Action_None,923.43,433.85,1019.3,512.52,95.87,78.66999999999996,xml_geometry_csv_action
 Post10to15_1,14,20,20,RT,offense,Action_PassBlock,1070.3,452.59,1130.62,511.72,60.319999999999936,59.13000000000005,xml_geometry_csv_action
@@ -337,7 +337,7 @@ Post10to15_1,15,13,13,SAF,defense,Action_None,922.83,640.23,984.91,757.3,62.0799
 Post10to15_1,15,14,14,DE1,defense,Action_None,1027.55,625.78,1118.3,716.92,90.75,91.13999999999999,xml_geometry_csv_action
 Post10to15_1,15,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1189.46,691.81,1255.82,770.73,66.3599999999999,78.92000000000007,xml_geometry_csv_action
 Post10to15_1,15,17,17,CB2,defense,Action_None,758.31,285.83,801.91,377.45,43.60000000000002,91.62,xml_geometry_csv_action
-Post10to15_1,15,18,18,C,offense,Action_PassBlock,1079.25,529.57,1145.24,617.68,65.99000000000001,88.1099999999999,xml_geometry_csv_action
+Post10to15_1,15,18,18,C,offense,Action_BallSnap,1079.25,529.57,1145.24,617.68,65.99000000000001,88.1099999999999,xml_geometry_csv_action
 Post10to15_1,15,19,19,LT,offense,Action_PassBlock,1125.69,568.41,1192.48,666.66,66.78999999999996,98.25,xml_geometry_csv_action
 Post10to15_1,15,2,2,OLB,defense,Action_None,926.15,430.35,1022.19,511.62,96.04000000000008,81.26999999999998,xml_geometry_csv_action
 Post10to15_1,15,20,20,RT,offense,Action_PassBlock,1072.23,449.33,1129.97,511.0,57.74000000000001,61.670000000000016,xml_geometry_csv_action
@@ -359,7 +359,7 @@ Post10to15_1,16,14,14,DE1,defense,Action_None,1030.31,621.24,1118.88,716.39,88.5
 Post10to15_1,16,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1184.73,690.74,1245.01,771.27,60.27999999999997,80.52999999999997,xml_geometry_csv_action
 Post10to15_1,16,16,16,LG,offense,Action_PassBlock,1109.91,547.36,1165.81,619.69,55.899999999999864,72.33000000000004,xml_geometry_csv_action
 Post10to15_1,16,17,17,CB2,defense,Action_None,758.2,285.27,802.04,377.09,43.83999999999992,91.82,xml_geometry_csv_action
-Post10to15_1,16,18,18,C,offense,Action_PassBlock,1078.39,527.15,1139.53,614.14,61.13999999999987,86.99000000000001,xml_geometry_csv_action
+Post10to15_1,16,18,18,C,offense,Action_BallSnap,1078.39,527.15,1139.53,614.14,61.13999999999987,86.99000000000001,xml_geometry_csv_action
 Post10to15_1,16,19,19,LT,offense,Action_PassBlock,1121.59,566.34,1186.15,664.51,64.56000000000017,98.16999999999996,xml_geometry_csv_action
 Post10to15_1,16,2,2,OLB,defense,Action_None,932.23,427.74,1026.25,508.47,94.01999999999998,80.73000000000002,xml_geometry_csv_action
 Post10to15_1,16,20,20,RT,offense,Action_PassBlock,1073.22,445.89,1129.51,510.72,56.289999999999964,64.83000000000004,xml_geometry_csv_action
@@ -380,7 +380,7 @@ Post10to15_1,17,13,13,SAF,defense,Action_None,923.42,640.89,986.02,755.19,62.600
 Post10to15_1,17,14,14,DE1,defense,Action_None,1033.32,614.42,1119.35,716.25,86.02999999999997,101.83000000000004,xml_geometry_csv_action
 Post10to15_1,17,15,15,Position_Unknown,Team_Unknown,Action_PreSnap,1179.53,690.45,1238.76,774.04,59.23000000000002,83.58999999999992,xml_geometry_csv_action
 Post10to15_1,17,17,17,CB2,defense,Action_None,758.19,285.3,801.83,377.09,43.639999999999986,91.78999999999996,xml_geometry_csv_action
-Post10to15_1,17,18,18,C,offense,Action_PassBlock,1079.54,524.93,1139.52,603.09,59.98000000000002,78.16000000000008,xml_geometry_csv_action
+Post10to15_1,17,18,18,C,offense,Action_BallSnap,1079.54,524.93,1139.52,603.09,59.98000000000002,78.16000000000008,xml_geometry_csv_action
 Post10to15_1,17,19,19,LT,offense,Action_PassBlock,1117.43,564.32,1182.0,662.72,64.56999999999994,98.39999999999998,xml_geometry_csv_action
 Post10to15_1,17,2,2,OLB,defense,Action_None,937.97,425.94,1032.07,505.84,94.09999999999991,79.89999999999998,xml_geometry_csv_action
 Post10to15_1,17,20,20,RT,offense,Action_PassBlock,1073.64,442.84,1127.68,510.78,54.039999999999964,67.94,xml_geometry_csv_action
@@ -1225,7 +1225,7 @@ Post10to15_1,58,9,9,LB1,defense,Action_None,967.36,516.11,1022.95,607.13,55.5900
 Post10to15_1,59,0,0,WR3,offense,Action_None,581.88,251.23,642.4,327.43,60.51999999999998,76.20000000000002,xml_geometry_csv_action
 Post10to15_1,59,1,1,CB1,defense,Action_None,570.67,734.82,625.94,860.72,55.270000000000095,125.89999999999998,xml_geometry_csv_action
 Post10to15_1,59,10,10,RB,offense,Action_None,1235.87,528.66,1284.9,623.12,49.0300000000002,94.46000000000004,xml_geometry_csv_action
-Post10to15_1,59,11,11,QB,offense,Action_None,1299.04,494.01,1355.15,593.62,56.11000000000013,99.61000000000001,xml_geometry_csv_action
+Post10to15_1,59,11,11,QB,offense,Action_ThrowPass,1299.04,494.01,1355.15,593.62,56.11000000000013,99.61000000000001,xml_geometry_csv_action
 Post10to15_1,59,13,13,SAF,defense,Action_None,994.69,615.68,1055.21,706.34,60.51999999999998,90.66000000000008,xml_geometry_csv_action
 Post10to15_1,59,14,14,DE1,defense,Action_None,1059.43,533.93,1117.2,634.64,57.76999999999998,100.71000000000004,xml_geometry_csv_action
 Post10to15_1,59,15,15,Position_Unknown,Team_Unknown,Action_RunPostRoute,802.72,713.47,866.46,826.08,63.74000000000001,112.61000000000001,xml_geometry_csv_action
@@ -1244,7 +1244,7 @@ Post10to15_1,59,9,9,LB1,defense,Action_None,969.52,515.52,1024.29,605.74,54.7699
 Post10to15_1,60,0,0,WR3,offense,Action_None,579.68,254.55,630.89,326.41,51.210000000000036,71.86000000000001,xml_geometry_csv_action
 Post10to15_1,60,1,1,CB1,defense,Action_None,569.69,731.05,622.61,856.63,52.91999999999996,125.58000000000004,xml_geometry_csv_action
 Post10to15_1,60,10,10,RB,offense,Action_None,1235.98,527.58,1283.5,616.62,47.51999999999998,89.03999999999996,xml_geometry_csv_action
-Post10to15_1,60,11,11,QB,offense,Action_None,1303.65,494.87,1359.74,591.82,56.08999999999992,96.95000000000005,xml_geometry_csv_action
+Post10to15_1,60,11,11,QB,offense,Action_ThrowPass,1303.65,494.87,1359.74,591.82,56.08999999999992,96.95000000000005,xml_geometry_csv_action
 Post10to15_1,60,13,13,SAF,defense,Action_None,1002.53,615.29,1059.19,705.45,56.66000000000008,90.16000000000008,xml_geometry_csv_action
 Post10to15_1,60,14,14,DE1,defense,Action_None,1057.0,533.68,1118.4,632.1,61.40000000000009,98.42000000000007,xml_geometry_csv_action
 Post10to15_1,60,15,15,Position_Unknown,Team_Unknown,Action_RunPostRoute,794.09,711.47,847.37,824.08,53.27999999999997,112.61000000000001,xml_geometry_csv_action
@@ -1264,7 +1264,7 @@ Post10to15_1,60,9,9,LB1,defense,Action_None,969.3,514.83,1023.24,604.94,53.94000
 Post10to15_1,61,0,0,WR3,offense,Action_None,574.3,257.68,617.78,326.18,43.48000000000002,68.5,xml_geometry_csv_action
 Post10to15_1,61,1,1,CB1,defense,Action_None,564.05,726.99,617.67,854.39,53.620000000000005,127.39999999999998,xml_geometry_csv_action
 Post10to15_1,61,10,10,RB,offense,Action_None,1236.54,527.17,1284.2,610.84,47.66000000000008,83.67000000000007,xml_geometry_csv_action
-Post10to15_1,61,11,11,QB,offense,Action_None,1305.1,495.14,1360.44,590.12,55.340000000000146,94.98000000000002,xml_geometry_csv_action
+Post10to15_1,61,11,11,QB,offense,Action_ThrowPass,1305.1,495.14,1360.44,590.12,55.340000000000146,94.98000000000002,xml_geometry_csv_action
 Post10to15_1,61,13,13,SAF,defense,Action_None,1006.59,614.35,1061.78,701.43,55.18999999999994,87.07999999999993,xml_geometry_csv_action
 Post10to15_1,61,14,14,DE1,defense,Action_None,1055.92,534.11,1117.48,633.54,61.559999999999945,99.42999999999995,xml_geometry_csv_action
 Post10to15_1,61,15,15,Position_Unknown,Team_Unknown,Action_RunPostRoute,782.96,709.42,834.32,821.3,51.360000000000014,111.88,xml_geometry_csv_action
@@ -1283,7 +1283,7 @@ Post10to15_1,61,9,9,LB1,defense,Action_None,967.04,514.55,1022.11,605.17,55.0700
 Post10to15_1,62,0,0,WR3,offense,Action_None,566.76,259.97,611.43,331.94,44.66999999999996,71.96999999999997,xml_geometry_csv_action
 Post10to15_1,62,1,1,CB1,defense,Action_None,559.65,726.18,613.87,852.42,54.22000000000003,126.24000000000001,xml_geometry_csv_action
 Post10to15_1,62,10,10,RB,offense,Action_None,1236.06,526.64,1289.09,608.78,53.02999999999997,82.13999999999999,xml_geometry_csv_action
-Post10to15_1,62,11,11,QB,offense,Action_None,1304.54,493.24,1361.29,589.75,56.75,96.50999999999999,xml_geometry_csv_action
+Post10to15_1,62,11,11,QB,offense,Action_ThrowPass,1304.54,493.24,1361.29,589.75,56.75,96.50999999999999,xml_geometry_csv_action
 Post10to15_1,62,13,13,SAF,defense,Action_None,1007.26,614.15,1064.5,703.33,57.24000000000001,89.18000000000006,xml_geometry_csv_action
 Post10to15_1,62,14,14,DE1,defense,Action_None,1058.32,533.91,1122.07,637.07,63.75,103.16000000000008,xml_geometry_csv_action
 Post10to15_1,62,15,15,Position_Unknown,Team_Unknown,Action_RunPostRoute,768.44,705.75,831.71,821.0,63.26999999999998,115.25,xml_geometry_csv_action
@@ -1302,7 +1302,7 @@ Post10to15_1,62,9,9,LB1,defense,Action_None,963.03,517.27,1019.83,607.93,56.8000
 Post10to15_1,63,0,0,WR3,offense,Action_None,559.36,262.51,609.07,335.63,49.710000000000036,73.12,xml_geometry_csv_action
 Post10to15_1,63,1,1,CB1,defense,Action_None,556.63,725.13,611.43,849.34,54.799999999999955,124.21000000000004,xml_geometry_csv_action
 Post10to15_1,63,10,10,RB,offense,Action_None,1234.02,527.11,1290.62,608.8,56.59999999999991,81.68999999999994,xml_geometry_csv_action
-Post10to15_1,63,11,11,QB,offense,Action_None,1303.69,491.87,1362.45,590.93,58.75999999999999,99.05999999999995,xml_geometry_csv_action
+Post10to15_1,63,11,11,QB,offense,Action_ThrowPass,1303.69,491.87,1362.45,590.93,58.75999999999999,99.05999999999995,xml_geometry_csv_action
 Post10to15_1,63,13,13,SAF,defense,Action_None,1008.72,614.75,1066.54,703.63,57.819999999999936,88.88,xml_geometry_csv_action
 Post10to15_1,63,14,14,DE1,defense,Action_None,1060.14,534.2,1124.75,639.43,64.6099999999999,105.2299999999999,xml_geometry_csv_action
 Post10to15_1,63,15,15,Position_Unknown,Team_Unknown,Action_RunPostRoute,754.4,702.39,830.7,819.1,76.30000000000007,116.71000000000004,xml_geometry_csv_action
@@ -1321,7 +1321,7 @@ Post10to15_1,63,9,9,LB1,defense,Action_None,959.74,518.81,1018.08,609.36,58.3400
 Post10to15_1,64,0,0,WR3,offense,Action_None,553.81,264.62,606.72,336.88,52.91000000000008,72.25999999999999,xml_geometry_csv_action
 Post10to15_1,64,1,1,CB1,defense,Action_None,552.0,723.91,606.12,848.06,54.120000000000005,124.14999999999998,xml_geometry_csv_action
 Post10to15_1,64,10,10,RB,offense,Action_None,1232.16,529.26,1291.06,611.01,58.899999999999864,81.75,xml_geometry_csv_action
-Post10to15_1,64,11,11,QB,offense,Action_None,1304.98,491.91,1361.67,591.74,56.690000000000055,99.82999999999998,xml_geometry_csv_action
+Post10to15_1,64,11,11,QB,offense,Action_ThrowPass,1304.98,491.91,1361.67,591.74,56.690000000000055,99.82999999999998,xml_geometry_csv_action
 Post10to15_1,64,13,13,SAF,defense,Action_None,1011.08,614.47,1069.15,704.75,58.07000000000005,90.27999999999997,xml_geometry_csv_action
 Post10to15_1,64,14,14,DE1,defense,Action_None,1060.81,533.46,1126.19,639.0,65.38000000000011,105.53999999999996,xml_geometry_csv_action
 Post10to15_1,64,15,15,Position_Unknown,Team_Unknown,Action_RunPostRoute,741.24,699.18,823.75,813.47,82.50999999999999,114.29000000000008,xml_geometry_csv_action

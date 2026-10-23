@@ -10,7 +10,7 @@ Post10to15_1,1,Pre Snap_group_ALL,Action_PreSnap,0,START,20,track_id,Play_Pass_P
 Post10to15_1,1,Pre Snap_group_ALL,Action_PreSnap,0,START,21,track_id,Play_Pass_Post10to15,Result_Tackle,,
 Post10to15_1,1,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_Pass_Post10to15,Result_Tackle,,
 Post10to15_1,1,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_Pass_Post10to15,Result_Tackle,,
-Post10to15_1,1,Ball Snap,Action_BallSnap,4,START,11,track_id,Play_Pass_Post10to15,Result_Tackle,,
+Post10to15_1,1,Ball Snap,Action_BallSnap,4,START,18,track_id,Play_Pass_Post10to15,Result_Tackle,,
 Post10to15_1,1,Pass Block_group_OL,Action_PassBlock,7,START,16,track_id,Play_Pass_Post10to15,Result_Tackle,,
 Post10to15_1,1,Pass Block_group_OL,Action_PassBlock,7,START,18,track_id,Play_Pass_Post10to15,Result_Tackle,,
 Post10to15_1,1,Pass Block_group_OL,Action_PassBlock,7,START,19,track_id,Play_Pass_Post10to15,Result_Tackle,,
@@ -18,3 +18,4 @@ Post10to15_1,1,Pass Block_group_OL,Action_PassBlock,7,START,20,track_id,Play_Pas
 Post10to15_1,1,Pass Block_group_OL,Action_PassBlock,7,START,21,track_id,Play_Pass_Post10to15,Result_Tackle,,
 Post10to15_1,1,Run Post Route,Action_RunPostRoute,21,START,15,track_id,Play_Pass_Post10to15,Result_Tackle,,
 Post10to15_1,1,Snap Receive,Action_SnapReceive,21,END,11,track_id,Play_Pass_Post10to15,Result_Tackle,,
+Post10to15_1,1,Throw Pass,Action_ThrowPass,59,START,11,track_id,Play_Pass_Post10to15,Result_Tackle,,

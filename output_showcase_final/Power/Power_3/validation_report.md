@@ -1,9 +1,9 @@
 # Play-Annotation-Generator Annotation Enrichment Validation Report
 
 ## **Summary**
-- **Status**: FAILED
+- **Status**: SUCCESS
 - **Video Name**: `Power_3`
-- **Input XML**: `output_showcase_final/Power/Power_3/generated_base_cvat.xml`
+- **Input XML**: `output_showcase_final_fix/Power/Power_3/generated_base_cvat.xml`
 - **Input CSV**: `data/key_actions/Power.csv`
 
 ## **Key Metrics**
@@ -19,9 +19,7 @@
 | Video Stop Frame | 299 |
 
 ## **Pipeline Errors**
-> [!CAUTION]
-> The following critical issues were encountered:
-> - Event 'Action_PullBlock' at frame 125 targets track ID '181', but it is not found in XML.
+*No critical pipeline errors encountered.*
 
 ## **Pipeline Warnings**
 > [!WARNING]
@@ -30,7 +28,7 @@
 > - Row 7: Duplicate assignment for track ID '5' in grid. Overwriting previous assignment.
 > - Row 8: Duplicate assignment for track ID '7' in grid. Overwriting previous assignment.
 > - No result_frame or PlayEnd action found in CSV. Using final clip frame 299 as fallback play end.
-> - Validation warning: Action 'Action_PullBlock' for track '18' (LG) duration 175 frames exceeds threshold 90 frames [start=125, end=299].
+> - Validation warning: Action 'Action_DownBlock' for track '21' (RG) duration 124 frames exceeds threshold 90 frames [start=17, end=140].
 > - Action 'Action_PreSnap' range [5-199] for track '0' has 1 frames without a visible bounding box.
 > - Action 'Action_PreSnap' range [210-217] for track '0' has 2 frames without a visible bounding box.
 > - Action 'Action_PreSnap' range [5-241] for track '1' has 1 frames without a visible bounding box.
@@ -50,7 +48,7 @@
 > - Action 'Action_PreSnap' range [5-158] for track '19' has 2 frames without a visible bounding box.
 > - Action 'Action_PreSnap' range [160-272] for track '19' has 1 frames without a visible bounding box.
 > - Action 'Action_PreSnap' range [5-226] for track '20' has 2 frames without a visible bounding box.
-> - Action 'Action_PreSnap' range [5-140] for track '21' has 1 frames without a visible bounding box.
+> - Action 'Action_DownBlock' range [17-140] for track '21' has 1 frames without a visible bounding box.
 > - Action 'Action_PreSnap' range [158-298] for track '22' has 1 frames without a visible bounding box.
 > - Action 'Action_PreSnap' range [159-160] for track '23' has 1 frames without a visible bounding box.
 > - Action 'Action_PreSnap' range [165-229] for track '23' has 1 frames without a visible bounding box.
@@ -91,6 +89,4 @@
 > - Player track '31' has undefined team_side. Will map to Team_Unknown.
 
 ## **Recommended Fixes / Action Items**
-- Fix the missing/invalid track IDs in the action CSV so they match the XML track structure.
-- Resolve the overlapping action segment ranges noted above by adjusting the start frames in the CSV.
 - Review players with undefined positions or team_sides. Ensure they have the correct metadata attributes in CVAT if you need precise group expansion.

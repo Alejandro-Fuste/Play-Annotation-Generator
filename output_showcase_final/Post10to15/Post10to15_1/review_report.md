@@ -1,6 +1,6 @@
 # Play-Annotation-Generator Annotation Review — Post10to15_1
 
-**Overall Status:** FAILED
+**Overall Status:** WARNING
 
 ## 1. Clip & Validation Summary
 
@@ -11,10 +11,10 @@
 - **Result Frame:** 239
 - **Player Tracks:** 25
 - **Ball Tracks:** 0
-- **Action Segments:** 70
-- **Validation Warnings:** 57
-- **Validation Errors:** 1
-- **Overall Status:** FAILED
+- **Action Segments:** 72
+- **Validation Warnings:** 59
+- **Validation Errors:** 0
+- **Overall Status:** WARNING
 
 ## 2. Action Annotation Audit
 
@@ -22,13 +22,13 @@
 <summary><strong>Open Action Audit</strong></summary>
 
 ### Audit Summary
-- **Input Action Events:** 19
-- **Exact Matches:** 2
+- **Input Action Events:** 20
+- **Exact Matches:** 4
 - **Group Expanded Events:** 10
 - **Boundary-Terminated Events:** 0
 - **Priority-Adjusted Events:** 0
 - **Start-Frame Differences:** 0
-- **Missing Segments:** 1
+- **Missing Segments:** 0
 - **Ambiguous Matches:** 5
 - **Global Events (no player segment expected):** 1
 - **Inferred Coverage Segments (Action_None):** 53
@@ -49,7 +49,7 @@
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | RG | offense | `21` | `Group` |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | TE | offense | `6` | `Group` |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | WR2 | offense | `7` | `Group` |
-| ❌ MISSING SEGMENT | `Action_BallSnap` | QB | offense | `11` | `11` |
+| ✅ EXACT | `Action_BallSnap` | C | offense | `18` | `18` |
 | ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | LG | offense | `16` | `16` |
 | ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | C | offense | `18` | `18` |
 | ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | LT | offense | `19` | `19` |
@@ -57,6 +57,7 @@
 | ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | RG | offense | `21` | `21` |
 | ⚠️ AMBIGUOUS MATCH | `Action_RunPostRoute` | Position_Unknown | Team_Unknown | `15` | `15` |
 | ✅ EXACT | `Action_SnapReceive` | QB | offense | `11` | `11` |
+| ✅ EXACT | `Action_ThrowPass` | QB | offense | `11` | `11` |
 
 ### Timing Mapping
 
@@ -67,20 +68,21 @@
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | RB | `10` | `Group` | 0 | START | 0 | 3 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | QB | `11` | `Group` | 0 | START | 0 | 3 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | LG | `16` | `Group` | 0 | START | 0 | 6 |
-| ✅ GROUP_EXPANDED | `Action_PreSnap` | C | `18` | `Group` | 0 | START | 0 | 6 |
+| ✅ GROUP_EXPANDED | `Action_PreSnap` | C | `18` | `Group` | 0 | START | 0 | 3 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | LT | `19` | `Group` | 0 | START | 0 | 6 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | RT | `20` | `Group` | 0 | START | 0 | 6 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | RG | `21` | `Group` | 0 | START | 0 | 6 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | TE | `6` | `Group` | 0 | START | 0 | 3 |
 | ✅ GROUP_EXPANDED | `Action_PreSnap` | WR2 | `7` | `Group` | 0 | START | 0 | 3 |
-| ❌ MISSING SEGMENT | `Action_BallSnap` | QB | `11` | `11` | 4 | START | N/A | N/A |
+| ✅ EXACT | `Action_BallSnap` | C | `18` | `18` | 4 | START | 4 | 18 |
 | ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | LG | `16` | `16` | 7 | START | 7 | 14 |
-| ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | C | `18` | `18` | 7 | START | 7 | 18 |
+| ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | C | `18` | `18` | 7 | START | 40 | 84 |
 | ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | LT | `19` | `19` | 7 | START | 7 | 28 |
 | ✅ EXACT | `Action_PassBlock` | RT | `20` | `20` | 7 | START | 7 | 150 |
 | ⚠️ AMBIGUOUS MATCH | `Action_PassBlock` | RG | `21` | `21` | 7 | START | 7 | 59 |
 | ⚠️ AMBIGUOUS MATCH | `Action_RunPostRoute` | Position_Unknown | `15` | `15` | 21 | START | 21 | 98 |
 | ✅ EXACT | `Action_SnapReceive` | QB | `11` | `11` | 21 | END | 4 | 21 |
+| ✅ EXACT | `Action_ThrowPass` | QB | `11` | `11` | 59 | START | 59 | 64 |
 
 ### Output Segments Without Matching Input
 
@@ -106,7 +108,9 @@ None.
 | --- | --- | --- | --- | --- |
 | `Action_PreSnap` | 0 | 3 | 4 | inferred_complete_timeline |
 | `Action_SnapReceive` | 4 | 21 | 18 | inferred_complete_timeline |
-| `Action_None` | 22 | 150 | 129 | inferred_complete_timeline |
+| `Action_None` | 22 | 58 | 37 | inferred_complete_timeline |
+| `Action_ThrowPass` | 59 | 64 | 6 | inferred_complete_timeline |
+| `Action_None` | 65 | 150 | 86 | inferred_complete_timeline |
 
 </details>
 
@@ -227,8 +231,8 @@ None.
 
 | Action | Start | End | Duration | Source |
 | --- | --- | --- | --- | --- |
-| `Action_PreSnap` | 0 | 6 | 7 | inferred_complete_timeline |
-| `Action_PassBlock` | 7 | 18 | 12 | inferred_complete_timeline |
+| `Action_PreSnap` | 0 | 3 | 4 | inferred_complete_timeline |
+| `Action_BallSnap` | 4 | 18 | 15 | inferred_complete_timeline |
 | `Action_PassBlock` | 40 | 84 | 45 | inferred_complete_timeline |
 | `Action_PassBlock` | 87 | 129 | 43 | inferred_complete_timeline |
 | `Action_PassBlock` | 131 | 150 | 20 | inferred_complete_timeline |
@@ -476,9 +480,8 @@ None.
 
 ### Action Mapping Issues
 
-- ❌ Missing segment for action `Action_BallSnap` on target `11` (QB)
 - ⚠️ Ambiguous match for action `Action_PassBlock` and target `16` (8 segments found)
-- ⚠️ Ambiguous match for action `Action_PassBlock` and target `18` (4 segments found)
+- ⚠️ Ambiguous match for action `Action_PassBlock` and target `18` (3 segments found)
 - ⚠️ Ambiguous match for action `Action_PassBlock` and target `19` (2 segments found)
 - ⚠️ Ambiguous match for action `Action_PassBlock` and target `21` (3 segments found)
 - ⚠️ Ambiguous match for action `Action_RunPostRoute` and target `15` (4 segments found)
@@ -492,15 +495,15 @@ None.
 
 ### Validation Errors
 
-- ❌ Event 'Action_ThrowPass' at frame 59 targets track ID '64', but it is not found in XML.
+None.
 
 ### Validation Warnings by Category
 
 | Category | Count |
 | --- | --- |
 | Unknown position/team | 8 |
-| Missing visible bounding boxes during action | 47 |
-| Track-related warning | 1 |
+| Missing visible bounding boxes during action | 48 |
+| Track-related warning | 2 |
 | Other | 1 |
 
 <details>
@@ -508,6 +511,7 @@ None.
 
 - ⚠️ Row 3: Duplicate assignment for track ID '18' in grid. Overwriting previous assignment.
 - ⚠️ No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.
+- ⚠️ Resolved action overlap for track '18' (C): higher_priority='Action_BallSnap' [4–21], lower_priority='Action_PassBlock' annotated_start=7, effective_Action_PassBlock_start=22.
 - ⚠️ Action 'Action_None' range [4-41] for track '0' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [43-150] for track '0' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [4-150] for track '1' has 1 frames without a visible bounding box.
@@ -523,7 +527,8 @@ None.
 - ⚠️ Action 'Action_None' range [46-150] for track '8' has 3 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [4-150] for track '9' has 2 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [4-150] for track '10' has 2 frames without a visible bounding box.
-- ⚠️ Action 'Action_None' range [22-150] for track '11' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_None' range [22-58] for track '11' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_None' range [65-150] for track '11' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [4-53] for track '12' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [99-100] for track '12' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [4-150] for track '13' has 1 frames without a visible bounding box.
@@ -542,7 +547,7 @@ None.
 - ⚠️ Action 'Action_PassBlock' range [87-88] for track '16' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [4-77] for track '17' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_None' range [81-150] for track '17' has 1 frames without a visible bounding box.
-- ⚠️ Action 'Action_PassBlock' range [7-18] for track '18' has 1 frames without a visible bounding box.
+- ⚠️ Action 'Action_BallSnap' range [4-18] for track '18' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PassBlock' range [40-84] for track '18' has 3 frames without a visible bounding box.
 - ⚠️ Action 'Action_PassBlock' range [87-129] for track '18' has 2 frames without a visible bounding box.
 - ⚠️ Action 'Action_PassBlock' range [131-150] for track '18' has 1 frames without a visible bounding box.

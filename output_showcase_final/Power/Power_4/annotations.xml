@@ -154,6 +154,9 @@ defense</values>
         <action canonical="Action_DownBlock" label="Down Block">
           <definition>An offensive lineman's block on a defensive lineman or linebacker to their inside, driving them towards the center of the line of scrimmage, often creating a hole outside or for a pulling lineman.</definition>
         </action>
+        <action canonical="Action_None" label="None">
+          <definition>A temporal label used when the player is visible but is not performing any defined football action in the action taxonomy during the annotated interval.</definition>
+        </action>
         <action canonical="Action_PreSnap" label="Pre Snap">
           <definition>The period before the snap when players are set in formation and no active play has begun.</definition>
         </action>
@@ -15362,9 +15365,9 @@ defense</values>
     <box frame="190" keyframe="1" outside="0" occluded="0" xtl="1169.03" ytl="422.95" xbr="1323.59" ybr="587.23">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15372,9 +15375,9 @@ defense</values>
     <box frame="191" keyframe="1" outside="0" occluded="0" xtl="1168.63" ytl="420.30" xbr="1311.07" ybr="586.31">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15382,9 +15385,9 @@ defense</values>
     <box frame="192" keyframe="1" outside="0" occluded="0" xtl="1152.54" ytl="419.24" xbr="1300.57" ybr="588.94">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15392,9 +15395,9 @@ defense</values>
     <box frame="193" keyframe="1" outside="0" occluded="0" xtl="1127.87" ytl="420.09" xbr="1292.62" ybr="590.56">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15402,9 +15405,9 @@ defense</values>
     <box frame="194" keyframe="1" outside="0" occluded="0" xtl="1162.64" ytl="419.16" xbr="1281.73" ybr="586.76">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15412,9 +15415,9 @@ defense</values>
     <box frame="195" keyframe="1" outside="0" occluded="0" xtl="1164.75" ytl="418.76" xbr="1267.65" ybr="583.42">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15422,9 +15425,9 @@ defense</values>
     <box frame="196" keyframe="1" outside="0" occluded="0" xtl="1082.11" ytl="424.19" xbr="1245.14" ybr="584.46">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15432,9 +15435,9 @@ defense</values>
     <box frame="197" keyframe="1" outside="0" occluded="0" xtl="1043.68" ytl="426.59" xbr="1217.09" ybr="587.42">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15442,9 +15445,9 @@ defense</values>
     <box frame="198" keyframe="1" outside="0" occluded="0" xtl="1008.74" ytl="432.49" xbr="1186.60" ybr="595.01">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15452,9 +15455,9 @@ defense</values>
     <box frame="199" keyframe="1" outside="0" occluded="0" xtl="973.62" ytl="438.94" xbr="1155.94" ybr="602.73">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15462,9 +15465,9 @@ defense</values>
     <box frame="200" keyframe="1" outside="0" occluded="0" xtl="935.72" ytl="448.06" xbr="1126.17" ybr="609.58">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15472,9 +15475,9 @@ defense</values>
     <box frame="201" keyframe="1" outside="0" occluded="0" xtl="935.21" ytl="458.18" xbr="1090.70" ybr="614.71">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15482,9 +15485,9 @@ defense</values>
     <box frame="202" keyframe="1" outside="0" occluded="0" xtl="950.00" ytl="464.07" xbr="1054.66" ybr="590.59">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15492,9 +15495,9 @@ defense</values>
     <box frame="203" keyframe="1" outside="0" occluded="0" xtl="943.28" ytl="478.48" xbr="1039.99" ybr="593.18">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15502,9 +15505,9 @@ defense</values>
     <box frame="204" keyframe="1" outside="0" occluded="0" xtl="924.35" ytl="494.79" xbr="1022.87" ybr="619.36">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15512,9 +15515,9 @@ defense</values>
     <box frame="205" keyframe="1" outside="0" occluded="0" xtl="905.01" ytl="511.75" xbr="1002.52" ybr="634.62">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15522,9 +15525,9 @@ defense</values>
     <box frame="206" keyframe="1" outside="0" occluded="0" xtl="908.59" ytl="515.06" xbr="1005.87" ybr="637.44">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15532,9 +15535,9 @@ defense</values>
     <box frame="207" keyframe="1" outside="0" occluded="0" xtl="849.13" ytl="540.26" xbr="953.44" ybr="662.31">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15542,9 +15545,9 @@ defense</values>
     <box frame="208" keyframe="1" outside="0" occluded="0" xtl="821.57" ytl="555.39" xbr="928.84" ybr="669.95">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15552,9 +15555,9 @@ defense</values>
     <box frame="209" keyframe="1" outside="0" occluded="0" xtl="790.43" ytl="568.01" xbr="900.55" ybr="672.44">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15562,9 +15565,9 @@ defense</values>
     <box frame="210" keyframe="1" outside="0" occluded="0" xtl="766.48" ytl="576.68" xbr="871.30" ybr="676.31">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15572,9 +15575,9 @@ defense</values>
     <box frame="211" keyframe="1" outside="0" occluded="0" xtl="737.72" ytl="583.52" xbr="848.28" ybr="680.81">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15582,9 +15585,9 @@ defense</values>
     <box frame="212" keyframe="1" outside="0" occluded="0" xtl="715.54" ytl="586.67" xbr="827.49" ybr="683.96">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15592,9 +15595,9 @@ defense</values>
     <box frame="213" keyframe="1" outside="0" occluded="0" xtl="697.46" ytl="587.48" xbr="810.39" ybr="682.64">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15602,9 +15605,9 @@ defense</values>
     <box frame="214" keyframe="1" outside="0" occluded="0" xtl="684.09" ytl="586.17" xbr="794.16" ybr="680.15">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15612,9 +15615,9 @@ defense</values>
     <box frame="215" keyframe="1" outside="0" occluded="0" xtl="671.66" ytl="584.12" xbr="781.17" ybr="679.11">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15622,9 +15625,9 @@ defense</values>
     <box frame="216" keyframe="1" outside="0" occluded="0" xtl="663.50" ytl="582.32" xbr="768.48" ybr="678.49">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15632,9 +15635,9 @@ defense</values>
     <box frame="217" keyframe="1" outside="0" occluded="0" xtl="659.04" ytl="582.12" xbr="759.89" ybr="680.34">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15642,9 +15645,9 @@ defense</values>
     <box frame="218" keyframe="1" outside="0" occluded="0" xtl="659.90" ytl="581.80" xbr="759.28" ybr="680.86">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15652,9 +15655,9 @@ defense</values>
     <box frame="219" keyframe="1" outside="0" occluded="0" xtl="644.23" ytl="586.08" xbr="741.43" ybr="681.71">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15662,9 +15665,9 @@ defense</values>
     <box frame="220" keyframe="1" outside="0" occluded="0" xtl="636.90" ytl="589.58" xbr="732.73" ybr="681.24">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15672,9 +15675,9 @@ defense</values>
     <box frame="221" keyframe="1" outside="0" occluded="0" xtl="627.19" ytl="591.78" xbr="720.34" ybr="680.88">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15682,9 +15685,9 @@ defense</values>
     <box frame="222" keyframe="1" outside="0" occluded="0" xtl="615.41" ytl="592.16" xbr="705.16" ybr="679.91">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15692,9 +15695,9 @@ defense</values>
     <box frame="223" keyframe="1" outside="0" occluded="0" xtl="602.55" ytl="590.20" xbr="688.30" ybr="678.93">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15702,9 +15705,9 @@ defense</values>
     <box frame="224" keyframe="1" outside="1" occluded="0" xtl="602.55" ytl="590.20" xbr="688.30" ybr="678.93">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15712,9 +15715,9 @@ defense</values>
     <box frame="225" keyframe="1" outside="0" occluded="0" xtl="571.72" ytl="579.99" xbr="648.79" ybr="677.53">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15722,9 +15725,9 @@ defense</values>
     <box frame="226" keyframe="1" outside="1" occluded="0" xtl="571.72" ytl="579.99" xbr="648.79" ybr="677.53">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">190</attribute>
       <attribute name="tapevision_action_segment_end">226</attribute>
@@ -15732,9 +15735,9 @@ defense</values>
     <box frame="237" keyframe="1" outside="0" occluded="0" xtl="392.62" ytl="629.00" xbr="486.24" ybr="731.58">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15742,9 +15745,9 @@ defense</values>
     <box frame="238" keyframe="1" outside="0" occluded="0" xtl="382.47" ytl="634.94" xbr="482.88" ybr="742.94">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15752,9 +15755,9 @@ defense</values>
     <box frame="239" keyframe="1" outside="0" occluded="0" xtl="366.31" ytl="639.79" xbr="476.19" ybr="752.21">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15762,9 +15765,9 @@ defense</values>
     <box frame="240" keyframe="1" outside="0" occluded="0" xtl="353.22" ytl="646.93" xbr="470.78" ybr="758.77">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15772,9 +15775,9 @@ defense</values>
     <box frame="241" keyframe="1" outside="0" occluded="0" xtl="345.31" ytl="654.69" xbr="467.49" ybr="761.01">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15782,9 +15785,9 @@ defense</values>
     <box frame="242" keyframe="1" outside="0" occluded="0" xtl="341.89" ytl="659.93" xbr="463.90" ybr="763.96">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15792,9 +15795,9 @@ defense</values>
     <box frame="243" keyframe="1" outside="0" occluded="0" xtl="342.07" ytl="665.53" xbr="463.09" ybr="768.76">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15802,9 +15805,9 @@ defense</values>
     <box frame="244" keyframe="1" outside="0" occluded="0" xtl="341.82" ytl="671.40" xbr="458.48" ybr="772.81">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15812,9 +15815,9 @@ defense</values>
     <box frame="245" keyframe="1" outside="0" occluded="0" xtl="352.83" ytl="677.92" xbr="452.74" ybr="774.54">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15822,9 +15825,9 @@ defense</values>
     <box frame="246" keyframe="1" outside="0" occluded="0" xtl="357.63" ytl="685.36" xbr="448.45" ybr="778.35">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15832,9 +15835,9 @@ defense</values>
     <box frame="247" keyframe="1" outside="0" occluded="0" xtl="358.26" ytl="692.41" xbr="442.60" ybr="781.53">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15842,9 +15845,9 @@ defense</values>
     <box frame="248" keyframe="1" outside="0" occluded="0" xtl="354.02" ytl="695.60" xbr="437.79" ybr="787.61">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15852,9 +15855,9 @@ defense</values>
     <box frame="249" keyframe="1" outside="0" occluded="0" xtl="348.56" ytl="697.34" xbr="432.96" ybr="793.22">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15862,9 +15865,9 @@ defense</values>
     <box frame="250" keyframe="1" outside="0" occluded="0" xtl="343.33" ytl="699.39" xbr="427.39" ybr="800.53">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15872,9 +15875,9 @@ defense</values>
     <box frame="251" keyframe="1" outside="0" occluded="0" xtl="335.54" ytl="701.54" xbr="422.13" ybr="810.75">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15882,9 +15885,9 @@ defense</values>
     <box frame="252" keyframe="1" outside="0" occluded="0" xtl="327.89" ytl="705.29" xbr="415.42" ybr="820.68">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15892,9 +15895,9 @@ defense</values>
     <box frame="253" keyframe="1" outside="0" occluded="0" xtl="319.20" ytl="709.38" xbr="408.07" ybr="829.50">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15902,9 +15905,9 @@ defense</values>
     <box frame="254" keyframe="1" outside="0" occluded="0" xtl="309.39" ytl="714.76" xbr="402.90" ybr="837.40">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15912,9 +15915,9 @@ defense</values>
     <box frame="255" keyframe="1" outside="0" occluded="0" xtl="298.49" ytl="722.33" xbr="395.79" ybr="844.77">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15922,9 +15925,9 @@ defense</values>
     <box frame="256" keyframe="1" outside="0" occluded="0" xtl="283.60" ytl="729.60" xbr="387.57" ybr="856.24">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15932,9 +15935,9 @@ defense</values>
     <box frame="257" keyframe="1" outside="0" occluded="0" xtl="270.61" ytl="736.70" xbr="384.53" ybr="867.03">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15942,9 +15945,9 @@ defense</values>
     <box frame="258" keyframe="1" outside="0" occluded="0" xtl="257.71" ytl="744.93" xbr="375.26" ybr="876.82">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15952,9 +15955,9 @@ defense</values>
     <box frame="259" keyframe="1" outside="0" occluded="0" xtl="246.55" ytl="753.36" xbr="366.61" ybr="885.75">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15962,9 +15965,9 @@ defense</values>
     <box frame="260" keyframe="1" outside="0" occluded="0" xtl="236.92" ytl="761.68" xbr="359.00" ybr="899.94">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15972,9 +15975,9 @@ defense</values>
     <box frame="261" keyframe="1" outside="0" occluded="0" xtl="227.60" ytl="769.69" xbr="352.73" ybr="910.58">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15982,9 +15985,9 @@ defense</values>
     <box frame="262" keyframe="1" outside="0" occluded="0" xtl="221.18" ytl="779.27" xbr="343.15" ybr="918.69">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -15992,9 +15995,9 @@ defense</values>
     <box frame="263" keyframe="1" outside="0" occluded="0" xtl="215.64" ytl="787.92" xbr="332.68" ybr="925.51">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16002,9 +16005,9 @@ defense</values>
     <box frame="264" keyframe="1" outside="0" occluded="0" xtl="208.72" ytl="794.92" xbr="325.63" ybr="931.58">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16012,9 +16015,9 @@ defense</values>
     <box frame="265" keyframe="1" outside="0" occluded="0" xtl="203.33" ytl="799.68" xbr="318.82" ybr="936.40">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16022,9 +16025,9 @@ defense</values>
     <box frame="266" keyframe="1" outside="0" occluded="0" xtl="195.64" ytl="804.04" xbr="312.81" ybr="941.11">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16032,9 +16035,9 @@ defense</values>
     <box frame="267" keyframe="1" outside="0" occluded="0" xtl="191.07" ytl="806.61" xbr="306.30" ybr="945.33">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16042,9 +16045,9 @@ defense</values>
     <box frame="268" keyframe="1" outside="0" occluded="0" xtl="187.06" ytl="807.94" xbr="299.53" ybr="947.12">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16052,9 +16055,9 @@ defense</values>
     <box frame="269" keyframe="1" outside="0" occluded="0" xtl="182.97" ytl="807.96" xbr="290.91" ybr="949.27">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16062,9 +16065,9 @@ defense</values>
     <box frame="270" keyframe="1" outside="0" occluded="0" xtl="175.16" ytl="806.01" xbr="283.02" ybr="953.09">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16072,9 +16075,9 @@ defense</values>
     <box frame="271" keyframe="1" outside="0" occluded="0" xtl="168.00" ytl="803.03" xbr="275.97" ybr="957.45">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16082,9 +16085,9 @@ defense</values>
     <box frame="272" keyframe="1" outside="0" occluded="0" xtl="160.49" ytl="800.88" xbr="271.25" ybr="962.91">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16092,9 +16095,9 @@ defense</values>
     <box frame="273" keyframe="1" outside="0" occluded="0" xtl="152.95" ytl="799.12" xbr="268.28" ybr="965.06">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16102,9 +16105,9 @@ defense</values>
     <box frame="274" keyframe="1" outside="0" occluded="0" xtl="145.55" ytl="797.06" xbr="265.94" ybr="967.46">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16112,9 +16115,9 @@ defense</values>
     <box frame="275" keyframe="1" outside="0" occluded="0" xtl="139.80" ytl="795.06" xbr="265.26" ybr="968.01">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16122,9 +16125,9 @@ defense</values>
     <box frame="276" keyframe="1" outside="0" occluded="0" xtl="133.13" ytl="793.42" xbr="264.11" ybr="970.50">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16132,9 +16135,9 @@ defense</values>
     <box frame="277" keyframe="1" outside="0" occluded="0" xtl="126.60" ytl="791.43" xbr="262.31" ybr="974.96">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16142,9 +16145,9 @@ defense</values>
     <box frame="278" keyframe="1" outside="0" occluded="0" xtl="123.41" ytl="791.73" xbr="259.26" ybr="978.00">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16152,9 +16155,9 @@ defense</values>
     <box frame="279" keyframe="1" outside="0" occluded="0" xtl="118.81" ytl="791.55" xbr="255.85" ybr="983.29">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16162,9 +16165,9 @@ defense</values>
     <box frame="280" keyframe="1" outside="0" occluded="0" xtl="114.13" ytl="791.93" xbr="251.91" ybr="988.13">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16172,9 +16175,9 @@ defense</values>
     <box frame="281" keyframe="1" outside="0" occluded="0" xtl="108.27" ytl="793.11" xbr="249.24" ybr="997.07">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16182,9 +16185,9 @@ defense</values>
     <box frame="282" keyframe="1" outside="0" occluded="0" xtl="103.36" ytl="794.03" xbr="248.21" ybr="1005.97">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16192,9 +16195,9 @@ defense</values>
     <box frame="283" keyframe="1" outside="0" occluded="0" xtl="97.59" ytl="793.74" xbr="247.63" ybr="1014.34">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16202,9 +16205,9 @@ defense</values>
     <box frame="284" keyframe="1" outside="0" occluded="0" xtl="93.63" ytl="792.49" xbr="246.87" ybr="1019.28">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16212,9 +16215,9 @@ defense</values>
     <box frame="285" keyframe="1" outside="0" occluded="0" xtl="89.68" ytl="789.81" xbr="246.03" ybr="1022.82">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16222,9 +16225,9 @@ defense</values>
     <box frame="286" keyframe="1" outside="0" occluded="0" xtl="89.43" ytl="786.32" xbr="243.76" ybr="1022.67">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16232,9 +16235,9 @@ defense</values>
     <box frame="287" keyframe="1" outside="0" occluded="0" xtl="91.70" ytl="782.80" xbr="244.97" ybr="1021.34">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16242,9 +16245,9 @@ defense</values>
     <box frame="288" keyframe="1" outside="0" occluded="0" xtl="94.93" ytl="779.19" xbr="246.27" ybr="1021.66">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16252,9 +16255,9 @@ defense</values>
     <box frame="289" keyframe="1" outside="0" occluded="0" xtl="102.03" ytl="775.81" xbr="245.03" ybr="1019.13">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16262,9 +16265,9 @@ defense</values>
     <box frame="290" keyframe="1" outside="0" occluded="0" xtl="108.54" ytl="771.80" xbr="243.63" ybr="1017.33">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16272,9 +16275,9 @@ defense</values>
     <box frame="291" keyframe="1" outside="0" occluded="0" xtl="116.20" ytl="767.46" xbr="244.38" ybr="1018.17">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16282,9 +16285,9 @@ defense</values>
     <box frame="292" keyframe="1" outside="0" occluded="0" xtl="124.32" ytl="764.12" xbr="244.36" ybr="1018.38">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16292,9 +16295,9 @@ defense</values>
     <box frame="293" keyframe="1" outside="0" occluded="0" xtl="128.64" ytl="760.61" xbr="245.75" ybr="1021.87">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16302,9 +16305,9 @@ defense</values>
     <box frame="294" keyframe="1" outside="0" occluded="0" xtl="129.24" ytl="758.21" xbr="245.18" ybr="1025.19">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16312,9 +16315,9 @@ defense</values>
     <box frame="295" keyframe="1" outside="0" occluded="0" xtl="129.56" ytl="756.26" xbr="243.46" ybr="1029.13">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16322,9 +16325,9 @@ defense</values>
     <box frame="296" keyframe="1" outside="0" occluded="0" xtl="127.70" ytl="753.07" xbr="241.92" ybr="1032.07">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16332,9 +16335,9 @@ defense</values>
     <box frame="297" keyframe="1" outside="0" occluded="0" xtl="127.51" ytl="751.62" xbr="242.06" ybr="1033.83">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16342,9 +16345,9 @@ defense</values>
     <box frame="298" keyframe="1" outside="0" occluded="0" xtl="125.58" ytl="750.83" xbr="244.32" ybr="1035.11">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>
@@ -16352,9 +16355,9 @@ defense</values>
     <box frame="299" keyframe="1" outside="0" occluded="0" xtl="125.93" ytl="750.73" xbr="246.97" ybr="1036.07">
       <attribute name="position">LG</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PullBlock</attribute>
+      <attribute name="action">Action_None</attribute>
       <attribute name="track_id">5</attribute>
-      <attribute name="tapevision_action">Action_PullBlock</attribute>
+      <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">237</attribute>
       <attribute name="tapevision_action_segment_end">299</attribute>

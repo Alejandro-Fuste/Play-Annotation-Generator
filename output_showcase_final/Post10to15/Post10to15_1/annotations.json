@@ -51085,6 +51085,26 @@
         "team_side": "offense",
         "action": "Action_None",
         "start_frame": 22,
+        "end_frame": 58,
+        "source": "inferred_complete_timeline"
+      },
+      {
+        "actor_track_id": "11",
+        "xml_track_id": "11",
+        "position": "QB",
+        "team_side": "offense",
+        "action": "Action_ThrowPass",
+        "start_frame": 59,
+        "end_frame": 64,
+        "source": "inferred_complete_timeline"
+      },
+      {
+        "actor_track_id": "11",
+        "xml_track_id": "11",
+        "position": "QB",
+        "team_side": "offense",
+        "action": "Action_None",
+        "start_frame": 65,
         "end_frame": 150,
         "source": "inferred_complete_timeline"
       },
@@ -51335,7 +51355,7 @@
         "team_side": "offense",
         "action": "Action_PreSnap",
         "start_frame": 0,
-        "end_frame": 6,
+        "end_frame": 3,
         "source": "inferred_complete_timeline"
       },
       {
@@ -51343,8 +51363,8 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
-        "start_frame": 7,
+        "action": "Action_BallSnap",
+        "start_frame": 4,
         "end_frame": 18,
         "source": "inferred_complete_timeline"
       },
@@ -85166,7 +85186,7 @@
         "xml_track_id": "11",
         "position": "QB",
         "team_side": "offense",
-        "action": "Action_None",
+        "action": "Action_ThrowPass",
         "bbox_xyxy": [
           1299.04,
           494.01,
@@ -85186,7 +85206,7 @@
         "xml_track_id": "11",
         "position": "QB",
         "team_side": "offense",
-        "action": "Action_None",
+        "action": "Action_ThrowPass",
         "bbox_xyxy": [
           1303.65,
           494.87,
@@ -85206,7 +85226,7 @@
         "xml_track_id": "11",
         "position": "QB",
         "team_side": "offense",
-        "action": "Action_None",
+        "action": "Action_ThrowPass",
         "bbox_xyxy": [
           1305.1,
           495.14,
@@ -85226,7 +85246,7 @@
         "xml_track_id": "11",
         "position": "QB",
         "team_side": "offense",
-        "action": "Action_None",
+        "action": "Action_ThrowPass",
         "bbox_xyxy": [
           1304.54,
           493.24,
@@ -85246,7 +85266,7 @@
         "xml_track_id": "11",
         "position": "QB",
         "team_side": "offense",
-        "action": "Action_None",
+        "action": "Action_ThrowPass",
         "bbox_xyxy": [
           1303.69,
           491.87,
@@ -85266,7 +85286,7 @@
         "xml_track_id": "11",
         "position": "QB",
         "team_side": "offense",
-        "action": "Action_None",
+        "action": "Action_ThrowPass",
         "bbox_xyxy": [
           1304.98,
           491.91,
@@ -100446,7 +100466,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PreSnap",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1083.85,
           543.52,
@@ -100466,7 +100486,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PreSnap",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1085.65,
           543.62,
@@ -100486,7 +100506,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PreSnap",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1086.21,
           543.98,
@@ -100506,7 +100526,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1085.72,
           543.66,
@@ -100526,7 +100546,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1083.98,
           541.87,
@@ -100546,7 +100566,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1083.9,
           539.93,
@@ -100566,7 +100586,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1084.6,
           539.09,
@@ -100586,7 +100606,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1085.41,
           537.09,
@@ -100606,7 +100626,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1084.57,
           534.69,
@@ -100626,7 +100646,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1084.2,
           533.07,
@@ -100646,7 +100666,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1078.81,
           532.1,
@@ -100666,7 +100686,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1079.25,
           529.57,
@@ -100686,7 +100706,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1078.39,
           527.15,
@@ -100706,7 +100726,7 @@
         "xml_track_id": "18",
         "position": "C",
         "team_side": "offense",
-        "action": "Action_PassBlock",
+        "action": "Action_BallSnap",
         "bbox_xyxy": [
           1079.54,
           524.93,
@@ -113405,6 +113425,10 @@
   },
   "definitions": {
     "actions": {
+      "Action_BallSnap": {
+        "label": "Ball Snap",
+        "definition": "The action of the center (or occasionally another player) legally putting the ball into play by handing or tossing it between their legs to a backfield player (typically the quarterback) to initiate a down."
+      },
       "Action_None": {
         "label": "None",
         "definition": "A temporal label used when the player is visible but is not performing any defined football action in the action taxonomy during the annotated interval."
@@ -113424,6 +113448,10 @@
       "Action_SnapReceive": {
         "label": "Snap Receive",
         "definition": "The action of the quarterback securing the ball from the center\u2019s snap to initiate the play."
+      },
+      "Action_ThrowPass": {
+        "label": "Throw Pass",
+        "definition": "A quarterback's or other eligible passer's action of propelling the football forward with a legal throwing motion toward an intended receiver."
       }
     }
   }

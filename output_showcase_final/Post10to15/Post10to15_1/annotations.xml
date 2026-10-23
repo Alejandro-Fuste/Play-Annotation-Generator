@@ -151,6 +151,9 @@ defense</values>
         <definition>A deep passing concept in which the primary receiver releases vertically, threatens a go route, and then plants at intermediate or deep route depth before breaking diagonally toward the middle of the field or goalpost. The receiver accelerates through the inside break while the quarterback reads the deep coverage and delivers the ball into the middle-field window.</definition>
       </play>
       <action_definitions>
+        <action canonical="Action_BallSnap" label="Ball Snap">
+          <definition>The action of the center (or occasionally another player) legally putting the ball into play by handing or tossing it between their legs to a backfield player (typically the quarterback) to initiate a down.</definition>
+        </action>
         <action canonical="Action_None" label="None">
           <definition>A temporal label used when the player is visible but is not performing any defined football action in the action taxonomy during the annotated interval.</definition>
         </action>
@@ -165,6 +168,9 @@ defense</values>
         </action>
         <action canonical="Action_SnapReceive" label="Snap Receive">
           <definition>The action of the quarterback securing the ball from the center’s snap to initiate the play.</definition>
+        </action>
+        <action canonical="Action_ThrowPass" label="Throw Pass">
+          <definition>A quarterback's or other eligible passer's action of propelling the football forward with a legal throwing motion toward an intended receiver.</definition>
         </action>
       </action_definitions>
       <metadata_sources>
@@ -16905,7 +16911,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="23" keyframe="1" outside="0" occluded="0" xtl="1302.86" ytl="498.45" xbr="1345.41" ybr="608.08">
       <attribute name="position">QB</attribute>
@@ -16915,7 +16921,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="24" keyframe="1" outside="0" occluded="0" xtl="1302.33" ytl="498.33" xbr="1346.47" ybr="607.55">
       <attribute name="position">QB</attribute>
@@ -16925,7 +16931,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="25" keyframe="1" outside="0" occluded="0" xtl="1302.41" ytl="498.27" xbr="1348.20" ybr="607.28">
       <attribute name="position">QB</attribute>
@@ -16935,7 +16941,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="26" keyframe="1" outside="0" occluded="0" xtl="1303.52" ytl="498.79" xbr="1350.46" ybr="607.12">
       <attribute name="position">QB</attribute>
@@ -16945,7 +16951,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="27" keyframe="1" outside="0" occluded="0" xtl="1303.64" ytl="499.69" xbr="1351.79" ybr="604.42">
       <attribute name="position">QB</attribute>
@@ -16955,7 +16961,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="28" keyframe="1" outside="0" occluded="0" xtl="1301.00" ytl="500.89" xbr="1351.68" ybr="602.16">
       <attribute name="position">QB</attribute>
@@ -16965,7 +16971,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="29" keyframe="1" outside="0" occluded="0" xtl="1298.27" ytl="502.21" xbr="1351.71" ybr="602.17">
       <attribute name="position">QB</attribute>
@@ -16975,7 +16981,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="30" keyframe="1" outside="0" occluded="0" xtl="1297.10" ytl="502.87" xbr="1350.70" ybr="603.67">
       <attribute name="position">QB</attribute>
@@ -16985,7 +16991,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="31" keyframe="1" outside="0" occluded="0" xtl="1295.69" ytl="501.81" xbr="1350.45" ybr="601.59">
       <attribute name="position">QB</attribute>
@@ -16995,7 +17001,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="32" keyframe="1" outside="0" occluded="0" xtl="1295.01" ytl="500.97" xbr="1349.70" ybr="599.20">
       <attribute name="position">QB</attribute>
@@ -17005,7 +17011,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="33" keyframe="1" outside="0" occluded="0" xtl="1294.68" ytl="499.93" xbr="1347.70" ybr="596.96">
       <attribute name="position">QB</attribute>
@@ -17015,7 +17021,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="34" keyframe="1" outside="0" occluded="0" xtl="1294.56" ytl="498.78" xbr="1346.26" ybr="594.54">
       <attribute name="position">QB</attribute>
@@ -17025,7 +17031,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="35" keyframe="1" outside="0" occluded="0" xtl="1293.14" ytl="497.97" xbr="1344.45" ybr="592.09">
       <attribute name="position">QB</attribute>
@@ -17035,7 +17041,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="36" keyframe="1" outside="0" occluded="0" xtl="1290.03" ytl="497.57" xbr="1343.59" ybr="590.66">
       <attribute name="position">QB</attribute>
@@ -17045,7 +17051,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="37" keyframe="1" outside="0" occluded="0" xtl="1285.75" ytl="495.98" xbr="1341.55" ybr="586.83">
       <attribute name="position">QB</attribute>
@@ -17055,7 +17061,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="38" keyframe="1" outside="0" occluded="0" xtl="1280.62" ytl="494.13" xbr="1339.22" ybr="583.23">
       <attribute name="position">QB</attribute>
@@ -17065,7 +17071,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="39" keyframe="1" outside="0" occluded="0" xtl="1277.37" ytl="493.18" xbr="1338.00" ybr="582.84">
       <attribute name="position">QB</attribute>
@@ -17075,7 +17081,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="40" keyframe="1" outside="0" occluded="0" xtl="1275.74" ytl="492.67" xbr="1336.17" ybr="582.68">
       <attribute name="position">QB</attribute>
@@ -17085,7 +17091,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="41" keyframe="1" outside="0" occluded="0" xtl="1275.15" ytl="492.52" xbr="1334.43" ybr="582.65">
       <attribute name="position">QB</attribute>
@@ -17095,7 +17101,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="42" keyframe="1" outside="0" occluded="0" xtl="1273.70" ytl="492.28" xbr="1332.87" ybr="583.51">
       <attribute name="position">QB</attribute>
@@ -17105,7 +17111,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="43" keyframe="1" outside="0" occluded="0" xtl="1273.21" ytl="491.87" xbr="1333.06" ybr="579.68">
       <attribute name="position">QB</attribute>
@@ -17115,7 +17121,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="44" keyframe="1" outside="1" occluded="0" xtl="1273.21" ytl="491.87" xbr="1333.06" ybr="579.68">
       <attribute name="position">QB</attribute>
@@ -17125,7 +17131,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="45" keyframe="1" outside="0" occluded="0" xtl="1271.32" ytl="491.63" xbr="1331.09" ybr="594.35">
       <attribute name="position">QB</attribute>
@@ -17135,7 +17141,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="46" keyframe="1" outside="0" occluded="0" xtl="1286.17" ytl="486.68" xbr="1338.04" ybr="587.07">
       <attribute name="position">QB</attribute>
@@ -17145,7 +17151,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="47" keyframe="1" outside="0" occluded="0" xtl="1292.28" ytl="483.59" xbr="1339.69" ybr="582.60">
       <attribute name="position">QB</attribute>
@@ -17155,7 +17161,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="48" keyframe="1" outside="0" occluded="0" xtl="1293.39" ytl="480.49" xbr="1340.04" ybr="579.47">
       <attribute name="position">QB</attribute>
@@ -17165,7 +17171,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="49" keyframe="1" outside="0" occluded="0" xtl="1290.88" ytl="477.64" xbr="1337.38" ybr="577.43">
       <attribute name="position">QB</attribute>
@@ -17175,7 +17181,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="50" keyframe="1" outside="0" occluded="0" xtl="1290.15" ytl="477.12" xbr="1336.03" ybr="577.63">
       <attribute name="position">QB</attribute>
@@ -17185,7 +17191,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="51" keyframe="1" outside="0" occluded="0" xtl="1290.58" ytl="477.22" xbr="1336.35" ybr="578.56">
       <attribute name="position">QB</attribute>
@@ -17195,7 +17201,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="52" keyframe="1" outside="0" occluded="0" xtl="1293.12" ytl="477.62" xbr="1337.82" ybr="579.75">
       <attribute name="position">QB</attribute>
@@ -17205,7 +17211,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="53" keyframe="1" outside="0" occluded="0" xtl="1295.27" ytl="479.64" xbr="1341.16" ybr="583.98">
       <attribute name="position">QB</attribute>
@@ -17215,7 +17221,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="54" keyframe="1" outside="0" occluded="0" xtl="1295.50" ytl="482.92" xbr="1344.28" ybr="586.75">
       <attribute name="position">QB</attribute>
@@ -17225,7 +17231,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="55" keyframe="1" outside="0" occluded="0" xtl="1295.66" ytl="487.02" xbr="1347.77" ybr="590.21">
       <attribute name="position">QB</attribute>
@@ -17235,7 +17241,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="56" keyframe="1" outside="0" occluded="0" xtl="1295.25" ytl="490.34" xbr="1349.38" ybr="593.88">
       <attribute name="position">QB</attribute>
@@ -17245,7 +17251,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="57" keyframe="1" outside="0" occluded="0" xtl="1295.29" ytl="492.70" xbr="1350.37" ybr="594.47">
       <attribute name="position">QB</attribute>
@@ -17255,7 +17261,7 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="58" keyframe="1" outside="0" occluded="0" xtl="1296.10" ytl="493.86" xbr="1351.55" ybr="594.04">
       <attribute name="position">QB</attribute>
@@ -17265,67 +17271,67 @@ defense</values>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_end">58</attribute>
     </box>
     <box frame="59" keyframe="1" outside="0" occluded="0" xtl="1299.04" ytl="494.01" xbr="1355.15" ybr="593.62">
       <attribute name="position">QB</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_None</attribute>
+      <attribute name="action">Action_ThrowPass</attribute>
       <attribute name="track_id">11</attribute>
-      <attribute name="tapevision_action">Action_None</attribute>
+      <attribute name="tapevision_action">Action_ThrowPass</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_start">59</attribute>
+      <attribute name="tapevision_action_segment_end">64</attribute>
     </box>
     <box frame="60" keyframe="1" outside="0" occluded="0" xtl="1303.65" ytl="494.87" xbr="1359.74" ybr="591.82">
       <attribute name="position">QB</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_None</attribute>
+      <attribute name="action">Action_ThrowPass</attribute>
       <attribute name="track_id">11</attribute>
-      <attribute name="tapevision_action">Action_None</attribute>
+      <attribute name="tapevision_action">Action_ThrowPass</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_start">59</attribute>
+      <attribute name="tapevision_action_segment_end">64</attribute>
     </box>
     <box frame="61" keyframe="1" outside="0" occluded="0" xtl="1305.10" ytl="495.14" xbr="1360.44" ybr="590.12">
       <attribute name="position">QB</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_None</attribute>
+      <attribute name="action">Action_ThrowPass</attribute>
       <attribute name="track_id">11</attribute>
-      <attribute name="tapevision_action">Action_None</attribute>
+      <attribute name="tapevision_action">Action_ThrowPass</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_start">59</attribute>
+      <attribute name="tapevision_action_segment_end">64</attribute>
     </box>
     <box frame="62" keyframe="1" outside="0" occluded="0" xtl="1304.54" ytl="493.24" xbr="1361.29" ybr="589.75">
       <attribute name="position">QB</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_None</attribute>
+      <attribute name="action">Action_ThrowPass</attribute>
       <attribute name="track_id">11</attribute>
-      <attribute name="tapevision_action">Action_None</attribute>
+      <attribute name="tapevision_action">Action_ThrowPass</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_start">59</attribute>
+      <attribute name="tapevision_action_segment_end">64</attribute>
     </box>
     <box frame="63" keyframe="1" outside="0" occluded="0" xtl="1303.69" ytl="491.87" xbr="1362.45" ybr="590.93">
       <attribute name="position">QB</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_None</attribute>
+      <attribute name="action">Action_ThrowPass</attribute>
       <attribute name="track_id">11</attribute>
-      <attribute name="tapevision_action">Action_None</attribute>
+      <attribute name="tapevision_action">Action_ThrowPass</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_start">59</attribute>
+      <attribute name="tapevision_action_segment_end">64</attribute>
     </box>
     <box frame="64" keyframe="1" outside="0" occluded="0" xtl="1304.98" ytl="491.91" xbr="1361.67" ybr="591.74">
       <attribute name="position">QB</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_None</attribute>
+      <attribute name="action">Action_ThrowPass</attribute>
       <attribute name="track_id">11</attribute>
-      <attribute name="tapevision_action">Action_None</attribute>
+      <attribute name="tapevision_action">Action_ThrowPass</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
-      <attribute name="tapevision_action_segment_end">150</attribute>
+      <attribute name="tapevision_action_segment_start">59</attribute>
+      <attribute name="tapevision_action_segment_end">64</attribute>
     </box>
     <box frame="65" keyframe="1" outside="0" occluded="0" xtl="1304.27" ytl="491.52" xbr="1356.36" ybr="591.82">
       <attribute name="position">QB</attribute>
@@ -17334,7 +17340,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="66" keyframe="1" outside="0" occluded="0" xtl="1305.71" ytl="491.30" xbr="1355.30" ybr="593.68">
@@ -17344,7 +17350,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="67" keyframe="1" outside="0" occluded="0" xtl="1308.16" ytl="492.61" xbr="1362.18" ybr="592.60">
@@ -17354,7 +17360,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="68" keyframe="1" outside="0" occluded="0" xtl="1310.11" ytl="494.94" xbr="1364.23" ybr="590.28">
@@ -17364,7 +17370,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="69" keyframe="1" outside="0" occluded="0" xtl="1308.45" ytl="496.96" xbr="1362.82" ybr="590.25">
@@ -17374,7 +17380,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="70" keyframe="1" outside="0" occluded="0" xtl="1307.59" ytl="497.64" xbr="1361.69" ybr="589.33">
@@ -17384,7 +17390,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="71" keyframe="1" outside="0" occluded="0" xtl="1308.30" ytl="499.00" xbr="1358.15" ybr="591.82">
@@ -17394,7 +17400,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="72" keyframe="1" outside="0" occluded="0" xtl="1309.37" ytl="499.36" xbr="1355.47" ybr="593.93">
@@ -17404,7 +17410,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="73" keyframe="1" outside="0" occluded="0" xtl="1310.39" ytl="499.95" xbr="1355.45" ybr="595.78">
@@ -17414,7 +17420,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="74" keyframe="1" outside="0" occluded="0" xtl="1311.55" ytl="500.50" xbr="1355.56" ybr="596.70">
@@ -17424,7 +17430,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="75" keyframe="1" outside="0" occluded="0" xtl="1312.69" ytl="501.05" xbr="1356.95" ybr="598.12">
@@ -17434,7 +17440,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="76" keyframe="1" outside="0" occluded="0" xtl="1314.54" ytl="500.70" xbr="1357.86" ybr="597.88">
@@ -17444,7 +17450,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="77" keyframe="1" outside="0" occluded="0" xtl="1316.03" ytl="499.51" xbr="1359.15" ybr="597.47">
@@ -17454,7 +17460,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="78" keyframe="1" outside="0" occluded="0" xtl="1317.46" ytl="498.89" xbr="1360.79" ybr="596.84">
@@ -17464,7 +17470,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="79" keyframe="1" outside="0" occluded="0" xtl="1319.01" ytl="498.93" xbr="1362.79" ybr="595.73">
@@ -17474,7 +17480,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="80" keyframe="1" outside="0" occluded="0" xtl="1319.84" ytl="498.16" xbr="1364.39" ybr="595.14">
@@ -17484,7 +17490,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="81" keyframe="1" outside="0" occluded="0" xtl="1320.08" ytl="497.63" xbr="1365.44" ybr="595.92">
@@ -17494,7 +17500,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="82" keyframe="1" outside="0" occluded="0" xtl="1321.33" ytl="496.78" xbr="1367.86" ybr="596.02">
@@ -17504,7 +17510,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="83" keyframe="1" outside="0" occluded="0" xtl="1320.99" ytl="496.46" xbr="1370.18" ybr="595.47">
@@ -17514,7 +17520,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="84" keyframe="1" outside="0" occluded="0" xtl="1321.68" ytl="496.55" xbr="1372.19" ybr="595.15">
@@ -17524,7 +17530,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="85" keyframe="1" outside="0" occluded="0" xtl="1323.07" ytl="496.83" xbr="1375.02" ybr="593.28">
@@ -17534,7 +17540,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="86" keyframe="1" outside="0" occluded="0" xtl="1326.12" ytl="496.56" xbr="1376.79" ybr="593.28">
@@ -17544,7 +17550,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="87" keyframe="1" outside="0" occluded="0" xtl="1328.27" ytl="496.81" xbr="1379.58" ybr="593.30">
@@ -17554,7 +17560,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="88" keyframe="1" outside="0" occluded="0" xtl="1331.15" ytl="496.23" xbr="1381.87" ybr="593.22">
@@ -17564,7 +17570,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="89" keyframe="1" outside="0" occluded="0" xtl="1334.44" ytl="495.40" xbr="1382.78" ybr="592.83">
@@ -17574,7 +17580,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="90" keyframe="1" outside="0" occluded="0" xtl="1339.18" ytl="494.57" xbr="1384.51" ybr="594.07">
@@ -17584,7 +17590,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="91" keyframe="1" outside="0" occluded="0" xtl="1342.54" ytl="494.04" xbr="1385.68" ybr="592.70">
@@ -17594,7 +17600,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="92" keyframe="1" outside="0" occluded="0" xtl="1345.79" ytl="493.88" xbr="1386.61" ybr="591.60">
@@ -17604,7 +17610,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="93" keyframe="1" outside="0" occluded="0" xtl="1348.87" ytl="493.53" xbr="1387.07" ybr="590.99">
@@ -17614,7 +17620,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="94" keyframe="1" outside="0" occluded="0" xtl="1351.41" ytl="492.70" xbr="1387.83" ybr="590.53">
@@ -17624,7 +17630,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="95" keyframe="1" outside="0" occluded="0" xtl="1354.71" ytl="492.08" xbr="1388.28" ybr="591.09">
@@ -17634,7 +17640,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="96" keyframe="1" outside="0" occluded="0" xtl="1357.80" ytl="491.07" xbr="1390.77" ybr="590.96">
@@ -17644,7 +17650,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="97" keyframe="1" outside="0" occluded="0" xtl="1360.63" ytl="490.56" xbr="1393.38" ybr="591.86">
@@ -17654,7 +17660,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="98" keyframe="1" outside="0" occluded="0" xtl="1364.88" ytl="490.62" xbr="1398.27" ybr="591.76">
@@ -17664,7 +17670,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="99" keyframe="1" outside="0" occluded="0" xtl="1369.46" ytl="490.38" xbr="1402.69" ybr="590.55">
@@ -17674,7 +17680,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="100" keyframe="1" outside="0" occluded="0" xtl="1374.92" ytl="489.61" xbr="1409.26" ybr="588.57">
@@ -17684,7 +17690,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="101" keyframe="1" outside="0" occluded="0" xtl="1380.71" ytl="489.44" xbr="1413.50" ybr="588.84">
@@ -17694,7 +17700,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="102" keyframe="1" outside="0" occluded="0" xtl="1386.31" ytl="489.87" xbr="1420.19" ybr="589.52">
@@ -17704,7 +17710,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="103" keyframe="1" outside="0" occluded="0" xtl="1392.18" ytl="489.61" xbr="1427.52" ybr="588.87">
@@ -17714,7 +17720,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="104" keyframe="1" outside="0" occluded="0" xtl="1398.00" ytl="490.35" xbr="1431.11" ybr="588.47">
@@ -17724,7 +17730,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="105" keyframe="1" outside="0" occluded="0" xtl="1403.87" ytl="490.36" xbr="1436.16" ybr="588.53">
@@ -17734,7 +17740,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="106" keyframe="1" outside="0" occluded="0" xtl="1412.31" ytl="491.63" xbr="1442.21" ybr="590.22">
@@ -17744,7 +17750,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="107" keyframe="1" outside="0" occluded="0" xtl="1419.38" ytl="492.37" xbr="1448.32" ybr="591.10">
@@ -17754,7 +17760,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="108" keyframe="1" outside="0" occluded="0" xtl="1425.43" ytl="493.71" xbr="1454.14" ybr="592.70">
@@ -17764,7 +17770,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="109" keyframe="1" outside="0" occluded="0" xtl="1431.96" ytl="494.50" xbr="1459.74" ybr="594.76">
@@ -17774,7 +17780,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="110" keyframe="1" outside="0" occluded="0" xtl="1437.87" ytl="496.69" xbr="1465.79" ybr="596.28">
@@ -17784,7 +17790,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="111" keyframe="1" outside="0" occluded="0" xtl="1442.15" ytl="497.29" xbr="1470.37" ybr="598.09">
@@ -17794,7 +17800,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="112" keyframe="1" outside="0" occluded="0" xtl="1445.57" ytl="499.27" xbr="1473.85" ybr="599.78">
@@ -17804,7 +17810,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="113" keyframe="1" outside="0" occluded="0" xtl="1448.30" ytl="500.91" xbr="1476.29" ybr="601.78">
@@ -17814,7 +17820,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="114" keyframe="1" outside="0" occluded="0" xtl="1450.00" ytl="502.76" xbr="1477.67" ybr="603.81">
@@ -17824,7 +17830,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="115" keyframe="1" outside="0" occluded="0" xtl="1451.52" ytl="505.62" xbr="1479.60" ybr="606.36">
@@ -17834,7 +17840,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="116" keyframe="1" outside="0" occluded="0" xtl="1453.01" ytl="508.94" xbr="1481.28" ybr="608.69">
@@ -17844,7 +17850,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="117" keyframe="1" outside="0" occluded="0" xtl="1454.31" ytl="510.91" xbr="1483.00" ybr="610.95">
@@ -17854,7 +17860,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="118" keyframe="1" outside="0" occluded="0" xtl="1456.05" ytl="513.74" xbr="1484.46" ybr="613.43">
@@ -17864,7 +17870,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="119" keyframe="1" outside="0" occluded="0" xtl="1457.58" ytl="516.48" xbr="1485.15" ybr="614.14">
@@ -17874,7 +17880,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="120" keyframe="1" outside="0" occluded="0" xtl="1458.73" ytl="519.74" xbr="1485.85" ybr="615.61">
@@ -17884,7 +17890,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="121" keyframe="1" outside="0" occluded="0" xtl="1458.98" ytl="522.74" xbr="1486.79" ybr="618.32">
@@ -17894,7 +17900,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="122" keyframe="1" outside="0" occluded="0" xtl="1458.79" ytl="527.32" xbr="1487.86" ybr="621.86">
@@ -17904,7 +17910,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="123" keyframe="1" outside="0" occluded="0" xtl="1458.97" ytl="532.39" xbr="1488.37" ybr="624.41">
@@ -17914,7 +17920,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="124" keyframe="1" outside="0" occluded="0" xtl="1458.04" ytl="535.92" xbr="1488.92" ybr="627.65">
@@ -17924,7 +17930,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="125" keyframe="1" outside="0" occluded="0" xtl="1457.82" ytl="538.05" xbr="1489.50" ybr="628.86">
@@ -17934,7 +17940,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="126" keyframe="1" outside="0" occluded="0" xtl="1457.50" ytl="538.60" xbr="1489.47" ybr="629.05">
@@ -17944,7 +17950,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="127" keyframe="1" outside="0" occluded="0" xtl="1458.59" ytl="540.69" xbr="1490.99" ybr="628.82">
@@ -17954,7 +17960,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="128" keyframe="1" outside="0" occluded="0" xtl="1459.26" ytl="541.25" xbr="1492.70" ybr="626.89">
@@ -17964,7 +17970,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="129" keyframe="1" outside="0" occluded="0" xtl="1459.59" ytl="541.65" xbr="1493.45" ybr="625.35">
@@ -17974,7 +17980,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="130" keyframe="1" outside="0" occluded="0" xtl="1460.00" ytl="541.90" xbr="1496.11" ybr="625.43">
@@ -17984,7 +17990,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="131" keyframe="1" outside="0" occluded="0" xtl="1459.46" ytl="542.07" xbr="1497.06" ybr="627.02">
@@ -17994,7 +18000,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="132" keyframe="1" outside="0" occluded="0" xtl="1458.03" ytl="541.15" xbr="1495.35" ybr="627.52">
@@ -18004,7 +18010,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="133" keyframe="1" outside="0" occluded="0" xtl="1455.88" ytl="539.64" xbr="1492.06" ybr="627.28">
@@ -18014,7 +18020,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="134" keyframe="1" outside="0" occluded="0" xtl="1454.24" ytl="539.41" xbr="1490.12" ybr="627.81">
@@ -18024,7 +18030,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="135" keyframe="1" outside="0" occluded="0" xtl="1452.34" ytl="539.87" xbr="1489.44" ybr="628.50">
@@ -18034,7 +18040,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="136" keyframe="1" outside="0" occluded="0" xtl="1450.61" ytl="540.03" xbr="1491.68" ybr="629.87">
@@ -18044,7 +18050,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="137" keyframe="1" outside="0" occluded="0" xtl="1448.33" ytl="541.64" xbr="1491.41" ybr="630.93">
@@ -18054,7 +18060,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="138" keyframe="1" outside="0" occluded="0" xtl="1446.09" ytl="542.91" xbr="1493.98" ybr="633.34">
@@ -18064,7 +18070,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="139" keyframe="1" outside="0" occluded="0" xtl="1443.55" ytl="543.91" xbr="1494.84" ybr="634.20">
@@ -18074,7 +18080,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="140" keyframe="1" outside="0" occluded="0" xtl="1441.43" ytl="544.21" xbr="1496.74" ybr="635.76">
@@ -18084,7 +18090,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="141" keyframe="1" outside="0" occluded="0" xtl="1439.26" ytl="544.65" xbr="1496.19" ybr="636.44">
@@ -18094,7 +18100,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="142" keyframe="1" outside="0" occluded="0" xtl="1436.75" ytl="544.91" xbr="1492.63" ybr="636.09">
@@ -18104,7 +18110,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="143" keyframe="1" outside="0" occluded="0" xtl="1434.48" ytl="545.48" xbr="1488.36" ybr="636.65">
@@ -18114,7 +18120,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="144" keyframe="1" outside="0" occluded="0" xtl="1432.43" ytl="546.13" xbr="1486.08" ybr="637.61">
@@ -18124,7 +18130,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="145" keyframe="1" outside="0" occluded="0" xtl="1429.83" ytl="546.28" xbr="1484.16" ybr="637.75">
@@ -18134,7 +18140,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="146" keyframe="1" outside="0" occluded="0" xtl="1426.42" ytl="546.33" xbr="1477.98" ybr="638.07">
@@ -18144,7 +18150,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="147" keyframe="1" outside="0" occluded="0" xtl="1423.67" ytl="545.88" xbr="1471.63" ybr="637.90">
@@ -18154,7 +18160,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="148" keyframe="1" outside="0" occluded="0" xtl="1420.88" ytl="545.38" xbr="1469.78" ybr="639.67">
@@ -18164,7 +18170,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="149" keyframe="1" outside="0" occluded="0" xtl="1417.10" ytl="543.70" xbr="1468.93" ybr="639.22">
@@ -18174,7 +18180,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
     <box frame="150" keyframe="1" outside="1" occluded="0" xtl="1417.10" ytl="543.70" xbr="1468.93" ybr="639.22">
@@ -18184,7 +18190,7 @@ defense</values>
       <attribute name="track_id">11</attribute>
       <attribute name="tapevision_action">Action_None</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">22</attribute>
+      <attribute name="tapevision_action_segment_start">65</attribute>
       <attribute name="tapevision_action_segment_end">150</attribute>
     </box>
   </track>
@@ -25109,7 +25115,7 @@ defense</values>
       <attribute name="tapevision_action">Action_PreSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">0</attribute>
-      <attribute name="tapevision_action_segment_end">6</attribute>
+      <attribute name="tapevision_action_segment_end">3</attribute>
     </box>
     <box frame="1" keyframe="1" outside="0" occluded="0" xtl="1084.08" ytl="542.97" xbr="1149.88" ybr="623.92">
       <attribute name="position">C</attribute>
@@ -25119,7 +25125,7 @@ defense</values>
       <attribute name="tapevision_action">Action_PreSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">0</attribute>
-      <attribute name="tapevision_action_segment_end">6</attribute>
+      <attribute name="tapevision_action_segment_end">3</attribute>
     </box>
     <box frame="2" keyframe="1" outside="0" occluded="0" xtl="1083.40" ytl="543.57" xbr="1149.85" ybr="623.97">
       <attribute name="position">C</attribute>
@@ -25129,7 +25135,7 @@ defense</values>
       <attribute name="tapevision_action">Action_PreSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">0</attribute>
-      <attribute name="tapevision_action_segment_end">6</attribute>
+      <attribute name="tapevision_action_segment_end">3</attribute>
     </box>
     <box frame="3" keyframe="1" outside="0" occluded="0" xtl="1083.16" ytl="543.79" xbr="1149.72" ybr="623.26">
       <attribute name="position">C</attribute>
@@ -25139,156 +25145,156 @@ defense</values>
       <attribute name="tapevision_action">Action_PreSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
       <attribute name="tapevision_action_segment_start">0</attribute>
-      <attribute name="tapevision_action_segment_end">6</attribute>
+      <attribute name="tapevision_action_segment_end">3</attribute>
     </box>
     <box frame="4" keyframe="1" outside="0" occluded="0" xtl="1083.85" ytl="543.52" xbr="1149.44" ybr="622.72">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PreSnap</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PreSnap</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">0</attribute>
-      <attribute name="tapevision_action_segment_end">6</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
+      <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="5" keyframe="1" outside="0" occluded="0" xtl="1085.65" ytl="543.62" xbr="1149.81" ybr="622.42">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PreSnap</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PreSnap</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">0</attribute>
-      <attribute name="tapevision_action_segment_end">6</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
+      <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="6" keyframe="1" outside="0" occluded="0" xtl="1086.21" ytl="543.98" xbr="1150.65" ybr="621.70">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PreSnap</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PreSnap</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">0</attribute>
-      <attribute name="tapevision_action_segment_end">6</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
+      <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="7" keyframe="1" outside="0" occluded="0" xtl="1085.72" ytl="543.66" xbr="1150.58" ybr="621.08">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="8" keyframe="1" outside="0" occluded="0" xtl="1083.98" ytl="541.87" xbr="1149.71" ybr="621.27">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="9" keyframe="1" outside="0" occluded="0" xtl="1083.90" ytl="539.93" xbr="1149.17" ybr="621.98">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="10" keyframe="1" outside="0" occluded="0" xtl="1084.60" ytl="539.09" xbr="1149.85" ybr="622.01">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="11" keyframe="1" outside="0" occluded="0" xtl="1085.41" ytl="537.09" xbr="1149.30" ybr="621.17">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="12" keyframe="1" outside="0" occluded="0" xtl="1084.57" ytl="534.69" xbr="1148.60" ybr="620.13">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="13" keyframe="1" outside="0" occluded="0" xtl="1084.20" ytl="533.07" xbr="1148.35" ybr="620.42">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="14" keyframe="1" outside="0" occluded="0" xtl="1078.81" ytl="532.10" xbr="1146.65" ybr="619.26">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="15" keyframe="1" outside="0" occluded="0" xtl="1079.25" ytl="529.57" xbr="1145.24" ybr="617.68">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="16" keyframe="1" outside="0" occluded="0" xtl="1078.39" ytl="527.15" xbr="1139.53" ybr="614.14">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="17" keyframe="1" outside="0" occluded="0" xtl="1079.54" ytl="524.93" xbr="1139.52" ybr="603.09">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="18" keyframe="1" outside="1" occluded="0" xtl="1079.54" ytl="524.93" xbr="1139.52" ybr="603.09">
       <attribute name="position">C</attribute>
       <attribute name="team_side">offense</attribute>
-      <attribute name="action">Action_PassBlock</attribute>
+      <attribute name="action">Action_BallSnap</attribute>
       <attribute name="track_id">18</attribute>
-      <attribute name="tapevision_action">Action_PassBlock</attribute>
+      <attribute name="tapevision_action">Action_BallSnap</attribute>
       <attribute name="tapevision_action_source">inferred_complete_timeline</attribute>
-      <attribute name="tapevision_action_segment_start">7</attribute>
+      <attribute name="tapevision_action_segment_start">4</attribute>
       <attribute name="tapevision_action_segment_end">18</attribute>
     </box>
     <box frame="40" keyframe="1" outside="0" occluded="0" xtl="1070.34" ytl="462.16" xbr="1111.81" ybr="498.65">

@@ -1,6 +1,6 @@
 # Play-Annotation-Generator Annotation Review — Power_4
 
-**Overall Status:** FAILED
+**Overall Status:** WARNING
 
 ## 1. Clip & Validation Summary
 
@@ -12,9 +12,9 @@
 - **Player Tracks:** 30
 - **Ball Tracks:** 0
 - **Action Segments:** 55
-- **Validation Warnings:** 79
-- **Validation Errors:** 1
-- **Overall Status:** FAILED
+- **Validation Warnings:** 78
+- **Validation Errors:** 0
+- **Overall Status:** WARNING
 
 ## 2. Action Annotation Audit
 
@@ -171,8 +171,8 @@ None.
 | `Action_PreSnap` | 6 | 128 | 123 | inferred_complete_timeline |
 | `Action_PullBlock` | 129 | 147 | 19 | inferred_complete_timeline |
 | `Action_PullBlock` | 149 | 171 | 23 | inferred_complete_timeline |
-| `Action_PullBlock` | 190 | 226 | 37 | inferred_complete_timeline |
-| `Action_PullBlock` | 237 | 299 | 63 | inferred_complete_timeline |
+| `Action_None` | 190 | 226 | 37 | inferred_complete_timeline |
+| `Action_None` | 237 | 299 | 63 | inferred_complete_timeline |
 
 </details>
 
@@ -372,7 +372,7 @@ None.
 ### Action Mapping Issues
 
 - ⚠️ Ambiguous match for action `Action_DownBlock` and target `9` (2 segments found)
-- ⚠️ Ambiguous match for action `Action_PullBlock` and target `5` (4 segments found)
+- ⚠️ Ambiguous match for action `Action_PullBlock` and target `5` (2 segments found)
 
 ### Track Identity Issues
 
@@ -384,7 +384,7 @@ None.
 
 ### Validation Errors
 
-- ❌ Event 'Action_PullBlock' at frame 129 targets track ID '183', but it is not found in XML.
+None.
 
 ### Validation Warnings by Category
 
@@ -392,7 +392,7 @@ None.
 | --- | --- |
 | Unknown position/team | 28 |
 | Missing visible bounding boxes during action | 41 |
-| Track-related warning | 9 |
+| Track-related warning | 8 |
 | Other | 1 |
 
 <details>
@@ -406,7 +406,6 @@ None.
 - ⚠️ Invalid track ID 'NV' in Player Track ID sheet. Must be an integer.
 - ⚠️ No result_frame or PlayEnd action found in CSV. Using final clip frame 299 as fallback play end.
 - ⚠️ Validation warning: Action 'Action_DownBlock' for track '0' (OLB) duration 283 frames exceeds threshold 90 frames [start=17, end=299].
-- ⚠️ Validation warning: Action 'Action_PullBlock' for track '5' (LG) duration 171 frames exceeds threshold 90 frames [start=129, end=299].
 - ⚠️ Validation warning: Action 'Action_DownBlock' for track '9' (RT) duration 283 frames exceeds threshold 90 frames [start=17, end=299].
 - ⚠️ Action 'Action_PreSnap' range [6-143] for track '2' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [146-182] for track '2' has 1 frames without a visible bounding box.
@@ -415,7 +414,7 @@ None.
 - ⚠️ Action 'Action_PreSnap' range [6-184] for track '4' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PullBlock' range [129-147] for track '5' has 2 frames without a visible bounding box.
 - ⚠️ Action 'Action_PullBlock' range [149-171] for track '5' has 2 frames without a visible bounding box.
-- ⚠️ Action 'Action_PullBlock' range [190-226] for track '5' has 2 frames without a visible bounding box.
+- ⚠️ Action 'Action_None' range [190-226] for track '5' has 2 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [6-189] for track '6' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [207-209] for track '6' has 1 frames without a visible bounding box.
 - ⚠️ Action 'Action_PreSnap' range [6-204] for track '7' has 1 frames without a visible bounding box.

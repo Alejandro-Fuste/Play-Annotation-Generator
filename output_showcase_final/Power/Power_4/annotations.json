@@ -69827,7 +69827,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "start_frame": 190,
         "end_frame": 226,
         "source": "inferred_complete_timeline"
@@ -69837,7 +69837,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "start_frame": 237,
         "end_frame": 299,
         "source": "inferred_complete_timeline"
@@ -100440,7 +100440,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1169.03,
           422.95,
@@ -100460,7 +100460,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1168.63,
           420.3,
@@ -100480,7 +100480,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1152.54,
           419.24,
@@ -100500,7 +100500,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1127.87,
           420.09,
@@ -100520,7 +100520,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1162.64,
           419.16,
@@ -100540,7 +100540,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1164.75,
           418.76,
@@ -100560,7 +100560,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1082.11,
           424.19,
@@ -100580,7 +100580,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1043.68,
           426.59,
@@ -100600,7 +100600,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           1008.74,
           432.49,
@@ -100620,7 +100620,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           973.62,
           438.94,
@@ -100640,7 +100640,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           935.72,
           448.06,
@@ -100660,7 +100660,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           935.21,
           458.18,
@@ -100680,7 +100680,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           950.0,
           464.07,
@@ -100700,7 +100700,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           943.28,
           478.48,
@@ -100720,7 +100720,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           924.35,
           494.79,
@@ -100740,7 +100740,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           905.01,
           511.75,
@@ -100760,7 +100760,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           908.59,
           515.06,
@@ -100780,7 +100780,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           849.13,
           540.26,
@@ -100800,7 +100800,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           821.57,
           555.39,
@@ -100820,7 +100820,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           790.43,
           568.01,
@@ -100840,7 +100840,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           766.48,
           576.68,
@@ -100860,7 +100860,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           737.72,
           583.52,
@@ -100880,7 +100880,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           715.54,
           586.67,
@@ -100900,7 +100900,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           697.46,
           587.48,
@@ -100920,7 +100920,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           684.09,
           586.17,
@@ -100940,7 +100940,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           671.66,
           584.12,
@@ -100960,7 +100960,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           663.5,
           582.32,
@@ -100980,7 +100980,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           659.04,
           582.12,
@@ -101000,7 +101000,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           659.9,
           581.8,
@@ -101020,7 +101020,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           644.23,
           586.08,
@@ -101040,7 +101040,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           636.9,
           589.58,
@@ -101060,7 +101060,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           627.19,
           591.78,
@@ -101080,7 +101080,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           615.41,
           592.16,
@@ -101100,7 +101100,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           602.55,
           590.2,
@@ -101120,7 +101120,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           571.72,
           579.99,
@@ -101140,7 +101140,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           392.62,
           629.0,
@@ -101160,7 +101160,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           382.47,
           634.94,
@@ -101180,7 +101180,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           366.31,
           639.79,
@@ -101200,7 +101200,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           353.22,
           646.93,
@@ -101220,7 +101220,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           345.31,
           654.69,
@@ -101240,7 +101240,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           341.89,
           659.93,
@@ -101260,7 +101260,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           342.07,
           665.53,
@@ -101280,7 +101280,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           341.82,
           671.4,
@@ -101300,7 +101300,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           352.83,
           677.92,
@@ -101320,7 +101320,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           357.63,
           685.36,
@@ -101340,7 +101340,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           358.26,
           692.41,
@@ -101360,7 +101360,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           354.02,
           695.6,
@@ -101380,7 +101380,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           348.56,
           697.34,
@@ -101400,7 +101400,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           343.33,
           699.39,
@@ -101420,7 +101420,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           335.54,
           701.54,
@@ -101440,7 +101440,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           327.89,
           705.29,
@@ -101460,7 +101460,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           319.2,
           709.38,
@@ -101480,7 +101480,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           309.39,
           714.76,
@@ -101500,7 +101500,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           298.49,
           722.33,
@@ -101520,7 +101520,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           283.6,
           729.6,
@@ -101540,7 +101540,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           270.61,
           736.7,
@@ -101560,7 +101560,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           257.71,
           744.93,
@@ -101580,7 +101580,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           246.55,
           753.36,
@@ -101600,7 +101600,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           236.92,
           761.68,
@@ -101620,7 +101620,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           227.6,
           769.69,
@@ -101640,7 +101640,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           221.18,
           779.27,
@@ -101660,7 +101660,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           215.64,
           787.92,
@@ -101680,7 +101680,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           208.72,
           794.92,
@@ -101700,7 +101700,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           203.33,
           799.68,
@@ -101720,7 +101720,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           195.64,
           804.04,
@@ -101740,7 +101740,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           191.07,
           806.61,
@@ -101760,7 +101760,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           187.06,
           807.94,
@@ -101780,7 +101780,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           182.97,
           807.96,
@@ -101800,7 +101800,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           175.16,
           806.01,
@@ -101820,7 +101820,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           168.0,
           803.03,
@@ -101840,7 +101840,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           160.49,
           800.88,
@@ -101860,7 +101860,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           152.95,
           799.12,
@@ -101880,7 +101880,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           145.55,
           797.06,
@@ -101900,7 +101900,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           139.8,
           795.06,
@@ -101920,7 +101920,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           133.13,
           793.42,
@@ -101940,7 +101940,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           126.6,
           791.43,
@@ -101960,7 +101960,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           123.41,
           791.73,
@@ -101980,7 +101980,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           118.81,
           791.55,
@@ -102000,7 +102000,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           114.13,
           791.93,
@@ -102020,7 +102020,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           108.27,
           793.11,
@@ -102040,7 +102040,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           103.36,
           794.03,
@@ -102060,7 +102060,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           97.59,
           793.74,
@@ -102080,7 +102080,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           93.63,
           792.49,
@@ -102100,7 +102100,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           89.68,
           789.81,
@@ -102120,7 +102120,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           89.43,
           786.32,
@@ -102140,7 +102140,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           91.7,
           782.8,
@@ -102160,7 +102160,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           94.93,
           779.19,
@@ -102180,7 +102180,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           102.03,
           775.81,
@@ -102200,7 +102200,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           108.54,
           771.8,
@@ -102220,7 +102220,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           116.2,
           767.46,
@@ -102240,7 +102240,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           124.32,
           764.12,
@@ -102260,7 +102260,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           128.64,
           760.61,
@@ -102280,7 +102280,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           129.24,
           758.21,
@@ -102300,7 +102300,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           129.56,
           756.26,
@@ -102320,7 +102320,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           127.7,
           753.07,
@@ -102340,7 +102340,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           127.51,
           751.62,
@@ -102360,7 +102360,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           125.58,
           750.83,
@@ -102380,7 +102380,7 @@
         "xml_track_id": "5",
         "position": "LG",
         "team_side": "offense",
-        "action": "Action_PullBlock",
+        "action": "Action_None",
         "bbox_xyxy": [
           125.93,
           750.73,
@@ -156102,6 +156102,10 @@
       "Action_DownBlock": {
         "label": "Down Block",
         "definition": "An offensive lineman's block on a defensive lineman or linebacker to their inside, driving them towards the center of the line of scrimmage, often creating a hole outside or for a pulling lineman."
+      },
+      "Action_None": {
+        "label": "None",
+        "definition": "A temporal label used when the player is visible but is not performing any defined football action in the action taxonomy during the annotated interval."
       },
       "Action_PreSnap": {
         "label": "Pre Snap",
