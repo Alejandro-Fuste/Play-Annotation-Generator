@@ -2,8 +2,8 @@
 
 - **Clips Generated:** 50
 - **PASS:** 0
-- **WARNING:** 47
-- **FAILED:** 3
+- **WARNING:** 50
+- **FAILED:** 0
 
 | Clip | Play | Status | Segments | Dense Frames | Errors | Warnings |
 |---|---|---|---|---|---|---|
@@ -38,9 +38,9 @@
 | OutsideZoneStretch_2 | OutsideZoneStretch | WARNING | 89 | 2935 | 0 | 130 |
 | PinAndPull_1 | PinAndPull | WARNING | 87 | 2187 | 0 | 86 |
 | PinAndPull_2 | PinAndPull | WARNING | 83 | 2085 | 0 | 88 |
-| Post10to15_1 | Post10to15 | FAILED | 70 | 3095 | 1 | 57 |
-| Power_3 | Power | FAILED | 48 | 6104 | 1 | 63 |
-| Power_4 | Power | FAILED | 55 | 4292 | 1 | 79 |
+| Post10to15_1 | Post10to15 | WARNING | 72 | 3095 | 0 | 59 |
+| Power_3 | Power | WARNING | 48 | 6104 | 0 | 63 |
+| Power_4 | Power | WARNING | 55 | 4292 | 0 | 78 |
 | PuntBlock_1 | PuntBlock | WARNING | 294 | 4967 | 0 | 403 |
 | PuntBlock_2 | PuntBlock | WARNING | 112 | 3882 | 0 | 151 |
 | PuntCoverage_1 | PuntCoverage | WARNING | 143 | 5491 | 0 | 145 |

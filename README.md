@@ -119,8 +119,11 @@ Play-Annotation-Generator/
 ├── docs/
 │   ├── JetSweepTemplate.xml              # Template CVAT XML file used by Mode B generator
 │   ├── endOfPlayEventsShortHand.json     # Result shorthand mappings (e.g. "Tac" -> "Result_Tackle")
-│   └── sampleJetSweepCVAT_video_2.xml    # Sample CVAT Video XML for testing Mode A
-├── outputs/                              # Default destination directory for generated pipeline outputs
+├── outputs/                              # Generated outputs root
+│   ├── showcase/
+│   │   ├── final/                        # Canonical 50-play showcase dataset
+│   │   └── archive/                      # Historical showcase runs
+│   └── legacy/                           # Older non-showcase outputs
 ├── src/
 │   ├── play_annotation_generator/        # Core package root
 │   │   ├── __init__.py                   # Package initializer
