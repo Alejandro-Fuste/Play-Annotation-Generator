@@ -1,0 +1,38 @@
+{
+  "video_name": "BootPass_47",
+  "input_xml": "outputs/batch/BootPass/BootPass/BootPass_47/generated_base_cvat.xml",
+  "input_csv": "data/key_actions/BootPass.csv",
+  "metrics": {
+    "num_tracks": 25,
+    "num_player_tracks": 25,
+    "num_ball_tracks": 0,
+    "num_events_parsed": 22,
+    "num_action_segments": 55,
+    "num_invalid_boxes": 0,
+    "start_frame": 0,
+    "stop_frame": 239,
+    "num_mot_rows_parsed": 5210,
+    "num_mot_tracks": 25,
+    "num_assignments": 22
+  },
+  "warnings": [
+    "No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.",
+    "Resolved action overlap for track '16' (C): higher_priority='Action_BallSnap' [60\u201379], lower_priority='Action_RunBlock' annotated_start=66, effective_Action_RunBlock_start=80.",
+    "Action 'Action_None' range [198-233] for track '0' has 2 frames without a visible bounding box.",
+    "Action 'Action_None' range [60-195] for track '5' has 2 frames without a visible bounding box.",
+    "Action 'Action_RunBlock' range [66-115] for track '7' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [172-221] for track '9' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [60-239] for track '11' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [60-239] for track '21' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [88-89] for track '22' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [134-135] for track '23' has 1 frames without a visible bounding box.",
+    "Action 'Action_None' range [134-135] for track '24' has 1 frames without a visible bounding box.",
+    "Player track '22' has undefined position. Will map to Position_Unknown.",
+    "Player track '22' has undefined team_side. Will map to Team_Unknown.",
+    "Player track '23' has undefined position. Will map to Position_Unknown.",
+    "Player track '23' has undefined team_side. Will map to Team_Unknown.",
+    "Player track '24' has undefined position. Will map to Position_Unknown.",
+    "Player track '24' has undefined team_side. Will map to Team_Unknown."
+  ],
+  "errors": []
+}
