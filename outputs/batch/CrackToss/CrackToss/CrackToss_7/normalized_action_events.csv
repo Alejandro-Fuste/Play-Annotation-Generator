@@ -1,0 +1,12 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+CrackToss_7,7,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Pre Snap_group_ALL,Action_PreSnap,0,START,1,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Pre Snap_group_ALL,Action_PreSnap,0,START,3,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Pre Snap_group_ALL,Action_PreSnap,0,START,8,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Ball Snap,Action_BallSnap,234,START,15,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Snap Receive,Action_SnapReceive,241,END,12,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Crack Block,Action_CrackBlock,244,START,13,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Pull Blocks,Action_PullBlock,244,START,24,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Toss,Action_Toss,244,START,12,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,Ball Carry,Action_BallCarry,272,START,1,track_id,Play_Run_CrackToss,Result_Tackle,,
+CrackToss_7,7,End of OL Block,Action_None,307,BOUNDARY,,global_event,Play_Run_CrackToss,Result_Tackle,,

@@ -1,0 +1,13 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,1,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,11,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,13,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,16,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,17,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,3,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,5,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pre Snap_group_ALL,Action_PreSnap,0,START,9,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Ball Snap,Action_BallSnap,21,START,17,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Crack Block,Action_CrackBlock,24,START,21,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Pull Blocks,Action_PullBlock,24,START,1,track_id,Play_Run_CrackToss,,,
+CrackToss_98,98,Snap Receive,Action_SnapReceive,30,END,5,track_id,Play_Run_CrackToss,,,
