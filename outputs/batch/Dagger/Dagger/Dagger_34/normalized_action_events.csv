@@ -1,0 +1,13 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+Dagger_34,34,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Pre Snap_group_ALL,Action_PreSnap,0,START,12,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Pre Snap_group_ALL,Action_PreSnap,0,START,3,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Pre Snap_group_ALL,Action_PreSnap,0,START,5,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Pre Snap_group_ALL,Action_PreSnap,0,START,9,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Ball Snap,Action_BallSnap,139,START,9,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Pass Block_group_OL,Action_PassBlock,142,START,9,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Snap Receive,Action_SnapReceive,143,END,12,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Dig Route,Action_BreakInside,158,START,5,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Clear Out Route,Action_ClearToEdge,158,START,16,track_id,Play_Pass_Dagger,Result_Rec,,
+Dagger_34,34,Throw Pass,Action_ThrowPass,232,START,12,track_id,Play_Pass_Dagger,Result_Rec,,
