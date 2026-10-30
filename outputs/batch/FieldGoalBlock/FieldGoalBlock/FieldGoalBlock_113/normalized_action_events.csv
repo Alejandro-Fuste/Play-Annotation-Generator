@@ -1,0 +1,12 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,13,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,14,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,16,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,17,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,3,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Pre Snap_group_ALL,Action_PreSnap,0,START,9,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Place Ball,Action_PlaceBall,15,START,3,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Kick Ball,Action_KickBall,38,START,4,track_id,Play_SpecialTeams_FieldGoalBlock,,,
+FieldGoalBlock_113,113,Block Kick,Action_BlockKick,45,START,17,track_id,Play_SpecialTeams_FieldGoalBlock,,,
