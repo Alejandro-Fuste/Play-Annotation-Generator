@@ -1,0 +1,81 @@
+# Play-Annotation-Generator Annotation Enrichment Validation Report
+
+## **Summary**
+- **Status**: SUCCESS
+- **Video Name**: `JetSweep_112`
+- **Input XML**: `outputs/batch/JetSweep/JetSweep/JetSweep_112/generated_base_cvat.xml`
+- **Input CSV**: `data/key_actions/JetSweep.csv`
+
+## **Key Metrics**
+| Metric | Value |
+| :--- | :--- |
+| Total XML Tracks | 29 |
+| Player Tracks | 29 |
+| Ball Tracks | 0 |
+| CSV events parsed | 24 |
+| Action Segments inferred | 80 |
+| Invalid XML Bounding Boxes | 0 |
+| Video Start Frame | 0 |
+| Video Stop Frame | 239 |
+
+## **Pipeline Errors**
+*No critical pipeline errors encountered.*
+
+## **Pipeline Warnings**
+> [!WARNING]
+> The following non-critical warnings were logged:
+> - No result_frame or PlayEnd action found in CSV. Using final clip frame 239 as fallback play end.
+> - Validation warning: Action 'Action_LeadBlock' for track '0' (WR2) duration 107 frames exceeds threshold 90 frames [start=69, end=175].
+> - Validation warning: Action 'Action_ZoneBlock' for track '8' (LT) duration 107 frames exceeds threshold 90 frames [start=69, end=175].
+> - Validation warning: Action 'Action_ZoneBlock' for track '14' (LG) duration 107 frames exceeds threshold 90 frames [start=69, end=175].
+> - Validation warning: Action 'Action_ZoneBlock' for track '16' (C) duration 101 frames exceeds threshold 90 frames [start=69, end=169].
+> - Resolved action overlap for track '16' (C): higher_priority='Action_BallSnap' [62–78], lower_priority='Action_ZoneBlock' annotated_start=69, effective_Action_ZoneBlock_start=79.
+> - Validation warning: Action 'Action_ZoneBlock' for track '21' (RT) duration 107 frames exceeds threshold 90 frames [start=69, end=175].
+> - Action 'Action_LeadBlock' range [69-135] for track '0' has 1 frames without a visible bounding box.
+> - Action 'Action_LeadBlock' range [138-165] for track '0' has 3 frames without a visible bounding box.
+> - Action 'Action_None' range [176-236] for track '0' has 1 frames without a visible bounding box.
+> - Action 'Action_BallCarry' range [94-239] for track '1' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [62-129] for track '4' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [131-132] for track '4' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [62-179] for track '7' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [62-175] for track '9' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [69-101] for track '13' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [69-93] for track '14' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [62-127] for track '15' has 1 frames without a visible bounding box.
+> - Action 'Action_BallSnap' range [62-74] for track '16' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [102-169] for track '16' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [62-235] for track '17' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [62-95] for track '18' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [101-104] for track '18' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [113-114] for track '18' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [118-119] for track '18' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [125-126] for track '18' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [62-102] for track '19' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [62-131] for track '20' has 2 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [69-75] for track '21' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [78-129] for track '21' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [103-111] for track '23' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [156-157] for track '23' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [163-164] for track '25' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [189-191] for track '25' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [181-190] for track '27' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [202-204] for track '27' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [209-236] for track '27' has 3 frames without a visible bounding box.
+> - Action 'Action_None' range [217-219] for track '28' has 1 frames without a visible bounding box.
+> - Player track '22' has undefined position. Will map to Position_Unknown.
+> - Player track '22' has undefined team_side. Will map to Team_Unknown.
+> - Player track '23' has undefined position. Will map to Position_Unknown.
+> - Player track '23' has undefined team_side. Will map to Team_Unknown.
+> - Player track '24' has undefined position. Will map to Position_Unknown.
+> - Player track '24' has undefined team_side. Will map to Team_Unknown.
+> - Player track '25' has undefined position. Will map to Position_Unknown.
+> - Player track '25' has undefined team_side. Will map to Team_Unknown.
+> - Player track '26' has undefined position. Will map to Position_Unknown.
+> - Player track '26' has undefined team_side. Will map to Team_Unknown.
+> - Player track '27' has undefined position. Will map to Position_Unknown.
+> - Player track '27' has undefined team_side. Will map to Team_Unknown.
+> - Player track '28' has undefined position. Will map to Position_Unknown.
+> - Player track '28' has undefined team_side. Will map to Team_Unknown.
+
+## **Recommended Fixes / Action Items**
+- Review players with undefined positions or team_sides. Ensure they have the correct metadata attributes in CVAT if you need precise group expansion.
