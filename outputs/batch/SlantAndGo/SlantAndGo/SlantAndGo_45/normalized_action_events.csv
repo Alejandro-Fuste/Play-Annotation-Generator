@@ -1,0 +1,7 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+SlantAndGo_45,45,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Pass_SlantAndGo,Result_Rec,,
+SlantAndGo_45,45,Ball Snap,Action_BallSnap,27,START,7,track_id,Play_Pass_SlantAndGo,Result_Rec,,
+SlantAndGo_45,45,Snap Receive,Action_SnapReceive,41,END,13,track_id,Play_Pass_SlantAndGo,Result_Rec,,
+SlantAndGo_45,45,Sell Slant,Action_SellRoute,77,START,1,track_id,Play_Pass_SlantAndGo,Result_Rec,,
+SlantAndGo_45,45,Run Go Route,Action_VerticalStem,103,START,1,track_id,Play_Pass_SlantAndGo,Result_Rec,,
+SlantAndGo_45,45,Throw Pass,Action_ThrowPass,128,START,13,track_id,Play_Pass_SlantAndGo,Result_Rec,,
