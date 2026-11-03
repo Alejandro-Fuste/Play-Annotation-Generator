@@ -63,6 +63,31 @@ class TestWideActionCSVParser(unittest.TestCase):
         self.assertEqual(all_rows[0]["video_name"], "JetSweep_69")
         self.assertEqual(all_rows[1]["video_name"], "OtherPlay_70")
 
+    def test_stop_and_go_route_columns_are_mapped(self):
+        stop_and_go_csv = """Video Name:,Stop and Go,,,,,,,,,,\n,"Key Actions (Frame Number, player track id)",,,,,,,,,,\nVideo #,Pre Snap,Ball Snap,Pass Block,Snap Receive,Pump Fake,Throw Pass,Vertical Stem,Sell Stop,Run Go Route,End of Play\n1,"0,ALL","20,18","23,OL","36,15","84,15","112,126,15","36,12","78,12","91,12",Rec\n"""
+        tmp = tempfile.NamedTemporaryFile(suffix=".csv", delete=False)
+        try:
+            tmp.write(stop_and_go_csv.encode("utf-8"))
+            tmp.close()
+
+            events, _, errors = parse_wide_action_csv(
+                tmp.name,
+                self.config,
+                target_video="1",
+            )
+
+            self.assertEqual(errors, [])
+            by_action = {event.action: event for event in events}
+            self.assertEqual(by_action["Action_VerticalStem"].start_frame, 36)
+            self.assertEqual(by_action["Action_VerticalStem"].actor_track_id, "12")
+            self.assertEqual(by_action["Action_SellStop"].start_frame, 78)
+            self.assertEqual(by_action["Action_SellStop"].actor_track_id, "12")
+            self.assertEqual(by_action["Action_RunGoRoute"].start_frame, 91)
+            self.assertEqual(by_action["Action_RunGoRoute"].actor_track_id, "12")
+        finally:
+            if os.path.exists(tmp.name):
+                os.unlink(tmp.name)
+
     def test_parse_wide_action_csv_filtered(self):
         # Filter by name
         events, _, errors = parse_wide_action_csv(self.temp_csv.name, self.config, target_video="JetSweep_69")
