@@ -1,0 +1,13 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,11,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,13,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,15,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,2,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,8,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Pre Snap_group_ALL,Action_PreSnap,0,START,9,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Kick Approach,Action_KickApproach,2,START,6,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Onside Kick,Action_KickBall,61,START,8,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Attempt Recovery,Action_AttemptRecovery,129,START,29,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
+OnsideKickRecovery_16,16,Secure Recovery,Action_SecureRecovery,137,START,21,track_id,Play_SpecialTeams_OnsideKickRecovery,,,
