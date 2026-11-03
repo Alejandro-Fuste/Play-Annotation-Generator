@@ -1,0 +1,13 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+PuntBlock_2,2,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Pre Snap_group_ALL,Action_PreSnap,0,START,1,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Pre Snap_group_ALL,Action_PreSnap,0,START,2,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Pre Snap_group_ALL,Action_PreSnap,0,START,5,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Long Snap,Action_LongSnap,18,START,2,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Snap Receive,Action_SnapReceive,42,END,6,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Punt Ball,Action_PuntBall,69,START,6,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Block Punt,Action_BlockPunt,82,START,8,track_id,Play_SpecialTeams_PuntBlock,,,
+PuntBlock_2,2,Secure Recovery,Action_SecureRecovery,223,START,29,track_id,Play_SpecialTeams_PuntBlock,,,
