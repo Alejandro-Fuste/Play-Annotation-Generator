@@ -95,6 +95,7 @@
         "Action_RunDeepOutRoute",
         "Action_RunFadeRoute",
         "Action_RunFlatRoute",
+        "Action_RunGoRoute",
         "Action_RunHitchRoute",
         "Action_RunOutRoute",
         "Action_RunPostRoute",
@@ -225,6 +226,7 @@
         "Run Deep Out Route",
         "Run Fade Route",
         "Run Flat Route",
+        "Run Go Route",
         "Run Hitch Route",
         "Run Out Route",
         "Run Post Route",
@@ -905,6 +907,11 @@
             "definition": "A specific type of zone block where an offensive lineman blocks down on a defensive lineman or linebacker to their inside, often to create a seam for a pulling lineman or a cutback lane for a running back in a zone scheme.",
             "start": "When the lineman initiates movement out of their stance, stepping down or towards their inside to engage the defender.",
             "end": "When the lineman makes contact with the defender, driving them inside or maintaining the block to seal off the interior."
+        },
+        "Run Go Route": {
+            "definition": "A receiver's vertical continuation after selling a stop or other underneath break, accelerating back upfield to complete the double-move route.",
+            "start": "When the receiver finishes the stop-route sell or redirection and begins accelerating vertically upfield.",
+            "end": "When the receiver begins tracking or attempting to catch the pass, changes route direction, or the play ends."
         }
     }
 }
