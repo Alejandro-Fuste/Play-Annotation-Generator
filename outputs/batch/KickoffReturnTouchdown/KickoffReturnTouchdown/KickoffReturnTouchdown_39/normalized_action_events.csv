@@ -1,0 +1,13 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+KickoffReturnTouchdown_39,39,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Pre Snap_group_ALL,Action_PreSnap,0,START,10,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Pre Snap_group_ALL,Action_PreSnap,0,START,12,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Pre Snap_group_ALL,Action_PreSnap,0,START,14,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Pre Snap_group_ALL,Action_PreSnap,0,START,15,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Pre Snap_group_ALL,Action_PreSnap,0,START,8,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Kick Approach,Action_KickApproach,46,START,8,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Kick Ball,Action_KickBall,127,START,8,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Catch Kick,Action_CatchKick,245,START,13,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Ball Carry,Action_BallCarry,266,START,13,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
+KickoffReturnTouchdown_39,39,Cross Goal Line,Action_CrossGoalLine,623,START,13,track_id,Play_SpecialTeams_KickoffReturnTouchdown,,,
