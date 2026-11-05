@@ -468,6 +468,9 @@ def parse_wide_action_csv(
                 target_kind = "track_id"
                 if actor_id is None:
                     target_kind = "global_event"
+                elif actor_id and actor_id.strip().lower() == "group" and "tackle" in action_label.lower():
+                    target_kind = "collective_tackle"
+                    actor_id = "group"
                 elif actor_id in ["OL", "ALL_OFFENSE", "SKILL", "ALL", "ALL_DEFENSE"]:
                     target_kind = "group"
                 elif actor_id.lower() == "ball":

@@ -266,6 +266,21 @@ def review_play_outputs(output_dir: str, csv_path: Optional[str] = None) -> str:
         elif source_col == "end_ol_block" or (act == "Action_None" and role == "BOUNDARY"):
             role = "BOUNDARY"
 
+        if kind == "collective_tackle":
+            mapping_rows.append({
+                "status": "✅ COLLECTIVE TACKLE",
+                "action": act, "position": "Group", "team": "defense",
+                "actor_track_id": "group", "xml_track_id": "N/A",
+            })
+            timing_rows.append({
+                "status": "✅ COLLECTIVE EVENT",
+                "action": act, "position": "Group",
+                "actor_track_id": "group", "xml_track_id": "N/A",
+                "annotated_frame": start_f_str or "N/A",
+                "annotated_role": role,
+                "generated_start": "N/A", "generated_end": "N/A",
+            })
+            continue
         if kind == "global_event":
             global_events += 1
             status_str = "ℹ️ GLOBAL EVENT"

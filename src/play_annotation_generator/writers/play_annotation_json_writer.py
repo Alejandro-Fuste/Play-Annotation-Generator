@@ -11,7 +11,8 @@ def write_play_annotation_json(
     dense_annotations: List[DenseActionAnnotation],
     config: Dict[str, Any],
     xml_path: str,
-    csv_path: str
+    csv_path: str,
+    events=None
 ) -> None:
     """
     Writes the enriched annotations to a structured JSON file.
@@ -77,6 +78,39 @@ def write_play_annotation_json(
             "bbox_xywh": da.bbox_xywh
         })
         
+    # Collective tackles are stored separately from player-owned action segments.
+    collective_events = [
+        {
+            "action": ev.action,
+            "start_frame": ev.start_frame,
+            "end_frame": ev.end_frame,
+            "annotated_frame": ev.annotated_frame,
+            "actor_track_id": None,
+            "xml_track_id": None,
+            "target_kind": "collective_tackle",
+            "actor_scope": "collective",
+            "source_column": ev.source_column,
+            "notes": ev.notes,
+        }
+        for ev in (events or []) if ev.target_kind == "collective_tackle"
+    ]
+
+    # Dense collective events occupy event-level frames, not individual player tracks.
+    collective_dense = [
+        {
+            "frame": frame,
+            "action": ev.action,
+            "target_kind": "collective_tackle",
+            "actor_scope": "collective",
+            "actor_track_id": None,
+            "xml_track_id": None,
+            "bbox_xyxy": None,
+            "source_column": ev.source_column,
+        }
+        for ev in (events or []) if ev.target_kind == "collective_tackle"
+        for frame in range(ev.start_frame, (ev.end_frame if ev.end_frame is not None else ev.start_frame) + 1)
+    ]
+
     # Read play-level fields from metadata
     play_tag = metadata.get("play_tag", "Play_Unknown")
     result_tag = metadata.get("result_tag", "Result_Unknown")
@@ -126,6 +160,8 @@ def write_play_annotation_json(
         },
         "actions": {
             "segments": segments_json,
+            "collective_events": collective_events,
+            "collective_dense_frame_annotations": collective_dense,
             "dense_frame_annotations": dense_json,
             "non_temporal_action_descriptors": metadata.get("non_temporal_action_descriptors", [])
         },

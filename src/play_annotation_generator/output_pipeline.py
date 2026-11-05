@@ -137,7 +137,8 @@ def write_single_clip_outputs(
             dense_annotations,
             config,
             input_xml_for_enrichment,
-            csv_path
+            csv_path,
+            events=events
         )
         written_paths["annotations_json"] = annotations_json_path
         written_paths["play_annotation_json"] = annotations_json_path

@@ -30,6 +30,18 @@ def run_validation_checks(
     num_events = len(events)
     num_segments = len(segments)
     
+    # Collective tackle events are clip-level annotations without a unique actor.
+    # They must not be treated as unresolved player-track references.
+    collective_tackles = [e for e in events if e.target_kind == "collective_tackle"]
+    for event in collective_tackles:
+        if "tackle" not in event.action.lower():
+            errors.append(f"Collective target is only supported for tackles: {event.action}")
+        if event.resolved_xml_track_id is not None:
+            errors.append(f"Collective tackle at frame {event.start_frame} must not resolve to a player track.")
+        last_frame = event.end_frame if event.end_frame is not None else event.start_frame
+        if not (start_frame <= event.start_frame <= last_frame <= stop_frame):
+            errors.append(f"Collective tackle range [{event.start_frame}, {last_frame}] is outside clip range [{start_frame}, {stop_frame}] or reversed.")
+
     # 2. Check XML Bounding Boxes for Coordinate Sanity (Spec 6.17)
     invalid_box_count = 0
     for xml_id, track in tracks.items():
