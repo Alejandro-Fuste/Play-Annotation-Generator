@@ -1,0 +1,11 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+PuntReturnTouchdown_20,20,Pre Snap_group_ALL,Action_PreSnap,0,START,11,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Pre Snap_group_ALL,Action_PreSnap,0,START,2,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Pre Snap_group_ALL,Action_PreSnap,0,START,9,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Long Snap,Action_LongSnap,211,START,11,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Snap Receive,Action_SnapReceive,241,END,9,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Punt Ball,Action_PuntBall,268,START,9,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Catch Punt,Action_CatchPunt,391,START,37,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Ball Carry,Action_BallCarry,417,START,37,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_20,20,Cross Goal Line,Action_CrossGoalLine,711,START,37,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,

@@ -1,0 +1,12 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+PuntReturnTouchdown_52,52,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Pre Snap_group_ALL,Action_PreSnap,0,START,12,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Pre Snap_group_ALL,Action_PreSnap,0,START,2,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Pre Snap_group_ALL,Action_PreSnap,0,START,9,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Long Snap,Action_LongSnap,20,START,1,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Snap Receive,Action_SnapReceive,48,END,9,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Punt Ball,Action_PuntBall,71,START,9,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_52,52,Catch Punt,Action_CatchPunt,223,START,23,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,

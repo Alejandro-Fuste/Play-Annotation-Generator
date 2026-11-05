@@ -1,0 +1,8 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+PuntReturnTouchdown_42,42,Pre Snap_group_ALL,Action_PreSnap,16,START,11,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_42,42,Pre Snap_group_ALL,Action_PreSnap,16,START,3,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_42,42,Pre Snap_group_ALL,Action_PreSnap,16,START,7,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_42,42,Long Snap,Action_LongSnap,23,START,11,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_42,42,Snap Receive,Action_SnapReceive,54,END,20,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_42,42,Catch Punt,Action_CatchPunt,211,START,0,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
+PuntReturnTouchdown_42,42,Ball Carry,Action_BallCarry,238,START,0,track_id,Play_SpecialTeams_PuntReturnTouchdown,,,
