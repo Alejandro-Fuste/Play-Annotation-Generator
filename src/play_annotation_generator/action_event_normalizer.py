@@ -56,6 +56,13 @@ def normalize_and_match_events(
 
     # 2. Process each event
     for event in events:
+        if event.target_kind == "collective_tackle":
+            # A collective tackle identifies no single actor. Do not expand it to
+            # individual players or resolve the literal "group" as a track ID.
+            event.actor_track_id = "group"
+            event.resolved_xml_track_id = None
+            resolved_events.append(event)
+            continue
         if event.target_kind == "global_event":
             # Global events don't target any specific track
             resolved_events.append(event)
