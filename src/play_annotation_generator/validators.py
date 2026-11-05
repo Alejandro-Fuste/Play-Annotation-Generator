@@ -38,8 +38,9 @@ def run_validation_checks(
             errors.append(f"Collective target is only supported for tackles: {event.action}")
         if event.resolved_xml_track_id is not None:
             errors.append(f"Collective tackle at frame {event.start_frame} must not resolve to a player track.")
-        if not (start_frame <= event.start_frame <= stop_frame):
-            errors.append(f"Collective tackle at frame {event.start_frame} is outside clip range [{start_frame}, {stop_frame}].")
+        last_frame = event.end_frame if event.end_frame is not None else event.start_frame
+        if not (start_frame <= event.start_frame <= last_frame <= stop_frame):
+            errors.append(f"Collective tackle range [{event.start_frame}, {last_frame}] is outside clip range [{start_frame}, {stop_frame}] or reversed.")
 
     # 2. Check XML Bounding Boxes for Coordinate Sanity (Spec 6.17)
     invalid_box_count = 0
