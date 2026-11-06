@@ -1,0 +1,11 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+OutsideZoneRead_50,50,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Pre Snap_group_ALL,Action_PreSnap,0,START,13,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Pre Snap_group_ALL,Action_PreSnap,0,START,2,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Pre Snap_group_ALL,Action_PreSnap,0,START,3,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Press Edge,Action_PressEdge,187,START,10,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Read Edge Defender,Action_ReadEdgeDefender,190,START,4,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
+OutsideZoneRead_50,50,Handoff,Action_Handoff,205,START,4,track_id,Play_Run_OutsideZoneRead,Result_OutOfBounds,,
