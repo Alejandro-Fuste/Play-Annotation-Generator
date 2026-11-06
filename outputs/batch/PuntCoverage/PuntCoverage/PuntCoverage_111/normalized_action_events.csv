@@ -1,0 +1,13 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,1,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,11,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,12,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,14,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,16,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,3,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Punt Ball,Action_PuntBall,50,START,0,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Catch Punt,Action_CatchPunt,177,START,7,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Ball Carry,Action_BallCarry,201,START,7,track_id,Play_SpecialTeams_PuntCoverage,,,
+PuntCoverage_111,111,Tackle,Action_Tackle,224,START,31,track_id,Play_SpecialTeams_PuntCoverage,,,
