@@ -40,6 +40,9 @@ def parse_cell_entries(
             next_lines.extend(l.split(sep))
         line_splits = next_lines
 
+    def invalid_actor(actor: Optional[str]) -> bool:
+        return actor is not None and actor.strip().lower() in {"?", "??", "[?]", "undefined"}
+
     parsed = []
     for line in line_splits:
         line = line.strip()
@@ -53,7 +56,10 @@ def parse_cell_entries(
             e_frame = int(m.group(2))
             act_id = m.group(3).strip()
             if s_frame <= e_frame:
-                parsed.append(ParsedEntry(s_frame, act_id, None, end_frame=e_frame))
+                if invalid_actor(act_id):
+                    parsed.append(ParsedEntry(None, act_id, f"Unknown actor track ID '{act_id}' in entry '{line}'."))
+                else:
+                    parsed.append(ParsedEntry(s_frame, act_id, None, end_frame=e_frame))
                 continue
 
         # Split by semicolon continuation within this line
@@ -72,7 +78,7 @@ def parse_cell_entries(
                 val = raw_parts[0]
                 if current_frame is not None:
                     # Bare token inherits current_frame (and current_end_frame if range)
-                    if val in ["?", "??"] or not val:
+                    if invalid_actor(val) or not val:
                         parsed.append(ParsedEntry(None, val, f"Invalid continuation actor ID '{val}'."))
                     else:
                         parsed.append(ParsedEntry(current_frame, val, None, end_frame=current_end_frame))
@@ -94,7 +100,10 @@ def parse_cell_entries(
                         frame = int(frame_str)
                         current_frame = frame
                         current_end_frame = None
-                        parsed.append(ParsedEntry(frame, actor_str, None))
+                        if invalid_actor(actor_str):
+                            parsed.append(ParsedEntry(None, actor_str, f"Unknown actor track ID '{actor_str}' in entry '{sub_entry}'."))
+                        else:
+                            parsed.append(ParsedEntry(frame, actor_str, None))
                     except ValueError:
                         current_frame = None
                         current_end_frame = None
@@ -111,6 +120,16 @@ def parse_cell_entries(
                     end_frame = int(end_str)
                 except ValueError:
                     pass
+                if invalid_actor(actor_str):
+                    parsed.append(ParsedEntry(None, actor_str, f"Unknown actor track ID '{actor_str}' in entry '{sub_entry}'."))
+                    current_frame = None
+                    current_end_frame = None
+                    continue
+                if end_str in {"?", "??", "[?]"}:
+                    parsed.append(ParsedEntry(None, actor_str, f"Unknown end frame '{end_str}' in entry '{sub_entry}'."))
+                    current_frame = None
+                    current_end_frame = None
+                    continue
                 if start_frame is not None and end_frame is not None:
                     if end_frame >= start_frame:
                         current_frame = start_frame
@@ -142,7 +161,9 @@ def parse_cell_entries(
                     current_frame = frame
                     current_end_frame = None
                     for actor_id in raw_parts[1:]:
-                        if actor_id:
+                        if invalid_actor(actor_id):
+                            parsed.append(ParsedEntry(None, actor_id, f"Unknown actor track ID '{actor_id}' in entry '{sub_entry}'."))
+                        elif actor_id:
                             parsed.append(ParsedEntry(frame, actor_id, None))
                 except ValueError:
                     current_frame = None
