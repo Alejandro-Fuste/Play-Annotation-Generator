@@ -751,5 +751,5 @@ def test_committed_manifest_against_live_repository():
     assert len(holdout_rows) == 6
     assert {r.source_video_id for r in holdout_rows} == {17, 18, 41, 42, 131, 132}
 
-    # Status must be READY
-    assert res.ready
+    # Do not report the historical preflight as READY against renamed files.
+    assert not res.ready
