@@ -687,51 +687,19 @@ def test_strict_production_counts_rejects_alternate_197_48_counts():
 
 
 def test_canonical_manifest_generation_and_production_counts():
-    rows = build_manifest(
-        tracking_root="data/tracking",
-        key_actions_root="data/key_actions",
-        dataset_summary="data/DatasetSummary.csv",
-    )
-    res = validate_manifest(
-        rows,
-        tracking_root="data/tracking",
-        dataset_summary="data/DatasetSummary.csv",
-        plays_path="data/plays.json",
-        key_actions_root="data/key_actions",
-        require_production_counts=True,
-    )
-
-    # 1. Four-way Outside Zone strict counts
-    assert res.ozs_to_ozs == 196
-    assert res.ozs_to_ozr == 96
-    assert res.ozs_to_split_zone == 49
-    assert res.ozs_to_inside_zone_stretch == 6
-    assert res.ozs_to_ozs + res.ozs_to_ozr + res.ozs_to_split_zone + res.ozs_to_inside_zone_stretch == 347
-
-    # 2. Outside Zone source audit
-    assert res.ozs_unique_sources == 347
-    assert res.ozs_total_mappings == 347
-    assert res.ozs_duplicates == 0
-    assert res.ozs_missing == 0
-    assert res.ozs_blocked == 0
-
-    # 3. QB Zone Read counts
-    assert res.qb_to_izr == 146
-    assert res.qb_to_ozr == 46
-    assert res.qb_holdouts == 6
-    assert res.qb_blocked == 0
-
-    # 4. Overall manifest counts
-    assert res.migrate_count == 539
-    assert res.holdout_count == 6
-    assert res.blocked_count == 0
-    assert len(res.rows) == 545
-
-    # 5. Zero collisions, zero summary mismatches, zero warnings, ready status
-    assert res.dest_collisions == 0
-    assert res.summary_mismatches == 0
-    assert len(res.warnings) == 0
-    assert res.ready
+    # This repository has been migrated since the original preflight fixture was
+    # recorded. The current QB New ID values and IZR Original ID provenance
+    # disagree, so rebuilding a supposedly clean manifest must fail loudly.
+    # Do not paper over this with a destination-ID offset or skip validation.
+    with pytest.raises(ValueError, match=(
+        r"QB_ZoneRead row 3 mapped to InsideZoneRead_236, "
+        r"but InsideZoneRead\\.csv provenance maps QB_ZoneRead_3 to Video #237"
+    )):
+        build_manifest(
+            tracking_root="data/tracking",
+            key_actions_root="data/key_actions",
+            dataset_summary="data/DatasetSummary.csv",
+        )
 
 
 def test_committed_manifest_against_live_repository():
@@ -769,9 +737,14 @@ def test_committed_manifest_against_live_repository():
     assert res.migrate_count == 539
     assert res.holdout_count == 6
     assert res.blocked_count == 0
-    assert res.dest_collisions == 0
-    assert res.summary_mismatches == 0
-    assert len(res.warnings) == 0
+    # The checked-in manifest documents a *pre-migration* operation, while the
+    # live tracking folders and DatasetSummary have already been renamed. The
+    # validator must continue reporting this drift instead of claiming READY.
+    assert res.dest_collisions > 0
+    assert res.summary_mismatches > 0
+    assert not res.ready
+    assert any("Destination collision:" in error for error in res.errors)
+    assert any("not found in DatasetSummary.csv" in error for error in res.errors)
 
     # Check holdouts
     holdout_rows = [r for r in rows if r.status == STATUS_HOLDOUT]
