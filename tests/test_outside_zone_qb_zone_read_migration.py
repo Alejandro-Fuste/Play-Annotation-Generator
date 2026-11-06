@@ -693,7 +693,7 @@ def test_canonical_manifest_generation_and_production_counts():
     # Do not paper over this with a destination-ID offset or skip validation.
     with pytest.raises(ValueError, match=(
         r"QB_ZoneRead row 3 mapped to InsideZoneRead_236, "
-        r"but InsideZoneRead\\.csv provenance maps QB_ZoneRead_3 to Video #237"
+        r"but InsideZoneRead\.csv provenance maps QB_ZoneRead_3 to Video #237"
     )):
         build_manifest(
             tracking_root="data/tracking",
