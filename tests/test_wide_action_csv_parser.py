@@ -53,6 +53,15 @@ class TestWideActionCSVParser(unittest.TestCase):
         self.assertEqual(len(res), 1)
         self.assertIsNotNone(res[0][2]) # Error message is populated
 
+    def test_unknown_actor_and_range_endpoint_are_not_valid_events(self):
+        for cell in ("731,?", "731,??", "731,[?]", "570,?,24", "100,110,?", "50,18;?"):
+            entries = parse_cell_entries(cell)
+            self.assertTrue(any(error for _, _, error in entries), cell)
+            self.assertFalse(all(error is None for _, _, error in entries), cell)
+        self.assertEqual(parse_cell_entries("731,51"), [(731, "51", None)])
+        valid = parse_cell_entries("570,596,24")
+        self.assertEqual(valid[0].end_frame, 596)
+
     def test_parse_wide_action_csv_all(self):
         # Parse without filtering
         events, all_rows, errors = parse_wide_action_csv(self.temp_csv.name, self.config, target_video=None)
