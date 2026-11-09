@@ -1,0 +1,12 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+OutsideZoneStretch_123,123,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Pre Snap_group_ALL,Action_PreSnap,0,START,1,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Pre Snap_group_ALL,Action_PreSnap,0,START,10,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Pre Snap_group_ALL,Action_PreSnap,0,START,13,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Zone Block_group_OL,Action_ZoneBlock,112,START,13,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Press Edge,Action_PressEdge,115,START,0,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
+OutsideZoneStretch_123,123,Handoff,Action_Handoff,128,START,10,track_id,Play_Run_OutsideZoneStretch,Result_OutOfBounds,,
