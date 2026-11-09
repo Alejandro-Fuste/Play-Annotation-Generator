@@ -12,7 +12,7 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 9,"0,ALL",-,"1,5,14,0,2","153,193,OL",-,"156,227,7",-,-,"220,234,20",-,-,-,OOB,OutsideZoneStretch_10,OutsideZoneClosed_10
 10,"0,ALL",-,"3,9,20,21,18","59,99,OL",-,"69,99,6",-,-,"76,90,11",-,-,-,OOB,OutsideZoneStretch_15,OutsideZoneClosed_15
 11,"0,ALL",-,"5,6,2,10,6","99,129,OL",-,"118,147,13",-,-,"118,132,12",-,-,-,OOB,OutsideZoneStretch_16,OutsideZoneClosed_16
-12,"0,ALL",-,"17,21,17,20,18","46,103,OL",-,"50,133,12",-,-,"77,76,11",-,-,-,OOB,OutsideZoneStretch_19,OutsideZoneClosed_19
+12,"0,ALL",-,"17,21,17,20,18","46,103,OL",-,"50,133,12",-,-,"70,86,11",-,-,-,OOB,OutsideZoneStretch_19,OutsideZoneClosed_19
 13,"0,ALL",-,"11,6,2,4,9","50,95,OL",-,"57,121,13",-,-,"64,83,10",-,-,-,OOB,OutsideZoneStretch_20,OutsideZoneClosed_20
 14,"0,ALL",-,"21,16,18,20,19","67,98,OL",-,"72,119,5",-,-,"88,97,17",-,-,-,Tac,OutsideZoneStretch_21,OutsideZoneClosed_21
 15,"0,ALL",-,"12,18,17,8,6","67,102,OL",-,"94,124,2",-,-,"90,106,15",-,-,-,Tac,OutsideZoneStretch_22,OutsideZoneClosed_22
@@ -24,7 +24,7 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 21,"0,ALL",-,"9,12,5,13,4","31,85,OL",-,"31,105,3",-,-,"53,65,15",-,-,-,TD,OutsideZoneStretch_32,OutsideZoneClosed_32
 22,"0,ALL",-,"7,13,9,20,18","89,128,OL",-,"97,157,3",-,-,"109,126,19",-,-,-,Tac,OutsideZoneStretch_35,OutsideZoneClosed_35
 23,"0,ALL",-,"10,7,9,14,0","99,134,OL",-,"102,152,16",-,-,"116,131,17",-,-,-,TD,OutsideZoneStretch_36,OutsideZoneClosed_36
-24,"0,ALL",-,"5,13,9,10,12","130,178,OL",-,"124,199,7",-,-,"156,152,11",-,-,-,TD,OutsideZoneStretch_40,OutsideZoneClosed_40
+24,"0,ALL",-,"5,13,9,10,12","130,178,OL",-,"124,199,7",-,-,"151,167,11",-,-,-,TD,OutsideZoneStretch_40,OutsideZoneClosed_40
 25,"0,ALL",-,"21,20,12,16,13","41,96,OL",-,"55,100,18",-,-,"53,68,8",-,-,-,TD,OutsideZoneStretch_41,OutsideZoneClosed_41
 26,"0,ALL",-,"17,12,13,20,11","151,228,OL",-,"147,221,3",-,-,"97,107,4",-,-,-,Tac,OutsideZoneStretch_43,OutsideZoneClosed_43
 27,"0,ALL",-,"2,11,15,4,7","149,228,OL",-,"157,201,5",-,-,"178,193,18",-,-,-,Tac,OutsideZoneStretch_44,OutsideZoneClosed_44
@@ -37,7 +37,7 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 34,"0,ALL",-,"7,2,12,11,19","58,100,OL",-,"62,130,0",-,-,"84,96,18",-,-,-,TD,OutsideZoneStretch_53,OutsideZoneClosed_53
 35,"11,ALL",-,"15,1,11,9,10","47,89,OL",-,"47,116,8",-,-,"72,84,24",-,-,-,TD,OutsideZoneStretch_54,OutsideZoneClosed_54
 36,"0,ALL",-,"7,13,22,19,18","180,234,OL",-,"187,261,16",-,"231,390,16",-,-,-,-,Tac,OutsideZoneStretch_59,OutsideZoneClosed_59
-37,"0,ALL",-,"8,11,16,10,3","307,78,OL",-,"112,113,12",-,"80,240,12",-,-,-,-,Tac,OutsideZoneStretch_60,OutsideZoneClosed_60
+37,"0,ALL",-,"8,11,16,10,3","26,75,OL",-,"112,113,12",-,"80,240,12",-,-,-,-,Tac,OutsideZoneStretch_60,OutsideZoneClosed_60
 38,"0,ALL",-,"22,19,21,13,11","75,113,OL",-,"86,149,8",-,"95,330,8",-,-,-,-,TD,OutsideZoneStretch_61,OutsideZoneClosed_61
 39,"0,ALL",-,"5,2,12,4,1","114,157,OL",-,"121,199,15",-,"124,360,15",-,-,-,-,TD,OutsideZoneStretch_62,OutsideZoneClosed_62
 40,"0,ALL",-,"17,8,21,19,15","104,154,OL",-,"111,166,7",-,-,"123,140,4",-,-,-,TD,OutsideZoneStretch_67,OutsideZoneClosed_67
@@ -50,7 +50,7 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 47,"0,ALL",-,"6,3,15,12,10","76,141,OL",-,"67,158,18",-,-,"103,112,19",-,-,-,Tac,OutsideZoneStretch_96,OutsideZoneClosed_96
 48,"0,ALL",-,"21,18,15,13,14","80,131,OL",-,"80,149,0",-,-,"89,108,8",-,-,-,TD,OutsideZoneStretch_97,OutsideZoneClosed_97
 49,"0,ALL",-,"18,11,8,14,16","108,119,OL",-,"111,132,8",-,-,"84,101,7",-,-,-,OOB,OutsideZoneStretch_101,OutsideZoneClosed_101
-50,"0,ALL",-,"11,16,13,15,10",-,-,"-,OL",-,-,-,-,-,-,-,OutsideZoneStretch_102,OutsideZoneClosed_102
+50,"0,ALL",-,"11,16,13,15,10","65,110,OL",-,"92,132,8",-,-,"78,101,7",-,-,-,Tac,OutsideZoneStretch_102,OutsideZoneClosed_102
 51,"0,ALL",-,"4,15,12,17,20","108,181,OL",-,"112,152,0",-,-,"127,148,1",-,-,-,Tac,OutsideZoneStretch_103,OutsideZoneClosed_103
 52,"0,ALL",-,"0,2,12,6,4","134,174,OL",-,"142,181,10",-,-,"154,165,14",-,-,-,Tac,OutsideZoneStretch_104,OutsideZoneClosed_104
 53,"0,ALL",-,"20,19,14,17,18","134,175,OL",-,"136,185,3",-,-,"163,171,12",-,-,-,Tac,OutsideZoneStretch_105,OutsideZoneClosed_105
@@ -64,7 +64,7 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 61,"0,ALL",-,"21,12,7,10,14","92,147,OL",-,"108,184,11",-,-,"124,133,11",-,-,-,Tac,OutsideZoneStretch_115,OutsideZoneClosed_115
 62,"0,ALL",-,"5,17,6,7,9","81,127,OL",-,"81,164,2",-,-,"92,108,2",-,-,-,Tac,OutsideZoneStretch_116,OutsideZoneClosed_116
 63,"0,ALL",-,"20,19,21,17,16","194,257,OL",-,"205,307,12",-,-,"217,228,12",-,-,-,Tac,OutsideZoneStretch_117,OutsideZoneClosed_117
-64,"0,ALL",-,"10,11,22,7,18","441,220,OL",-,"153,243,26",-,-,"468,176,9",-,-,-,Tac,OutsideZoneStretch_118,OutsideZoneClosed_118
+64,"0,ALL",-,"10,11,22,7,18","134,188,OL",-,"174,218,26",-,-,"158,176,9",-,-,-,Tac,OutsideZoneStretch_118,OutsideZoneClosed_118
 65,"0,ALL",-,"18,17,16,21,7","104,161,OL",-,"111,161,12",-,-,"120,144,20",-,-,-,Tac,OutsideZoneStretch_125,OutsideZoneClosed_125
 66,"0,ALL",-,"8,4,13,0,2","90,135,OL",-,"99,153,5",-,-,"114,124,13",-,-,-,Tac,OutsideZoneStretch_126,OutsideZoneClosed_126
 67,"0,ALL",-,"18,17,14,16,4","212,256,OL",-,"213,257,9",-,-,"225,249,1",-,-,-,TD,OutsideZoneStretch_127,OutsideZoneClosed_127
@@ -83,9 +83,9 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 80,"0,ALL",-,"13,17,16,20,19","223,250,OL",-,"230,282,13",-,-,"247,289,19",-,-,-,Tac,OutsideZoneStretch_147,OutsideZoneClosed_147
 81,"0,ALL",-,"0,7,13,14,15","152,197,OL",-,"156,197,10",-,-,"175,185,11",-,-,-,Tac,OutsideZoneStretch_150,OutsideZoneClosed_150
 82,"0,ALL",-,"4,10,15,21,20","134,178,OL",-,"142,178,12",-,-,"160,167,8",-,-,-,Tac,OutsideZoneStretch_151,OutsideZoneClosed_151
-83,"0,ALL",-,"5,4,9,11,5","149,195,OL",-,"161,196,10",-,-,"172,152,6",-,-,-,Tac,OutsideZoneStretch_152,OutsideZoneClosed_152
-84,"0,ALL",-,"21,11,20,18,2","90,82,OL",-,"147,188,11",-,-,"84,65,7",-,-,-,Tac,OutsideZoneStretch_153,OutsideZoneClosed_153
-85,"0,ALL",-,"0,12,11,15","-,OL",-,-,-,-,-,-,-,-,-,OutsideZoneStretch_154,OutsideZoneClosed_154
+83,"0,ALL",-,"5,4,9,11,5","149,195,OL",-,"161,196,10",-,-,"156,168,8",-,-,-,Tac,OutsideZoneStretch_152,OutsideZoneClosed_152
+84,"0,ALL",-,"21,11,20,18,2","147,198,OL",-,"184,194,6",-,-,"168,183,10",-,"176,198,17",-,Tac,OutsideZoneStretch_153,OutsideZoneClosed_153
+85,"0,ALL",-,"0,12,11,15","28,60,OL",-,"66,81,14",-,-,"49,65,7",-,"60,83,12",-,-,OutsideZoneStretch_154,OutsideZoneClosed_154
 86,"0,ALL",-,"21,20,15,17,18","67,118,OL",-,"71,118,7",-,-,"84,100,4",-,-,-,OOB,OutsideZoneStretch_157,OutsideZoneClosed_157
 87,"0,ALL",-,"6,9,10,11,7","25,89,OL",-,"35,84,12",-,-,"56,61,14",-,-,-,OOB,OutsideZoneStretch_158,OutsideZoneClosed_158
 88,"0,ALL",-,"9,20,18,17,13","74,121,OL",-,"83,121,3",-,-,"91,104,6",-,-,-,TD,OutsideZoneStretch_159,OutsideZoneClosed_159
@@ -93,7 +93,7 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 90,"0,ALL",-,"8,21,18,17,20","23,74,OL",-,"30,74,9",-,-,"46,61,14",-,-,-,TD,OutsideZoneStretch_167,OutsideZoneClosed_167
 91,"0,ALL",-,"15,11,14,3,4","76,142,OL",-,"97,144,11",-,-,"116,129,8",-,-,-,TD,OutsideZoneStretch_168,OutsideZoneClosed_168
 92,"0,ALL",-,"8,21,14,7,8","111,160,OL",-,"120,162,4",-,-,"133,147,11",-,-,-,Tac,OutsideZoneStretch_169,OutsideZoneClosed_169
-93,"0,ALL",-,"7,12,14,2,6","59,116,OL",-,"67,103,4",-,-,"75,73,10",-,-,-,Tac,OutsideZoneStretch_170,OutsideZoneClosed_170
+93,"0,ALL",-,"7,12,14,2,6","59,116,OL",-,"67,103,4",-,-,"75,93,10",-,-,-,Tac,OutsideZoneStretch_170,OutsideZoneClosed_170
 94,"0,ALL",-,"18,20,14,19,11","63,110,OL",-,"75,123,13",-,-,"87,98,6",-,-,-,Tac,OutsideZoneStretch_177,OutsideZoneClosed_177
 95,"0,ALL",-,"8,7,13,9,1","32,79,OL",-,"41,79,5",-,-,"53,66,14",-,-,-,Tac,OutsideZoneStretch_178,OutsideZoneClosed_178
 96,"0,ALL",-,"4,19,17,15,14","120,180,OL",-,"122,172,1",-,-,"132,150,7",-,-,-,OOB,OutsideZoneStretch_181,OutsideZoneClosed_181
@@ -136,10 +136,10 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 133,"0,ALL",-,"18,20,15,16,17","126,168,OL",-,"130,167,1",-,-,"165,173,18",-,-,-,Tac,OutsideZoneStretch_236,OutsideZoneClosed_236
 134,"0,ALL",-,"1,7,14,9,6","138,185,OL",-,"142,188,8",-,-,"142,157,11",-,-,-,Tac,OutsideZoneStretch_237,OutsideZoneClosed_237
 135,"0,ALL",,"20,19,13,11,2","114,171,OL",-,"126,171,4",-,-,"138,156,10",-,-,-,Tac,OutsideZoneStretch_240,OutsideZoneClosed_240
-136,"19,ALL",-,"6,7,12,10,5","171,216,OL",-,"166,120,15",-,-,"187,208,13",-,-,-,Tac,OutsideZoneStretch_241,OutsideZoneClosed_241
+136,"19,ALL",-,"6,7,12,10,5","171,216,OL",-,"182,215,19",-,-,"187,209,13",-,-,-,Tac,OutsideZoneStretch_241,OutsideZoneClosed_241
 137,"0,ALL",-,"12,14,20,21,19","110,161,OL",-,"73,132,11",-,-,-,-,-,-,Tac,OutsideZoneStretch_242,OutsideZoneClosed_242
-138,"0,ALL",-,"2,5,14,8,6","66,132,OL",-,"106,160,18",-,-,"191,133,13",-,-,-,TD,OutsideZoneStretch_243,OutsideZoneClosed_243
-139,"0,ALL",-,"17,14,10,19,1","95,136,OL",-,"133,92,7",-,-,"150,164,7",-,-,-,TD,OutsideZoneStretch_244,OutsideZoneClosed_244
+138,"0,ALL",-,"2,5,14,8,6","66,132,OL",-,"87,106,11",-,"87,106,11",-,-,-,-,Tac,OutsideZoneStretch_243,OutsideZoneClosed_243
+139,"0,ALL",-,"17,14,10,19,1","95,136,OL",-,"116,165,18",-,-,-,"166,420,18",-,-,TD,OutsideZoneStretch_244,OutsideZoneClosed_244
 140,"0,ALL",-,"6,13,16,8,14","121,177,OL",-,"238,301,11",-,-,"251,261,9",-,-,-,OOB,OutsideZoneStretch_245,OutsideZoneClosed_245
 141,"0,ALL",-,"19,21,14,19,20","227,303,OL",-,"212,292,9",-,-,"230,231,23",-,-,-,OOB,OutsideZoneStretch_246,OutsideZoneClosed_246
 142,"0,ALL",-,"0,6,17,8,2","206,258,OL",-,"182,227,2",-,-,"191,202,15",-,-,-,Tac,OutsideZoneStretch_247,OutsideZoneClosed_247
@@ -149,11 +149,11 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 146,"0,ALL",-,"0,8,6,7,10","94,136,OL",-,"108,170,6",-,-,"114,131,13",-,-,-,TD,OutsideZoneStretch_253,OutsideZoneClosed_253
 147,"0,ALL",-,"11,19,7,21,18","79,138,OL",-,"88,161,17",-,-,"107,117,13",-,-,-,TD,OutsideZoneStretch_254,OutsideZoneClosed_254
 148,"0,ALL",-,"4,16,12,15,9","30,89,OL",-,"34,102,3",-,-,"61,72,11",-,-,-,Tac,OutsideZoneStretch_255,OutsideZoneClosed_255
-149,"0,ALL",-,"9,8,11,3,21","-,OL",-,-,-,-,-,-,-,-,-,OutsideZoneStretch_258,OutsideZoneClosed_258
+149,"0,ALL",-,"9,8,11,3,21","30,90,OL",-,"39,97,[?]",-,-,"42,62,8",-,"63,90,23",-,-,OutsideZoneStretch_258,OutsideZoneClosed_258
 150,"0,ALL",-,"21,16,15,12,10","111,155,OL",-,"122,181,7",-,-,"133,149,7",-,-,-,Tac,OutsideZoneStretch_261,OutsideZoneClosed_261
 151,"0,ALL",-,"5,15,10,11,7","125,172,OL",-,"137,190,14",-,-,"153,166,13",-,-,-,Tac,OutsideZoneStretch_262,OutsideZoneClosed_262
 152,"0,ALL",-,"5,17,16,21,20","114,158,OL",-,"153,180,13",-,-,"139,155,19",-,-,-,Fumble,OutsideZoneStretch_263,OutsideZoneClosed_263
-153,"0,ALL",-,"5,7,12,4,1","163,212,OL",-,"172,221,6",-,-,"180,176,8",-,-,-,,OutsideZoneStretch_264,OutsideZoneClosed_264
+153,"0,ALL",-,"5,7,12,4,1","163,212,OL",-,"172,221,6",-,-,"180,198,8",-,-,-,,OutsideZoneStretch_264,OutsideZoneClosed_264
 154,"0,ALL",-,"20,21,3,11,7","106,165,OL",-,"113,149,15",-,-,"123,139,5",-,-,-,OOB,OutsideZoneStretch_267,OutsideZoneClosed_267
 155,"0,ALL",-,"3,9,15,4,11","35,77,OL",-,"46,72,7",-,-,"62,69,15",-,-,-,OOB,OutsideZoneStretch_268,OutsideZoneClosed_268
 156,"0,ALL",-,"8,17,20,21,11","37,72,OL",-,"39,76,3",-,-,"55,65,10",-,-,-,TD,OutsideZoneStretch_269,OutsideZoneClosed_269
@@ -195,5 +195,5 @@ Video #,Pre Snap,Ball Snap,OL,Zone Block,Snap Receive,Press Edge,Read Edge Defen
 192,"0,ALL",-,"1,4,17,6,5","201,249,OL",-,"215,249,7",-,-,"186,203,8",-,-,-,Tac,OutsideZoneStretch_337,OutsideZoneClosed_337
 193,"0,ALL",-,"18,14,16,20,11","162,233,OL",-,"180,224,6",-,-,"48,57,15",-,-,-,Tac,OutsideZoneStretch_338,OutsideZoneClosed_338
 194,"0,ALL",-,"0,8,14,7,2","26,72,OL",-,"33,89,5",-,-,"152,162,5",-,-,-,Tac,OutsideZoneStretch_339,OutsideZoneClosed_339
-195,"0,ALL",-,"20,21,19,17,13","124,190,OL",-,"134,210,4",-,-,"154,149,8",-,-,-,Tac,OutsideZoneStretch_340,OutsideZoneClosed_340
+195,"0,ALL",-,"20,21,19,17,13","124,190,OL",-,"134,210,4",-,-,"148,162,5",-,-,-,Tac,OutsideZoneStretch_340,OutsideZoneClosed_340
 196,"0,ALL",-,"6,11,17,8,1","132,186,OL",-,"176,184,21",-,-,"150,170,14",-,-,-,Tac,OutsideZoneStretch_347,OutsideZoneClosed_347
