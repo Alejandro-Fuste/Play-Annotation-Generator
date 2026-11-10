@@ -92,6 +92,16 @@ def normalize_and_match_events(
                 errors.append(f"Group/position target '{group_name}' for action '{event.action}' at frame {event.start_frame} could not be resolved to any XML tracks (position/team_side missing).")
                 continue
                 
+            if event.blocking_scheme is not None:
+                required_positions = {"LT", "LG", "C", "RG", "RT"}
+                matched_positions = {t.position for t in matched_tracks}
+                if len(matched_tracks) != 5 or matched_positions != required_positions:
+                    errors.append(
+                        "RPO Run Block requires exactly five verified OL positions "
+                        f"{sorted(required_positions)}; found {sorted(str(p) for p in matched_positions)}."
+                    )
+                    continue
+
             for track in matched_tracks:
                 actor_id = track.custom_track_id if track.custom_track_id else track.xml_track_id
                 expanded_event = ActionEvent(
@@ -111,7 +121,8 @@ def normalize_and_match_events(
                     target_kind="track_id",
                     source_column=f"{event.source_column}_group_{group_name}",
                     actor_position=track.position,
-                    notes=event.notes
+                    notes=event.notes,
+                    blocking_scheme=event.blocking_scheme
                 )
                 resolved_events.append(expanded_event)
                 
