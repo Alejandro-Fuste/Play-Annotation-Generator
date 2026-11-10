@@ -26,7 +26,7 @@ jobs:
       - name: Install package and tests
         run: python -m pip install -e . pytest
       - name: RPO and existing parser regressions
-        run: python -m pytest -q tests/test_rpo_blocking.py tests/test_wide_action_csv_parser.py
+        run: python -m pytest -q tests/test_rpo_blocking.py tests/test_wide_action_csv_parser.py tests/test_showcase_readiness.py::test_rpo_presnap_boundary_and_coverage
 
   rpo-smoke:
     runs-on: ubuntu-latest
