@@ -1,14 +1,14 @@
-Video Name:,RPO,"Run Block - Frame, Z/G, OL. Use end frame of Throw Pass for end frame of run block.",,,,,,,,
+Video Name:,RPO,"Run Block - Frame, Z/G, OL. Use end frame of Throw Pass for end frame of run block. Z=Zone Blocking, G=Gap Blocking, P=Pass Blocking",,,,,,,,
 ,"Key Actions (Frame Number, player track id[s])",,,,,,,,,
 Video #,Pre Snap,Run Block ,Read Defender,Pull Ball,Throw Pass,Route,End of Play,,,
 1,"0,ALL","88,G,OL","100,18","121,133,18","134,145,18","post,7",Tac,,,
-2,"55,ALL","207,G,OL","213,39","239,39","256,269,39",",43 Tac",,,0,0
+2,"0,ALL","85,G,OL","113,14","120,14","139,148,14","slant,18",Tac,,0,0
 3,"0,ALL","49,G,OL","56,15","70,18","85,95,18","slant,3",OOB,,,
 4,"0,ALL","38,G,OL","47,9","57,9","76,84,7",",27 OOB",,,,
 5,"0,ALL","53,Z,OL","60,17","75,17","98,109,17","post,2",Tac,,,
 6,"0,ALL","78,Z,OL","96,2","110,2","131,141,2",",25 Tac",,,,
 7,"0,ALL","43,Z,OL","75,19","75,19","108,111,19","fade,0",OOB,,,
-8,"0,ALL","35,Z,OL","39,8","55,8","76,86,8",",37 OOB",,,,
+8,"0,ALL","35,Z,OL","39,8","55,8","76,86,8",",37 OOB",, ,,
 11,"0,ALL","30,Z,OL","41,13","57,67,13","92,103,13","post,6",Tac,,,
 12,"0,ALL","41,Z,OL","52,9","65,72,9","101,111,9",",29 Tac",,,,
 13,"0,ALL","54,Z,OL","59,13","66,75,13","84,92,13","hitch,1",OOB,,,
