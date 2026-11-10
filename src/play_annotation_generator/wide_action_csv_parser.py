@@ -207,6 +207,13 @@ RPO_ROUTE_ACTION_MAP: Dict[str, str] = {
     "sail": "Action_RunSailRoute",
     "seam": "Action_RunSeamRoute",
     "comeback": "Action_RunComebackRoute",
+    "wheel": "Action_RunWheelRoute",
+    "hitch(go)": "Action_RunHitchGoRoute",
+    "hitch-go": "Action_RunHitchGoRoute",
+    "in": "Action_RunInRoute",
+    "slant(go)": "Action_RunSlantGoRoute",
+    "slant-go": "Action_RunSlantGoRoute",
+    "corner": "Action_RunCornerRoute",
 }
 
 def parse_rpo_route_descriptor(cell_val: str, source_column: str = "Route") -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
@@ -231,7 +238,10 @@ def parse_rpo_route_descriptor(cell_val: str, source_column: str = "Route") -> T
     route_name = parts[0].strip().lower()
     actor_track_id = parts[1].strip()
     
-    if actor_track_id in ["?", "??", "[?]", "undefined", "none", "None"] or "[" in actor_track_id:
+    # Only concrete numeric track IDs are valid for non-temporal Route descriptors.
+    # Reject placeholders ('-', '?', '[?]'), arbitrary strings and negative IDs.
+    # Track ID 0 is valid in MOT exports.
+    if not re.fullmatch(r"[0-9]+", actor_track_id):
         return None, f"Invalid or unassigned actor track ID '{actor_track_id}' in Route descriptor '{val}'."
         
     canonical_action = RPO_ROUTE_ACTION_MAP.get(route_name)

@@ -92,18 +92,23 @@
         "Action_RunAfterCatch",
         "Action_RunBlock",
         "Action_RunComebackRoute",
+        "Action_RunCornerRoute",
         "Action_RunDeepCrossRoute",
         "Action_RunDeepOutRoute",
         "Action_RunFadeRoute",
         "Action_RunFlatRoute",
         "Action_RunGoRoute",
+        "Action_RunHitchGoRoute",
         "Action_RunHitchRoute",
+        "Action_RunInRoute",
         "Action_RunOutRoute",
         "Action_RunPostRoute",
         "Action_RunSailRoute",
         "Action_RunSeamRoute",
+        "Action_RunSlantGoRoute",
         "Action_RunSlantRoute",
         "Action_RunSupport",
+        "Action_RunWheelRoute",
         "Action_SackQuarterback",
         "Action_ScreenBlock",
         "Action_SealBlock",
@@ -225,18 +230,23 @@
         "Run After Catch",
         "Run Block",
         "Run Comeback Route",
+        "Run Corner Route",
         "Run Deep Cross Route",
         "Run Deep Out Route",
         "Run Fade Route",
         "Run Flat Route",
         "Run Go Route",
+        "Run Hitch Go Route",
         "Run Hitch Route",
+        "Run In Route",
         "Run Out Route",
         "Run Post Route",
         "Run Sail Route",
         "Run Seam Route",
+        "Run Slant Go Route",
         "Run Slant Route",
         "Run Support",
+        "Run Wheel Route",
         "Sack Quarterback",
         "Screen Block",
         "Seal Block",
@@ -926,6 +936,31 @@
             "definition": "A receiver's vertical continuation after selling a stop or other underneath break, accelerating back upfield to complete the double-move route.",
             "start": "When the receiver finishes the stop-route sell or redirection and begins accelerating vertically upfield.",
             "end": "When the receiver begins tracking or attempting to catch the pass, changes route direction, or the play ends."
+        },
+        "Run Wheel Route": {
+            "definition": "A receiving route that initially releases toward the flat before turning upfield on a wheel-shaped vertical path near the sideline.",
+            "start": "When the receiver releases toward the flat to begin the wheel route.",
+            "end": "When the receiver establishes the upfield wheel path, attempts a catch, redirects, or the play ends."
+        },
+        "Run Hitch Go Route": {
+            "definition": "A double-move route that sells a hitch or stop before reaccelerating vertically upfield.",
+            "start": "When the receiver releases into the initial hitch stem.",
+            "end": "When the receiver establishes the second vertical path, attempts a catch, redirects, or the play ends."
+        },
+        "Run In Route": {
+            "definition": "A receiving route with a stem followed by a break toward the interior of the field.",
+            "start": "When the receiver releases into the initial stem of the in route.",
+            "end": "When the receiver establishes the inside-breaking path, attempts a catch, redirects, or the play ends."
+        },
+        "Run Slant Go Route": {
+            "definition": "A double-move route that sells a slant inside before redirecting and accelerating vertically upfield.",
+            "start": "When the receiver releases to begin the slant stem.",
+            "end": "When the receiver establishes the second vertical path, attempts a catch, redirects, or the play ends."
+        },
+        "Run Corner Route": {
+            "definition": "A receiving route that gains depth before breaking diagonally toward the outside corner of the end zone or sideline.",
+            "start": "When the receiver releases and gains depth on the corner-route stem.",
+            "end": "When the receiver establishes the outside-breaking diagonal path, attempts a catch, redirects, or the play ends."
         }
     }
 }
