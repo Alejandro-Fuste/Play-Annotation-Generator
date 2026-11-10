@@ -45,6 +45,7 @@ jobs:
             data/tracking/RPO/RPO_3_cvat_mot.zip
             data/tracking/RPO/RPO_5_cvat_mot.zip
             data/tracking/RPO/RPO_7_cvat_mot.zip
+            data/tracking/RPO/RPO_9_cvat_mot.zip
             data/tracking/RPO/RPO_22_cvat_mot.zip
             docs/JetSweepTemplate.xml
             docs/endOfPlayEventsShortHand.json
@@ -84,6 +85,9 @@ jobs:
               entries = data.get("results", []) if isinstance(data, dict) else data
               for item in entries:
                   print(item.get("clip_name"), item.get("status"), item.get("failure_type"), item.get("message"))
+              excluded = [item for item in entries if item.get("status") == "EXCLUDED"]
+              assert len(excluded) == 1 and excluded[0].get("video_id") == "9", excluded
+              assert len([item for item in entries if item.get("execution_state") == "PROCESSED"]) == 5
           PY
       - name: Verify real clip blocking schemes and exported segments
         run: |
