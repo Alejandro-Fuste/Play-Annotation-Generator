@@ -157,7 +157,12 @@ class TestRpoBlocking(unittest.TestCase):
         valid, error = parse_rpo_route_descriptor("post,7")
         self.assertIsNone(error)
         self.assertEqual(valid["actor_track_id"], "7")
-        for bad in ("seam,14", "comeback,4", "slant,6,24", "slant:[?],22"):
+        for source, label in (("seam,14", "Action_RunSeamRoute"),
+                              ("comeback,4", "Action_RunComebackRoute")):
+            descriptor, error = parse_rpo_route_descriptor(source)
+            self.assertIsNone(error)
+            self.assertEqual(descriptor["canonical_action"], label)
+        for bad in ("slant,6,24", "slant:[?],22"):
             descriptor, error = parse_rpo_route_descriptor(bad)
             self.assertIsNone(descriptor)
             self.assertIsNotNone(error, bad)
