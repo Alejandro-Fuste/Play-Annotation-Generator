@@ -215,6 +215,64 @@ class TestRpoBlocking(unittest.TestCase):
         self.assertEqual(resolved, [])
         self.assertTrue(any("exactly five" in error for error in errors))
 
+    def test_new_rpo_routes_have_canonical_taxonomy_entries(self):
+        import json
+        from play_annotation_generator.wide_action_csv_parser import parse_rpo_route_descriptor
+
+        taxonomy = json.loads(Path("data/actions.json").read_text(encoding="utf-8"))
+        cases = {
+            "Wheel,0": ("Action_RunWheelRoute", "Run Wheel Route"),
+            "Hitch(Go),3": ("Action_RunHitchGoRoute", "Run Hitch Go Route"),
+            "In,2": ("Action_RunInRoute", "Run In Route"),
+            "Slant(Go),6": ("Action_RunSlantGoRoute", "Run Slant Go Route"),
+            "Corner,7": ("Action_RunCornerRoute", "Run Corner Route"),
+        }
+        for value, (canonical, readable) in cases.items():
+            with self.subTest(value=value):
+                descriptor, error = parse_rpo_route_descriptor(value)
+                self.assertIsNone(error)
+                self.assertEqual(descriptor["canonical_action"], canonical)
+                self.assertIn(canonical, taxonomy["formattedActionLabels"])
+                self.assertIn(readable, taxonomy["actionLabels"])
+                definition = taxonomy["actionDefinitions"][readable]
+                self.assertTrue(all(definition.get(k) for k in ("definition", "start", "end")))
+
+    def test_route_placeholders_and_nonnumeric_actors_are_rejected(self):
+        from play_annotation_generator.wide_action_csv_parser import parse_rpo_route_descriptor
+        for value in ("Out,-", "-,23", "Out,?", "Out,[?]", "Out,-1",
+                      "Wheel,foo", "In,3.0", "In,3;4", "In,"):
+            with self.subTest(value=value):
+                descriptor, error = parse_rpo_route_descriptor(value)
+                self.assertIsNone(descriptor)
+                self.assertIsNotNone(error)
+        valid, error = parse_rpo_route_descriptor("Wheel,0")
+        self.assertIsNone(error)
+        self.assertEqual(valid["actor_track_id"], "0")
+
+    def test_corrected_rpo_37_and_254_and_exclusion_list(self):
+        import csv
+        from play_annotation_generator.rpo_parser import parse_rpo_run_block
+        with Path("data/key_actions/RPO.csv").open(encoding="utf-8", newline="") as stream:
+            records = list(csv.reader(stream))
+        data = {row[0]: row for row in records if row and row[0].isdigit()}
+        for video_id in ("37", "254"):
+            self.assertIn(video_id, data)
+            block, error = parse_rpo_run_block(data[video_id][2], data[video_id][5])
+            self.assertIsNone(error)
+            self.assertIsNotNone(block)
+        self.assertEqual(data["37"][5], "277,291,8")
+        exclusions = load_rpo_excluded_ids("data/rpo_excluded_video_ids.txt")
+        self.assertEqual(len(exclusions), 26)
+        self.assertNotIn("254", exclusions)
+
+    def test_rpo_172_unknown_actors_remain_explicit(self):
+        import csv
+        with Path("data/key_actions/RPO.csv").open(encoding="utf-8", newline="") as stream:
+            records = list(csv.reader(stream))
+        row = next(r for r in records if r and r[0] == "172")
+        self.assertEqual(row[3], "27,?")
+        self.assertEqual(row[4], "43,56,?")
+
     def test_route_formats_do_not_silently_relocate_results(self):
         descriptor, error = parse_rpo_route_descriptor(",43 Tac")
         self.assertIsNone(descriptor)
