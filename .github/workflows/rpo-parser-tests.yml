@@ -85,6 +85,31 @@ jobs:
               for item in entries:
                   print(item.get("clip_name"), item.get("status"), item.get("failure_type"), item.get("message"))
           PY
+      - name: Verify real clip blocking schemes and exported segments
+        run: |
+          python - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+          expected = {1: "gap", 3: "gap", 5: "zone", 7: "zone", 22: "pass"}
+          for vid, scheme in expected.items():
+              root = Path(f"outputs/batch/RPOSmoke/RPO/RPO_{vid}")
+              path = root / "annotations.json"
+              assert path.is_file(), f"Missing RPO_{vid} annotations.json"
+              data = json.loads(path.read_text(encoding="utf-8"))
+              segments = data.get("actions", {}).get("segments", [])
+              found = [s for s in segments if s.get("blocking_scheme") == scheme]
+              positions = sorted(set(s.get("position") for s in found))
+              print(f"RPO_{vid}: scheme={scheme} segments={len(found)} positions={positions}")
+              assert set(positions) == {"LT", "LG", "C", "RG", "RT"}, (
+                  f"RPO_{vid} missing expected 5 OL scheme annotations: {positions}"
+              )
+              report = root / "validation_report.json"
+              if report.exists():
+                  metrics = json.loads(report.read_text(encoding="utf-8"))
+                  warnings = metrics.get("warnings", [])
+                  print(f"RPO_{vid}: warning count={len(warnings)}, first warnings={warnings[:3]}")
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
