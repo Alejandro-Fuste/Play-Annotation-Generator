@@ -74,8 +74,21 @@ def infer_action_segments(
     elif any(e.play_tag and "rpo" in e.play_tag.lower() for e in resolved_events):
         is_rpo = True
 
-    run_block_events = [e for e in resolved_events if e.blocking_scheme is not None] if is_rpo else []
-    run_block_start = run_block_events[0].annotated_frame if run_block_events else None
+    # RPO play-start cue: prefer the new scheme-aware OL blocking events,
+    # but retain support for legacy Action_RunBlock annotations that predate
+    # the optional blocking_scheme field. This cue sets the global PreSnap
+    # boundary for players with no explicit post-snap action.
+    run_block_events = []
+    if is_rpo:
+        run_block_events = [e for e in resolved_events if e.blocking_scheme is not None]
+        if not run_block_events:
+            run_block_events = [
+                e for e in resolved_events if e.action == "Action_RunBlock"
+            ]
+    run_block_start = (
+        min(e.annotated_frame for e in run_block_events)
+        if run_block_events else None
+    )
 
     # Global play-start boundary fallback for players without explicit post-snap actions:
     # 1. Normal scrimmage plays: Action_BallSnap
