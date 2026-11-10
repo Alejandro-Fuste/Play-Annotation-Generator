@@ -47,6 +47,7 @@ SUMMARY_CSV_FIELDS = [
     "warning_count",
     "failed_count",
     "skipped_count",
+    "excluded_count",
     "total_unknown_tracks",
     "total_missing_box_warnings",
     "total_no_ball_tracks",
@@ -178,6 +179,7 @@ def write_batch_summary_markdown(
     warning_cnt = sum(1 for r in results if r.get("status") == "WARNING")
     failed_cnt = sum(1 for r in results if r.get("status") == "FAILED")
     skipped_cnt = sum(1 for r in results if r.get("execution_state") == "SKIPPED")
+    excluded_cnt = sum(1 for r in results if r.get("execution_state") == "EXCLUDED")
 
     total_warnings = sum(int(r.get("warning_count") or 0) for r in results)
     total_errors = sum(int(r.get("error_count") or 0) for r in results)
@@ -208,6 +210,7 @@ def write_batch_summary_markdown(
                 "warning": 0,
                 "failed": 0,
                 "skipped": 0,
+                "excluded": 0,
                 "unknown_tracks": 0,
                 "missing_box_warnings": 0,
                 "no_ball_tracks": 0
@@ -222,7 +225,9 @@ def write_batch_summary_markdown(
         st = r.get("status")
         ex = r.get("execution_state")
 
-        if ex == "SKIPPED":
+        if ex == "EXCLUDED":
+            play_stats[pt]["excluded"] += 1
+        elif ex == "SKIPPED":
             play_stats[pt]["skipped"] += 1
         elif st == "PASS":
             play_stats[pt]["pass"] += 1
@@ -250,6 +255,7 @@ def write_batch_summary_markdown(
         f"- WARNING: {warning_cnt}",
         f"- FAILED: {failed_cnt}",
         f"- SKIPPED: {skipped_cnt}",
+        f"- EXCLUDED: {excluded_cnt}",
         f"- Total validation warnings: {total_warnings}",
         f"- Total validation errors: {total_errors}",
         f"- Total elapsed seconds: {total_elapsed_seconds:.3f}",
@@ -277,13 +283,13 @@ def write_batch_summary_markdown(
         lines.extend([
             "## Results By Play Type",
             "",
-            "| Play Type | Discovered | Selected | PASS | WARNING | FAILED | SKIPPED |",
-            "|---|---:|---:|---:|---:|---:|---:|",
+            "| Play Type | Discovered | Selected | PASS | WARNING | FAILED | SKIPPED | EXCLUDED |",
+            "|---|---:|---:|---:|---:|---:|---:|---:|",
         ])
         for pt, stats in sorted(play_stats.items()):
             lines.append(
                 f"| {pt} | {stats['discovered']} | {stats['selected']} | {stats['pass']} | "
-                f"{stats['warning']} | {stats['failed']} | {stats['skipped']} |"
+                f"{stats['warning']} | {stats['failed']} | {stats['skipped']} | {stats['excluded']} |"
             )
         lines.append("")
 
