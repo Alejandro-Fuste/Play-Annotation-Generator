@@ -205,6 +205,8 @@ RPO_ROUTE_ACTION_MAP: Dict[str, str] = {
     "deep_out": "Action_RunDeepOutRoute",
     "deepout": "Action_RunDeepOutRoute",
     "sail": "Action_RunSailRoute",
+    "seam": "Action_RunSeamRoute",
+    "comeback": "Action_RunComebackRoute",
 }
 
 def parse_rpo_route_descriptor(cell_val: str, source_column: str = "Route") -> Tuple[Optional[Dict[str, Any]], Optional[str]]:
