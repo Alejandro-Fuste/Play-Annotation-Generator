@@ -43,6 +43,7 @@ class ActionEvent:
     annotated_frame: int = 0
     annotated_frame_role: str = "START"  # "START", "END", "BOUNDARY", "INSTANT"
     event_type: str = "PRIMARY_ACTION"   # "PRIMARY_ACTION", "BOUNDARY", "PLAY_END"
+    blocking_scheme: Optional[str] = None  # RPO: zone, gap, pass
 
     def __post_init__(self):
         if self.annotated_frame == 0 and self.start_frame != 0:
@@ -61,6 +62,7 @@ class ActionSegment:
     end_frame: int
     source: str
     confidence: Optional[float] = None
+    blocking_scheme: Optional[str] = None
 
 @dataclass
 class DenseActionAnnotation:
@@ -73,6 +75,7 @@ class DenseActionAnnotation:
     bbox_xyxy: List[float]
     bbox_xywh: List[float]
     source: str = "xml_geometry_csv_action"
+    blocking_scheme: Optional[str] = None
 
 @dataclass
 class NonTemporalActionDescriptor:
