@@ -1,4 +1,5 @@
 import csv
+from .rpo_parser import parse_rpo_run_block
 import os
 import re
 from typing import Any, Dict, List, Tuple, Optional
@@ -215,6 +216,12 @@ def parse_rpo_route_descriptor(cell_val: str, source_column: str = "Route") -> T
     if not val or val in ["-", "--", "N/A", "n/a", "none", "None"]:
         return None, None
         
+    if re.fullmatch(r",\s*(?:\d+\s+)?(?:Tac|OOB|TD|Comp\.?)", val, re.I):
+        return None, (
+            f"Route cell '{val}' looks like end-of-play data; "
+            "correct the source columns explicitly (no automatic relocation)."
+        )
+
     parts = [p.strip() for p in val.split(",")]
     if len(parts) != 2 or not parts[0] or not parts[1]:
         return None, f"Invalid non-temporal Route format '{val}'. Expected '<route>,<actor_track_id>'."
@@ -451,6 +458,24 @@ def parse_wide_action_csv(
             if norm_col in non_action_norm:
                 continue
             if not cell_val or cell_val in ["-", "--", "N/A", "n/a", "none", "None"]:
+                continue
+
+            if norm_col == "runblock" and p_tag == "Play_Pass_RPO":
+                block, block_error = parse_rpo_run_block(
+                    cell_val, cleaned_row.get("Throw Pass", "")
+                )
+                if block_error:
+                    errors.append(f"Row {row_idx}, Column '{orig_col_name}': {block_error}")
+                else:
+                    events.append(ActionEvent(
+                        video_name=v_name, video_id=v_id, play_tag=p_tag,
+                        result_tag=r_tag if r_tag else None, result_frame=r_frame,
+                        action=block["action"], start_frame=block["start_frame"],
+                        end_frame=block["end_frame"],
+                        annotated_frame=block["start_frame"], actor_track_id="OL",
+                        target_kind="group", source_column=orig_col_name,
+                        notes=notes, blocking_scheme=block["blocking_scheme"],
+                    ))
                 continue
 
             if norm_col == "route":
