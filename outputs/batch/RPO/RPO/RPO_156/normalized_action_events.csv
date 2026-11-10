@@ -1,0 +1,12 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+RPO_156,156,End of Play,Action_PlayEnd,0,BOUNDARY,,global_event,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pre Snap_group_ALL,Action_PreSnap,0,START,10,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pre Snap_group_ALL,Action_PreSnap,0,START,11,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pre Snap_group_ALL,Action_PreSnap,0,START,16,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pre Snap_group_ALL,Action_PreSnap,0,START,2,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pre Snap_group_ALL,Action_PreSnap,0,START,8,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Read Defender,Action_ReadDefender,82,START,11,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Pull Ball,Action_PullBall,96,START,11,track_id,Play_Pass_RPO,Result_Touchdown,,
+RPO_156,156,Throw Pass,Action_ThrowPass,119,START,11,track_id,Play_Pass_RPO,Result_Touchdown,,
