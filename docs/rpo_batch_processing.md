@@ -44,9 +44,10 @@ PYTHONPATH=src python3 -m play_annotation_generator.cli batch-generate-and-enric
 `Route` uses `<route>,<track_id>` as a non-temporal descriptor.
 Outcome-like cells (for example `,43 Tac`) are reported as errors and
 **never** automatically moved to `End of Play`. Malformed or unknown
-actors are not fabricated. `seam` and `comeback` currently lack
-canonical action labels in `data/actions.json` and require a taxonomy
-decision before being enabled as new canonical actions.
+actors are not fabricated. `seam` and `comeback` are now mapped to new canonical
+`Action_RunSeamRoute` and `Action_RunComebackRoute` labels in
+`data/actions.json`. Unknown or malformed route cells remain explicit
+validation errors instead of being guessed or shifted.
 
 ## Tests
 
