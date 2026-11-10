@@ -108,6 +108,7 @@ def parse_args():
     batch_parser.add_argument("--limit", type=int, default=None, help="Limit number of matched jobs to process")
     batch_parser.add_argument("--play", default=None, help="Filter resolved clips by play type name/prefix")
     batch_parser.add_argument("--video-id", default=None, help="Filter resolved clips by video ID")
+    batch_parser.add_argument("--exclude-video-ids-file", default=None, help="RPO-only exclusion IDs, one numeric ID per line")
     batch_parser.add_argument("--status", default=None, help="Filter resolved clips by status (PASS, WARNING, FAILED)")
     batch_parser.add_argument("--dataset-summary", default=None, help="Path to Dataset Summary CSV")
     batch_parser.add_argument("--actions-json", default=None, help="Path to actions.json taxonomy file")
@@ -142,6 +143,7 @@ def main():
                 limit=args.limit,
                 play_filter=args.play,
                 video_id_filter=args.video_id,
+                exclude_video_ids_file=args.exclude_video_ids_file,
                 status_filter=args.status,
                 skip_existing=args.resume,
                 overwrite=args.overwrite,
