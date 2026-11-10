@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [main]
   push:
-    branches: [feature/rpo-blocking-schemes-and-exclusions]
+    branches: [feature/rpo-blocking-schemes-and-exclusions, fix/rpo-route-taxonomy-and-eligibility]
 
 jobs:
   rpo-tests:
@@ -16,6 +16,8 @@ jobs:
             src
             tests
             data/actions.json
+            data/key_actions/RPO.csv
+            data/rpo_excluded_video_ids.txt
             data/plays.json
             docs/endOfPlayEventsShortHand.json
             pyproject.toml
@@ -27,6 +29,109 @@ jobs:
         run: python -m pip install -e . pytest
       - name: RPO and existing parser regressions
         run: python -m pytest -q tests/test_rpo_blocking.py tests/test_wide_action_csv_parser.py tests/test_showcase_readiness.py::test_rpo_presnap_boundary_and_coverage
+
+  full-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package and tests
+        run: python -m pip install -e . pytest
+      - name: Full regression suite
+        run: python -m pytest -q tests/
+
+  rpo-targeted-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+            data/actions.json
+            data/plays.json
+            data/DatasetSummary.csv
+            data/key_actions/RPO.csv
+            data/player_tracks/RPO.csv
+            data/rpo_excluded_video_ids.txt
+            data/tracking/RPO/RPO_30_cvat_mot.zip
+            data/tracking/RPO/RPO_32_cvat_mot.zip
+            data/tracking/RPO/RPO_37_cvat_mot.zip
+            data/tracking/RPO/RPO_71_cvat_mot.zip
+            data/tracking/RPO/RPO_165_cvat_mot.zip
+            data/tracking/RPO/RPO_191_cvat_mot.zip
+            data/tracking/RPO/RPO_254_cvat_mot.zip
+            docs/JetSweepTemplate.xml
+            docs/endOfPlayEventsShortHand.json
+            pyproject.toml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package
+        run: python -m pip install -e .
+      - name: Targeted RPO batch
+        run: |
+          python -m play_annotation_generator.cli batch-generate-and-enrich \
+            --gt-dir data/tracking/RPO \
+            --template docs/JetSweepTemplate.xml \
+            --key-actions data/key_actions/RPO.csv \
+            --player-tracks data/player_tracks/RPO.csv \
+            --dataset-summary data/DatasetSummary.csv \
+            --actions-json data/actions.json \
+            --plays-json data/plays.json \
+            --output outputs/batch/RPOTargeted \
+            --play RPO \
+            --video-id 30,32,37,71,165,191,254 \
+            --exclude-video-ids-file data/rpo_excluded_video_ids.txt \
+            --review
+      - name: Verify seven corrected clips, Route metadata and Z/G/P scheme
+        run: |
+          python - <<'PY'
+          import csv
+          import json
+          from pathlib import Path
+
+          expected_routes = {
+              "30": "Action_RunWheelRoute",
+              "32": "Action_RunHitchGoRoute",
+              "71": "Action_RunInRoute",
+              "165": "Action_RunSlantGoRoute",
+              "191": "Action_RunCornerRoute",
+          }
+          root = Path("outputs/batch/RPOTargeted")
+          manifest = json.loads((root / "_batch" / "batch_manifest.json").read_text())
+          items = manifest["results"]
+          assert len(items) == 7, len(items)
+          for row in items:
+              assert row["execution_state"] == "PROCESSED", row
+              assert row["status"] in ("PASS", "WARNING"), row
+              clip = row["clip_name"]
+              path = root / "RPO" / clip / "annotations.json"
+              assert path.exists(), clip
+              annotations = json.loads(path.read_text())
+              segments = annotations["actions"]["segments"]
+              ol = {s["position"] for s in segments if s.get("blocking_scheme")}
+              assert ol == {"LT", "LG", "C", "RG", "RT"}, (clip, ol)
+              video_id = row["video_id"]
+              if video_id in expected_routes:
+                  routes = annotations["actions"]["non_temporal_action_descriptors"]
+                  assert any(r["canonical_action"] == expected_routes[video_id]
+                             for r in routes), (clip, routes)
+              if video_id == "37":
+                  assert any(s.get("blocking_scheme") == "zone" for s in segments)
+              print(clip, row["status"], row["warning_count"], sorted(ol))
+          assert any(row["video_id"] == "254" for row in items)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rpo-targeted-smoke
+          path: outputs/batch/RPOTargeted
+          if-no-files-found: warn
 
   rpo-smoke:
     runs-on: ubuntu-latest
