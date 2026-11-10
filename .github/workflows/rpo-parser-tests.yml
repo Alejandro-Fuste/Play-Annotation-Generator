@@ -44,6 +44,7 @@ jobs:
             data/actions.json
             data/plays.json
             data/DatasetSummary.csv
+            data/rpo_excluded_video_ids.txt
             data/key_actions
             data/player_tracks
             data/migrations
