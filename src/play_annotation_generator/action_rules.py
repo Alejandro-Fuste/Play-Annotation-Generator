@@ -74,7 +74,7 @@ def infer_action_segments(
     elif any(e.play_tag and "rpo" in e.play_tag.lower() for e in resolved_events):
         is_rpo = True
 
-    run_block_events = [e for e in resolved_events if e.action == "Action_RunBlock"]
+    run_block_events = [e for e in resolved_events if e.blocking_scheme is not None] if is_rpo else []
     run_block_start = run_block_events[0].annotated_frame if run_block_events else None
 
     # Global play-start boundary fallback for players without explicit post-snap actions:
@@ -333,7 +333,8 @@ def infer_action_segments(
                 action=act_name,
                 start_frame=seg_start,
                 end_frame=seg_end,
-                source="csv_explicit_event"
+                source="csv_explicit_event",
+                blocking_scheme=event.blocking_scheme
             ))
 
         # Check Center Priority Rules (e.g. Action_BallSnap > Action_ZoneBlock on Center)
@@ -356,11 +357,13 @@ def infer_action_segments(
         # PASS 2: Frame-by-frame map & Action_None filling for visible frames
         track_visible_set = set(visible_frames) if visible_frames else set(range(min_track_frame, max_track_frame + 1))
         frame_action_map: Dict[int, str] = {}
+        frame_scheme_map: Dict[int, Optional[str]] = {}
         
         for seg in explicit_segs:
             for f in range(seg.start_frame, seg.end_frame + 1):
                 if f in track_visible_set:
                     frame_action_map[f] = seg.action
+                    frame_scheme_map[f] = seg.blocking_scheme
                     
         # Fill uncovered visible frames with Action_None
         for f in sorted(list(track_visible_set)):
@@ -371,12 +374,14 @@ def infer_action_segments(
         if frame_action_map:
             sorted_f = sorted(frame_action_map.keys())
             curr_action = frame_action_map[sorted_f[0]]
+            curr_scheme = frame_scheme_map.get(sorted_f[0])
             curr_start = sorted_f[0]
             prev_f = sorted_f[0]
             
             for f in sorted_f[1:]:
                 act = frame_action_map[f]
-                if act == curr_action and f == prev_f + 1:
+                scheme = frame_scheme_map.get(f)
+                if act == curr_action and scheme == curr_scheme and f == prev_f + 1:
                     prev_f = f
                 else:
                     final_segments.append(ActionSegment(
@@ -387,9 +392,11 @@ def infer_action_segments(
                         action=curr_action,
                         start_frame=curr_start,
                         end_frame=prev_f,
-                        source="inferred_complete_timeline"
+                        source="inferred_complete_timeline",
+                        blocking_scheme=curr_scheme
                     ))
                     curr_action = act
+                    curr_scheme = scheme
                     curr_start = f
                     prev_f = f
                     
@@ -401,7 +408,8 @@ def infer_action_segments(
                 action=curr_action,
                 start_frame=curr_start,
                 end_frame=prev_f,
-                source="inferred_complete_timeline"
+                source="inferred_complete_timeline",
+                blocking_scheme=curr_scheme
             ))
 
     return final_segments, warnings
