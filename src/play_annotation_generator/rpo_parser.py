@@ -45,3 +45,24 @@ def parse_rpo_run_block(
         "actor_group": "OL",
         "source_column": "Run Block",
     }, None
+
+
+def load_rpo_excluded_ids(path: str) -> set:
+    """Read explicit numeric RPO exclusions; no implicit omission policy."""
+    from pathlib import Path
+    source = Path(path)
+    if not source.is_file():
+        raise FileNotFoundError(f"RPO exclusion file not found: {source}")
+    excluded = set()
+    for raw in source.read_text(encoding="utf-8").splitlines():
+        value = raw.split("#", 1)[0].strip()
+        if not value:
+            continue
+        if not value.isdecimal():
+            raise ValueError(f"Invalid RPO exclusion ID '{value}' in {source}")
+        excluded.add(str(int(value)))
+    return excluded
+
+
+def is_rpo_excluded(play_name: str, video_id: str, excluded: set) -> bool:
+    return str(play_name).casefold() == "rpo" and str(video_id) in excluded
