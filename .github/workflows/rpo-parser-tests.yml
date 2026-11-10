@@ -1,0 +1,122 @@
+name: RPO parser regressions
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feature/rpo-blocking-schemes-and-exclusions]
+
+jobs:
+  rpo-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+            tests
+            data/actions.json
+            data/plays.json
+            docs/endOfPlayEventsShortHand.json
+            pyproject.toml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install package and tests
+        run: python -m pip install -e . pytest
+      - name: RPO and existing parser regressions
+        run: python -m pytest -q tests/test_rpo_blocking.py tests/test_wide_action_csv_parser.py tests/test_showcase_readiness.py::test_rpo_presnap_boundary_and_coverage
+
+  rpo-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+            data/actions.json
+            data/plays.json
+            data/DatasetSummary.csv
+            data/key_actions/RPO.csv
+            data/player_tracks/RPO.csv
+            data/rpo_excluded_video_ids.txt
+            data/tracking/RPO/RPO_1_cvat_mot.zip
+            data/tracking/RPO/RPO_3_cvat_mot.zip
+            data/tracking/RPO/RPO_5_cvat_mot.zip
+            data/tracking/RPO/RPO_7_cvat_mot.zip
+            data/tracking/RPO/RPO_9_cvat_mot.zip
+            data/tracking/RPO/RPO_22_cvat_mot.zip
+            docs/JetSweepTemplate.xml
+            docs/endOfPlayEventsShortHand.json
+            pyproject.toml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install
+        run: python -m pip install -e .
+      - name: Process five RPO tracking clips
+        run: |
+          python -m play_annotation_generator.cli batch-generate-and-enrich \
+            --gt-dir data/tracking/RPO \
+            --template docs/JetSweepTemplate.xml \
+            --key-actions data/key_actions/RPO.csv \
+            --player-tracks data/player_tracks/RPO.csv \
+            --dataset-summary data/DatasetSummary.csv \
+            --actions-json data/actions.json \
+            --plays-json data/plays.json \
+            --output outputs/batch/RPOSmoke \
+            --play RPO \
+            --video-id 1,3,5,7,22 \
+            --exclude-video-ids-file data/rpo_excluded_video_ids.txt \
+            --review
+      - name: Print batch manifest outcomes
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("outputs/batch/RPOSmoke/_batch/batch_manifest.json")
+          if not path.exists():
+              print("No manifest produced")
+          else:
+              data = json.loads(path.read_text())
+              entries = data.get("results", []) if isinstance(data, dict) else data
+              for item in entries:
+                  print(item.get("clip_name"), item.get("status"), item.get("failure_type"), item.get("message"))
+              excluded = [item for item in entries if item.get("status") == "EXCLUDED"]
+              assert len(excluded) == 1 and excluded[0].get("video_id") == "9", excluded
+              assert len([item for item in entries if item.get("execution_state") == "PROCESSED"]) == 5
+          PY
+      - name: Verify real clip blocking schemes and exported segments
+        run: |
+          python - <<'PY'
+          import json
+          from collections import Counter
+          from pathlib import Path
+          expected = {1: "gap", 3: "gap", 5: "zone", 7: "zone", 22: "pass"}
+          for vid, scheme in expected.items():
+              root = Path(f"outputs/batch/RPOSmoke/RPO/RPO_{vid}")
+              path = root / "annotations.json"
+              assert path.is_file(), f"Missing RPO_{vid} annotations.json"
+              data = json.loads(path.read_text(encoding="utf-8"))
+              segments = data.get("actions", {}).get("segments", [])
+              found = [s for s in segments if s.get("blocking_scheme") == scheme]
+              positions = sorted(set(s.get("position") for s in found))
+              print(f"RPO_{vid}: scheme={scheme} segments={len(found)} positions={positions}")
+              assert set(positions) == {"LT", "LG", "C", "RG", "RT"}, (
+                  f"RPO_{vid} missing expected 5 OL scheme annotations: {positions}"
+              )
+              report = root / "validation_report.json"
+              if report.exists():
+                  metrics = json.loads(report.read_text(encoding="utf-8"))
+                  warnings = metrics.get("warnings", [])
+                  print(f"RPO_{vid}: warning count={len(warnings)}, first warnings={warnings[:3]}")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rpo-five-clip-smoke
+          path: outputs/batch/RPOSmoke
+          if-no-files-found: warn

@@ -177,9 +177,11 @@ def run_enrichment_pipeline(
 
             # Find active action segment for this track on this frame
             active_action = None
+            active_scheme = None
             for seg in track_segs:
                 if seg.start_frame <= f <= seg.end_frame:
                     active_action = seg.action
+                    active_scheme = seg.blocking_scheme
                     break
 
             if active_action is None:
@@ -205,7 +207,8 @@ def run_enrichment_pipeline(
                 action=active_action,
                 bbox_xyxy=bbox_xyxy,
                 bbox_xywh=bbox_xywh,
-                source="xml_geometry_csv_action"
+                source="xml_geometry_csv_action",
+                blocking_scheme=active_scheme
             )
             dense_annotations.append(dense_ann)
 
