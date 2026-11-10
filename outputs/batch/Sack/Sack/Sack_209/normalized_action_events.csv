@@ -1,0 +1,10 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+Sack_209,209,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_Defense_Sack,,,
+Sack_209,209,Pre Snap_group_ALL,Action_PreSnap,0,START,1,track_id,Play_Defense_Sack,,,
+Sack_209,209,Pre Snap_group_ALL,Action_PreSnap,0,START,13,track_id,Play_Defense_Sack,,,
+Sack_209,209,Pre Snap_group_ALL,Action_PreSnap,0,START,4,track_id,Play_Defense_Sack,,,
+Sack_209,209,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_Defense_Sack,,,
+Sack_209,209,Pre Snap_group_ALL,Action_PreSnap,0,START,8,track_id,Play_Defense_Sack,,,
+Sack_209,209,Close On Quarterback,Action_CloseOnQuarterback,145,START,9,track_id,Play_Defense_Sack,,,
+Sack_209,209,Wrap Quarterback,Action_WrapQuarterback,165,START,9,track_id,Play_Defense_Sack,,,
+Sack_209,209,Sack Quarterback,Action_SackQuarterback,169,START,9,track_id,Play_Defense_Sack,,,

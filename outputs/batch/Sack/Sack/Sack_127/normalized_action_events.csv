@@ -1,0 +1,12 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,0,track_id,Play_Defense_Sack,,,
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,1,track_id,Play_Defense_Sack,,,
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,11,track_id,Play_Defense_Sack,,,
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,13,track_id,Play_Defense_Sack,,,
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,2,track_id,Play_Defense_Sack,,,
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,3,track_id,Play_Defense_Sack,,,
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,6,track_id,Play_Defense_Sack,,,
+Sack_127,127,Pre Snap_group_ALL,Action_PreSnap,0,START,7,track_id,Play_Defense_Sack,,,
+Sack_127,127,Close On Quarterback,Action_CloseOnQuarterback,59,START,15,track_id,Play_Defense_Sack,,,
+Sack_127,127,Wrap Quarterback,Action_WrapQuarterback,76,START,15,track_id,Play_Defense_Sack,,,
+Sack_127,127,Sack Quarterback,Action_SackQuarterback,110,START,6,track_id,Play_Defense_Sack,,,
