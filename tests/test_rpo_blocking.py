@@ -121,6 +121,71 @@ class TestRpoBlocking(unittest.TestCase):
             s for s in data["actions"]["segments"] if s["action"] == "Action_None"
         ))
 
+    def test_rpo_legacy_runblock_keeps_global_presnap_boundary(self):
+        """Legacy RPO RunBlock without a scheme must still define the boundary."""
+        tracks = {
+            str(i): Track(
+                xml_track_id=str(i), label="player", source="test",
+                position=position, team_side="offense",
+                boxes_by_frame={
+                    f: TrackBox(
+                        frame=f, xtl=0, ytl=0, xbr=10, ybr=10,
+                        outside=False, occluded=False, keyframe=True
+                    )
+                    for f in range(150)
+                },
+            )
+            for i, position in enumerate(("LG", "WR"), start=1)
+        }
+        legacy = ActionEvent(
+            video_name="RPO_1", video_id="1",
+            action="Action_RunBlock", start_frame=88, annotated_frame=88,
+            actor_track_id="1", resolved_xml_track_id="1",
+            target_kind="track_id",
+        )
+        segments, _ = infer_action_segments(
+            [legacy], tracks,
+            {"play_tag": "Play_RPO", "play_name": "RPO",
+             "start_frame": 0, "stop_frame": 149},
+            copy.deepcopy(DEFAULT_CONFIG),
+        )
+        receiver = [s for s in segments if s.xml_track_id == "2"]
+        presnap = [s for s in receiver if s.action == "Action_PreSnap"]
+        none = [s for s in receiver if s.action == "Action_None"]
+        self.assertEqual([(s.start_frame, s.end_frame) for s in presnap],
+                         [(0, 86)])
+        self.assertEqual([(s.start_frame, s.end_frame) for s in none],
+                         [(87, 149)])
+
+    def test_rpo_scheme_aware_block_still_defines_global_presnap_boundary(self):
+        """A new Z/P/G event also defines the global RPO boundary."""
+        tracks = {
+            "1": Track(
+                xml_track_id="1", label="player", source="test",
+                position="WR", team_side="offense",
+                boxes_by_frame={
+                    f: TrackBox(f, 0, 0, 10, 10, False, False, True)
+                    for f in range(150)
+                },
+            )
+        }
+        block = ActionEvent(
+            video_name="RPO_1", video_id="1",
+            action="Action_PassBlock", blocking_scheme="pass",
+            start_frame=88, annotated_frame=88,
+            actor_track_id="OL", target_kind="group",
+        )
+        segments, _ = infer_action_segments(
+            [block], tracks,
+            {"play_tag": "Play_Pass_RPO", "start_frame": 0,
+             "stop_frame": 149}, copy.deepcopy(DEFAULT_CONFIG),
+        )
+        receiver = [s for s in segments if s.xml_track_id == "1"]
+        self.assertEqual(
+            [(s.start_frame, s.end_frame) for s in receiver
+             if s.action == "Action_PreSnap"], [(0, 86)]
+        )
+
     def test_non_rpo_generic_runblock_is_unchanged(self):
         fixture = (
             "Video Name:,InsideZoneRead\n"
