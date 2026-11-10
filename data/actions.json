@@ -91,6 +91,7 @@
         "Action_ReleaseToScreen",
         "Action_RunAfterCatch",
         "Action_RunBlock",
+        "Action_RunComebackRoute",
         "Action_RunDeepCrossRoute",
         "Action_RunDeepOutRoute",
         "Action_RunFadeRoute",
@@ -100,6 +101,7 @@
         "Action_RunOutRoute",
         "Action_RunPostRoute",
         "Action_RunSailRoute",
+        "Action_RunSeamRoute",
         "Action_RunSlantRoute",
         "Action_RunSupport",
         "Action_SackQuarterback",
@@ -222,6 +224,7 @@
         "Release To Screen",
         "Run After Catch",
         "Run Block",
+        "Run Comeback Route",
         "Run Deep Cross Route",
         "Run Deep Out Route",
         "Run Fade Route",
@@ -231,6 +234,7 @@
         "Run Out Route",
         "Run Post Route",
         "Run Sail Route",
+        "Run Seam Route",
         "Run Slant Route",
         "Run Support",
         "Sack Quarterback",
@@ -718,6 +722,11 @@
             "start": "When the player initiates movement out of their stance towards a designated defender with the intention to engage.",
             "end": "When the player makes initial contact with the defender and begins to drive them, or sustains the block through the whistle."
         },
+        "Run Comeback Route": {
+            "definition": "A receiver's route action of running a vertical stem, then decelerating and breaking back toward the quarterback along the sideline.",
+            "start": "When the receiver releases and begins the vertical stem of a comeback route.",
+            "end": "When the receiver establishes the return path toward the quarterback, catches or attempts to catch the pass, changes route direction, or the play ends."
+        },
         "Run Deep Cross Route": {
             "definition": "A receiver's route action consisting of a vertical or angled stem followed by a deep crossing path across the middle of the field.",
             "start": "When the receiver releases and commits to the stem that creates depth for the crossing route.",
@@ -757,6 +766,11 @@
             "definition": "A receiver's route action of gaining vertical depth and then breaking on a diagonal path toward the sideline, typically occupying the intermediate-to-deep outside area.",
             "start": "When the receiver releases and begins the vertical or slightly angled stem that creates depth for the sail route.",
             "end": "When the receiver completes the diagonal outside break and establishes the sail path, catches or attempts to catch the pass, changes route direction, or the play ends."
+        },
+        "Run Seam Route": {
+            "definition": "A receiver's route action of releasing into and running vertically through a seam between coverage defenders, often near the hash marks.",
+            "start": "When the receiver releases and commits to the vertical seam path.",
+            "end": "When the receiver changes direction, catches or attempts to catch the pass, or the play ends."
         },
         "Run Slant Route": {
             "definition": "A receiver's route action consisting of a short vertical release followed by a sharp angled break toward the middle of the field.",
