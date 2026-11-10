@@ -121,6 +121,24 @@ class TestRpoBlocking(unittest.TestCase):
             s for s in data["actions"]["segments"] if s["action"] == "Action_None"
         ))
 
+    def test_non_rpo_generic_runblock_is_unchanged(self):
+        fixture = (
+            "Video Name:,InsideZone\n"
+            ",Key Actions\n"
+            "Video #,Run Block,End of Play\n"
+            '1,"20,OL",Tac\n'
+        )
+        with tempfile.TemporaryDirectory() as temp:
+            path = Path(temp) / "InsideZone.csv"
+            path.write_text(fixture, encoding="utf-8")
+            events, _, errors = parse_wide_action_csv(
+                str(path), copy.deepcopy(DEFAULT_CONFIG), target_video="InsideZone_1"
+            )
+        self.assertEqual(errors, [])
+        blocks = [e for e in events if e.action == "Action_RunBlock"]
+        self.assertEqual(len(blocks), 1)
+        self.assertIsNone(blocks[0].blocking_scheme)
+
     def test_incomplete_ol_group_is_rejected(self):
         tracks = {"1": Track(xml_track_id="1", label="player", source="test",
                              custom_track_id="1", position="LT", team_side="offense")}
