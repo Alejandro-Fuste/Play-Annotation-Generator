@@ -583,18 +583,11 @@ def run_batch_pipeline(
     recognized_play_labels = set(canonical_plays.keys()) | set(play_defs.keys())
 
     # Explicit exclusion file, RPO-only; omission never silently excludes clips.
-    excluded_rpo_ids: Set[str] = set()
-    if exclude_video_ids_file:
-        exclusion_path = Path(exclude_video_ids_file)
-        if not exclusion_path.is_file():
-            raise FileNotFoundError(f"RPO exclusion file not found: {exclusion_path}")
-        for raw in exclusion_path.read_text(encoding="utf-8").splitlines():
-            value = raw.split("#", 1)[0].strip()
-            if not value:
-                continue
-            if not value.isdecimal():
-                raise ValueError(f"Invalid RPO exclusion ID '{value}' in {exclusion_path}")
-            excluded_rpo_ids.add(str(int(value)))
+    from .rpo_parser import load_rpo_excluded_ids, is_rpo_excluded
+    excluded_rpo_ids = (
+        load_rpo_excluded_ids(exclude_video_ids_file)
+        if exclude_video_ids_file else set()
+    )
 
     # 3. Output Root Setup
     if output_dir:
@@ -647,8 +640,7 @@ def run_batch_pipeline(
     for tr_input in discovered_inputs:
         if (
             excluded_rpo_ids
-            and (tr_input.filename_play_name or "").casefold() == "rpo"
-            and tr_input.video_id in excluded_rpo_ids
+            and is_rpo_excluded(tr_input.filename_play_name or "", tr_input.video_id, excluded_rpo_ids)
         ):
             identity = ResolvedClipIdentity(
                 status="EXCLUDED", failure_type="intentionally_excluded",
