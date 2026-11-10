@@ -54,7 +54,7 @@ def write_play_annotation_json(
     # 2. Build actions JSON
     segments_json = []
     for seg in segments:
-        segments_json.append({
+        segment_record = {
             "actor_track_id": seg.actor_track_id,
             "xml_track_id": seg.xml_track_id,
             "position": seg.position if seg.position and seg.position != "undefined" else "Position_Unknown",
@@ -63,11 +63,14 @@ def write_play_annotation_json(
             "start_frame": seg.start_frame,
             "end_frame": seg.end_frame,
             "source": seg.source
-        })
+        }
+        if seg.blocking_scheme is not None:
+            segment_record["blocking_scheme"] = seg.blocking_scheme
+        segments_json.append(segment_record)
         
     dense_json = []
     for da in dense_annotations:
-        dense_json.append({
+        dense_record = {
             "frame": da.frame,
             "actor_track_id": da.actor_track_id,
             "xml_track_id": da.xml_track_id,
@@ -76,7 +79,10 @@ def write_play_annotation_json(
             "action": da.action,
             "bbox_xyxy": da.bbox_xyxy,
             "bbox_xywh": da.bbox_xywh
-        })
+        }
+        if da.blocking_scheme is not None:
+            dense_record["blocking_scheme"] = da.blocking_scheme
+        dense_json.append(dense_record)
         
     # Collective tackles are stored separately from player-owned action segments.
     collective_events = [
