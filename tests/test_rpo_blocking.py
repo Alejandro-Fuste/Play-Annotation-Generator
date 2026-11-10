@@ -123,16 +123,16 @@ class TestRpoBlocking(unittest.TestCase):
 
     def test_non_rpo_generic_runblock_is_unchanged(self):
         fixture = (
-            "Video Name:,InsideZone\n"
+            "Video Name:,InsideZoneRead\n"
             ",Key Actions\n"
             "Video #,Run Block,End of Play\n"
             '1,"20,OL",Tac\n'
         )
         with tempfile.TemporaryDirectory() as temp:
-            path = Path(temp) / "InsideZone.csv"
+            path = Path(temp) / "InsideZoneRead.csv"
             path.write_text(fixture, encoding="utf-8")
             events, _, errors = parse_wide_action_csv(
-                str(path), copy.deepcopy(DEFAULT_CONFIG), target_video="InsideZone_1"
+                str(path), copy.deepcopy(DEFAULT_CONFIG), target_video="InsideZoneRead_1"
             )
         self.assertEqual(errors, [])
         blocks = [e for e in events if e.action == "Action_RunBlock"]
