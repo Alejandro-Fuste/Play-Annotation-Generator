@@ -123,6 +123,7 @@ def write_batch_summary_csv(summary_csv_path: str, play_stats: Dict[str, Dict[st
                 "warning_count": stats.get("warning", 0),
                 "failed_count": stats.get("failed", 0),
                 "skipped_count": stats.get("skipped", 0),
+                "excluded_count": stats.get("excluded", 0),
                 "total_unknown_tracks": stats.get("unknown_tracks", 0),
                 "total_missing_box_warnings": stats.get("missing_box_warnings", 0),
                 "total_no_ball_tracks": stats.get("no_ball_tracks", 0),
