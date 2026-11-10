@@ -529,6 +529,7 @@ def run_batch_pipeline(
     play_filter: Optional[str] = None,
     video_id_filter: Optional[str] = None,
     status_filter: Optional[str] = None,
+    exclude_video_ids_file: Optional[str] = None,
     skip_existing: bool = False,
     overwrite: bool = False,
     review_enabled: bool = True,
@@ -581,6 +582,20 @@ def run_batch_pipeline(
 
     recognized_play_labels = set(canonical_plays.keys()) | set(play_defs.keys())
 
+    # Explicit exclusion file, RPO-only; omission never silently excludes clips.
+    excluded_rpo_ids: Set[str] = set()
+    if exclude_video_ids_file:
+        exclusion_path = Path(exclude_video_ids_file)
+        if not exclusion_path.is_file():
+            raise FileNotFoundError(f"RPO exclusion file not found: {exclusion_path}")
+        for raw in exclusion_path.read_text(encoding="utf-8").splitlines():
+            value = raw.split("#", 1)[0].strip()
+            if not value:
+                continue
+            if not value.isdecimal():
+                raise ValueError(f"Invalid RPO exclusion ID '{value}' in {exclusion_path}")
+            excluded_rpo_ids.add(str(int(value)))
+
     # 3. Output Root Setup
     if output_dir:
         batch_root = Path(output_dir)
@@ -608,6 +623,7 @@ def run_batch_pipeline(
         "output": str(batch_root.resolve()),
         "play": play_filter,
         "video_id": video_id_filter,
+        "exclude_video_ids_file": exclude_video_ids_file,
         "status": status_filter,
         "limit": limit,
         "skip_existing": skip_existing,
@@ -626,8 +642,23 @@ def run_batch_pipeline(
 
     total_preflight_ready = 0
     total_preflight_failed = 0
+    total_excluded = 0
 
     for tr_input in discovered_inputs:
+        if (
+            excluded_rpo_ids
+            and (tr_input.filename_play_name or "").casefold() == "rpo"
+            and tr_input.video_id in excluded_rpo_ids
+        ):
+            identity = ResolvedClipIdentity(
+                status="EXCLUDED", failure_type="intentionally_excluded",
+                video_name=tr_input.clip_name, video_id=tr_input.video_id,
+                play_type="RPO", clip_key=tr_input.clip_name,
+                message="Intentionally excluded by RPO exclusion file.",
+            )
+            resolved_jobs.append((tr_input, identity))
+            total_excluded += 1
+            continue
         identity = resolve_clip_preflight(
             tr_input=tr_input,
             key_actions_arg=key_actions_p,
@@ -713,12 +744,12 @@ def run_batch_pipeline(
                 "player_tracks_resolved": getattr(identity, "player_tracks_resolved", False),
                 "template_source": str(template_p),
                 "output_directory": "",
-                "preflight_status": "FAILED",
+                "preflight_status": identity.status,
                 "preflight_failure_type": identity.failure_type or "preflight_error",
-                "execution_state": "PREFLIGHT_FAILED",
-                "status": "FAILED",
+                "execution_state": "EXCLUDED" if identity.status == "EXCLUDED" else "PREFLIGHT_FAILED",
+                "status": "EXCLUDED" if identity.status == "EXCLUDED" else "FAILED",
                 "warning_count": 0,
-                "error_count": 1,
+                "error_count": 0 if identity.status == "EXCLUDED" else 1,
                 "unknown_track_count": 0,
                 "missing_box_warning_count": 0,
                 "ball_track_count": 0,
@@ -1074,6 +1105,7 @@ def run_batch_pipeline(
                 "warning": 0,
                 "failed": 0,
                 "skipped": 0,
+                "excluded": 0,
                 "unknown_tracks": 0,
                 "missing_box_warnings": 0,
                 "no_ball_tracks": 0
@@ -1088,7 +1120,9 @@ def run_batch_pipeline(
         st = r.get("status")
         ex = r.get("execution_state")
 
-        if ex == "SKIPPED":
+        if ex == "EXCLUDED":
+            play_stats[pt]["excluded"] += 1
+        elif ex == "SKIPPED":
             play_stats[pt]["skipped"] += 1
         elif st == "PASS":
             play_stats[pt]["pass"] += 1
@@ -1106,6 +1140,7 @@ def run_batch_pipeline(
         "total_discovered": total_discovered,
         "total_preflight_ready": total_preflight_ready,
         "total_preflight_failed": total_preflight_failed,
+        "excluded_count": total_excluded,
         "total_selected": total_selected,
         "total_attempted": sum(1 for r in results if r.get("execution_state") == "PROCESSED"),
         "pass_count": sum(1 for r in results if r.get("status") == "PASS"),
@@ -1144,6 +1179,7 @@ def run_batch_pipeline(
     print(f"WARNING: {warning_cnt}")
     print(f"FAILED: {fail_cnt}")
     print(f"SKIPPED: {skip_cnt}")
+    print(f"EXCLUDED: {total_excluded}")
     print(f"Total Time: {total_elapsed:.3f}s")
     print("=" * 40)
 
