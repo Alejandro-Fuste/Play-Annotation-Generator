@@ -1,0 +1,137 @@
+# Play-Annotation-Generator Annotation Enrichment Validation Report
+
+## **Summary**
+- **Status**: SUCCESS
+- **Video Name**: `SplitZone_217`
+- **Input XML**: `outputs/batch/SplitZone/SplitZone/SplitZone_217/generated_base_cvat.xml`
+- **Input CSV**: `data/key_actions/SplitZone.csv`
+
+## **Key Metrics**
+| Metric | Value |
+| :--- | :--- |
+| Total XML Tracks | 42 |
+| Player Tracks | 40 |
+| Ball Tracks | 2 |
+| CSV events parsed | 23 |
+| Action Segments inferred | 108 |
+| Invalid XML Bounding Boxes | 0 |
+| Video Start Frame | 0 |
+| Video Stop Frame | 329 |
+
+## **Pipeline Errors**
+*No critical pipeline errors encountered.*
+
+## **Pipeline Warnings**
+> [!WARNING]
+> The following non-critical warnings were logged:
+> - No result_frame or PlayEnd action found in CSV. Using final clip frame 329 as fallback play end.
+> - Validation warning: Action 'Action_ZoneBlock' for track '18' (LT) duration 109 frames exceeds threshold 90 frames [start=77, end=185].
+> - Validation warning: Action 'Action_ZoneBlock' for track '19' (C) duration 109 frames exceeds threshold 90 frames [start=77, end=185].
+> - Action 'Action_None' range [74-177] for track '1' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [180-266] for track '1' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [74-329] for track '2' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [74-138] for track '6' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [142-291] for track '6' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [295-304] for track '6' has 1 frames without a visible bounding box.
+> - Action 'Action_SplitBlock' range [84-139] for track '7' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [186-238] for track '7' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [243-312] for track '7' has 3 frames without a visible bounding box.
+> - Action 'Action_None' range [314-329] for track '7' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [74-316] for track '8' has 7 frames without a visible bounding box.
+> - Action 'Action_None' range [74-123] for track '9' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [125-291] for track '9' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [304-321] for track '9' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [74-261] for track '10' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [270-271] for track '10' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [74-125] for track '11' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [74-123] for track '12' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [74-313] for track '14' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [317-318] for track '14' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [74-147] for track '15' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [149-153] for track '15' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [74-154] for track '16' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [162-292] for track '16' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [77-94] for track '17' has 2 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [100-103] for track '17' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [105-106] for track '17' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [112-113] for track '17' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [115-119] for track '17' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [122-125] for track '17' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [77-131] for track '19' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [134-147] for track '19' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [150-164] for track '19' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [186-190] for track '19' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [195-290] for track '19' has 3 frames without a visible bounding box.
+> - Action 'Action_None' range [306-329] for track '19' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [103-289] for track '20' has 1 frames without a visible bounding box.
+> - Action 'Action_PreSnap' range [20-40] for track '21' has 1 frames without a visible bounding box.
+> - Action 'Action_PreSnap' range [42-76] for track '21' has 2 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [77-92] for track '21' has 1 frames without a visible bounding box.
+> - Action 'Action_ZoneBlock' range [97-98] for track '21' has 1 frames without a visible bounding box.
+> - Action 'Action_BallCarry' range [103-106] for track '21' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [115-251] for track '22' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [255-257] for track '22' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [259-329] for track '22' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [120-121] for track '24' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [130-138] for track '25' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [152-329] for track '25' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [156-177] for track '27' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [158-159] for track '28' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [224-226] for track '30' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [228-229] for track '30' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [232-233] for track '30' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [227-230] for track '31' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [232-233] for track '31' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [232-270] for track '32' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [277-282] for track '32' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [285-291] for track '32' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [245-251] for track '34' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [249-252] for track '35' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [259-262] for track '35' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [282-329] for track '36' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [292-294] for track '37' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [303-313] for track '37' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [326-328] for track '37' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [301-302] for track '38' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [306-310] for track '40' has 2 frames without a visible bounding box.
+> - Action 'Action_None' range [315-316] for track '40' has 1 frames without a visible bounding box.
+> - Action 'Action_None' range [323-329] for track '40' has 1 frames without a visible bounding box.
+> - Player track '22' has undefined position. Will map to Position_Unknown.
+> - Player track '22' has undefined team_side. Will map to Team_Unknown.
+> - Player track '23' has undefined position. Will map to Position_Unknown.
+> - Player track '23' has undefined team_side. Will map to Team_Unknown.
+> - Player track '24' has undefined position. Will map to Position_Unknown.
+> - Player track '24' has undefined team_side. Will map to Team_Unknown.
+> - Player track '25' has undefined position. Will map to Position_Unknown.
+> - Player track '25' has undefined team_side. Will map to Team_Unknown.
+> - Player track '26' has undefined position. Will map to Position_Unknown.
+> - Player track '26' has undefined team_side. Will map to Team_Unknown.
+> - Player track '27' has undefined position. Will map to Position_Unknown.
+> - Player track '27' has undefined team_side. Will map to Team_Unknown.
+> - Player track '28' has undefined position. Will map to Position_Unknown.
+> - Player track '28' has undefined team_side. Will map to Team_Unknown.
+> - Player track '29' has undefined position. Will map to Position_Unknown.
+> - Player track '29' has undefined team_side. Will map to Team_Unknown.
+> - Player track '30' has undefined position. Will map to Position_Unknown.
+> - Player track '30' has undefined team_side. Will map to Team_Unknown.
+> - Player track '31' has undefined position. Will map to Position_Unknown.
+> - Player track '31' has undefined team_side. Will map to Team_Unknown.
+> - Player track '32' has undefined position. Will map to Position_Unknown.
+> - Player track '32' has undefined team_side. Will map to Team_Unknown.
+> - Player track '34' has undefined position. Will map to Position_Unknown.
+> - Player track '34' has undefined team_side. Will map to Team_Unknown.
+> - Player track '35' has undefined position. Will map to Position_Unknown.
+> - Player track '35' has undefined team_side. Will map to Team_Unknown.
+> - Player track '36' has undefined position. Will map to Position_Unknown.
+> - Player track '36' has undefined team_side. Will map to Team_Unknown.
+> - Player track '37' has undefined position. Will map to Position_Unknown.
+> - Player track '37' has undefined team_side. Will map to Team_Unknown.
+> - Player track '38' has undefined position. Will map to Position_Unknown.
+> - Player track '38' has undefined team_side. Will map to Team_Unknown.
+> - Player track '39' has undefined position. Will map to Position_Unknown.
+> - Player track '39' has undefined team_side. Will map to Team_Unknown.
+> - Player track '40' has undefined position. Will map to Position_Unknown.
+> - Player track '40' has undefined team_side. Will map to Team_Unknown.
+
+## **Recommended Fixes / Action Items**
+- Review players with undefined positions or team_sides. Ensure they have the correct metadata attributes in CVAT if you need precise group expansion.
