@@ -73,15 +73,27 @@ jobs:
               print(row["clip_name"], row["status"], row.get("message"))
               assert row["execution_state"] == "PROCESSED", row
               assert row["status"] in ("PASS", "WARNING"), row
+          from play_annotation_generator.config import DEFAULT_CONFIG
+          from play_annotation_generator.wide_action_csv_parser import parse_wide_action_csv
           data = json.loads((root / "Power/Power_376/annotations.json").read_text())
+          assert data["play"]["result_tag"] == "Result_Tackle", data["play"]
           segments = data["actions"]["segments"]
           expected = {("Action_DownBlock", "8"), ("Action_DownBlock", "13"), ("Action_PullBlock", "2")}
+          events, _, errors = parse_wide_action_csv("data/key_actions/Power.csv", DEFAULT_CONFIG, target_video="Power_376")
+          assert not errors, errors
+          assert {(e.action, e.actor_track_id, e.start_frame, e.end_frame)
+                  for e in events if e.action in ("Action_DownBlock", "Action_PullBlock")} == {
+                      (action, actor, 239, 289) for action, actor in expected}
           for action, actor in expected:
               matching = [s for s in segments if s["action"] == action and str(s["actor_track_id"]) == actor]
               assert matching, (action, actor)
               frames = {f for s in matching for f in range(s["start_frame"], s["end_frame"] + 1)}
-              assert min(frames) == 239 and max(frames) == 289, (action, actor, matching)
-          print("Power_376 shared endpoint verified")
+              tracks = [t for t in data["tracks"]["players"] if str(t["actor_track_id"]) == actor]
+              assert len(tracks) == 1, (actor, len(tracks))
+              tracked = {s["frame"] for s in tracks[0]["samples"] if 239 <= s["frame"] <= 289}
+              assert frames == tracked, (action, actor, sorted(tracked - frames), sorted(frames - tracked))
+              print(action, actor, min(frames), max(frames), "annotated endpoint 289")
+          print("Power_376 annotated endpoint and tracked-frame segments verified")
           PY
       - uses: actions/upload-artifact@v4
         if: always()
