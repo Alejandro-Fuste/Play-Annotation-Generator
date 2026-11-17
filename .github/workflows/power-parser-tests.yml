@@ -1,0 +1,91 @@
+name: Power parser validation
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [fix/power-blocking-parser]
+jobs:
+  power-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+            tests
+            data/plays.json
+            data/actions.json
+            data/key_actions/Power.csv
+            docs/endOfPlayEventsShortHand.json
+            pyproject.toml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e . pytest
+      - run: python -m pytest -q tests/test_power_blocking.py tests/test_wide_action_csv_parser.py
+  power-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+            data/plays.json
+            data/actions.json
+            data/DatasetSummary.csv
+            data/key_actions/Power.csv
+            data/player_tracks/Power.csv
+            data/tracking/Power/Power_1_cvat_mot.zip
+            data/tracking/Power/Power_2_cvat_mot.zip
+            data/tracking/Power/Power_96_cvat_mot.zip
+            data/tracking/Power/Power_376_cvat_mot.zip
+            docs/JetSweepTemplate.xml
+            docs/endOfPlayEventsShortHand.json
+            pyproject.toml
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e .
+      - name: Process representative Power clips
+        run: |
+          python -m play_annotation_generator.cli batch-generate-and-enrich \
+            --gt-dir data/tracking/Power \
+            --template docs/JetSweepTemplate.xml \
+            --key-actions data/key_actions/Power.csv \
+            --player-tracks data/player_tracks/Power.csv \
+            --dataset-summary data/DatasetSummary.csv \
+            --actions-json data/actions.json \
+            --plays-json data/plays.json \
+            --output outputs/batch/PowerSmoke \
+            --play Power --video-id 1,2,96,376 --review
+      - name: Verify Power_376 and report all clip outcomes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path("outputs/batch/PowerSmoke")
+          rows = json.loads((root / "_batch/batch_manifest.json").read_text())["results"]
+          assert len(rows) == 4, rows
+          for row in rows:
+              print(row["clip_name"], row["status"], row.get("message"))
+              assert row["execution_state"] == "PROCESSED", row
+              assert row["status"] in ("PASS", "WARNING"), row
+          data = json.loads((root / "Power/Power_376/annotations.json").read_text())
+          segments = data["actions"]["segments"]
+          expected = {("Action_DownBlock", "8"), ("Action_DownBlock", "13"), ("Action_PullBlock", "2")}
+          for action, actor in expected:
+              matching = [s for s in segments if s["action"] == action and str(s["actor_track_id"]) == actor]
+              assert matching, (action, actor)
+              frames = {f for s in matching for f in range(s["start_frame"], s["end_frame"] + 1)}
+              assert min(frames) == 239 and max(frames) == 289, (action, actor, matching)
+          print("Power_376 shared endpoint verified")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: power-smoke
+          path: outputs/batch/PowerSmoke
+          if-no-files-found: warn
