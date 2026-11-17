@@ -1,0 +1,11 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+Power_28,28,Pre Snap_group_ALL,Action_PreSnap,24,START,10,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Pre Snap_group_ALL,Action_PreSnap,24,START,12,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Pre Snap_group_ALL,Action_PreSnap,24,START,13,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Pre Snap_group_ALL,Action_PreSnap,24,START,14,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Pre Snap_group_ALL,Action_PreSnap,24,START,18,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Pre Snap_group_ALL,Action_PreSnap,24,START,7,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Pre Snap_group_ALL,Action_PreSnap,24,START,9,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Down Block,Action_DownBlock,209,START,7,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Down Block,Action_DownBlock,209,START,9,track_id,Play_Run_Power,Result_OutOfBounds,,
+Power_28,28,Pull Block,Action_PullBlock,209,START,12,track_id,Play_Run_Power,Result_OutOfBounds,,

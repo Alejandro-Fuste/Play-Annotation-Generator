@@ -1,0 +1,12 @@
+video_name,video_id,source_column,action,start_frame,annotated_frame_role,actor_track_id,target_kind,play_tag,result_tag,result_frame,notes
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,0,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,1,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,10,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,11,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,12,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,19,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,7,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pre Snap_group_ALL,Action_PreSnap,23,START,8,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Down Block,Action_DownBlock,279,START,11,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Down Block,Action_DownBlock,279,START,2,track_id,Play_Run_Power,Result_Tackle,,
+Power_330,330,Pull Block,Action_PullBlock,279,START,10,track_id,Play_Run_Power,Result_Tackle,,
