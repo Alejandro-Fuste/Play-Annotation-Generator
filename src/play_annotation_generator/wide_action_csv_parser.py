@@ -1,5 +1,6 @@
 import csv
 from .rpo_parser import parse_rpo_run_block
+from .power_parser import parse_power_blocks
 import os
 import re
 from typing import Any, Dict, List, Tuple, Optional
@@ -461,6 +462,41 @@ def parse_wide_action_csv(
         }
         norm_action_cols = {normalize_column_name(k): v for k, v in action_cols_map.items()}
 
+        # Power's two blocking columns form one timing record. Never pass
+        # these ambiguous legacy cells through the generic range parser.
+        if p_tag == "Play_Run_Power":
+            power_row = {normalize_column_name(k): v for k, v in cleaned_row.items()}
+            raw_result = power_row.get("result", "").strip()
+            if raw_result in ("", "-", "--", "?", "[?]", "N/A", "n/a", "None", "none"):
+                r_tag = r_tag or None
+            elif raw_result:
+                power_results = {
+                    "TD": "Result_Touchdown",
+                    "Tac": "Result_Tackle",
+                    "OOB": "Result_OutOfBounds",
+                }
+                r_tag = shorthand_map.get(raw_result, power_results.get(raw_result, raw_result))
+                if not r_tag.startswith("Result_"):
+                    errors.append(f"Row {row_idx}, Column 'Result': Unsupported Power result {raw_result!r}.")
+                    r_tag = None
+            try:
+                power_blocks = parse_power_blocks(
+                    power_row.get("downblock", power_row.get("downblocks", "")),
+                    power_row.get("pullblock", power_row.get("pullblocks", "")),
+                )
+            except ValueError as exc:
+                errors.append(f"Row {row_idx}, Power blocking: {exc}")
+                power_blocks = []
+            for action, actor, start, end in power_blocks:
+                events.append(ActionEvent(
+                    video_name=v_name, video_id=v_id, play_tag=p_tag,
+                    result_tag=r_tag, result_frame=r_frame, action=action,
+                    start_frame=start, end_frame=end, annotated_frame=start,
+                    actor_track_id=actor, target_kind="track_id",
+                    source_column="Down Block" if action == "Action_DownBlock" else "Pull Block",
+                    notes=notes,
+                ))
+
         # Parse action columns directly from the row to prevent double-parsing and detect unmapped columns
         row_non_temporal_descriptors: List[Dict[str, Any]] = []
         for orig_col_name, cell_val in cleaned_row.items():
@@ -468,6 +504,8 @@ def parse_wide_action_csv(
                 continue
             norm_col = normalize_column_name(orig_col_name)
             if norm_col in non_action_norm:
+                continue
+            if p_tag == "Play_Run_Power" and norm_col in ("downblock", "downblocks", "pullblock", "pullblocks"):
                 continue
             if not cell_val or cell_val in ["-", "--", "N/A", "n/a", "none", "None"]:
                 continue
