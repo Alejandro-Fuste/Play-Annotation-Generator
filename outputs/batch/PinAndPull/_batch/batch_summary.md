@@ -8,13 +8,13 @@
 - Total selected after filters: 2
 - Total attempted: 2
 - PASS: 0
-- WARNING: 0
-- FAILED: 2
+- WARNING: 1
+- FAILED: 1
 - SKIPPED: 0
 - EXCLUDED: 0
 - Total validation warnings: 301
-- Total validation errors: 3
-- Total elapsed seconds: 1.604
+- Total validation errors: 1
+- Total elapsed seconds: 1.778
 
 ## Dataset Quality Signals
 
@@ -26,17 +26,16 @@
 
 | Failure Type | Count |
 |---|---:|
-| enrichment | 2 |
+| enrichment | 1 |
 
 ## Results By Play Type
 
 | Play Type | Discovered | Selected | PASS | WARNING | FAILED | SKIPPED | EXCLUDED |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| PinAndPull | 2 | 2 | 0 | 0 | 2 | 0 | 0 |
+| PinAndPull | 2 | 2 | 0 | 1 | 1 | 0 | 0 |
 
 ## Failed Clips
 
 | Clip Name | Play Name | Video ID | Failure Type | Message |
 |---|---|---|---|---|
-| PinAndPull_12 | PinAndPull | 12 | enrichment | Enriched with 1 validation error(s) |
-| PinAndPull_13 | PinAndPull | 13 | enrichment | Enriched with 2 validation error(s) |
+| PinAndPull_13 | PinAndPull | 13 | enrichment | Enriched with 1 validation error(s) |
