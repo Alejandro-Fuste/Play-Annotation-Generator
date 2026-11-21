@@ -106,7 +106,38 @@ def choose_boundary(clips, pairs, override=None):
     return min(legal,key=lambda k:(abs(k-target),abs(5*k-3*n),k))
 
 
-def plan(repo, annotation_csv, video_csv, overrides=None):
+def valid_annotation(obj, clip, label, tags):
+    if not isinstance(obj, dict) or not all(isinstance(obj.get(k),dict) for k in ('clip','play','tracks','actions')):
+        return False
+    tag=obj['play'].get('play_tag','')
+    return (tag in tags and tag.endswith('_'+label)
+            and Path(str(obj['clip'].get('video_name',''))).stem == clip)
+
+
+def validate_source_annotation(src, row, tags):
+    """Deferred full validation, performed during copy only."""
+    if not src.is_file() or src.stat().st_size != row['annotation_source_bytes']:
+        raise ValueError(f'Annotation missing or changed since preview: {src}')
+    try:
+        obj=json.loads(src.read_text())
+        if not valid_annotation(obj,row['clip_id'],row['play_type'],tags):
+            raise ValueError('Annotation identity or schema mismatch')
+        report=src.with_name('validation_report.json')
+        if report.is_file():
+            data=json.loads(report.read_text())
+            if not isinstance(data.get('errors'),list) or data['errors']:
+                raise ValueError('Annotation validation report contains errors')
+    except (OSError,TypeError,AttributeError,json.JSONDecodeError) as exc:
+        raise ValueError(f'Invalid annotation or report: {src}: {exc}') from exc
+    return hash_file(src)
+
+
+def plan(repo, annotation_csv, video_csv, overrides=None, fast=False):
+    """Build split plan. fast=True reads inventories and small metadata only.
+
+    The fast plan deliberately leaves annotation_sha256 empty: content is
+    validated and fingerprinted later during --copy, not during --preview.
+    """
     overrides = overrides or {}
     anns = unique(read_csv(annotation_csv),lambda r:PurePosixPath(r['repository_path']).parent.name)
     videos = unique(read_csv(video_csv),lambda r:Path(r['File_Name']).stem)
@@ -119,7 +150,11 @@ def plan(repo, annotation_csv, video_csv, overrides=None):
     tags = set(taxonomy_data['formattedPlayLabels'])
     excludes = {line.strip() for line in (repo/'data/rpo_excluded_video_ids.txt').read_text().splitlines() if line.strip() and not line.lstrip().startswith('#')}
     failures = set()
-    for f in (repo/'outputs/batch').rglob('batch_manifest.csv'):
+    # Avoid walking thousands of clip-output directories during preview.
+    # Batch manifests live in per-play _batch subdirectories.
+    manifest_files = sorted((repo/'outputs/batch').glob('*/_batch/batch_manifest.csv'))
+    manifest_files += sorted((repo/'outputs/batch').glob('*/*/_batch/batch_manifest.csv'))
+    for f in manifest_files:
         for r in read_csv(f):
             if r.get('status','').upper() == 'FAILED' or int(r.get('error_count') or 0)>0:
                 failures.add(r['clip_name'])
@@ -134,31 +169,28 @@ def plan(repo, annotation_csv, video_csv, overrides=None):
         if label=='RPO' and match[2] in excludes: held[clip]='intentional exclusion'; continue
         if clip in failures: held[clip]='batch failure'; continue
         src = safe_path(repo,str(p))
-        if not src.is_file() or src.stat().st_size != int(a['file_size_bytes']):
-            held[clip]='annotation missing or inventory size changed'; continue
-        try:
-            obj=json.loads(src.read_text()); report=src.with_name('validation_report.json')
-            if not isinstance(obj,dict) or not isinstance(obj.get('clip'),dict) or not isinstance(obj.get('play'),dict) or not isinstance(obj.get('tracks'),list) and not isinstance(obj.get('tracks'),dict) or not isinstance(obj.get('actions'),dict):
-                held[clip]='unexpected annotation schema'; continue
-            tag=obj['play'].get('play_tag','')
-            if tag not in tags or not tag.endswith('_'+label):
-                held[clip]='annotation play tag mismatch'; continue
-            expected=obj['clip'].get('video_name','')
-            if Path(str(expected)).stem != clip: held[clip]='annotation video identity mismatch'; continue
-            if report.is_file():
-                validation=json.loads(report.read_text())
-                if not isinstance(validation.get('errors'),list) or validation['errors']:
-                    held[clip]='validation errors or unknown report schema'; continue
-                warning_count += bool(validation.get('warnings'))
-            else: missing_report_count += 1
-        except (ValueError,OSError,AttributeError): held[clip]='unreadable annotation or report'; continue
         m=metadata[clip]; view=normalized_view(m[0].get('view','')) if len(m)==1 else 'unknown'
-        # Never infer views from odd/even video IDs. Annotation metadata is a fallback
-        # only when the summary has no known view, with conflicts left unknown.
-        embedded=normalized_view(str((obj['clip'].get('source') or {}).get('view') or ''))
-        if view=='unknown' and len(m)<=1: view=embedded
-        elif embedded!='unknown' and embedded!=view: view='unknown'
-        groups[label].append(dict(clip_id=clip,play_type=label,view=view,drive_id=videos[clip]['File_ID'],source_annotation=str(p),annotation_sha256=hash_file(src),video_sha256='',video_bytes='',number=int(match[2])))
+        digest = ''
+        if not fast:
+            if not src.is_file() or src.stat().st_size != int(a['file_size_bytes']):
+                held[clip]='annotation missing or inventory size changed'; continue
+            try:
+                obj=json.loads(src.read_text()); report=src.with_name('validation_report.json')
+                if not valid_annotation(obj,clip,label,tags):
+                    held[clip]='annotation identity or schema mismatch'; continue
+                if report.is_file():
+                    validation=json.loads(report.read_text())
+                    if not isinstance(validation.get('errors'),list) or validation['errors']:
+                        held[clip]='validation errors or unknown report schema'; continue
+                    warning_count += bool(validation.get('warnings'))
+                else: missing_report_count += 1
+                embedded=normalized_view(str((obj['clip'].get('source') or {}).get('view') or ''))
+                if view=='unknown' and len(m)<=1: view=embedded
+                elif embedded!='unknown' and embedded!=view: view='unknown'
+                digest=hash_file(src)
+            except (ValueError,OSError,AttributeError,TypeError):
+                held[clip]='unreadable annotation or report'; continue
+        groups[label].append(dict(clip_id=clip,play_type=label,view=view,drive_id=videos[clip]['File_ID'],source_annotation=str(p),annotation_sha256=digest,video_sha256='',video_bytes='',number=int(match[2]),annotation_source_bytes=int(a['file_size_bytes'])))
     if set(overrides)-groups.keys(): raise ValueError('Boundary override for absent play type')
     pairs=metadata_pairs(meta); result=[]; boundaries=[]
     for label,clips in sorted(groups.items()):
@@ -175,7 +207,7 @@ def plan(repo, annotation_csv, video_csv, overrides=None):
     assignments={r['clip_id']:r['split'] for r in result}
     crossing=[sorted(p) for p in pairs if p<=assignments.keys() and len({assignments[x] for x in p})>1]
     if crossing: raise ValueError(f'Cross-class candidate pair leakage: {crossing}')
-    summary=dict(video_inventory=len(videos),annotation_inventory=len(anns),matched=len(anns.keys()&videos.keys()),held=held,unmatched_videos=len(videos.keys()-anns.keys()),warning_reports=warning_count,missing_reports=missing_report_count,eligible=len(result))
+    summary=dict(fast_inventory_only=fast,validation_deferred=fast,video_inventory=len(videos),annotation_inventory=len(anns),matched=len(anns.keys()&videos.keys()),held=held,unmatched_videos=len(videos.keys()-anns.keys()),warning_reports=warning_count,missing_reports=missing_report_count,eligible=len(result))
     return result,boundaries,summary
 
 
@@ -199,6 +231,7 @@ def copy_verified(src, dest, digest):
 
 
 def copy_dataset(repo, rows, dest, remote=None, local=None):
+    tags=set(json.loads((repo/'data/plays.json').read_text())['formattedPlayLabels'])
     if dest.resolve().is_relative_to(repo.resolve()) or repo.resolve().is_relative_to(dest.resolve()):
         raise ValueError('Destination must not overlap repository')
     if local and (dest.resolve().is_relative_to(local.resolve()) or local.resolve().is_relative_to(dest.resolve())):
@@ -215,7 +248,13 @@ def copy_dataset(repo, rows, dest, remote=None, local=None):
         if any(len(splits)>1 for splits in seen.values()): raise ValueError('Identical Google Drive video content appears across splits; review before transfer')
     for i,r in enumerate(rows,1):
         src=safe_path(repo,r['source_annotation']); ann=safe_path(dest,r['annotation_path']); video=safe_path(dest,r['video_path'])
-        if hash_file(src)!=r['annotation_sha256']: raise ValueError(f'Annotation changed since preview: {src}')
+        if r.get('annotation_source_bytes') is not None:
+            current_digest=validate_source_annotation(src,r,tags)
+        else:
+            current_digest=hash_file(src)
+        if r['annotation_sha256'] and current_digest!=r['annotation_sha256']:
+            raise ValueError(f'Annotation changed since preview: {src}')
+        r['annotation_sha256']=current_digest
         if local:
             original=local/(r['clip_id']+'.mp4'); digest=hash_file(original); copy_verified(original,video,digest)
         else:
@@ -258,14 +297,15 @@ def main():
     if a.preview:
         overrides={k:int(v) for k,v in (s.split('=',1) for s in a.boundary)}
         if a.plan.exists(): p.error('Plan already exists; choose a new --plan filename')
-        rows,boundaries,summary=plan(a.repo,a.annotations,a.videos,overrides)
+        rows,boundaries,summary=plan(a.repo,a.annotations,a.videos,overrides,fast=True)
         if not rows: p.error('No eligible clips')
         commit=run('git','-C',str(a.repo),'rev-parse','HEAD').strip()
         payload=dict(rows=rows,boundaries=boundaries,summary=summary,commit=commit)
         with a.plan.open('x') as f: json.dump(payload,f,indent=2)
         for b in boundaries: print(f"{b['play_type']:24} {b['train']:4} / {b['test']:4} | {b['left']} -> {b['right']}")
         print(json.dumps({k:v for k,v in summary.items() if k!='held'},indent=2)); print('Held clips:',len(summary['held']), 'Plan:',a.plan); print('Hold reasons:',dict(Counter(summary['held'].values()))); print('Training:',sum(b['train'] for b in boundaries),'Testing:',sum(b['test'] for b in boundaries))
-        print('Review every boundary, especially unknown views; rerun with --boundary PLAY=TRAIN_COUNT if needed. Warnings/missing reports are included provisionally; inspect plan before approval.')
+        print('FAST INVENTORY PREVIEW: annotation JSONs, local annotation existence and validation reports were NOT read. Content validation and SHA-256 are deferred to --copy.')
+        print('Review every boundary, especially unknown views; rerun with --boundary PLAY=TRAIN_COUNT if needed. Preview counts are provisional.')
     elif a.verify:
         if not a.destination: p.error('--destination required')
         verify(a.destination,read_csv(a.destination/'dataset_manifest.csv'))
@@ -278,7 +318,13 @@ def main():
         saved=a.destination/'dataset_manifest.csv'
         if saved.exists():
             old=read_csv(saved)
-            if [tuple(r[k] for k in FIELDS if k not in ('video_sha256','video_bytes')) for r in old]!=[tuple(str(r[k]) for k in FIELDS if k not in ('video_sha256','video_bytes')) for r in rows]: raise ValueError('Existing dataset has different assignments')
+            identity_fields=[k for k in FIELDS if k not in ('video_sha256','video_bytes','annotation_sha256')]
+            if [tuple(r[k] for k in identity_fields) for r in old]!=[tuple(str(r[k]) for k in identity_fields) for r in rows]:
+                raise ValueError('Existing dataset has different assignments')
+            # Restore verified digests when resuming a partially copied version.
+            for r,previous in zip(rows,old):
+                if previous['annotation_sha256']:
+                    r['annotation_sha256']=previous['annotation_sha256']
         else:
             if a.destination.exists() and any(a.destination.iterdir()): raise ValueError('Destination is not empty and has no saved manifest')
             if a.destination.resolve().is_relative_to(a.repo.resolve()) or a.repo.resolve().is_relative_to(a.destination.resolve()): raise ValueError('Destination overlaps repository')
@@ -289,7 +335,7 @@ def main():
         counts=Counter((r['play_type'],r['split']) for r in rows)
         lines=['# TapeVision dataset v1.0','','Sequential numeric-ID 60/40 target per canonical play type. Known adjacent source-camera pairs protected; all boundaries manually reviewed. Nonadjacent duplicates and missing metadata may still cause leakage.','',f"Annotation repository commit: `{payload['commit']}`",'',f"Eligible: {len(rows)}; held: {len(payload['summary']['held'])}; training: {sum(r['split']=='train' for r in rows)}; testing: {sum(r['split']=='test' for r in rows)}.",'','| Play | Train | Test |','|---|---:|---:|']
         for label in sorted({r['play_type'] for r in rows}): lines.append(f'| {label} | {counts[label,"train"]} | {counts[label,"test"]} |')
-        lines+=['','Videos and renamed annotation JSON files are copied, not moved. Paths and SHA-256 hashes are in dataset_manifest.csv. Warnings and missing validation reports may be included if approved. Local verification does not certify cloud synchronization.']
+        lines+=['','Videos and renamed annotation JSON files are copied, not moved. Paths and SHA-256 hashes are in dataset_manifest.csv. Fast preview did not inspect annotation contents; each source JSON and available validation report was checked during copying. Missing validation reports may be included if approved. Local verification does not certify cloud synchronization.']
         (a.destination/'README.md').write_text('\n'.join(lines)+'\n')
 
 

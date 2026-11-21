@@ -124,3 +124,40 @@ def test_validation_error_held(dataset):
     p.write_text(json.dumps({'errors':['bad frame'],'warnings':[]}))
     rows,_,s=m.plan(repo,a,v)
     assert s['held']=={'Counter_12':'validation errors or unknown report schema'} and len(rows)==16
+
+
+def test_fast_preview_uses_inventory_without_reading_annotation_files(dataset, monkeypatch):
+    repo,a,v,_,_=dataset
+    # Inventory-only preview must not require local annotation blobs at all.
+    for path in (repo/'outputs/batch').rglob('annotations.json'):
+        path.unlink()
+    for path in (repo/'outputs/batch').rglob('validation_report.json'):
+        path.unlink()
+    def fail_hash(*args, **kwargs):
+        raise AssertionError('preview attempted to hash an annotation')
+    monkeypatch.setattr(m,'hash_file',fail_hash)
+    rows,boundaries,summary=m.plan(repo,a,v,fast=True)
+    assert len(rows)==17
+    assert summary['fast_inventory_only'] is True
+    assert summary['validation_deferred'] is True
+    assert all(r['annotation_sha256']=='' for r in rows)
+    assert len(boundaries)==2
+
+
+def test_fast_preview_defers_validation_until_copy(dataset):
+    repo,a,v,video,dest=dataset
+    path=repo/'outputs/batch/Counter/Counter/Counter_12/validation_report.json'
+    path.write_text(json.dumps({'errors':['bad annotation'], 'warnings':[]}))
+    rows,_,summary=m.plan(repo,a,v,fast=True)
+    assert len(rows)==17 and summary['eligible']==17
+    with pytest.raises(ValueError,match='validation report contains errors'):
+        m.copy_dataset(repo,rows,dest,local=video)
+
+
+def test_fast_preview_defers_annotation_hash_until_copy(dataset):
+    repo,a,v,video,dest=dataset
+    rows,_,_=m.plan(repo,a,v,fast=True)
+    assert all(not r['annotation_sha256'] for r in rows)
+    m.copy_dataset(repo,rows,dest,local=video)
+    assert all(len(r['annotation_sha256'])==64 for r in rows)
+    m.verify(dest,rows)
