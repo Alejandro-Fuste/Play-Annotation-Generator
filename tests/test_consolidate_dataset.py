@@ -161,3 +161,28 @@ def test_fast_preview_defers_annotation_hash_until_copy(dataset):
     m.copy_dataset(repo,rows,dest,local=video)
     assert all(len(r['annotation_sha256'])==64 for r in rows)
     m.verify(dest,rows)
+
+def test_include_batch_failures_and_report_errors(dataset):
+    repo,a,v,video,dest=dataset
+    dump_csv(repo/'outputs/batch/Counter/_batch/batch_manifest.csv',
+             [{'clip_name':'Counter_12','status':'FAILED','error_count':1}])
+    report=repo/'outputs/batch/Counter/Counter/Counter_12/validation_report.json'
+    report.write_text(json.dumps({'errors':['known failure'],'warnings':[]}))
+    rows,_,s=m.plan(repo,a,v,fast=True,include_batch_failures=True)
+    assert len(rows)==17 and s['batch_failures_included']==1
+    assert next(r for r in rows if r['clip_id']=='Counter_12')['batch_status']=='FAILED'
+    m.copy_dataset(repo,rows,dest,local=video,allow_report_errors=True)
+    m.verify(dest,rows)
+
+def test_reviewed_view_override_prevents_split_without_dataset_summary(dataset):
+    repo,a,v,video,dest=dataset
+    # Clear source metadata and rely only on explicitly reviewed S/E labels.
+    allrows=m.read_csv(repo/'data/DatasetSummary.csv')
+    for x in allrows:
+        x.update(view='',input_file='',start_time='',end_time='')
+    dump_csv(repo/'data/DatasetSummary.csv',allrows)
+    views={'Counter_7':'S','Counter_8':'E'}
+    rows,b,_=m.plan(repo,a,v,fast=True,view_overrides=views)
+    assert next(x for x in b if x['play_type']=='Counter')['train']==8
+    assert next(r for r in rows if r['clip_id']=='Counter_7')['split']=='train'
+    assert next(r for r in rows if r['clip_id']=='Counter_8')['split']=='train'
